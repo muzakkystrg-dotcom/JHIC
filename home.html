@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMK Telkom Sidoarjo - Homepage</title>
+  <meta name="description" content="Website Resmi SMK Telkom Sidoarjo (Skomda) - Sekolah Tangguh, Berakhlak, & Berwawasan Digital" />
+
+  <!-- Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            telkom: {
+              50: '#fff1f2',
+              100: '#fee2e2',
+              200: '#fecaca',
+              600: '#dc2626',
+              700: '#b91c1c',
+              800: '#991b1b',
+              900: '#7f1d1d',
+            }
+          },
+          boxShadow: {
+            'glow-red': '0 10px 25px -3px rgba(185, 28, 28, 0.45)',
+            'float': '0 20px 35px -10px rgba(0, 0, 0, 0.12)',
+          },
+          animation: {
+            'marquee': 'marquee 25s linear infinite',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#FBFBFB] text-slate-800 font-sans antialiased selection:bg-telkom-700 selection:text-white">
+
+  <!-- ==================== 1. FLOATING NAVBAR ==================== -->
+  <header class="fixed top-3 sm:top-4 left-0 right-0 z-50 px-3 sm:px-6">
+    <div class="max-w-7xl mx-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-sm border border-gray-100 px-4 sm:px-8 py-3 sm:py-3.5 flex items-center justify-between transition-all">
+      
+      <!-- Brand Logo -->
+      <a href="#beranda" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 bg-red-700 rounded-xl flex items-center justify-center text-white font-black text-lg sm:text-xl shadow-md group-hover:bg-red-800 transition-colors">
+          TS
+        </div>
+        <div class="flex flex-col leading-tight">
+          <span class="text-[10px] sm:text-xs text-gray-500 font-semibold tracking-wider uppercase">SMK Telkom</span>
+          <span class="text-xs sm:text-sm font-extrabold text-gray-900 tracking-tight">Sidoarjo</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links matching preview -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-gray-600">
+        <a href="#beranda" class="text-red-700 font-bold hover:text-red-800 transition">
+          Beranda
+        </a>
+
+        <!-- Dropdown: Tentang kami -->
+        <div class="relative group">
+          <button class="flex items-center gap-1.5 hover:text-red-700 py-1 transition font-medium text-gray-700">
+            <span>Tentang kami</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-500 group-hover:rotate-180 group-hover:text-red-700 transition"></i>
+          </button>
+          <div class="absolute top-full left-0 w-60 bg-white rounded-xl shadow-xl border border-gray-100 py-2.5 mt-1 hidden group-hover:block z-50">
+            <a href="#sambutan" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-xs font-semibold text-gray-700">
+              <i data-lucide="users" class="w-4 h-4 text-red-600"></i>
+              Sambutan Kepala Sekolah
+            </a>
+            <a href="#keunggulan" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-xs font-semibold text-gray-700">
+              <i data-lucide="sparkles" class="w-4 h-4 text-red-600"></i>
+              Kenapa Pilih Skomda?
+            </a>
+            <a href="#alumni" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-xs font-semibold text-gray-700">
+              <i data-lucide="graduation-cap" class="w-4 h-4 text-red-600"></i>
+              Profil &amp; Kiprah Alumni
+            </a>
+          </div>
+        </div>
+
+        <!-- Button: JURUFIND (Matches preview center position) -->
+        <button
+          onclick="openJurufindModal()"
+          class="px-5 py-2 text-xs font-bold text-white bg-red-700 rounded-full hover:bg-red-800 transition shadow-sm flex items-center gap-1.5 active:scale-95"
+          title="Tes Minat Bakat Jurusan SMK Telkom Sidoarjo"
+        >
+          <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+          <span>JURUFIND</span>
+        </button>
+
+        <!-- Dropdown: Program -->
+        <div class="relative group">
+          <button class="flex items-center gap-1.5 hover:text-red-700 py-1 transition font-medium text-gray-700">
+            <span>Program</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-500 group-hover:rotate-180 group-hover:text-red-700 transition"></i>
+          </button>
+          <div class="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 mt-1 hidden group-hover:block z-50">
+            <button onclick="openProgramDetail('SIJA')" class="w-full text-left px-4 py-2.5 hover:bg-red-50 hover:text-red-700 text-xs font-semibold text-gray-700 flex flex-col">
+              <span class="font-bold text-gray-900">SIJA (4 Tahun)</span>
+              <span class="text-[11px] text-gray-500 font-normal">Sistem Informasi Jaringan &amp; Aplikasi</span>
+            </button>
+            <button onclick="openProgramDetail('TJAT')" class="w-full text-left px-4 py-2.5 hover:bg-red-50 hover:text-red-700 text-xs font-semibold text-gray-700 flex flex-col border-t border-gray-50">
+              <span class="font-bold text-gray-900">TJAT (3 Tahun)</span>
+              <span class="text-[11px] text-gray-500 font-normal">Teknik Jaringan Akses Telekomunikasi</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dropdown: Informasi -->
+        <div class="relative group">
+          <button class="flex items-center gap-1.5 hover:text-red-700 py-1 transition font-medium text-gray-700">
+            <span>Informasi</span>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-500 group-hover:rotate-180 group-hover:text-red-700 transition"></i>
+          </button>
+          <div class="absolute top-full left-0 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 mt-1 hidden group-hover:block z-50">
+            <a href="#berita" class="flex items-center gap-2 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-xs font-semibold text-gray-700">
+              <i data-lucide="book-open" class="w-4 h-4 text-red-600"></i>
+              Berita &amp; Artikel Terkini
+            </a>
+            <a href="#partner" class="flex items-center gap-2 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-xs font-semibold text-gray-700">
+              <i data-lucide="sparkles" class="w-4 h-4 text-red-600"></i>
+              Mitra Industri &amp; BKK
+            </a>
+            <a href="#kontak" class="flex items-center gap-2 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-xs font-semibold text-gray-700">
+              <i data-lucide="phone-call" class="w-4 h-4 text-red-600"></i>
+              Kontak &amp; Layanan Sekolah
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Action Button PPDB matching preview -->
+      <div class="flex items-center gap-3">
+        <button
+          onclick="openPpdbModal()"
+          class="px-6 sm:px-8 py-2.5 text-xs font-bold text-white bg-red-700 rounded-full shadow-lg hover:bg-red-800 transition transform hover:scale-105 active:scale-95"
+        >
+          PPDB
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== 2. HERO SECTION ==================== -->
+  <section id="beranda" class="pt-36 pb-20 bg-gradient-to-b from-gray-50/80 via-white to-gray-50/40 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Headline & Call to Action -->
+        <div class="lg:col-span-5 space-y-6 text-center lg:text-left">
+          <p class="text-xs sm:text-sm font-bold text-gray-500 uppercase tracking-wider">
+            Selamat datang, di <span class="text-telkom-700 font-extrabold">SMK TELKOM SIDOARJO!</span>
+          </p>
+
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-[1.18] tracking-tight">
+            Sekolah Tangguh, <br class="hidden sm:inline" />
+            Berakhlak, <br />
+            <span class="text-telkom-700">&amp; Berwawasan Digital</span>
+          </h1>
+
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-normal max-w-md mx-auto lg:mx-0">
+            Mencetak talenta unggul di bidang Teknologi Informasi dan Jaringan dengan kurikulum berstandar industri internasional dan sertifikasi global.
+          </p>
+
+          <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <span class="text-xs sm:text-sm font-semibold text-gray-600">Udah siap Bergabung?</span>
+            <button onclick="openPpdbModal()" class="w-full sm:w-auto px-7 py-3 text-xs sm:text-sm font-bold text-white bg-telkom-700 hover:bg-telkom-800 rounded-full shadow-md hover:shadow-lg transition">
+              Daftar ke skomda!
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: 4-Photo Arch Collage & Floating Stat Badges -->
+        <div class="lg:col-span-7 relative flex justify-center items-center py-6 sm:py-8">
+          <div class="grid grid-cols-2 gap-3 sm:gap-4 max-w-md w-full relative z-10">
+            
+            <!-- Foto 1 (Top Left Arch) -->
+            <div class="relative bg-telkom-700 rounded-tl-[80px] rounded-2xl overflow-hidden aspect-square border-4 border-white shadow-md">
+              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&auto=format&fit=crop&q=80" alt="Siswa SMK Telkom" class="w-full h-full object-cover" />
+            </div>
+
+            <!-- Foto 2 (Top Right Arch) -->
+            <div class="relative bg-telkom-700 rounded-tr-[80px] rounded-2xl overflow-hidden aspect-square border-4 border-white shadow-md">
+              <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=500&auto=format&fit=crop&q=80" alt="Belajar Coding" class="w-full h-full object-cover" />
+            </div>
+
+            <!-- Foto 3 (Bottom Left Arch) -->
+            <div class="relative bg-telkom-700 rounded-bl-[80px] rounded-2xl overflow-hidden aspect-square border-4 border-white shadow-md">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Praktik Jaringan" class="w-full h-full object-cover" />
+            </div>
+
+            <!-- Foto 4 (Bottom Right Arch) -->
+            <div class="relative bg-telkom-700 rounded-br-[80px] rounded-2xl overflow-hidden aspect-square border-4 border-white shadow-md">
+              <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=500&auto=format&fit=crop&q=80" alt="Siswi Telkom" class="w-full h-full object-cover" />
+            </div>
+          </div>
+
+          <!-- 4 Floating Stat Badges -->
+          <div class="absolute -top-3 left-2 sm:left-6 bg-white rounded-2xl shadow-float p-3 sm:p-4 z-20 text-center border border-gray-100 min-w-[90px] sm:min-w-[110px]">
+            <span class="text-xl sm:text-2xl font-black text-telkom-700 block">840+</span>
+            <span class="text-[10px] sm:text-xs font-bold text-gray-500">Siswa Aktif</span>
+          </div>
+
+          <div class="absolute top-8 right-0 sm:right-4 bg-telkom-700 text-white rounded-2xl shadow-float p-3 sm:p-4 z-20 text-center min-w-[90px] sm:min-w-[110px]">
+            <span class="text-xl sm:text-2xl font-black text-white block">1327+</span>
+            <span class="text-[10px] sm:text-xs font-bold text-red-100">Alumni</span>
+          </div>
+
+          <div class="absolute bottom-8 left-0 sm:left-4 bg-telkom-700 text-white rounded-2xl shadow-float p-3 sm:p-4 z-20 text-center min-w-[90px] sm:min-w-[110px]">
+            <span class="text-xl sm:text-2xl font-black text-white block">2</span>
+            <span class="text-[10px] sm:text-xs font-bold text-red-100">Jurusan</span>
+          </div>
+
+          <div class="absolute -bottom-4 right-2 sm:right-6 bg-white rounded-2xl shadow-float p-3 sm:p-4 z-20 text-center border border-gray-100 min-w-[90px] sm:min-w-[110px]">
+            <span class="text-xl sm:text-2xl font-black text-telkom-700 block">50+</span>
+            <span class="text-[10px] sm:text-xs font-bold text-gray-500">Partner</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. SAMBUTAN KEPALA SEKOLAH ==================== -->
+  <section id="sambutan" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Foto Kepala Sekolah dalam Siluet Arch & Dotted Orbit -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-64 sm:w-72 h-80 sm:h-96">
+            <!-- Dotted circles -->
+            <div class="absolute -inset-4 rounded-full border-2 border-dashed border-red-200 animate-spin" style="animation-duration: 40s;"></div>
+            <!-- Red Arch Backdrop -->
+            <div class="absolute inset-0 bg-telkom-700 rounded-t-full rounded-b-3xl transform -rotate-3 scale-95 opacity-95"></div>
+            <!-- Headmaster Photo -->
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&auto=format&fit=crop&q=80" alt="Kepala Sekolah" class="relative z-10 w-full h-full object-cover rounded-t-full rounded-b-3xl shadow-xl border-4 border-white" />
+          </div>
+        </div>
+
+        <!-- Right: Pesan Sambutan -->
+        <div class="lg:col-span-7 space-y-4">
+          <span class="text-xs uppercase tracking-widest text-gray-400 font-bold block">Sambutan</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+            Kepala sekolah <br /><span class="text-telkom-700">SMK TELKOM SIDOARJO</span>
+          </h2>
+          <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
+            Selamat datang di website resmi SMK Telkom Sidoarjo. Sebagai institusi pendidikan vokasi di bawah naungan Yayasan Pendidikan Telkom, kami bertekad menciptakan lingkungan pembelajaran yang adaptif, kolaboratif, dan berstandar industri masa depan.
+          </p>
+          <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
+            Melalui kurikulum berbasis industri dan program sertifikasi kompetensi global, para siswa tidak hanya menguasai keterampilan teknis rekayasa perangkat lunak maupun telekomunikasi, tetapi juga dibekali karakter akhlak mulia dan ketangguhan mental profesional.
+          </p>
+          <div class="pt-4 border-t border-gray-100">
+            <p class="font-extrabold text-gray-900 text-base">Abror S.hum M.pd</p>
+            <span class="text-xs text-gray-500 font-medium">Kepala SMK Telkom Sidoarjo</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. KENAPA HARUS PILIH SKOMDA? ==================== -->
+  <section id="keunggulan" class="py-20 bg-gradient-to-b from-gray-50/60 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+          Kenapa harus <span class="text-telkom-700">pilih Skomda?</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-500 mt-2">
+          Komitmen keunggulan pendidikan vokasi digital berdaya saing global untuk masa depan gemilang.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- 6 Cards Grid (Span 8) -->
+        <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <!-- Card 1: Red Highlight -->
+          <div class="bg-telkom-700 text-white p-6 rounded-3xl shadow-lg space-y-2">
+            <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center text-white mb-3">
+              <i data-lucide="cpu" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-extrabold">Program Digitalent</h3>
+            <p class="text-xs text-red-100 leading-relaxed font-normal">
+              Kurikulum praktis berbasis proyek industri digital dengan fokus software engineering &amp; infrastructure.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-2 hover:border-red-200 transition">
+            <div class="w-10 h-10 rounded-2xl bg-red-50 text-telkom-700 flex items-center justify-center mb-3">
+              <i data-lucide="award" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-extrabold text-gray-900">Akreditasi A – Unggul</h3>
+            <p class="text-xs text-gray-500 leading-relaxed font-normal">
+              Terakreditasi A oleh BAN-S/M dengan predikat sekolah rujukan vokasi teknologi se-Jawa Timur.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-2 hover:border-red-200 transition">
+            <div class="w-10 h-10 rounded-2xl bg-red-50 text-telkom-700 flex items-center justify-center mb-3">
+              <i data-lucide="network" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-extrabold text-gray-900">Yayasan Pendidikan Telkom</h3>
+            <p class="text-xs text-gray-500 leading-relaxed font-normal">
+              Bagian dari ekosistem Telkom Schools dan Telkom University dengan jejaring karir langsung di Telkom Group.
+            </p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-2 hover:border-red-200 transition">
+            <div class="w-10 h-10 rounded-2xl bg-red-50 text-telkom-700 flex items-center justify-center mb-3">
+              <i data-lucide="monitor" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-extrabold text-gray-900">School of Digital Era</h3>
+            <p class="text-xs text-gray-500 leading-relaxed font-normal">
+              Laboratorium komputer modern dengan Apple Mac Lab, Fiber Optic splicer, dan server data center mandiri.
+            </p>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-2 hover:border-red-200 transition">
+            <div class="w-10 h-10 rounded-2xl bg-red-50 text-telkom-700 flex items-center justify-center mb-3">
+              <i data-lucide="shield-check" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-extrabold text-gray-900">Standarisasi ISO 21001</h3>
+            <p class="text-xs text-gray-500 leading-relaxed font-normal">
+              Sistem Manajemen Organisasi Pendidikan bersertifikasi internasional menjamin transparansi &amp; mutu belajar.
+            </p>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-2 hover:border-red-200 transition">
+            <div class="w-10 h-10 rounded-2xl bg-red-50 text-telkom-700 flex items-center justify-center mb-3">
+              <i data-lucide="briefcase" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-base font-extrabold text-gray-900">Program OPES &amp; BKK</h3>
+            <p class="text-xs text-gray-500 leading-relaxed font-normal">
+              One Person One Skill, penyaluran magang industri terakreditasi, dan penempatan kerja sebelum lulus.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Student Photo in Arch with Dotted Ring (Span 4) -->
+        <div class="lg:col-span-4 flex justify-center">
+          <div class="relative w-64 h-80 sm:h-96">
+            <div class="absolute -inset-3 rounded-full border-2 border-dashed border-red-300"></div>
+            <div class="w-full h-full rounded-full bg-telkom-700 overflow-hidden border-4 border-white shadow-xl">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80" alt="Siswi Skomda" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 5. PROGRAM KEAHLIAN (SIJA & TJAT) ==================== -->
+  <section id="jurusan" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">
+          Program Keahlian <br /><span class="text-telkom-700">di SMK TELKOM SIDOARJO</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-500 mt-2">
+          Pilihan jurusan vokasi masa depan yang terintegrasi dengan kebutuhan dunia usaha dan dunia industri (DUDI).
+        </p>
+      </div>
+
+      <!-- 3 Columns: SIJA (Left), Photo Arch (Center), TJAT (Right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left Column: SIJA (Span 4) -->
+        <div class="lg:col-span-4 bg-gray-50/80 p-6 sm:p-8 rounded-3xl border border-gray-100 space-y-4 shadow-sm hover:border-red-200 transition">
+          <div class="inline-block px-3 py-1 bg-red-100 text-telkom-700 text-xs font-bold rounded-full">
+            Program 4 Tahun
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black text-slate-900 leading-tight">
+            SIJA (Sistem Informasi Jaringan &amp; Aplikasi)
+          </h3>
+          <p class="text-xs text-gray-500 leading-relaxed font-normal">
+            Fokus pada rekayasa perangkat lunak, cloud platform, database architecture, kecerdasan buatan (AI), dan cybersecurity.
+          </p>
+
+          <div class="space-y-2 pt-2 border-t border-gray-200 text-xs">
+            <p class="font-bold text-gray-900">Cocok untuk:</p>
+            <ul class="space-y-1 text-gray-600">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Tertarik coding, web &amp; mobile app</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Mempelajari sistem server &amp; cloud</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Magang industri 1 tahun penuh (Year 4)</li>
+            </ul>
+          </div>
+
+          <div class="pt-2">
+            <span class="text-[11px] font-bold text-telkom-700 block mb-1">Prospek Karir:</span>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-medium text-gray-600">
+              <span class="bg-white px-2 py-0.5 rounded border border-gray-200">Full-Stack Dev</span>
+              <span class="bg-white px-2 py-0.5 rounded border border-gray-200">Cloud Admin</span>
+              <span class="bg-white px-2 py-0.5 rounded border border-gray-200">UI/UX Designer</span>
+            </div>
+          </div>
+
+          <button onclick="openProgramDetail('SIJA')" class="w-full mt-4 py-2.5 bg-white border border-telkom-700 text-telkom-700 hover:bg-telkom-700 hover:text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+            <span>Lihat Detail Kurikulum SIJA</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Center Column: Center Tall Arch Photo (Span 4) -->
+        <div class="lg:col-span-4 flex flex-col items-center">
+          <div class="relative w-full max-w-[270px] aspect-[3/4]">
+            <div class="absolute inset-0 bg-telkom-700 rounded-t-[120px] rounded-b-3xl"></div>
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80" alt="Siswa Skomda" class="relative z-10 w-full h-full object-cover rounded-t-[120px] rounded-b-3xl shadow-xl border-4 border-white" />
+          </div>
+          <button onclick="openJurufindModal()" class="mt-6 px-6 py-2.5 bg-telkom-700 text-white rounded-full text-xs font-bold shadow-md hover:bg-telkom-800 transition flex items-center gap-2">
+            <i data-lucide="compass" class="w-4 h-4"></i>
+            <span>Bingung pilih? Ikuti Tes JURUFIND</span>
+          </button>
+        </div>
+
+        <!-- Right Column: TJAT (Span 4) -->
+        <div class="lg:col-span-4 bg-gray-50/80 p-6 sm:p-8 rounded-3xl border border-gray-100 space-y-4 shadow-sm hover:border-red-200 transition">
+          <div class="inline-block px-3 py-1 bg-red-100 text-telkom-700 text-xs font-bold rounded-full">
+            Program 3 Tahun
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black text-slate-900 leading-tight">
+            TJAT (Teknik Jaringan Akses Telekomunikasi)
+          </h3>
+          <p class="text-xs text-gray-500 leading-relaxed font-normal">
+            Fokus pada jaringan transmisi fiber optic, instalasi radio microwave, broadband connectivity, router/switch Cisco &amp; MikroTik.
+          </p>
+
+          <div class="space-y-2 pt-2 border-t border-gray-200 text-xs">
+            <p class="font-bold text-gray-900">Cocok untuk:</p>
+            <ul class="space-y-1 text-gray-600">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Tertarik instalasi perangkat keras jaringan</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Ahli kabel fiber optik &amp; telekomunikasi</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Siap kerja cepat di ISP &amp; Telco provider</li>
+            </ul>
+          </div>
+
+          <div class="pt-2">
+            <span class="text-[11px] font-bold text-telkom-700 block mb-1">Prospek Karir:</span>
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-medium text-gray-600">
+              <span class="bg-white px-2 py-0.5 rounded border border-gray-200">Network Engineer</span>
+              <span class="bg-white px-2 py-0.5 rounded border border-gray-200">Fiber Specialist</span>
+              <span class="bg-white px-2 py-0.5 rounded border border-gray-200">NOC Engineer</span>
+            </div>
+          </div>
+
+          <button onclick="openProgramDetail('TJAT')" class="w-full mt-4 py-2.5 bg-white border border-telkom-700 text-telkom-700 hover:bg-telkom-700 hover:text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+            <span>Lihat Detail Kurikulum TJAT</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 6. APA KATA ALUMNI? ==================== -->
+  <section id="alumni" class="py-20 lg:py-28 bg-white relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <!-- Title matching preview -->
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red-100 text-red-700 mb-3 shadow-xs">
+          <i data-lucide="graduation-cap" class="w-5 h-5 text-red-700"></i>
+        </div>
+        
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Apa Kata <span class="text-red-700">Alumni?</span>
+        </h2>
+        
+        <p class="text-xs sm:text-sm text-gray-500 mt-2 font-medium">
+          Lihat Perjalanan Para Alumni Berprestasi Setelah Lulus
+        </p>
+      </div>
+
+      <!-- Dashed Border Card Container matching preview -->
+      <div class="bg-white rounded-3xl border-2 border-dashed border-gray-300 p-6 sm:p-10 shadow-sm relative group">
+        <button
+          onclick="prevAlumni()"
+          aria-label="Previous Testimonial"
+          class="absolute -left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-gray-400 hover:text-red-700 transition z-20"
+        >
+          <i data-lucide="chevron-left" class="w-4 h-4"></i>
+        </button>
+        
+        <button
+          onclick="nextAlumni()"
+          aria-label="Next Testimonial"
+          class="absolute -right-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-gray-400 hover:text-red-700 transition z-20"
+        >
+          <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </button>
+
+        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-10">
+          <!-- Alumni Photo with Red Backing Layer -->
+          <div class="relative w-32 h-32 sm:w-36 sm:h-36 shrink-0 flex items-center justify-center">
+            <div class="absolute inset-0 bg-red-700 rounded-3xl transform rotate-6 scale-90 shadow-md"></div>
+            <img 
+              id="alumni-img"
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" 
+              alt="Alumni" 
+              class="relative z-10 w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-2xl shadow-md border-2 border-white"
+            />
+            <div id="alumni-badge" class="absolute -bottom-2 z-20 bg-slate-900 text-white font-extrabold text-[10px] px-3 py-0.5 rounded-full shadow-xs">
+              SIJA
+            </div>
+          </div>
+
+          <!-- Testimonial Content -->
+          <div class="space-y-4 text-center md:text-left flex-1">
+            <div class="flex justify-center md:justify-start">
+              <i data-lucide="quote" class="w-6 h-6 text-red-300"></i>
+            </div>
+
+            <p id="alumni-quote" class="text-sm sm:text-base text-gray-700 italic leading-relaxed font-normal">
+              "Sekolah disini asyik banget, gabakal nyesel buat para orang tua yang nyari calon sekolah buat anaknya sih! Fasilitas lengkap dan gurunya suportif banget."
+            </p>
+            
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-gray-100">
+              <div>
+                <p class="text-xs sm:text-sm font-extrabold text-gray-900">
+                  <span id="alumni-name">— Aisyah Putri Ramadhani</span> <span class="text-red-700 font-bold">• <span id="alumni-jurusan">SIJA</span></span>
+                </p>
+                <p id="alumni-role" class="text-[11px] sm:text-xs text-gray-500 font-medium">
+                  Mahasiswi Teknik Informatika • Institut Teknologi Bandung (Lulus 2024)
+                </p>
+              </div>
+
+              <a 
+                id="alumni-linkedin"
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 hover:bg-red-50 text-gray-700 hover:text-red-700 text-xs font-semibold transition border border-gray-200"
+              >
+                <i data-lucide="linkedin" class="w-3.5 h-3.5 text-blue-600"></i>
+                <span>Profil LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Dots matching preview -->
+      <div class="flex items-center justify-center gap-2 mt-8">
+        <button onclick="setAlumniSlide(0)" id="dot-0" class="transition-all duration-300 rounded-full h-2 w-7 bg-red-700"></button>
+        <button onclick="setAlumniSlide(1)" id="dot-1" class="transition-all duration-300 rounded-full h-2 w-2 bg-gray-300 hover:bg-gray-400"></button>
+        <button onclick="setAlumniSlide(2)" id="dot-2" class="transition-all duration-300 rounded-full h-2 w-2 bg-gray-300 hover:bg-gray-400"></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 7. 13+ PARTNER INDUSTRI ==================== -->
+  <section id="partner" class="py-14 bg-white border-y border-gray-100 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 mb-8 text-center">
+      <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+        13+ Partner Industri
+      </h3>
+      <p class="text-xs text-gray-400 mt-1 max-w-lg mx-auto">
+        Kerjasama magang industri, kurikulum berbasis industri, dan rekrutmen lulusan
+      </p>
+    </div>
+
+    <!-- Partner Cards Infinite Marquee matching preview -->
+    <div class="relative w-full overflow-hidden flex items-center py-2 select-none">
+      <div class="animate-marquee flex items-center gap-6">
+        <!-- Item 1 -->
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-gray-800">CREATION</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Software House</span>
+        </div>
+        <!-- Item 2 -->
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-blue-600">RADNEXT</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Internet Service Provider</span>
+        </div>
+        <!-- Item 3 -->
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-red-600">MARKAZ</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Digital Agency</span>
+        </div>
+        <!-- Item 4 -->
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-slate-900">AXELBIT</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Network Solution</span>
+        </div>
+        <!-- Item 5 -->
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-red-700">GARUDA</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">IT Academy</span>
+        </div>
+        <!-- Item 6 -->
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-red-600">TELKOM INDONESIA</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Telecommunication</span>
+        </div>
+        <!-- Item 7 -->
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-red-700">TELKOM AKSES</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Infrastructure</span>
+        </div>
+        <!-- Item 8 -->
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-blue-700">CISCO ACADEMY</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Networking</span>
+        </div>
+        <!-- Item 9 -->
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-slate-800">MIKROTIK ACADEMY</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Routing</span>
+        </div>
+
+        <!-- Duplikat Loop Marquee -->
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-gray-800">CREATION</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Software House</span>
+        </div>
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-blue-600">RADNEXT</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Internet Service Provider</span>
+        </div>
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-red-600">MARKAZ</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Digital Agency</span>
+        </div>
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-slate-900">AXELBIT</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Network Solution</span>
+        </div>
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-red-700">GARUDA</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">IT Academy</span>
+        </div>
+        <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border border-gray-200 bg-white min-w-[170px] min-h-[85px] shadow-xs shrink-0">
+          <span class="font-extrabold text-sm tracking-wide text-red-600">TELKOM INDONESIA</span>
+          <span class="text-[11px] text-gray-400 mt-0.5">Telecommunication</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 8. BERITA & INFORMASI TERKINI ==================== -->
+  <section id="berita" class="py-20 lg:py-28 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title matching preview (Centered with SMK TELKOM SIDOARJO in red) -->
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Berita &amp; Informasi Terkini
+        </h2>
+        <h3 class="text-lg sm:text-xl font-black text-red-700 tracking-wider mt-1">
+          SMK TELKOM SIDOARJO
+        </h3>
+        <p class="text-xs sm:text-sm text-gray-500 mt-2 font-medium">
+          Kabar prestasi, kegiatan akademik, inovasi siswa, dan agenda resmi sekolah
+        </p>
+      </div>
+
+      <!-- Filter Buttons matching preview -->
+      <div class="flex items-center justify-center flex-wrap gap-2 mb-12">
+        <span class="text-xs font-bold text-gray-700 mr-2">Kategori Berita:</span>
+        <button onclick="filterNewsCategory('Semua', this)" class="news-tab px-4 py-1.5 rounded-full text-xs font-bold bg-red-700 text-white shadow-xs transition">Semua</button>
+        <button onclick="filterNewsCategory('Kegiatan Sekolah', this)" class="news-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition">Kegiatan Sekolah</button>
+        <button onclick="filterNewsCategory('Prestasi', this)" class="news-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition">Prestasi</button>
+        <button onclick="filterNewsCategory('Karya & Inovasi', this)" class="news-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition">Karya &amp; Inovasi</button>
+        <button onclick="filterNewsCategory('Kemitraan & Kerjasama', this)" class="news-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition">Kemitraan &amp; Kerjasama</button>
+        <button onclick="filterNewsCategory('Alumni', this)" class="news-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition">Alumni</button>
+        <button onclick="filterNewsCategory('Artikel Edukasi', this)" class="news-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition">Artikel Edukasi</button>
+      </div>
+
+      <!-- News Carousel / Grid Container with Prev & Next Arrows -->
+      <div class="relative">
+        <button
+          onclick="scrollNewsGrid(-1)"
+          aria-label="Previous News"
+          class="hidden sm:flex absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-red-400 hover:bg-red-700 text-white shadow-lg items-center justify-center transition z-20"
+        >
+          <i data-lucide="chevron-left" class="w-5 h-5"></i>
+        </button>
+
+        <button
+          onclick="scrollNewsGrid(1)"
+          aria-label="Next News"
+          class="hidden sm:flex absolute -right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-red-700 hover:bg-red-800 text-white shadow-lg items-center justify-center transition z-20"
+        >
+          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </button>
+
+        <!-- News Grid matching preview (3 columns) -->
+        <div id="news-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Card 1 -->
+          <article class="news-item-card bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1" data-cat="Kegiatan Sekolah">
+            <div class="relative aspect-video overflow-hidden bg-gray-100">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=80" alt="Data Center" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute top-3 left-3 flex gap-1.5">
+                <span class="px-2.5 py-1 bg-red-700 text-white font-black text-[10px] rounded-md shadow-xs uppercase tracking-wider">SIJA</span>
+                <span class="px-2.5 py-1 bg-red-700 text-white font-black text-[10px] rounded-md shadow-xs uppercase tracking-wider">TJAT</span>
+              </div>
+              <div class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded flex items-center gap-1 font-mono">
+                <i data-lucide="calendar" class="w-3 h-3"></i>
+                <span>2026-06-07</span>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 onclick="openNewsDetail(0)" class="font-extrabold text-slate-900 text-base leading-snug group-hover:text-red-700 transition cursor-pointer line-clamp-2">
+                  Kunjungan Industri Siswa Skomda ke Data Center Nasional Telkom Group
+                </h3>
+                <p class="text-xs text-gray-500 leading-relaxed line-clamp-3">
+                  Ratusan siswa kelas XI SMK Telkom Sidoarjo meninjau secara langsung teknologi data center tier 3 berstandar internasional di Surabaya.
+                </p>
+              </div>
+              <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+                <span class="text-[11px] font-semibold text-gray-400">Humas Skomda</span>
+                <button onclick="openNewsDetail(0)" class="inline-flex items-center gap-1.5 text-xs font-bold text-red-700 hover:text-red-800 transition group-hover:translate-x-1 duration-200">
+                  <span>Baca Selengkapnya</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="news-item-card bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1" data-cat="Prestasi">
+            <div class="relative aspect-video overflow-hidden bg-gray-100">
+              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&q=80" alt="Juara Web Design" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute top-3 left-3 flex gap-1.5">
+                <span class="px-2.5 py-1 bg-red-700 text-white font-black text-[10px] rounded-md shadow-xs uppercase tracking-wider">SIJA</span>
+              </div>
+              <div class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded flex items-center gap-1 font-mono">
+                <i data-lucide="calendar" class="w-3 h-3"></i>
+                <span>2026-06-05</span>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 onclick="openNewsDetail(1)" class="font-extrabold text-slate-900 text-base leading-snug group-hover:text-red-700 transition cursor-pointer line-clamp-2">
+                  Juara 1 Lomba Web Design Tingkat Provinsi Jawa Timur 2026
+                </h3>
+                <p class="text-xs text-gray-500 leading-relaxed line-clamp-3">
+                  Tim perwakilan SIJA Skomda kembali membuktikan keunggulannya dengan menyabet medali emas dalam ajang Lomba Keterampilan Siswa (LKS).
+                </p>
+              </div>
+              <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+                <span class="text-[11px] font-semibold text-gray-400">Tim Kesiswaan</span>
+                <button onclick="openNewsDetail(1)" class="inline-flex items-center gap-1.5 text-xs font-bold text-red-700 hover:text-red-800 transition group-hover:translate-x-1 duration-200">
+                  <span>Baca Selengkapnya</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="news-item-card bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1" data-cat="Kemitraan & Kerjasama">
+            <div class="relative aspect-video overflow-hidden bg-gray-100">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80" alt="MoU Mitra" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <div class="absolute top-3 left-3 flex gap-1.5">
+                <span class="px-2.5 py-1 bg-red-700 text-white font-black text-[10px] rounded-md shadow-xs uppercase tracking-wider">TJAT</span>
+              </div>
+              <div class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded flex items-center gap-1 font-mono">
+                <i data-lucide="calendar" class="w-3 h-3"></i>
+                <span>2026-06-01</span>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <h3 onclick="openNewsDetail(2)" class="font-extrabold text-red-700 text-base leading-snug hover:underline transition cursor-pointer line-clamp-2">
+                  Penandatanganan MoU Kelas Industri Bersama Mitra Telekomunikasi
+                </h3>
+                <p class="text-xs text-gray-500 leading-relaxed line-clamp-3">
+                  Kerjasama strategis ini membuka jalur magang prioritas dan rekrutmen kerja langsung sebelum kelulusan bagi siswa jurusan TJAT.
+                </p>
+              </div>
+              <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+                <span class="text-[11px] font-semibold text-gray-400">Hubungan Industri</span>
+                <button onclick="openNewsDetail(2)" class="inline-flex items-center gap-1.5 text-xs font-bold text-red-700 hover:text-red-800 transition group-hover:translate-x-1 duration-200">
+                  <span>Baca Selengkapnya</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 9. FOOTER LENGKAP 4 KOLOM ==================== -->
+  <footer id="kontak" class="bg-white border-t border-gray-200 pt-16 pb-10 text-gray-600 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Main 4-Column Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+        
+        <!-- Kolom 1: Brand & Kontak (Span 4) -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-telkom-700 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-md">
+              TS
+            </div>
+            <div class="flex flex-col leading-tight">
+              <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">SMK Telkom</span>
+              <span class="text-base font-extrabold text-gray-900 tracking-tight">Sidoarjo</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-gray-500 leading-relaxed font-normal">
+            Bersama SMK Telkom Sidoarjo, jadilah generasi tangguh, berakhlak, dan berwawasan digital di era industri 4.0.
+          </p>
+
+          <div class="space-y-2.5 text-xs text-gray-600 pt-1">
+            <a href="mailto:informasi@smktelkom-sda.sch.id" class="flex items-center gap-2.5 hover:text-telkom-700 transition">
+              <i data-lucide="mail" class="w-4 h-4 text-telkom-700 shrink-0"></i>
+              <span>informasi@smktelkom-sda.sch.id</span>
+            </a>
+
+            <a href="https://wa.me/628113021919" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-telkom-700 transition">
+              <i data-lucide="phone" class="w-4 h-4 text-telkom-700 shrink-0"></i>
+              <span>0811-3021-919 (Hotline PPDB WhatsApp)</span>
+            </a>
+
+            <div class="flex items-start gap-2.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-telkom-700 shrink-0 mt-0.5"></i>
+              <span class="leading-relaxed">
+                Jl. Raya Pecantingan Sekardangan, Kabupaten Sidoarjo, Jawa Timur 61215
+              </span>
+            </div>
+          </div>
+
+          <!-- Badges -->
+          <div class="pt-2 flex flex-wrap gap-2 items-center text-[10px] font-bold text-gray-500">
+            <span class="px-2 py-0.5 rounded bg-gray-100">Telkom Schools</span>
+            <span class="px-2 py-0.5 rounded bg-gray-100">Yayasan Pendidikan Telkom</span>
+            <span class="px-2 py-0.5 rounded bg-gray-100">Akreditasi A</span>
+          </div>
+        </div>
+
+        <!-- Kolom 2: Menu Utama (Span 2) -->
+        <div class="lg:col-span-2 space-y-3">
+          <h4 class="text-xs font-bold text-gray-900 uppercase tracking-wider">
+            Menu Utama
+          </h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#beranda" class="hover:text-telkom-700 transition">Beranda</a></li>
+            <li><a href="#sambutan" class="hover:text-telkom-700 transition">Profil Sekolah</a></li>
+            <li><button onclick="openProgramDetail('SIJA')" class="hover:text-telkom-700 transition text-left">Profil Jurusan SIJA</button></li>
+            <li><button onclick="openProgramDetail('TJAT')" class="hover:text-telkom-700 transition text-left">Profil Jurusan TJAT</button></li>
+            <li><button onclick="openJurufindModal()" class="hover:text-telkom-700 transition text-left font-semibold text-gray-800">Tes Minat Bakat (JURUFIND)</button></li>
+            <li><button onclick="openPpdbModal()" class="hover:text-telkom-800 transition font-bold text-telkom-700 flex items-center gap-1">PPDB 2026/2027 <i data-lucide="external-link" class="w-3 h-3"></i></button></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: Berita Sekolah (Span 3) -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="text-xs font-bold text-gray-900 uppercase tracking-wider">
+            Berita Sekolah
+          </h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#berita" class="hover:text-telkom-700 transition">Kegiatan Sekolah Terkini</a></li>
+            <li><a href="#berita" class="hover:text-telkom-700 transition">Prestasi Siswa &amp; Guru</a></li>
+            <li><a href="#berita" class="hover:text-telkom-700 transition">Karya &amp; Inovasi Digital Siswa</a></li>
+            <li><a href="#alumni" class="hover:text-telkom-700 transition">Kiprah &amp; Ikatan Alumni</a></li>
+            <li><a href="#keunggulan" class="hover:text-telkom-700 transition">Kemitraan Industri &amp; BKK</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 4: Lokasi Sekolah Embed Maps (Span 3) -->
+        <div class="lg:col-span-3 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold text-gray-900 uppercase tracking-wider">
+              Lokasi Sekolah
+            </h4>
+            <a href="https://maps.google.com/?q=SMK+Telkom+Sidoarjo" target="_blank" rel="noopener noreferrer" class="text-[10px] text-telkom-700 hover:underline flex items-center gap-1 font-semibold">
+              <span>Buka Google Maps</span>
+              <i data-lucide="external-link" class="w-2.5 h-2.5"></i>
+            </a>
+          </div>
+
+          <div class="rounded-2xl overflow-hidden border border-gray-200 h-40 bg-gray-100 shadow-xs relative">
+            <iframe
+              title="Peta Lokasi SMK Telkom Sidoarjo"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.3331718817345!2d112.72382461019685!3d-7.428315273142277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e6b528b97d2d%3A0xb35359a60e03cfec!2sSMK%20Telkom%20Sidoarjo!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid"
+              class="w-full h-full border-0"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <p class="text-[10px] text-gray-400">
+            Kawasan Pendidikan Sekardangan, Sidoarjo (Akses 5 menit dari Stasiun Sidoarjo)
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Sub-row: Aplikasi Siswa & Statistik Pengunjung -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-10 mt-10 border-t border-gray-100 text-xs">
+        
+        <!-- Aplikasi Siswa -->
+        <div>
+          <h5 class="font-bold text-gray-900 mb-2">Aplikasi Siswa &amp; Sivitas:</h5>
+          <div class="flex flex-wrap items-center gap-2.5 text-gray-500 font-medium">
+            <span class="hover:text-telkom-700 underline cursor-pointer">DigiYouth</span>
+            <span>•</span>
+            <span class="hover:text-telkom-700 underline cursor-pointer">MyLms</span>
+            <span>•</span>
+            <span class="hover:text-telkom-700 underline cursor-pointer">SIAkad</span>
+            <span>•</span>
+            <span class="hover:text-telkom-700 underline cursor-pointer">Invert</span>
+          </div>
+        </div>
+
+        <!-- Statistik Pengunjung -->
+        <div>
+          <h5 class="font-bold text-gray-900 mb-2">Statistik Pengunjung:</h5>
+          <p class="text-gray-500">
+            Hari Ini: <span class="font-bold text-gray-800">142</span> &nbsp;|&nbsp; 
+            Bulan Ini: <span class="font-bold text-gray-800">3,890</span> &nbsp;|&nbsp; 
+            Tahun Ini: <span class="font-bold text-gray-800">45,210</span>
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="pt-8 mt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between text-gray-400 text-[11px] gap-2">
+        <span>Copyright © 2025 All right reserved | SKOMDA</span>
+        <span class="flex items-center gap-1.5">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+          SMK Telkom Sidoarjo • Yayasan Pendidikan Telkom
+        </span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== POPUP MODAL: JURUFIND (Tes Minat Bakat) ==================== -->
+  <div id="modal-jurufind" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeJurufindModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:text-gray-900">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-2xl bg-telkom-700 text-white flex items-center justify-center shadow-md">
+          <i data-lucide="compass" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="text-xs font-black text-telkom-700 uppercase tracking-wider">JURUFIND</span>
+          <h3 class="text-lg font-extrabold text-slate-900">Temukan Jurusan Impianmu</h3>
+        </div>
+      </div>
+
+      <div id="quiz-question-box" class="space-y-4">
+        <p class="text-xs text-gray-500">Pertanyaan 1 dari 2</p>
+        <h4 class="text-base font-bold text-gray-900" id="quiz-title">
+          Apa yang lebih membuatmu bersemangat saat memegang komputer/laptop?
+        </h4>
+
+        <div class="space-y-3 pt-2">
+          <button onclick="submitQuizAnswer('SIJA')" class="w-full p-4 text-left rounded-2xl border-2 border-gray-200 hover:border-red-600 hover:bg-red-50/50 transition">
+            <span class="font-bold text-xs text-telkom-700 block">Pilihan A</span>
+            <p class="text-xs sm:text-sm font-semibold text-gray-800">
+              Membuat aplikasi, coding website keren, atau merancang alur software.
+            </p>
+          </button>
+
+          <button onclick="submitQuizAnswer('TJAT')" class="w-full p-4 text-left rounded-2xl border-2 border-gray-200 hover:border-red-600 hover:bg-red-50/50 transition">
+            <span class="font-bold text-xs text-telkom-700 block">Pilihan B</span>
+            <p class="text-xs sm:text-sm font-semibold text-gray-800">
+              Menghubungkan kabel internet, mengatur wifi router, dan jaringan fiber optik.
+            </p>
+          </button>
+        </div>
+      </div>
+
+      <div id="quiz-result-box" class="hidden text-center space-y-4 pt-2">
+        <div class="w-14 h-14 bg-red-100 text-telkom-700 rounded-2xl flex items-center justify-center mx-auto">
+          <i data-lucide="award" class="w-7 h-7"></i>
+        </div>
+        <h4 class="text-2xl font-black text-slate-900" id="quiz-result-title">Jurusan SIJA (95% Cocok)</h4>
+        <p class="text-xs text-gray-600" id="quiz-result-desc">
+          Kamu memiliki ketertarikan tinggi pada logika algoritma dan pembuatan aplikasi digital masa depan!
+        </p>
+        <button onclick="closeJurufindModal(); openPpdbModal();" class="w-full py-3 bg-telkom-700 text-white rounded-xl text-xs font-bold shadow-md hover:bg-telkom-800">
+          Lanjut Daftar di PPDB Online
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== POPUP MODAL: PPDB ONLINE ==================== -->
+  <div id="modal-ppdb" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closePpdbModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:text-gray-900">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-2xl bg-telkom-700 text-white flex items-center justify-center shadow-md">
+          <i data-lucide="sparkles" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="text-xs font-black text-telkom-700 uppercase tracking-wider">PPDB ONLINE 2026/2027</span>
+          <h3 class="text-lg font-extrabold text-slate-900">Formulir Calon Siswa Baru Skomda</h3>
+        </div>
+      </div>
+
+      <form id="ppdb-form" onsubmit="handlePpdbSubmit(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-gray-700 mb-1">Nama Lengkap Siswa *</label>
+          <input type="text" required placeholder="Contoh: Muhammad Rizky Pratama" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-red-600 focus:outline-none" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-gray-700 mb-1">Asal Sekolah (SMP/MTs) *</label>
+            <input type="text" required placeholder="Contoh: SMPN 1 Sidoarjo" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-red-600 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block font-bold text-gray-700 mb-1">Nomor WhatsApp Aktif *</label>
+            <input type="tel" required placeholder="081234567890" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-red-600 focus:outline-none" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-gray-700 mb-1">Pilihan Jurusan *</label>
+            <select class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs bg-white font-semibold">
+              <option value="SIJA">SIJA (Sistem Informasi Jaringan &amp; Aplikasi - 4 Thn)</option>
+              <option value="TJAT">TJAT (Teknik Jaringan Akses Telekomunikasi - 3 Thn)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-gray-700 mb-1">Jalur Pendaftaran *</label>
+            <select class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs bg-white font-semibold">
+              <option>Jalur Prestasi Rapor Unggulan</option>
+              <option>Jalur Minat Bakat Digital</option>
+              <option>Jalur Reguler CBT</option>
+              <option>Jalur Beasiswa YPT</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="p-3 bg-red-50 rounded-xl text-telkom-700 text-[11px] leading-relaxed">
+          Setelah formulir dikirim, Tim Panitia PPDB akan mengonfirmasi jadwal verifikasi data ke WhatsApp Anda dalam 1x24 jam.
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-xl font-bold shadow-md hover:brightness-110 transition">
+          Kirim Pendaftaran PPDB
+        </button>
+      </form>
+
+      <div id="ppdb-success" class="hidden text-center py-6 space-y-3">
+        <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+          <i data-lucide="check" class="w-8 h-8"></i>
+        </div>
+        <h4 class="text-xl font-black text-slate-900">Pendaftaran Berhasil Dikirim!</h4>
+        <p class="text-xs text-gray-500">Nomor Registrasi Anda: <strong class="text-telkom-700 font-mono">SKOMDA-2026-8891</strong></p>
+        <button onclick="closePpdbModal()" class="px-6 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl text-xs font-bold mt-2">
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== POPUP MODAL: DETAIL JURUSAN ==================== -->
+  <div id="modal-program" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeProgramDetail()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:text-gray-900">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="mb-4">
+        <span id="prog-badge" class="px-3 py-1 bg-red-100 text-telkom-700 text-xs font-bold rounded-full">Program 4 Tahun</span>
+        <h3 id="prog-title" class="text-2xl font-black text-slate-900 mt-2">SIJA</h3>
+        <p id="prog-desc" class="text-xs text-gray-500 mt-1 leading-relaxed">
+          Sistem Informasi Jaringan dan Aplikasi membekali siswa keahlian software engineering, cloud, database, dan security.
+        </p>
+      </div>
+
+      <div class="space-y-4 text-xs">
+        <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+          <h4 class="font-bold text-gray-900 mb-2">Kompetensi Utama yang Dipelajari:</h4>
+          <ul id="prog-subjects" class="space-y-1 text-gray-600">
+            <li>• Pemrograman Web &amp; Mobile (React, Flutter, Python, Node.js)</li>
+            <li>• Administrasi Server &amp; Cloud Computing (Linux, AWS, Docker)</li>
+            <li>• Keamanan Jaringan &amp; Cyber Defense</li>
+            <li>• Praktik Magang Industri Penuh di Kelas XIII (Tahun ke-4)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 flex gap-3">
+        <button onclick="closeProgramDetail(); openPpdbModal();" class="flex-1 py-3 bg-telkom-700 text-white rounded-xl text-xs font-bold shadow-md hover:bg-telkom-800">
+          Daftar Jurusan Ini di PPDB
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== POPUP MODAL: DETAIL BERITA ==================== -->
+  <div id="modal-news" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeNewsDetail()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:text-gray-900 transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="space-y-4">
+        <div class="flex items-center gap-2 text-xs text-gray-400">
+          <span id="news-modal-cat" class="px-2.5 py-0.5 rounded-full bg-red-50 text-red-700 font-bold"></span>
+          <span>•</span>
+          <span id="news-modal-date" class="font-mono"></span>
+        </div>
+
+        <h3 id="news-modal-title" class="text-xl sm:text-2xl font-extrabold text-slate-900 leading-snug"></h3>
+
+        <div class="aspect-video w-full rounded-2xl overflow-hidden bg-gray-100">
+          <img id="news-modal-img" src="" alt="News Image" class="w-full h-full object-cover" />
+        </div>
+
+        <p id="news-modal-content" class="text-xs sm:text-sm text-gray-600 leading-relaxed font-normal"></p>
+
+        <div class="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+          <span id="news-modal-author"></span>
+          <button onclick="closeNewsDetail()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl font-bold transition">
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Inisialisasi ikon Lucide
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    });
+
+    // Testimoni Alumni Slider Data matching ALUMNI_TESTIMONIALS
+    const alumniList = [
+      {
+        name: "Aisyah Putri Ramadhani",
+        jurusan: "SIJA",
+        role: "Mahasiswi Teknik Informatika • Institut Teknologi Bandung (Lulus 2024)",
+        quote: "Sekolah disini asyik banget, gabakal nyesel buat para orang tua yang nyari calon sekolah buat anaknya sih! Fasilitas lengkap dan gurunya suportif banget.",
+        photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        linkedin: "https://linkedin.com"
+      },
+      {
+        name: "Rafi Pratama Hendrawan",
+        jurusan: "TJAT",
+        role: "Network Operations Specialist • PT Telkom Indonesia (Persero) Tbk (Lulus 2023)",
+        quote: "Kurikulum praktikum di Skomda sangat relevan dengan kebutuhan industri telekomunikasi. Sertifikasi internasional yang didapat saat sekolah menjadi tiket emas diterima kerja sebelum wisuda.",
+        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80",
+        linkedin: "https://linkedin.com"
+      },
+      {
+        name: "Nabila Zahra Syahrani",
+        jurusan: "SIJA",
+        role: "Associate Frontend Engineer • GoTo Financial (Lulus 2022)",
+        quote: "Di program Digitalent Skomda, kami diajarkan membuat project nyata dengan standar startup modern. Mental problem-solving dan kemandirian terasah sejak kelas 10.",
+        photo: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=500&auto=format&fit=crop&q=80",
+        linkedin: "https://linkedin.com"
+      }
+    ];
+
+    let currentAlumniIndex = 0;
+    function updateAlumniView() {
+      const item = alumniList[currentAlumniIndex];
+      const nameEl = document.getElementById('alumni-name');
+      const roleEl = document.getElementById('alumni-role');
+      const quoteEl = document.getElementById('alumni-quote');
+      const imgEl = document.getElementById('alumni-img');
+      const badgeEl = document.getElementById('alumni-badge');
+      const jurEl = document.getElementById('alumni-jurusan');
+      const linkEl = document.getElementById('alumni-linkedin');
+
+      if (nameEl) nameEl.textContent = "— " + item.name;
+      if (roleEl) roleEl.textContent = item.role;
+      if (quoteEl) quoteEl.textContent = `"${item.quote}"`;
+      if (imgEl) imgEl.src = item.photo;
+      if (badgeEl) badgeEl.textContent = item.jurusan;
+      if (jurEl) jurEl.textContent = item.jurusan;
+      if (linkEl) linkEl.href = item.linkedin;
+
+      for (let i = 0; i < 3; i++) {
+        const dot = document.getElementById(`dot-${i}`);
+        if (dot) {
+          if (i === currentAlumniIndex) {
+            dot.className = "transition-all duration-300 rounded-full h-2 w-7 bg-red-700";
+          } else {
+            dot.className = "transition-all duration-300 rounded-full h-2 w-2 bg-gray-300 hover:bg-gray-400";
+          }
+        }
+      }
+    }
+
+    function setAlumniSlide(idx) {
+      currentAlumniIndex = idx;
+      updateAlumniView();
+    }
+
+    function prevAlumni() {
+      currentAlumniIndex = (currentAlumniIndex - 1 + alumniList.length) % alumniList.length;
+      updateAlumniView();
+    }
+
+    function nextAlumni() {
+      currentAlumniIndex = (currentAlumniIndex + 1) % alumniList.length;
+      updateAlumniView();
+    }
+
+    // Filter Berita berdasarkan Kategori
+    function filterNewsCategory(category, activeBtn) {
+      const tabs = document.querySelectorAll('.news-tab');
+      tabs.forEach(tab => {
+        tab.className = "news-tab px-4 py-1.5 rounded-full text-xs font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition";
+      });
+      if (activeBtn) {
+        activeBtn.className = "news-tab px-4 py-1.5 rounded-full text-xs font-bold bg-red-700 text-white shadow-xs transition";
+      }
+
+      const cards = document.querySelectorAll('.news-item-card');
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-cat');
+        if (category === 'Semua' || cardCat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function scrollNewsGrid(dir) {
+      const container = document.getElementById('news-grid-container');
+      if (container) {
+        container.scrollBy({ left: dir * 350, behavior: 'smooth' });
+      }
+    }
+
+    // News Detail Data
+    const newsDetails = [
+      {
+        title: "Kunjungan Industri Siswa Skomda ke Data Center Nasional Telkom Group",
+        category: "Kegiatan Sekolah",
+        date: "2026-06-07",
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=80",
+        author: "Humas Skomda",
+        content: "Sebanyak 150 siswa dari jurusan SIJA dan TJAT SMK Telkom Sidoarjo mengikuti program tahunan Kunjungan Industri (KI) ke fasilitas Hyperscale Data Center Telkom Group. Kegiatan ini bertujuan memperkaya wawasan siswa mengenai infrastruktur server berdaya tampung besar, sistem pendingin presisi tinggi, dan arsitektur pengamanan data fisik maupun cyber."
+      },
+      {
+        title: "Juara 1 Lomba Web Design Tingkat Provinsi Jawa Timur 2026",
+        category: "Prestasi",
+        date: "2026-06-05",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&q=80",
+        author: "Tim Kesiswaan",
+        content: "Prestasi membanggakan kembali diukir oleh siswa SMK Telkom Sidoarjo dalam ajang bergengsi LKS Tingkat Provinsi Jawa Timur 2026 bidang Web Technologies. Ananda Muhammad Fauzan berhasil mengungguli 38 kontestan lainnya dengan membangun aplikasi portal e-commerce ramah disabilitas dalam waktu kompetisi 6 jam."
+      },
+      {
+        title: "Penandatanganan MoU Kelas Industri Bersama Mitra Telekomunikasi",
+        category: "Kemitraan & Kerjasama",
+        date: "2026-06-01",
+        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80",
+        author: "Hubungan Industri",
+        content: "Bertempat di Graha Widya Skomda, Kepala SMK Telkom Sidoarjo bersama jajaran pimpinan mitra industri resmi menandatangani Nota Kesepahaman (MoU) Program Kelas Industri Fiber Optik 2026. Melalui kolaborasi ini, kurikulum industri akan diserap langsung ke pembelajaran sekolah."
+      }
+    ];
+
+    function openNewsDetail(idx) {
+      const item = newsDetails[idx];
+      if (!item) return;
+      document.getElementById('news-modal-title').textContent = item.title;
+      document.getElementById('news-modal-cat').textContent = item.category;
+      document.getElementById('news-modal-date').textContent = item.date;
+      document.getElementById('news-modal-img').src = item.image;
+      document.getElementById('news-modal-content').textContent = item.content;
+      document.getElementById('news-modal-author').textContent = "Ditulis oleh: " + item.author;
+
+      const modal = document.getElementById('modal-news');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeNewsDetail() {
+      const modal = document.getElementById('modal-news');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // Modal controls: JURUFIND
+    function openJurufindModal() {
+      document.getElementById('modal-jurufind').classList.remove('hidden');
+      document.getElementById('modal-jurufind').classList.add('flex');
+    }
+    function closeJurufindModal() {
+      document.getElementById('modal-jurufind').classList.add('hidden');
+      document.getElementById('modal-jurufind').classList.remove('flex');
+    }
+
+    function submitQuizAnswer(type) {
+      document.getElementById('quiz-question-box').classList.add('hidden');
+      document.getElementById('quiz-result-box').classList.remove('hidden');
+
+      if (type === 'SIJA') {
+        document.getElementById('quiz-result-title').textContent = "Jurusan SIJA (95% Cocok)";
+        document.getElementById('quiz-result-desc').textContent = "Kamu memiliki bakat kuat dalam coding, pembuatan aplikasi web/mobile, dan arsitektur software!";
+      } else {
+        document.getElementById('quiz-result-title').textContent = "Jurusan TJAT (95% Cocok)";
+        document.getElementById('quiz-result-desc').textContent = "Kamu sangat cocok mendalami infrastruktur telekomunikasi, serat optik, dan perangkat jaringan Cisco!";
+      }
+    }
+
+    // Modal controls: PPDB
+    function openPpdbModal() {
+      document.getElementById('modal-ppdb').classList.remove('hidden');
+      document.getElementById('modal-ppdb').classList.add('flex');
+    }
+    function closePpdbModal() {
+      document.getElementById('modal-ppdb').classList.add('hidden');
+      document.getElementById('modal-ppdb').classList.remove('flex');
+    }
+
+    function handlePpdbSubmit(e) {
+      e.preventDefault();
+      document.getElementById('ppdb-form').classList.add('hidden');
+      document.getElementById('ppdb-success').classList.remove('hidden');
+    }
+
+    // Modal controls: Detail Program
+    function openProgramDetail(id) {
+      const modal = document.getElementById('modal-program');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      if (id === 'SIJA') {
+        document.getElementById('prog-badge').textContent = "Program 4 Tahun (SIJA)";
+        document.getElementById('prog-title').textContent = "Sistem Informasi Jaringan & Aplikasi";
+        document.getElementById('prog-desc').textContent = "Mencetak Software Engineer & Cloud Architect handal dengan magang industri penuh selama 1 tahun di tahun ke-4.";
+      } else {
+        document.getElementById('prog-badge').textContent = "Program 3 Tahun (TJAT)";
+        document.getElementById('prog-title').textContent = "Teknik Jaringan Akses Telekomunikasi";
+        document.getElementById('prog-desc').textContent = "Mencetak Network Engineer, fiber optic specialist, dan teknisi telekomunikasi bersertifikasi industri internasional.";
+      }
+    }
+    function closeProgramDetail() {
+      document.getElementById('modal-program').classList.add('hidden');
+      document.getElementById('modal-program').classList.remove('flex');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "SMK Telkom Sidoarjo - Homepage",
+  "description": "Website Resmi SMK Telkom Sidoarjo (Skomda) - Sekolah Tangguh, Berakhlak, & Berwawasan Digital dengan fitur PPDB, JURUFIND, dan profil jurusan SIJA & TJAT.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
