@@ -1,0 +1,29 @@
+/* ==========================================================
+   JURUFIND - Tes Minat Bakat (dipisah dari jurufind.html)
+   ========================================================== */
+
+/* Heksagon dashed merah di belakang maskot */
+.jf-hex {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border: 2px dashed #dc2626;
+  border-radius: 64px;
+  transform: rotate(24deg);
+}
+
+/* Animasi melayang maskot */
+@keyframes jf-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+.jf-mascot {
+  animation: jf-float 5s ease-in-out infinite;
+}
+
+/* Posisi zig-zag langkah-langkah (desktop saja) */
+@media (min-width: 1024px) {
+  .jf-step-1 { margin-left: 4%; }
+  .jf-step-2 { margin-left: 52%; }
+  .jf-step-3 { margin-left: 28%; }
+}

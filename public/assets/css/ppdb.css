@@ -1,0 +1,41 @@
+/* ==========================================================
+   PPDB 2026/2027 - SMK Telkom Sidoarjo
+   Stylesheet khusus halaman PPDB (dipisah dari ppdb.html)
+   ========================================================== */
+
+/* ---------- HERO ---------- */
+.ppdb-hero {
+  background: linear-gradient(160deg, #dc2626 0%, #b91c1c 55%, #7f1d1d 100%);
+}
+
+.ppdb-hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(0, 0, 0, 0.20) 0%, transparent 45%);
+}
+
+/* Animasi melayang ringan untuk poster (pakai properti `translate`
+   agar tidak menimpa class rotate Tailwind) */
+.ppdb-hero img[alt="Poster Skomda"] {
+  animation: float-poster 6s ease-in-out infinite;
+}
+.ppdb-hero img[alt="Poster Skomda"]:nth-of-type(even) {
+  animation-delay: -3s;
+}
+
+@keyframes float-poster {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -12px; }
+}
+
+/* ---------- FAQ ---------- */
+.faq-answer {
+  transition: opacity 0.25s ease;
+}
+
+.faq-item button svg {
+  transition: transform 0.25s ease;
+}

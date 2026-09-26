@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+    --color-telkom-50: #fff1f2;
+    --color-telkom-100: #fee2e2;
+    --color-telkom-200: #fecaca;
+    --color-telkom-600: #dc2626;
+    --color-telkom-700: #b91c1c;
+    --color-telkom-800: #991b1b;
+    --color-telkom-900: #7f1d1d;
+
+    --shadow-glow-red: 0 10px 25px -3px rgba(185, 28, 28, 0.45);
+    --shadow-float: 0 20px 35px -10px rgba(0, 0, 0, 0.12);
+
+    --animate-marquee: marquee 25s linear infinite;
+
+    @keyframes marquee {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-50%); }
+    }
+}
