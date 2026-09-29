@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160" role="img" aria-label="Server & Cloud">
+  <rect width="240" height="160" rx="18" fill="#f6f7f4"/>
+  <rect x="72" y="50" width="96" height="26" rx="7" fill="#e5ebff" stroke="#2451ff" stroke-width="3"/>
+  <rect x="72" y="84" width="96" height="26" rx="7" fill="#e5ebff" stroke="#2451ff" stroke-width="3"/>
+  <circle cx="92" cy="63" r="4" fill="#2451ff"/><circle cx="108" cy="63" r="4" fill="#2451ff"/>
+  <circle cx="92" cy="97" r="4" fill="#2451ff"/><circle cx="108" cy="97" r="4" fill="#2451ff"/>
+  <path d="M150 63h10M150 97h10" stroke="#2451ff" stroke-width="3" stroke-linecap="round"/>
+  <text x="120" y="150" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" fill="#12181b">Server & Cloud</text>
+</svg>

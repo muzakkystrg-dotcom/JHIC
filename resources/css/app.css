@@ -21,3 +21,16 @@
         100% { transform: translateX(-50%); }
     }
 }
+
+/* Tambahan CSS Khusus Halaman Mitra Industri */
+html {
+    scroll-behavior: smooth;
+}
+
+.clip-rhombus {
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+}
+
+.bg-hero-pattern {
+    background: linear-gradient(110deg, #E5E7EB 0%, #E5E7EB 35%, transparent 35.1%, transparent 100%);
+}

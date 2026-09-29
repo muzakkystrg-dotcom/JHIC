@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\JurufindController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
 Route::view('/jurufind', 'jurufind')->name('jurufind');
-Route::view('/jurufind/test', 'jurufind.test')->name('jurufind.test');
 Route::view('/ppdb', 'ppdb')->name('ppdb');
 
 Route::get('/tentang-kami/hubungan-industri', function () {
@@ -104,3 +104,9 @@ Route::get('/tentang-kami/hubungan-industri', function () {
 
     return view('pages.mitra-industri', compact('mitras'));
 })->name('mitra-industri.index');
+
+Route::get('/jurufind/test', [JurufindController::class, 'test'])->name('jurufind.test');
+
+Route::post('/jurufind/analyze', [JurufindController::class, 'analyze'])
+    ->middleware('throttle:20,1') // batasi 20 request/menit per IP, cegah spam ke AI provider
+    ->name('jurufind.analyze');

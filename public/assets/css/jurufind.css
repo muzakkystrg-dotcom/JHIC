@@ -1,6 +1,25 @@
 /* ==========================================================
-   JURUFIND - Tes Minat Bakat (dipisah dari jurufind.html)
+   JURUFIND - Tes Minat Bakat
+   ==========================================================
+   Berisi dua bagian:
+   1. Style dashboard/landing (jf-hex, jf-mascot, jf-step-*) — dipakai jurufind.blade.php
+   2. Style kuis & halaman hasil — dipakai jurufind/test.blade.php
    ========================================================== */
+
+:root {
+  --jf-bg: #f6f7f4;
+  --jf-ink: #12181b;
+  --jf-sija: #2451ff;
+  --jf-sija-soft: #e5ebff;
+  --jf-tjat: #0f8a5f;
+  --jf-tjat-soft: #dff3e9;
+  --jf-line: #d8dbd4;
+  --jf-muted: #5c6468;
+  --jf-font-display: 'Space Grotesk', sans-serif;
+  --jf-font-body: 'Inter', sans-serif;
+}
+
+/* ---------- 1. Dashboard / landing ---------- */
 
 /* Heksagon dashed merah di belakang maskot */
 .jf-hex {
@@ -26,4 +45,384 @@
   .jf-step-1 { margin-left: 4%; }
   .jf-step-2 { margin-left: 52%; }
   .jf-step-3 { margin-left: 28%; }
+}
+
+/* ---------- 2. Kuis & halaman hasil ---------- */
+
+.jurufind-app {
+  background: var(--jf-bg);
+  color: var(--jf-ink);
+  font-family: var(--jf-font-body);
+  min-height: 100vh;
+  padding: 7rem 0 4rem;
+}
+
+.jf-container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.jf-stage[hidden] { display: none; }
+
+/* Progress */
+.jf-progress { margin-bottom: 2rem; }
+
+.jf-progress__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--jf-muted);
+  margin-bottom: 0.6rem;
+}
+
+.jf-progress__track {
+  display: flex;
+  gap: 4px;
+  height: 6px;
+}
+
+.jf-progress__track > div {
+  flex: 1;
+  background: var(--jf-line);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.jf-progress__track > div.filled { background: var(--jf-ink); }
+
+/* Kartu pertanyaan */
+.jf-card {
+  background: #fff;
+  border: 1px solid var(--jf-line);
+  border-radius: 20px;
+  padding: 2rem 1.75rem;
+}
+
+.jf-card__meta { margin-bottom: 1rem; }
+
+.jf-chip {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--jf-bg);
+  color: var(--jf-muted);
+  border: 1px solid var(--jf-line);
+}
+
+.jf-question {
+  font-family: var(--jf-font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 1.5rem;
+}
+
+.jf-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.jf-options--grid { grid-template-columns: repeat(2, 1fr); }
+
+.jf-option {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  border: 2px solid var(--jf-line);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--jf-ink);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+
+.jf-option:hover { border-color: var(--jf-ink); }
+.jf-option:active { transform: scale(0.99); }
+
+.jf-option.is-selected {
+  border-color: var(--jf-ink);
+  background: var(--jf-bg);
+}
+
+.jf-option__letter {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--jf-bg);
+  border: 1px solid var(--jf-line);
+  font-family: var(--jf-font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.jf-option.is-selected .jf-option__letter {
+  background: var(--jf-ink);
+  border-color: var(--jf-ink);
+  color: #fff;
+}
+
+.jf-option__label { flex: 1 1 auto; }
+
+.jf-option__thumb {
+  display: block;
+  width: 100%;
+  height: 84px;
+  object-fit: contain;
+  margin-bottom: 0.6rem;
+}
+
+.jf-options--grid .jf-option {
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+}
+
+.jf-options--grid .jf-option__letter { align-self: center; }
+
+.jf-options--grid .jf-option__label {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Navigasi */
+.jf-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.jf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font-family: var(--jf-font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+
+.jf-btn:active { transform: scale(0.98); }
+
+.jf-btn--primary {
+  background: var(--jf-ink);
+  border-color: var(--jf-ink);
+  color: #fff;
+}
+
+.jf-btn--primary:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.jf-btn--ghost {
+  background: transparent;
+  border-color: var(--jf-line);
+  color: var(--jf-ink);
+}
+
+.jf-btn--ghost:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.jf-btn--sija {
+  background: var(--jf-sija);
+  border-color: var(--jf-sija);
+  color: #fff;
+}
+
+.jf-btn--tjat {
+  background: var(--jf-tjat);
+  border-color: var(--jf-tjat);
+  color: #fff;
+}
+
+.jf-error {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: #fff1f0;
+  border: 1px solid #f3c6c2;
+  color: #8c2b22;
+  font-size: 0.9rem;
+}
+
+/* Halaman hasil */
+.jf-result { display: flex; flex-direction: column; gap: 2rem; }
+
+.jf-result__head {
+  background: #fff;
+  border: 1px solid var(--jf-line);
+  border-radius: 20px;
+  padding: 2rem 1.75rem;
+}
+
+.jf-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--jf-muted);
+  margin: 0 0 0.5rem;
+}
+
+.jf-result__title {
+  font-family: var(--jf-font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1.75rem;
+}
+
+.jf-major--sija { color: var(--jf-sija); }
+.jf-major--tjat { color: var(--jf-tjat); }
+
+.jf-bars { display: flex; flex-direction: column; gap: 1.1rem; }
+
+.jf-bar__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.jf-bar__value { font-family: var(--jf-font-display); font-size: 1.05rem; }
+
+.jf-bar__track {
+  height: 12px;
+  background: var(--jf-line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.jf-bar__fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+.jf-bar__fill--sija { background: var(--jf-sija); }
+.jf-bar__fill--tjat { background: var(--jf-tjat); }
+
+.jf-section {
+  background: #fff;
+  border: 1px solid var(--jf-line);
+  border-radius: 20px;
+  padding: 2rem 1.75rem;
+}
+
+.jf-section__title {
+  font-family: var(--jf-font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.jf-section p {
+  margin: 0 0 0.9rem;
+  line-height: 1.65;
+  font-size: 0.95rem;
+  color: #29323a;
+}
+
+.jf-section p:last-child { margin-bottom: 0; }
+
+.jf-reasons {
+  margin: 0 0 1.1rem;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.jf-reasons li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #29323a;
+}
+
+.jf-fallback-note {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--jf-muted);
+  margin-top: 1.1rem;
+}
+
+.jf-dimensions { display: flex; flex-direction: column; gap: 0.9rem; }
+
+.jf-dimension__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.jf-dimension__track {
+  height: 8px;
+  background: var(--jf-line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.jf-dimension__fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--jf-ink);
+  transition: width 0.6s ease;
+}
+
+.jf-disclaimer {
+  font-size: 0.82rem;
+  color: var(--jf-muted);
+  text-align: center;
+  margin: 0;
+}
+
+.jf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+@media (max-width: 520px) {
+  .jf-container { padding: 2rem 1.1rem; }
+  .jf-card, .jf-section, .jf-result__head { padding: 1.5rem 1.15rem; }
+  .jf-result__title { font-size: 1.6rem; }
+  .jf-options--grid { grid-template-columns: 1fr; }
+  .jf-nav { flex-direction: column-reverse; }
+  .jf-nav .jf-btn { width: 100%; }
 }

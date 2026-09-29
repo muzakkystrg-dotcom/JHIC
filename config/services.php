@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'griphubrouter' => [
+        'key' => env('GRIPHUBROUTER_API_KEY'),
+        'model' => env('GRIPHUBROUTER_MODEL', 'deepseek-v4-flash'),
+    ],
+
 ];
