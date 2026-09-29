@@ -3,9 +3,10 @@
 @section('title', 'Tes Minat Bakat (JURUFIND) - SMK Telkom Sidoarjo')
 
 @section('content')
-<!-- ==================== 1. HERO ==================== -->
+  <!-- ==================== 1. HERO ==================== -->
   <section class="relative bg-white overflow-hidden">
-    <img src={{ asset('images/blob.png') }} alt="" class="absolute -left-24 top-8 w-[520px] max-w-none opacity-60 pointer-events-none hidden md:block" />
+    <img src={{ asset('images/blob.png') }} alt=""
+      class="absolute -left-24 top-8 w-[520px] max-w-none opacity-60 pointer-events-none hidden md:block" />
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 lg:pt-36 pb-16 lg:pb-24">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -20,16 +21,18 @@
             Cari tahu minat, bakat, serta prospek karir impianmu lewat
             analisis sederhana yang siap memandu langkahmu.”
           </p>
-          <!-- TOMBOL BELUM DIFUNGSIKAN -->
-          <button type="button" class="mt-10 px-10 py-3.5 bg-telkom-700 hover:bg-telkom-800 text-white text-sm font-bold rounded-xl shadow-md transition active:scale-95">
+
+          <a href="{{ route('jurufind.test') }}"
+            class="inline-block mt-10 px-10 py-3.5 bg-telkom-700 hover:bg-telkom-800 text-white text-sm font-bold rounded-xl shadow-md transition active:scale-95 text-center">
             Ke Bagian Tes!
-          </button>
+          </a>
         </div>
 
         <!-- Kanan: maskot dalam heksagon dashed -->
         <div class="relative hidden md:flex justify-center items-center h-[420px]">
           <div class="jf-hex"></div>
-          <img src={{ asset('images/mascot.png') }} alt="Maskot JURUFIND" class="jf-mascot relative z-10 w-[340px] drop-shadow-2xl" />
+          <img src={{ asset('images/mascot.png') }} alt="Maskot JURUFIND"
+            class="jf-mascot relative z-10 w-[340px] drop-shadow-2xl" />
         </div>
       </div>
     </div>
@@ -73,7 +76,8 @@
         </div>
         <div>
           <h3 class="text-lg font-extrabold text-white">Tips Sebelum Memulai</h3>
-          <p class="text-sm text-red-100 mt-1">Tidak ada jawaban benar atau salah. Jawablah dengan jujur berdasarkan minat dan kesukaanmu.</p>
+          <p class="text-sm text-red-100 mt-1">Tidak ada jawaban benar atau salah. Jawablah dengan jujur berdasarkan minat
+            dan kesukaanmu.</p>
         </div>
       </div>
     </div>
@@ -96,7 +100,8 @@
               </div>
               <h3 class="text-xl font-extrabold text-gray-900">Jawab Pertanyaan</h3>
             </div>
-            <p class="text-sm text-gray-600 leading-relaxed mt-3">Pilih jawaban yang paling menggambarkan dirimu. Tidak ada batasan waktu, jawab dengan santai.</p>
+            <p class="text-sm text-gray-600 leading-relaxed mt-3">Pilih jawaban yang paling menggambarkan dirimu. Tidak
+              ada batasan waktu, jawab dengan santai.</p>
           </div>
         </div>
 
@@ -112,7 +117,8 @@
               </div>
               <h3 class="text-xl font-extrabold text-gray-900">Lihat Rekomendasi</h3>
             </div>
-            <p class="text-sm text-gray-600 leading-relaxed mt-3">Sistem akan mencocokkan jawabanmu dengan jurusan-jurusan yang tersedia di sekolah kami.</p>
+            <p class="text-sm text-gray-600 leading-relaxed mt-3">Sistem akan mencocokkan jawabanmu dengan jurusan-jurusan
+              yang tersedia di sekolah kami.</p>
           </div>
         </div>
 
@@ -128,7 +134,8 @@
               </div>
               <h3 class="text-xl font-extrabold text-gray-900">Eksplorasi Jurusan</h3>
             </div>
-            <p class="text-sm text-gray-600 leading-relaxed mt-3">Pelajari lebih dalam tentang kurikulum, fasilitas, dan prospek karir dari jurusan rekomendasi.</p>
+            <p class="text-sm text-gray-600 leading-relaxed mt-3">Pelajari lebih dalam tentang kurikulum, fasilitas, dan
+              prospek karir dari jurusan rekomendasi.</p>
           </div>
         </div>
 
@@ -138,19 +145,25 @@
 
   <!-- ==================== 5. CTA MERAH ==================== -->
   <section class="relative overflow-hidden bg-gradient-to-b from-telkom-700 to-telkom-800 py-20 text-center">
-    <img src={{ asset('images/ppdb-dash.png') }} alt="" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[38%] w-[620px] max-w-none opacity-30 pointer-events-none" />
+    <img src={{ asset('images/ppdb-dash.png') }} alt=""
+      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[38%] w-[620px] max-w-none opacity-30 pointer-events-none" />
 
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
       <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Siap Menemukan Jalan mu?</h2>
       <p class="text-red-100 mt-4">Klik Tombol Dibawah untuk memulai Tes minat mu sekarang!</p>
 
-      <!-- TOMBOL BELUM DIFUNGSIKAN -->
+      <!-- CTA: mulai tes -->
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
-        <button type="button" class="px-12 py-3.5 bg-white text-gray-900 rounded-full text-sm font-bold shadow-lg transition hover:bg-red-50 active:scale-95">Mulai Tes</button>
-        <button type="button" class="px-10 py-3.5 border-2 border-white text-white rounded-full text-sm font-bold transition hover:bg-white/10 active:scale-95">Baca Panduan</button>
+        <a href="{{ route('jurufind.test') }}"
+          class="px-12 py-3.5 bg-white text-gray-900 rounded-full text-sm font-bold shadow-lg transition hover:bg-red-50 active:scale-95">Mulai
+          Tes</a>
+        <button type="button"
+          class="px-10 py-3.5 border-2 border-white text-white rounded-full text-sm font-bold transition hover:bg-white/10 active:scale-95">Baca
+          Panduan</button>
       </div>
 
-      <img src={{ asset('images/ppdb-students.png') }} alt="Siswa SMK Telkom Sidoarjo" class="mx-auto mt-12 w-[320px] md:w-[400px] max-w-[85%] pointer-events-none select-none" />
+      <img src={{ asset('images/ppdb-students.png') }} alt="Siswa SMK Telkom Sidoarjo"
+        class="mx-auto mt-12 w-[320px] md:w-[400px] max-w-[85%] pointer-events-none select-none" />
     </div>
   </section>
 
@@ -158,9 +171,9 @@
 @endsection
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('assets/css/jurufind.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/jurufind.css') }}">
 @endpush
 
 @push('scripts')
-    <script src="{{ asset('assets/js/jurufind.js') }}"></script>
+  <script src="{{ asset('assets/js/jurufind.js') }}"></script>
 @endpush

@@ -7,5 +7,5 @@ document.addEventListener('DOMContentLoaded', function () {
   if (window.lucide) lucide.createIcons();
 });
 
-// CATATAN: tombol "Ke Bagian Tes!", "Mulai Tes", & "Baca Panduan"
-// belum difungsikan — akan diatur manual nanti.
+// Tombol "Ke Bagian Tes!" & "Mulai Tes" sudah diarahkan ke route jurufind.test.
+// Tombol "Baca Panduan" belum difungsikan — akan diatur manual nanti.
