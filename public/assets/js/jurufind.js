@@ -1,23 +1,17 @@
 /* ==========================================================
    JURUFIND - Tes Minat Bakat
-   ==========================================================
-   File ini dipakai oleh dua halaman:
-   - jurufind.blade.php       (dashboard/landing: heksagon maskot + render ikon Lucide)
-   - jurufind/test.blade.php  (kuis + halaman hasil, satu halaman tanpa reload)
-
-   Semua logic scoring & prompt AI ada di server (app/Services/Jurufind).
-   JS di sini hanya: render pertanyaan, kumpulkan jawaban mentah, POST ke
-   /jurufind/analyze, lalu render hasilnya. Tidak ada API key di sini.
+   Kuis: render pertanyaan pill + radio, POST /jurufind/analyze
+   Hasil: render ala mockup (hero, kartu skor, perbandingan,
+   detail jurusan, simpan bukti).
    ========================================================== */
 
-// Render semua ikon Lucide setelah DOM siap (dipakai halaman landing)
+// PLACEHOLDER: ganti path ini dengan foto siswa aslimu
+var JURUFIND_SISWA_IMG = '/assets/img/jurufind-siswa.png';
+
 document.addEventListener('DOMContentLoaded', function () {
   if (window.lucide) lucide.createIcons();
 });
 
-/* ==========================================================
-   Bagian kuis — hanya jalan kalau #jurufind-app ada
-   ========================================================== */
 (function () {
   'use strict';
 
@@ -34,66 +28,65 @@ document.addEventListener('DOMContentLoaded', function () {
     const quizStage = document.getElementById('jurufind-quiz-stage');
     const resultStage = document.getElementById('jurufind-result-stage');
     const resultRoot = document.getElementById('jf-result-root');
-    const questionRoot = document.getElementById('jf-question-root');
-    const progressText = document.getElementById('jf-progress-text');
-    const progressPct = document.getElementById('jf-progress-pct');
-    const progressTrack = document.getElementById('jf-progress-track');
+
+    const stepText = document.getElementById('jf-progress-text');
+    const pctBox = document.getElementById('jf-progress-pct');
+    const trackFill = document.getElementById('jf-track-fill');
+    const dotsRoot = document.getElementById('jf-progress-track');
+    const qNum = document.getElementById('jf-qnum');
+    const qType = document.getElementById('jf-qtype');
+    const qText = document.getElementById('jf-question-text');
+    const qSub = document.getElementById('jf-question-sub');
+    const optionsRoot = document.getElementById('jf-options-root');
+    const errorRoot = document.getElementById('jf-error-root');
     const prevBtn = document.getElementById('jf-prev-btn');
     const nextBtn = document.getElementById('jf-next-btn');
+    const hint = document.getElementById('jf-hint');
 
-    const LETTERS = ['A', 'B', 'C', 'D', 'E'];
-    // { [question_id]: option_id } — jawaban mentah, bukan skor
     const answers = {};
     let currentIndex = 0;
     let submitting = false;
 
-    /* ---------- Progress bar ---------- */
-    const segments = [];
+    /* ---------- Dots progress ---------- */
+    const dots = [];
     for (let i = 0; i < questions.length; i++) {
-      const seg = document.createElement('div');
-      progressTrack.appendChild(seg);
-      segments.push(seg);
+      const dot = document.createElement('span');
+      dotsRoot.appendChild(dot);
+      dots.push(dot);
     }
 
     function renderProgress() {
       const answered = questions.filter((q) => answers[q.id]).length;
       const pct = Math.round((answered / questions.length) * 100);
+      const from = currentIndex + 1;
+      const to = Math.min(currentIndex + 2, questions.length);
 
-      progressText.textContent = 'Pertanyaan ' + (currentIndex + 1) + ' dari ' + questions.length;
-      progressPct.textContent = pct + '%';
+      stepText.textContent = 'Pertanyaan ' + from + '–' + to + ' dari ' + questions.length;
+      pctBox.textContent = pct + '%';
+      trackFill.style.width = pct + '%';
 
-      segments.forEach((seg, i) => {
-        seg.className = i <= currentIndex ? 'filled' : '';
+      dots.forEach((dot, i) => {
+        dot.className = i === currentIndex ? 'current' : (answers[questions[i].id] ? 'filled' : '');
       });
     }
 
-    /* ---------- Render pertanyaan aktif ---------- */
+    /* ---------- Render soal aktif ---------- */
     function renderQuestion() {
       const question = questions[currentIndex];
       const selected = answers[question.id] || null;
+      const isImage = question.type === 'image';
 
-      questionRoot.textContent = '';
+      qNum.textContent = currentIndex + 1;
+      qType.textContent = 'Pertanyaan ' + (currentIndex + 1) + ' - Pilih ' + (isImage ? 'Gambar' : 'Tulisan');
+      qText.textContent = question.question;
+      qSub.textContent = isImage
+        ? 'Pilih gambar yang paling menggambarkan minatmu saat ini.'
+        : 'Pilih jawaban yang paling menggambarkan minatmu saat ini.';
 
-      const card = document.createElement('div');
-      card.className = 'jf-card';
+      optionsRoot.textContent = '';
+      optionsRoot.className = 'jf-options' + (isImage ? ' jf-options--grid' : '');
 
-      const meta = document.createElement('div');
-      meta.className = 'jf-card__meta';
-      const chip = document.createElement('span');
-      chip.className = 'jf-chip';
-      chip.textContent = 'Soal ' + (currentIndex + 1) + ' / ' + questions.length;
-      meta.appendChild(chip);
-      card.appendChild(meta);
-
-      const heading = document.createElement('h2');
-      heading.className = 'jf-question';
-      heading.textContent = question.question;
-      card.appendChild(heading);
-
-      const list = document.createElement('div');
-      list.className = 'jf-options' + (question.type === 'image' ? ' jf-options--grid' : '');
-
-      question.options.forEach(function (option, i) {
+      question.options.forEach(function (option) {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'jf-option' + (selected === option.id ? ' is-selected' : '');
@@ -108,10 +101,9 @@ document.addEventListener('DOMContentLoaded', function () {
           btn.appendChild(img);
         }
 
-        const letter = document.createElement('span');
-        letter.className = 'jf-option__letter';
-        letter.textContent = LETTERS[i] || String(i + 1);
-        btn.appendChild(letter);
+        const radio = document.createElement('span');
+        radio.className = 'jf-option__radio';
+        btn.appendChild(radio);
 
         const label = document.createElement('span');
         label.className = 'jf-option__label';
@@ -120,40 +112,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
         btn.addEventListener('click', function () {
           answers[question.id] = option.id;
+          clearError();
           renderQuestion();
-          renderProgress();
         });
 
-        list.appendChild(btn);
+        optionsRoot.appendChild(btn);
       });
-
-      card.appendChild(list);
-      questionRoot.appendChild(card);
 
       prevBtn.disabled = currentIndex === 0;
       nextBtn.disabled = !answers[question.id];
-      nextBtn.textContent = currentIndex === questions.length - 1 ? 'Selesai' : 'Berikutnya';
+      nextBtn.innerHTML = currentIndex === questions.length - 1 ? 'Selesai ✓' : 'Selanjutnya →';
+      hint.classList.toggle('is-ok', !!answers[question.id]);
+
       renderProgress();
     }
 
-    /* ---------- Error helper ---------- */
+    /* ---------- Error ---------- */
     function showError(message) {
-      const existing = document.getElementById('jf-error');
-      if (existing) existing.remove();
-
+      errorRoot.textContent = '';
       const box = document.createElement('p');
-      box.id = 'jf-error';
       box.className = 'jf-error';
       box.textContent = message;
-      questionRoot.parentNode.insertBefore(box, questionRoot.nextSibling);
+      errorRoot.appendChild(box);
     }
 
     function clearError() {
-      const existing = document.getElementById('jf-error');
-      if (existing) existing.remove();
+      errorRoot.textContent = '';
     }
 
-    /* ---------- Submit ke server ---------- */
+    /* ---------- Submit ---------- */
     function submit() {
       if (submitting) return;
       submitting = true;
@@ -223,17 +210,8 @@ document.addEventListener('DOMContentLoaded', function () {
     renderQuestion();
 
     /* ==========================================================
-       Halaman hasil — dirender ke #jf-result-root
+       HALAMAN HASIL
        ========================================================== */
-    function majorClass(major) {
-      return major === 'TJAT' ? 'jf-major--tjat' : 'jf-major--sija';
-    }
-
-    function majorName(major) {
-      const info = majors[major];
-      return info ? info.shortName : major;
-    }
-
     function el(tag, className, text) {
       const node = document.createElement(tag);
       if (className) node.className = className;
@@ -241,148 +219,214 @@ document.addEventListener('DOMContentLoaded', function () {
       return node;
     }
 
-    function buildScoreBars(scoring) {
-      const wrap = el('div', 'jf-bars');
+    function iconSvg(path) {
+      const span = el('span', 'jf-reasons__icon');
+      span.innerHTML =
+        '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' +
+        path + '</svg>';
+      return span;
+    }
+
+    function majorShort(major) {
+      const info = majors[major];
+      return info ? (info.shortName || major) : major;
+    }
+
+    function majorFull(major) {
+      const info = majors[major];
+      return info ? (info.fullName || info.shortName || major) : major;
+    }
+
+    /* ---- Ring lingkaran persentase ---- */
+    function buildRing(pct) {
+      const wrap = el('div', 'jf-ring');
+      wrap.style.setProperty('--p', String(pct));
+      wrap.innerHTML =
+        '<svg viewBox="0 0 112 112">' +
+        '<circle class="jf-ring__bg" cx="56" cy="56" r="50"></circle>' +
+        '<circle class="jf-ring__fg" cx="56" cy="56" r="50"></circle>' +
+        '</svg>' +
+        '<span class="jf-ring__pct">' + pct + '%</span>';
+      return wrap;
+    }
+
+    /* ---- Panel kiri kartu skor ---- */
+    function buildScorePanel(scoring) {
+      const primary = scoring.primaryMajor;
+      const pct = Math.round(Number((scoring.majorPercentages || {})[primary] || 0));
+
+      const panel = el('div', 'jf-scorecard__panel');
+      panel.appendChild(el('div', 'jf-scorecard__blob'));
+
+      const row = el('div', 'jf-scorecard__row');
+      row.appendChild(buildRing(pct));
+
+      const major = el('div', 'jf-scorecard__major');
+      major.appendChild(el('h2', 'jf-scorecard__short', majorShort(primary)));
+      major.appendChild(el('p', 'jf-scorecard__full', majorFull(primary)));
+      row.appendChild(major);
+      panel.appendChild(row);
+
+      return panel;
+    }
+
+    /* ---- Panel kanan: perbandingan hasil ---- */
+    function buildComparison(scoring) {
+      const wrap = el('div', 'jf-cmp');
+      wrap.appendChild(el('h3', 'jf-cmp__title', 'Perbandingan Hasil'));
+
+      const primary = scoring.primaryMajor;
       const percentages = scoring.majorPercentages || {};
 
       ['SIJA', 'TJAT'].forEach(function (major) {
-        const value = Number(percentages[major] || 0);
+        const pct = Math.round(Number(percentages[major] || 0));
+        const isPrimary = major === primary;
 
-        const item = el('div', 'jf-bar');
-        const head = el('div', 'jf-bar__head');
-        head.appendChild(el('span', 'jf-bar__label', majorName(major)));
-        head.appendChild(el('span', 'jf-bar__value', value + '%'));
-        item.appendChild(head);
+        const item = el('div', 'jf-cmp__item' + (isPrimary ? '' : ' jf-cmp__item--secondary'));
+        const fill = el('div', 'jf-cmp__fill');
+        fill.style.width = pct + '%';
+        item.appendChild(fill);
 
-        const track = el('div', 'jf-bar__track');
-        const fill = el('div', 'jf-bar__fill jf-bar__fill--' + major.toLowerCase());
-        fill.style.width = value + '%';
-        track.appendChild(fill);
-        item.appendChild(track);
-
+        item.appendChild(el('p', 'jf-cmp__name', majorShort(major)));
+        item.appendChild(el('p', 'jf-cmp__desc', majorFull(major)));
         wrap.appendChild(item);
       });
 
       return wrap;
     }
 
-    function buildDimensions(scoring) {
-      const top = Array.isArray(scoring.topDimensions) ? scoring.topDimensions : [];
-      if (!top.length) return null;
-
-      const max = top.reduce(function (acc, item) {
-        return Math.max(acc, Number(item.score) || 0);
-      }, 0) || 1;
-
-      const wrap = el('div', 'jf-dimensions');
-
-      top.forEach(function (item) {
-        const score = Number(item.score) || 0;
-
-        const row = el('div', 'jf-dimension');
-        const head = el('div', 'jf-dimension__head');
-        head.appendChild(el('span', 'jf-dimension__label', dimensionLabels[item.dimension] || item.dimension));
-        head.appendChild(el('span', 'jf-dimension__value', String(score)));
-        row.appendChild(head);
-
-        const track = el('div', 'jf-dimension__track');
-        const fill = el('div', 'jf-dimension__fill');
-        fill.style.width = Math.round((score / max) * 100) + '%';
-        track.appendChild(fill);
-        row.appendChild(track);
-
-        wrap.appendChild(row);
-      });
-
-      return wrap;
-    }
-
-    function buildActions(scoring) {
-      const actions = el('div', 'jf-actions');
+    /* ---- Seksi detail jurusan ---- */
+    function buildDetail(scoring, explanation) {
       const primary = scoring.primaryMajor;
+      const section = el('section', 'jf-detail');
 
-      // Halaman detail jurusan belum ada di repo ini, jadi tombol diarahkan
-      // ke seksi #jurusan pada halaman beranda (bukan link mati).
-      if (scoring.tier === 'close') {
-        ['SIJA', 'TJAT'].forEach(function (major) {
-          const link = el('a', 'jf-btn jf-btn--' + major.toLowerCase(), 'Pelajari ' + majorName(major));
-          link.href = '/#jurusan';
-          actions.appendChild(link);
-        });
-      } else {
-        const link = el('a', 'jf-btn jf-btn--' + primary.toLowerCase(), 'Pelajari ' + majorName(primary));
-        link.href = '/#jurusan';
-        actions.appendChild(link);
-      }
+      // Media: PLACEHOLDER foto siswa, ganti via JURUFIND_SISWA_IMG
+      const media = el('div', 'jf-detail__media');
+      media.appendChild(el('div', 'jf-detail__blob'));
+      const img = document.createElement('img');
+      img.className = 'jf-detail__img';
+      img.src = JURUFIND_SISWA_IMG;
+      img.alt = 'Ilustrasi siswa ' + majorShort(primary);
+      media.appendChild(img);
+      section.appendChild(media);
 
-      const retry = el('button', 'jf-btn jf-btn--ghost', 'Ulangi Kuis');
-      retry.type = 'button';
-      retry.addEventListener('click', function () {
-        window.location.reload();
+      const body = el('div', 'jf-detail__body');
+      const title = el('h2', 'jf-detail__title');
+      title.innerHTML = '<em>' + majorShort(primary) + '</em> ' + escapeHtml(stripShort(majorFull(primary), majorShort(primary)));
+      body.appendChild(title);
+
+      body.appendChild(el('p', 'jf-detail__desc', explanation.summary || ''));
+      body.appendChild(el('p', 'jf-detail__fit', 'Cocok untuk:'));
+
+      const reasons = Array.isArray(explanation.reasons) && explanation.reasons.length
+        ? explanation.reasons
+        : ['Kamu yang suka tantangan dan hal baru.'];
+      const list = el('ul', 'jf-reasons');
+
+      const icons = [
+        '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>', // code
+        '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/>' // bulb
+      ];
+      reasons.slice(0, 4).forEach(function (reason, i) {
+        const li = el('li');
+        li.appendChild(iconSvg(icons[i % icons.length]));
+        li.appendChild(document.createTextNode(reason));
+        list.appendChild(li);
       });
-      actions.appendChild(retry);
+      body.appendChild(list);
 
-      return actions;
+      const link = el('a', 'jf-btn jf-btn--solid', 'Lihat Lengkapnya →');
+      link.href = '/#jurusan';
+      body.appendChild(link);
+
+      section.appendChild(body);
+      return section;
     }
 
+    function stripShort(full, short) {
+      return full.replace(new RegExp('^' + short + '\\s*[-–—:]?\\s*', 'i'), '').trim() || full;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    /* ---- Seksi simpan bukti ---- */
+    function buildSave() {
+      const section = el('section', 'jf-save');
+      section.appendChild(el('h2', 'jf-save__title', 'Ingin Simpan Buktinya?'));
+      section.appendChild(el('p', 'jf-save__sub', 'Pilih Tombol Di bawah buat Download'));
+
+      const actions = el('div', 'jf-save__actions');
+
+      const emailBtn = el('button', 'jf-btn jf-btn--pill', '✉  Kirim Ke Email');
+      emailBtn.type = 'button';
+      emailBtn.addEventListener('click', function () {
+        // TODO: sambungkan ke endpoint backend untuk kirim email
+        alert('Fitur kirim email segera hadir.');
+      });
+      actions.appendChild(emailBtn);
+
+      const dlBtn = el('button', 'jf-btn jf-btn--pill', '⬇  Download di Lokal');
+      dlBtn.type = 'button';
+      dlBtn.addEventListener('click', function () {
+        // Sementara: pakai print-to-PDF bawaan browser
+        window.print();
+      });
+      actions.appendChild(dlBtn);
+
+      section.appendChild(actions);
+      return section;
+    }
+
+    /* ---- Render utama hasil ---- */
     function renderResult(scoring, explanation) {
       resultRoot.textContent = '';
+      resultRoot.className = 'jf-resultpage';
 
-      const wrap = el('div', 'jf-result');
-      const primary = scoring.primaryMajor;
+      // Hero
+      const hero = el('section', 'jf-hero');
+      hero.appendChild(el('h1', 'jf-hero__title', 'Jurusan Rekomendasi Kamu!'));
+      hero.appendChild(el(
+        'p',
+        'jf-hero__sub',
+        'Berdasarkan jawabanmu, sistem kami menemukan jurusan yang paling cocok dengan minat dan bakatmu.'
+      ));
+      resultRoot.appendChild(hero);
 
-      /* 1 & 2. Judul + dua score bar */
-      const head = el('div', 'jf-result__head');
-      head.appendChild(el('p', 'jf-eyebrow', 'Hasil eksplorasi minat'));
-      const title = el('h1', 'jf-result__title ' + majorClass(primary));
-      title.textContent = 'Lebih condong ke ' + majorName(primary);
-      head.appendChild(title);
-      head.appendChild(buildScoreBars(scoring));
-      wrap.appendChild(head);
+      // Kartu skor
+      const scorecard = el('section', 'jf-scorecard');
+      scorecard.appendChild(buildScorePanel(scoring));
+      scorecard.appendChild(buildComparison(scoring));
+      resultRoot.appendChild(scorecard);
 
-      /* 3. Kenapa {primaryMajor}? */
-      const why = el('section', 'jf-section');
-      why.appendChild(el('h2', 'jf-section__title', 'Kenapa ' + majorName(primary) + '?'));
-      why.appendChild(el('p', null, explanation.summary));
-
-      const reasons = Array.isArray(explanation.reasons) ? explanation.reasons : [];
-      if (reasons.length) {
-        const list = el('ul', 'jf-reasons');
-        reasons.forEach(function (reason) {
-          list.appendChild(el('li', null, reason));
-        });
-        why.appendChild(list);
-      }
-
-      if (explanation.comparison) {
-        why.appendChild(el('p', null, explanation.comparison));
-      }
+      // Detail jurusan
+      resultRoot.appendChild(buildDetail(scoring, explanation));
 
       if (explanation.fallback === true) {
-        why.appendChild(el(
+        const note = el(
           'p',
           'jf-fallback-note',
-          'Penjelasan AI sementara tidak tersedia. Persentase di atas tetap dihitung secara deterministik dari jawabanmu.'
-        ));
-      }
-      wrap.appendChild(why);
-
-      /* 4. Minat kamu */
-      const dimensions = buildDimensions(scoring);
-      if (dimensions) {
-        const interests = el('section', 'jf-section');
-        interests.appendChild(el('h2', 'jf-section__title', 'Minat kamu'));
-        interests.appendChild(dimensions);
-        wrap.appendChild(interests);
+          'Penjelasan AI sementara tidak tersedia. Persentase tetap dihitung secara deterministik dari jawabanmu.'
+        );
+        note.style.cssText = 'max-width:1180px;margin:1.5rem auto 0;padding:0 3.5rem;font-size:.82rem;color:var(--jf-muted);font-style:italic;';
+        resultRoot.appendChild(note);
       }
 
-      /* 5. Disclaimer */
-      wrap.appendChild(el('p', 'jf-disclaimer', 'Ini hasil eksplorasi minat, bukan penentu jurusan yang pasti.'));
+      // Simpan bukti
+      resultRoot.appendChild(buildSave());
 
-      /* 6. Tombol aksi */
-      wrap.appendChild(buildActions(scoring));
-
-      resultRoot.appendChild(wrap);
+      // Animasi bar setelah mount
+      requestAnimationFrame(function () {
+        resultRoot.querySelectorAll('.jf-cmp__fill').forEach(function (fill) {
+          const w = fill.style.width;
+          fill.style.width = '0%';
+          requestAnimationFrame(function () { fill.style.width = w; });
+        });
+      });
     }
   });
 })();
