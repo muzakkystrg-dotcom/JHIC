@@ -14,7 +14,7 @@
     <script src="{{ asset('assets/js/home.js') }}" defer></script>
     @stack('styles')
 </head>
-<body class="bg-[#FBFBFB] text-slate-800 font-sans antialiased selection:bg-telkom-700 selection:text-white">
+<body class="bg-[#FBFBFB] text-slate-800 font-sans antialiased selection:bg-red-700 selection:text-white">
 
 <header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6">
     <div class="max-w-7xl mx-auto bg-white rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] px-6 sm:px-10 h-16 flex items-center justify-between">
@@ -33,38 +33,45 @@
 
         <!-- Dropdown: Tentang kami -->
         <div class="relative group py-2">
-          <button class="flex items-center gap-1.5 hover:text-red-700 py-1 transition font-medium text-gray-700 {{ request()->routeIs('mitra-industri.*') ? 'text-red-700 font-bold' : '' }}">
+          <button class="flex items-center gap-1.5 hover:text-red-700 py-1 transition font-medium text-gray-700 {{ request()->routeIs('profile-sekolah.index') || request()->routeIs('mitra-industri.*') || request()->routeIs('fasilitas.*') || request()->routeIs('prestasi.*') || request()->routeIs('profil-guru.*') ? 'text-red-700 font-bold' : '' }}">
             <span>Tentang kami</span>
             <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-500 group-hover:rotate-180 group-hover:text-red-700 transition"></i>
           </button>
           
-          <!-- Dropdown Wrapper dengan Hover Bridge (pt-2) -->
+          <!-- Dropdown Wrapper dengan Hover Bridge -->
           <div class="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
             <div class="w-60 bg-white rounded-xl shadow-xl border border-gray-100 py-2.5">
-              <a href="{{ route('mitra-industri.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold {{ request()->routeIs('mitra-industri.*') ? 'text-red-700 bg-red-50' : 'text-gray-700' }}">
+              
+              <!-- Link Profil Sekolah -->
+              <a href="{{ route('profile-sekolah.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold {{ request()->routeIs('profile-sekolah.index') ? 'text-red-700 bg-red-50 font-bold' : 'text-gray-700' }}">
+                <i data-lucide="school" class="w-4 h-4 text-red-600"></i>
+                Profile Sekolah
+              </a>
+
+              <!-- Link Hubungan Industri -->
+              <a href="{{ route('mitra-industri.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold {{ request()->routeIs('mitra-industri.*') ? 'text-red-700 bg-red-50 font-bold' : 'text-gray-700' }}">
                 <i data-lucide="briefcase" class="w-4 h-4 text-red-600"></i>
                 Hubungan Industri
               </a>
-              <a href="{{ url('/#sambutan') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold text-gray-700">
-                <i data-lucide="school" class="w-4 h-4 text-red-600"></i>
-                Profil Sekolah
-              </a>
-              <a href="{{ url('/#keunggulan') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold text-gray-700">
+
+              <!-- Link Fasilitas -->
+              <a href="{{ route('fasilitas.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold {{ request()->routeIs('fasilitas.*') ? 'text-red-700 bg-red-50 font-bold' : 'text-gray-700' }}">
                 <i data-lucide="monitor" class="w-4 h-4 text-red-600"></i>
                 Fasilitas
               </a>
-              <a href="{{ url('/#berita') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold text-gray-700">
+
+              <!-- Link Prestasi -->
+              <a href="{{ route('prestasi.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold {{ request()->routeIs('prestasi.*') ? 'text-red-700 bg-red-50 font-bold' : 'text-gray-700' }}">
                 <i data-lucide="trophy" class="w-4 h-4 text-red-600"></i>
                 Prestasi
               </a>
-              <a href="{{ url('/#sambutan') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold text-gray-700">
+
+              <!-- Link Profil Guru (Baru Ditambahkan) -->
+              <a href="{{ route('profil-guru.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold {{ request()->routeIs('profil-guru.*') ? 'text-red-700 bg-red-50 font-bold' : 'text-gray-700' }}">
                 <i data-lucide="users" class="w-4 h-4 text-red-600"></i>
                 Profil Guru
               </a>
-              <a href="{{ url('/#jurusan') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold text-gray-700">
-                <i data-lucide="bed-double" class="w-4 h-4 text-red-600"></i>
-                Akomodasi
-              </a>
+
             </div>
           </div>
         </div>
@@ -82,8 +89,6 @@
             <span>Program</span>
             <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-500 group-hover:rotate-180 group-hover:text-red-700 transition"></i>
           </button>
-          
-          <!-- Dropdown Wrapper dengan Hover Bridge (pt-2) -->
           <div class="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
             <div class="w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2">
               <button onclick="openProgramDetail('SIJA')" class="w-full text-left px-4 py-2.5 hover:bg-red-50 hover:text-red-700 text-sm font-semibold text-gray-700 flex flex-col">
@@ -104,8 +109,6 @@
             <span>Informasi</span>
             <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-500 group-hover:rotate-180 group-hover:text-red-700 transition"></i>
           </button>
-          
-          <!-- Dropdown Wrapper dengan Hover Bridge (pt-2) -->
           <div class="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
             <div class="w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2">
               <a href="{{ url('/#berita') }}" class="flex items-center gap-2 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold text-gray-700">
@@ -151,19 +154,29 @@
           </div>
           <p class="text-sm text-gray-600 leading-relaxed">Bersama SMK Telkom Sidoarjo, jadilah generasi tangguh, berakhlak, dan berwawasan digital.</p>
           <div class="space-y-2.5 text-sm text-gray-700 pt-1">
-            <a href="mailto:informasi@smktelkom-sda.sch.id" class="flex items-center gap-2.5 hover:text-telkom-700 transition">
-              <i data-lucide="mail" class="w-4 h-4 text-telkom-700 shrink-0"></i>
+            <a href="mailto:informasi@smktelkom-sda.sch.id" class="flex items-center gap-2.5 hover:text-red-700 transition">
+              <i data-lucide="mail" class="w-4 h-4 text-red-700 shrink-0"></i>
               <span>informasi@smktelkom-sda.sch.id</span>
             </a>
-            <a href="https://wa.me/628113021919" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-telkom-700 transition">
-              <i data-lucide="phone" class="w-4 h-4 text-telkom-700 shrink-0"></i>
+            <a href="https://wa.me/628113021919" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 hover:text-red-700 transition">
+              <i data-lucide="phone" class="w-4 h-4 text-red-700 shrink-0"></i>
               <span>0811-3021-919</span>
             </a>
             <div class="flex items-start gap-2.5">
-              <i data-lucide="map-pin" class="w-4 h-4 text-telkom-700 shrink-0 mt-0.5"></i>
+              <i data-lucide="map-pin" class="w-4 h-4 text-red-700 shrink-0 mt-0.5"></i>
               <span class="leading-relaxed">Jl. Raya Pecantingan Sekardangan, Kabupaten Sidoarjo, Jawa Timur</span>
             </div>
           </div>
+
+          <!-- Logo-logo Mitra di Footer -->
+          <div class="grid grid-cols-3 sm:grid-cols-5 gap-3 pt-3 items-center max-w-sm">
+            <img src="{{ asset('images/footer/1. LOGO JHIC 2.0 1.png') }}" alt="Logo JHIC" class="h-7 w-auto object-contain">
+            <img src="{{ asset('images/footer/2. Logo Jagoan Hosting 1.png') }}" alt="Logo Jagoan Hosting" class="h-7 w-auto object-contain">
+            <img src="{{ asset('images/footer/3. KOMDIGI 1.png') }}" alt="Logo Komdigi" class="h-7 w-auto object-contain">
+            <img src="{{ asset('images/footer/4. Garuda Spark Full Color 1.png') }}" alt="Logo Garuda Spark" class="h-7 w-auto object-contain">
+            <img src="{{ asset('images/footer/5. LOGO NGALUP 1.png') }}" alt="Logo Ngalup" class="h-7 w-auto object-contain">
+          </div>
+
           <p class="text-[11px] text-gray-400 pt-2">Copyright © 2026 All right reserved | SKOMDA</p>
         </div>
 
@@ -171,11 +184,11 @@
         <div class="lg:col-span-2 space-y-3">
           <h4 class="text-sm font-bold text-gray-900 uppercase tracking-wider">Menu Utama</h4>
           <ul class="space-y-2.5 text-sm">
-            <li><a href="{{ url('/#beranda') }}" class="hover:text-telkom-700 transition">Beranda</a></li>
-            <li><a href="{{ url('/#sambutan') }}" class="hover:text-telkom-700 transition">Profil Sekolah</a></li>
-            <li><a href="{{ url('/#jurusan') }}" class="hover:text-telkom-700 transition">Profil Jurusan</a></li>
-            <li><a href="{{ url('/jurufind') }}" class="hover:text-telkom-700 transition">Tes Minat Bakat</a></li>
-            <li><a href="/ppdb" class="hover:text-telkom-700 transition font-bold">PPDB</a></li>
+            <li><a href="{{ url('/#beranda') }}" class="hover:text-red-700 transition">Beranda</a></li>
+            <li><a href="{{ route('profile-sekolah.index') }}" class="hover:text-red-700 transition">Profil Sekolah</a></li>
+            <li><a href="{{ url('/#jurusan') }}" class="hover:text-red-700 transition">Profil Jurusan</a></li>
+            <li><a href="{{ url('/jurufind') }}" class="hover:text-red-700 transition">Tes Minat Bakat</a></li>
+            <li><a href="/ppdb" class="hover:text-red-700 transition font-bold">PPDB</a></li>
           </ul>
         </div>
 
@@ -183,12 +196,12 @@
         <div class="lg:col-span-3 space-y-3">
           <h4 class="text-sm font-bold text-gray-900 uppercase tracking-wider">Berita Sekolah:</h4>
           <ul class="space-y-2.5 text-sm">
-            <li><a href="{{ url('/#berita') }}" class="hover:text-telkom-700 transition">Kegiatan Sekolah</a></li>
-            <li><a href="{{ url('/#berita') }}" class="hover:text-telkom-700 transition">Prestasi</a></li>
-            <li><a href="{{ url('/#berita') }}" class="hover:text-telkom-700 transition">Karya &amp; Inovasi</a></li>
-            <li><a href="{{ url('/#alumni') }}" class="hover:text-telkom-700 transition">Alumni</a></li>
-            <li><a href="{{ url('/#partner') }}" class="hover:text-telkom-700 transition">Kemitraan &amp; Kerjasama</a></li>
-            <li><a href="{{ url('/#partner') }}" class="hover:text-telkom-700 transition">Career Center</a></li>
+            <li><a href="{{ url('/#berita') }}" class="hover:text-red-700 transition">Kegiatan Sekolah</a></li>
+            <li><a href="{{ route('prestasi.index') }}" class="hover:text-red-700 transition">Prestasi</a></li>
+            <li><a href="{{ url('/#berita') }}" class="hover:text-red-700 transition">Karya &amp; Inovasi</a></li>
+            <li><a href="{{ url('/#alumni') }}" class="hover:text-red-700 transition">Alumni</a></li>
+            <li><a href="{{ route('mitra-industri.index') }}" class="hover:text-red-700 transition">Kemitraan &amp; Kerjasama</a></li>
+            <li><a href="{{ route('fasilitas.index') }}" class="hover:text-red-700 transition">Fasilitas</a></li>
           </ul>
         </div>
 
@@ -196,7 +209,7 @@
         <div class="lg:col-span-3 space-y-3">
           <div class="flex items-center justify-between">
             <h4 class="text-sm font-bold text-gray-900 uppercase tracking-wider">Lokasi Sekolah</h4>
-            <a href="https://maps.google.com/?q=SMK+Telkom+Sidoarjo" target="_blank" rel="noopener noreferrer" class="text-xs text-telkom-700 hover:underline flex items-center gap-1 font-bold">
+            <a href="https://maps.google.com/?q=SMK+Telkom+Sidoarjo" target="_blank" rel="noopener noreferrer" class="text-xs text-red-700 hover:underline flex items-center gap-1 font-bold">
               <span>Buka Google Maps</span>
               <i data-lucide="external-link" class="w-3 h-3"></i>
             </a>
@@ -214,10 +227,10 @@
         <div>
           <h5 class="font-bold text-gray-900 mb-2">Aplikasi Siswa</h5>
           <div class="flex flex-wrap items-center gap-2.5 text-gray-500 font-medium">
-            <span class="hover:text-telkom-700 underline cursor-pointer">DigiYouth</span><span>•</span>
-            <span class="hover:text-telkom-700 underline cursor-pointer">MyLms</span><span>•</span>
-            <span class="hover:text-telkom-700 underline cursor-pointer">SiAkad</span><span>•</span>
-            <span class="hover:text-telkom-700 underline cursor-pointer">Invert</span>
+            <span class="hover:text-red-700 underline cursor-pointer">DigiYouth</span><span>•</span>
+            <span class="hover:text-red-700 underline cursor-pointer">MyLms</span><span>•</span>
+            <span class="hover:text-red-700 underline cursor-pointer">SiAkad</span><span>•</span>
+            <span class="hover:text-red-700 underline cursor-pointer">Invert</span>
           </div>
         </div>
         <div>
