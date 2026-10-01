@@ -9,17 +9,17 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 @endpush
 
-<!-- Hero Section -->
-<section class="relative bg-hero-pattern w-full min-h-[500px] flex items-center overflow-hidden pt-28 pb-16">
+<!-- Hero Section (Dengan animasi Fade-In) -->
+<section class="relative bg-hero-pattern w-full min-h-[500px] flex items-center overflow-hidden pt-28 pb-16" data-aos="fade-in" data-aos-duration="1000">
     <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
-        <!-- Frame Kiri: Icon Trophy (Area frame tetap besar, tapi gambar piala.png diperkecil di dalamnya) -->
-        <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2">
-            <img src="{{ asset('images/prestasi/piala.png') }}" alt="Piala Prestasi" class="relative z-10 w-[150px] md:w-[190px] h-auto object-contain drop-shadow-2xl">
+        <!-- Frame Kiri: 3D Icon Trophy (Animasi Zoom-In) -->
+        <div class="relative w-full h-[350px] md:h-[400px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
+            <img src="{{ asset('images/prestasi/piala.png') }}" alt="Piala Prestasi" class="relative z-10 w-[200px] md:w-[240px] h-auto object-contain drop-shadow-2xl">
         </div>
 
-        <!-- Teks Kanan -->
-        <div class="md:order-2 order-1">
+        <!-- Teks Kanan (Animasi Fade-Right) -->
+        <div class="md:order-2 order-1" data-aos="fade-right" data-aos-delay="400">
             <div class="text-sm text-gray-500 font-medium mb-3 flex items-center gap-2">
                 <a href="{{ url('/') }}" class="hover:text-red-700 transition">Tentang kami</a>
                 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
@@ -34,7 +34,7 @@
                 SMK Telkom Sidoarjo berkomitmen mengasah potensi akademik dan non-akademik siswa. Dengan lingkungan belajar yang kompetitif dan dukungan pembimbing profesional, kami mencetak Generasi Digital yang berani berinovasi dan siap menjadi juara. Prestasi regional dan nasional adalah bukti nyata kurikulum yang relevan dan pembinaan karakter yang kuat.
             </p>
             
-            <a href="#grafik-prestasi" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-800 transition-all shadow-md hover:shadow-lg active:scale-95">
+            <a href="#grafik-prestasi" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-800 transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer">
                 Jelajahi 
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
@@ -43,18 +43,18 @@
     </div>
 </section>
 
-<!-- Section Grafik Prestasi Siswa -->
-<section id="grafik-prestasi" class="py-20 bg-white">
+<!-- Section Grafik Prestasi Siswa (Dengan animasi Fade-Up) -->
+<section id="grafik-prestasi" class="py-20 bg-white" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
-        <div class="text-center mb-12">
+        <div class="text-center mb-12" data-aos="fade-up">
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">
                 Grafik Prestasi Siswa <span class="text-red-700">Smk Telkom Sidoarjo</span>
             </h2>
         </div>
 
         <!-- Card Container Grafik -->
-        <div class="bg-white rounded-[2.5rem] p-6 md:p-10 shadow-xl border border-gray-100 max-w-5xl mx-auto">
+        <div class="bg-white rounded-[2.5rem] p-6 md:p-10 shadow-xl border border-gray-100 max-w-5xl mx-auto" data-aos="zoom-in" data-aos-delay="200">
             <div class="relative h-[350px] w-full">
                 <canvas id="achievementChart"></canvas>
             </div>
@@ -83,18 +83,18 @@
     </div>
 </section>
 
-<!-- Section Prestasi Siswa (Carousel / Slider Card menggunakan juara.png) -->
-<section class="py-20 bg-gray-50">
+<!-- Section Prestasi Siswa (Carousel / Slider Card dengan animasi Fade-Up) -->
+<section class="py-20 bg-gray-50" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
-        <div class="text-center mb-16">
+        <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">
                 Prestasi Siswa <span class="text-red-700">Smk Telkom Sidoarjo</span>
             </h2>
         </div>
 
         <!-- Carousel Container -->
-        <div class="relative overflow-hidden px-4 py-6">
+        <div class="relative overflow-hidden px-4 py-6" data-aos="fade-up" data-aos-delay="200">
             <div id="achievementCarousel" class="flex transition-transform duration-500 ease-out gap-8">
                 
                 @foreach($achievements as $ach)
@@ -125,7 +125,7 @@
         </div>
 
         <!-- Carousel Navigation (Panah & Dots) -->
-        <div class="flex items-center justify-center gap-6 mt-12">
+        <div class="flex items-center justify-center gap-6 mt-12" data-aos="fade-up">
             <button id="prevAch" class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
                 <i data-lucide="chevron-left" class="w-5 h-5"></i>
             </button>
@@ -225,15 +225,19 @@
                 });
             }
 
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateAchCarousel();
-            });
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    updateAchCarousel();
+                });
+            }
 
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                updateAchCarousel();
-            });
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                    updateAchCarousel();
+                });
+            }
 
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {

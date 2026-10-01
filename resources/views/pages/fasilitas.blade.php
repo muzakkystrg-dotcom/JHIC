@@ -4,17 +4,17 @@
 
 @section('content')
 
-<!-- Hero Section -->
-<section class="relative bg-hero-pattern w-full min-h-[500px] flex items-center overflow-hidden pt-28 pb-16">
+<!-- Hero Section (Dengan animasi Fade-In) -->
+<section class="relative bg-hero-pattern w-full min-h-[500px] flex items-center overflow-hidden pt-28 pb-16" data-aos="fade-in" data-aos-duration="1000">
     <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
-       <!-- Frame Kiri: Model 3D Isometrik Gedung Kampus -->
-        <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2">
+       <!-- Frame Kiri: Model 3D Isometrik Gedung Kampus (Animasi Zoom-In) -->
+        <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
             <img src="{{ asset('images/fasilitas/sekolah3d.png') }}" alt="Model Isometrik Kampus" class="relative z-10 w-[380px] md:w-[480px] h-auto object-contain drop-shadow-2xl">
         </div>
 
-        <!-- Teks Kanan -->
-        <div class="md:order-2 order-1">
+        <!-- Teks Kanan (Animasi Fade-Right) -->
+        <div class="md:order-2 order-1" data-aos="fade-right" data-aos-delay="400">
             <div class="text-sm text-gray-500 font-medium mb-3 flex items-center gap-2">
                 <a href="{{ url('/') }}" class="hover:text-red-700 transition">Tentang kami</a>
                 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
@@ -29,7 +29,7 @@
                 SMK Telkom Sidoarjo menyediakan fasilitas modern yang lengkap untuk mendukung pembelajaran Teknologi dan Informatika (TI). Kami memiliki Laboratorium (Lab) praktik up-to-date (Lab Komputer, Jaringan, Telekomunikasi) dengan perangkat standar industri. Fasilitas ini memastikan siswa mendapat pengalaman praktikal maksimal, membuat lulusan siap kerja dan unggul dalam keterampilan teknis.
             </p>
             
-            <a href="#katalog-fasilitas" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-800 transition-all shadow-md hover:shadow-lg active:scale-95">
+            <a href="#katalog-fasilitas" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-800 transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer">
                 Jelajahi 
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
@@ -38,22 +38,21 @@
     </div>
 </section>
 
-<!-- Section Fasilitas Penunjang (15 Total Cards, 3 Visible, Proper Spacing) -->
-<section id="katalog-fasilitas" class="py-20 bg-white">
+<!-- Section Fasilitas Penunjang (Dengan animasi Fade-Up) -->
+<section id="katalog-fasilitas" class="py-20 bg-white" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
-        <div class="text-center mb-16">
+        <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">
                 Fasilitas Penunjang <span class="text-red-700">Belajar dan Berkarya Smk Telkom Sidoarjo</span>
             </h2>
         </div>
 
-        <!-- Carousel Container (Diberi padding horizontal agar card kanan-kiri tidak terpotong) -->
-        <div class="relative overflow-hidden px-4 py-6">
+        <!-- Carousel Container -->
+        <div class="relative overflow-hidden px-4 py-6" data-aos="fade-up" data-aos-delay="200">
             <div id="facilityCarousel" class="flex transition-transform duration-500 ease-out gap-6">
                 
                 @php
-                    // 15 Total Kartu Fasilitas
                     $allFacilities = [
                         ['title' => 'Aula', 'desc' => 'Aula multifungsi yang digunakan untuk kegiatan sekolah seperti seminar, workshop, pertemuan wali murid, hingga acara internal dan eksternal sekolah.', 'img' => 'images/fasilitas/aula.png'],
                         ['title' => 'Gedung SMK Telkom Sidoarjo', 'desc' => 'Gedung utama SMK Telkom Sidoarjo yang representatif dengan desain modern serta fasilitas lengkap untuk menunjang kegiatan akademik.', 'img' => 'images/fasilitas/gedung-utama.png'],
@@ -92,9 +91,9 @@
             </div>
         </div>
 
-        <!-- Carousel Navigation (Tombol Panah Proporsional & 15 Titik Dots) -->
-        <div class="flex items-center justify-center gap-6 mt-12">
-            <button id="prevSlide" class="w-9 h-9 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
+        <!-- Carousel Navigation (Panah & Dots) -->
+        <div class="flex items-center justify-center gap-6 mt-12" data-aos="fade-up">
+            <button id="prevSlide" class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
                 <i data-lucide="chevron-left" class="w-5 h-5"></i>
             </button>
             
@@ -104,7 +103,7 @@
                 @endfor
             </div>
 
-            <button id="nextSlide" class="w-9 h-9 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
+            <button id="nextSlide" class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
                 <i data-lucide="chevron-right" class="w-5 h-5"></i>
             </button>
         </div>
@@ -112,11 +111,12 @@
     </div>
 </section>
 
-<!-- Section Lab Tour -->
-<section class="py-20 bg-gray-50">
+<!-- Section Lab Tour (Dengan animasi Fade-Up) -->
+<section class="py-20 bg-gray-50" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
-        <div class="text-center mb-16">
+        <!-- Header Lab Tour -->
+        <div class="text-center mb-16" data-aos="fade-up">
             <span class="text-red-700 font-bold uppercase tracking-widest text-sm block mb-2">Lab Tour</span>
             <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">
                 Masuki Dunia <span class="text-red-700">Laboratorium</span> yang Siap Mengasah <span class="text-red-700">Skill</span> dan <span class="text-red-700">Inovasi Siswa</span>
@@ -124,8 +124,9 @@
         </div>
 
         <div class="space-y-16">
+            
             <!-- Baris 1: Gedung RPS Hall -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" data-aos="fade-right">
                 <div class="lg:col-span-5 space-y-4">
                     <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900">
                         Gedung <span class="text-red-700">RPS Hall</span>
@@ -134,13 +135,13 @@
                         Gedung RPS sebagai pusat pengembangan teknologi dua lantai di SMK Telkom Sidoarjo. Dilengkapi aula luas dengan videotron modern serta dua ruang IoT untuk eksperimen dan riset.
                     </p>
                     <div class="pt-2">
-                        <a href="#" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-red-800 transition-all shadow-sm hover:shadow-md active:scale-95">
+                        <a href="#" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-red-800 transition-all shadow-sm hover:shadow-md active:scale-95 cursor-pointer">
                             Room Tour 
                             <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
                     </div>
                 </div>
-                <div class="lg:col-span-7">
+                <div class="lg:col-span-7" data-aos="zoom-in" data-aos-delay="200">
                     <div class="rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-white">
                         <img src="{{ asset('images/fasilitas/rps.png') }}" alt="Gedung RPS Hall" class="w-full h-[320px] object-cover hover:scale-105 transition-transform duration-500">
                     </div>
@@ -148,8 +149,8 @@
             </div>
 
             <!-- Baris 2: Laboratorium IoT -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 order-2 lg:order-1">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" data-aos="fade-left">
+                <div class="lg:col-span-7 order-2 lg:order-1" data-aos="zoom-in" data-aos-delay="200">
                     <div class="rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-white">
                         <img src="{{ asset('images/fasilitas/lab.png') }}" alt="Laboratorium IoT" class="w-full h-[320px] object-cover hover:scale-105 transition-transform duration-500">
                     </div>
@@ -162,13 +163,14 @@
                         Tempat siswa berkreasi dengan perangkat pintar dan sistem otomatisasi. Dilengkapi peralatan sensor, mikrokontroler, dan jaringan untuk menciptakan inovasi berbasis Internet of Things.
                     </p>
                     <div class="pt-2">
-                        <a href="#" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-red-800 transition-all shadow-sm hover:shadow-md active:scale-95">
+                        <a href="#" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-red-800 transition-all shadow-sm hover:shadow-md active:scale-95 cursor-pointer">
                             Room Tour 
                             <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
                     </div>
                 </div>
             </div>
+
         </div>
 
     </div>
@@ -189,14 +191,12 @@
         let currentIndex = 0;
         const totalCards = 15;
         const visibleCards = 3;
-        const maxIndex = totalCards - visibleCards; // Total 13 slide pergeseran (0 s.d 12)
+        const maxIndex = totalCards - visibleCards;
 
         function updateCarousel() {
-            // Menghitung persentase geser berdasarkan lebar 1 card (33.333% + gap)
             const movePercentage = (currentIndex * (100 / visibleCards));
             carousel.style.transform = `translateX(-${movePercentage}%)`;
 
-            // Update dots active state
             dots.forEach((dot, index) => {
                 if (index === currentIndex) {
                     dot.classList.remove('bg-gray-300', 'w-2.5');
@@ -208,25 +208,29 @@
             });
         }
 
-        nextBtn.addEventListener('click', () => {
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-                updateCarousel();
-            } else {
-                currentIndex = 0; // Loop kembali ke awal jika sudah di ujung
-                updateCarousel();
-            }
-        });
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateCarousel();
+                } else {
+                    currentIndex = 0;
+                    updateCarousel();
+                }
+            });
+        }
 
-        prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateCarousel();
-            } else {
-                currentIndex = maxIndex; // Lompat ke ujung akhir jika di awal
-                updateCarousel();
-            }
-        });
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                } else {
+                    currentIndex = maxIndex;
+                    updateCarousel();
+                }
+            });
+        }
 
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {

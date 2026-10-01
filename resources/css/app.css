@@ -7,22 +7,15 @@
     --color-telkom-100: #fee2e2;
     --color-telkom-200: #fecaca;
     --color-telkom-600: #dc2626;
-    --color-telkom-700: #b91c1c;
+    --color-telkom-700: #C8102E;
     --color-telkom-800: #991b1b;
     --color-telkom-900: #7f1d1d;
 
-    --shadow-glow-red: 0 10px 25px -3px rgba(185, 28, 28, 0.45);
+    --shadow-glow-red: 0 10px 25px -3px rgba(200, 16, 46, 0.45);
     --shadow-float: 0 20px 35px -10px rgba(0, 0, 0, 0.12);
-
-    --animate-marquee: marquee 25s linear infinite;
-
-    @keyframes marquee {
-        0% { transform: translateX(0%); }
-        100% { transform: translateX(-50%); }
-    }
 }
 
-/* Tambahan CSS Khusus Halaman Mitra Industri */
+/* Kustom Utilitas & Animasi */
 html {
     scroll-behavior: smooth;
 }
@@ -33,4 +26,41 @@ html {
 
 .bg-hero-pattern {
     background: linear-gradient(110deg, #E5E7EB 0%, #E5E7EB 35%, transparent 35.1%, transparent 100%);
+}
+
+/* Animasi Infinite Marquee untuk Partner Industri (Smooth & Tanpa Patah-patah) */
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
+@layer components {
+    /* 1. Standar Tombol Carousel (Bulat Panah) di SEMUA Halaman */
+    .btn-carousel-global {
+        @apply w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer shrink-0;
+    }
+
+    /* 2. Standar Tombol Aksi Utama (CTA / Cari / Daftar) di SEMUA Halaman */
+    .btn-primary-global {
+        @apply px-6 py-3 bg-red-700 text-white rounded-xl font-bold text-sm hover:bg-red-800 transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer inline-flex items-center justify-center gap-2;
+    }
+
+    /* 3. Standar Tombol Pill Kecil (Selengkapnya / Detail) di SEMUA Halaman */
+    .btn-pill-small {
+        @apply px-4 py-1.5 bg-red-700 text-white text-xs rounded-full hover:bg-red-800 transition-colors shadow-sm font-medium inline-flex items-center gap-1;
+    }
 }

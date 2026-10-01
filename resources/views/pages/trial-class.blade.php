@@ -4,22 +4,18 @@
 
 @section('content')
 
-<!-- Hero Section -->
-<section class="relative bg-hero-pattern w-full min-h-[500px] flex items-center overflow-hidden pt-28 pb-16">
+<!-- Hero Section (Dilengkapi Animasi AOS) -->
+<section class="relative bg-hero-pattern w-full min-h-[500px] flex items-center overflow-hidden pt-28 pb-16" data-aos="fade-in" data-aos-duration="1000">
     <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
-        <!-- Frame Kiri: Siswi Berhijab Memegang Stylus & Tablet (Folder: images/trial/siswi-trial.png) -->
-        <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2">
-            <!-- Trapesium / Segitiga Sudut Merah Modern (Red Angular Backdrop) -->
-            <div class="absolute w-[260px] h-[260px] md:w-[320px] md:h-[320px] bg-red-700 transform rotate-45 rounded-[2.5rem] shadow-xl"></div>
-            <!-- Garis Putus-putus Dashed Outline -->
-            <div class="absolute w-[290px] h-[290px] md:w-[350px] md:h-[350px] border-2 border-dashed border-gray-400 transform rotate-45 rounded-[3rem] pointer-events-none"></div>
-            <!-- Foto Siswi -->
-            <img src="{{ asset('images/trial/siswi-trial.png') }}" alt="Siswi Trial Class" class="relative z-10 w-[240px] md:w-[290px] h-auto object-contain drop-shadow-2xl">
+        <!-- Frame Kiri: Murni Foto Siswi (Tanpa Background Merah & Dashed Outline) -->
+        <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
+            <!-- Foto Siswi (Mengambil dari folder images/trial/trial.png) -->
+            <img src="{{ asset('images/trial/trial.png') }}" alt="Siswi Trial Class" class="relative z-10 w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl">
         </div>
 
         <!-- Teks Kanan -->
-        <div class="md:order-2 order-1">
+        <div class="md:order-2 order-1" data-aos="fade-right" data-aos-delay="400">
             <div class="text-sm text-gray-500 font-medium mb-3 flex items-center gap-2">
                 <a href="{{ url('/') }}" class="hover:text-red-700 transition">Informasi</a>
                 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
@@ -34,7 +30,7 @@
                 Ikuti Trial Class kami untuk merasakan langsung suasana, metode pengajaran, dan fasilitas unggulan SMK Telkom Sidoarjo. Dapatkan gambaran jelas tentang jurusan dan lingkungan belajar kami sebelum Anda memutuskan. Jelajahi jadwal dan daftar Trial Class sekarang!
             </p>
             
-            <a href="#ikuti-trial" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-800 transition-all shadow-md hover:shadow-lg active:scale-95">
+            <a href="#ikuti-trial" class="btn-primary-global mt-4">
                 Jelajahi 
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
@@ -44,12 +40,12 @@
 </section>
 
 <!-- Garis Pemisah Aksen Merah Horizontal -->
-<div class="w-full flex justify-center py-6 bg-white">
+<div class="w-full flex justify-center py-6 bg-white" data-aos="fade-up">
     <div class="w-72 h-1.5 bg-red-700 rounded-full"></div>
 </div>
 
 <!-- Section Ikuti Trial Class & Search Bar -->
-<section id="ikuti-trial" class="py-16 bg-white">
+<section id="ikuti-trial" class="py-16 bg-white" data-aos="fade-up">
     <div class="max-w-5xl mx-auto px-4 sm:px-8">
         
         <div class="text-center mb-12">
@@ -59,7 +55,7 @@
         </div>
 
         <!-- Form Pencarian Jadwal (Dashed Border Input + Tombol Cari Merah) -->
-        <form action="{{ route('trial-class.index') }}" method="GET" class="flex flex-col sm:flex-row items-center gap-4 mb-16">
+        <form action="{{ route('trial-class.index') }}" method="GET" class="flex flex-col sm:flex-row items-center gap-4 mb-16" data-aos="fade-up" data-aos-delay="100">
             <div class="relative w-full">
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Jadwal atau Topik Trial Class..." class="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-dashed border-gray-400 bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-red-700 text-sm font-medium text-gray-700 shadow-inner">
                 <i data-lucide="search" class="w-5 h-5 text-gray-400 absolute left-4 top-4.5"></i>
@@ -70,7 +66,7 @@
         </form>
 
         <!-- Grid Kartu Sesi Trial Class -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="200">
             @forelse($classes as $item)
                 <div class="border-2 border-dashed border-gray-300 rounded-3xl p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
                     <div>
@@ -101,14 +97,17 @@
                         </div>
                     </div>
                     <div class="mt-6 pt-4 border-t border-gray-50 flex justify-end">
-                        <a href="#" class="bg-red-700 text-white text-xs px-4 py-2 rounded-full hover:bg-red-800 transition-colors flex items-center gap-1.5 shadow-sm font-bold">
+                        <a href="#" class="btn-pill-small">
                             Daftar Sesi <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                         </a>
                     </div>
                 </div>
             @empty
-                <div class="col-span-3 py-12 text-center text-gray-500 italic">
-                    Jadwal atau topik Trial Class yang Anda cari tidak ditemukan.
+                <div class="col-span-3 py-12 text-center text-gray-500 italic bg-gray-50 rounded-2xl border border-gray-200">
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <i data-lucide="search-x" class="w-8 h-8 text-gray-300"></i>
+                        <span>Jadwal atau topik Trial Class yang Anda cari tidak ditemukan.</span>
+                    </div>
                 </div>
             @endforelse
         </div>

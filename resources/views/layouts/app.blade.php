@@ -7,6 +7,7 @@
     <link rel="icon" href="{{ asset('images/home/favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.546.0/dist/umd/lucide.min.js"></script>
@@ -27,29 +28,29 @@
 
       <!-- Desktop Navigation -->
       <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600">
-        <a href="{{ url('/#beranda') }}" class="text-red-700 font-bold hover:text-red-800 transition">Beranda</a>
+        <a href="{{ url('/#beranda') }}" class="hover:text-red-700 transition {{ request()->routeIs('home') ? 'text-red-700 font-bold' : 'text-gray-700 font-medium' }}">Beranda</a>
 
         <!-- Dropdown: Tentang kami -->
         <div class="relative group py-2">
-          <button class="flex items-center gap-1.5 hover:text-red-700 py-1 transition font-medium text-gray-700">
+          <button class="flex items-center gap-1.5 py-1 transition {{ request()->routeIs('profile-sekolah.*') || request()->routeIs('mitra-industri.*') || request()->routeIs('fasilitas.*') || request()->routeIs('prestasi.*') || request()->routeIs('profil-guru.*') ? 'text-red-700 font-bold' : 'hover:text-red-700 font-medium text-gray-700' }}">
             <span>Tentang kami</span>
-            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-500 group-hover:rotate-180 group-hover:text-red-700 transition"></i>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 group-hover:rotate-180 group-hover:text-red-700 transition {{ request()->routeIs('profile-sekolah.*') || request()->routeIs('mitra-industri.*') || request()->routeIs('fasilitas.*') || request()->routeIs('prestasi.*') || request()->routeIs('profil-guru.*') ? 'text-red-700' : 'text-gray-500' }}"></i>
           </button>
           <div class="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
             <div class="w-60 bg-white rounded-xl shadow-xl border border-gray-100 py-2.5">
-              <a href="{{ route('profile-sekolah.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold text-gray-700">
+              <a href="{{ route('profile-sekolah.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold {{ request()->routeIs('profile-sekolah.*') ? 'text-red-700 bg-red-50 font-bold' : 'text-gray-700' }}">
                 <i data-lucide="school" class="w-4 h-4 text-red-600"></i> Profile Sekolah
               </a>
-              <a href="{{ route('mitra-industri.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold text-gray-700">
+              <a href="{{ route('mitra-industri.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold {{ request()->routeIs('mitra-industri.*') ? 'text-red-700 bg-red-50 font-bold' : 'text-gray-700' }}">
                 <i data-lucide="briefcase" class="w-4 h-4 text-red-600"></i> Hubungan Industri
               </a>
-              <a href="{{ route('fasilitas.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold text-gray-700">
+              <a href="{{ route('fasilitas.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold {{ request()->routeIs('fasilitas.*') ? 'text-red-700 bg-red-50 font-bold' : 'text-gray-700' }}">
                 <i data-lucide="monitor" class="w-4 h-4 text-red-600"></i> Fasilitas
               </a>
-              <a href="{{ route('prestasi.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold text-gray-700">
+              <a href="{{ route('prestasi.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold {{ request()->routeIs('prestasi.*') ? 'text-red-700 bg-red-50 font-bold' : 'text-gray-700' }}">
                 <i data-lucide="trophy" class="w-4 h-4 text-red-600"></i> Prestasi
               </a>
-              <a href="{{ route('profil-guru.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold text-gray-700">
+              <a href="{{ route('profil-guru.index') }}" class="flex items-center gap-2.5 px-4 py-2 hover:bg-red-50 hover:text-red-700 text-sm font-semibold {{ request()->routeIs('profil-guru.*') ? 'text-red-700 bg-red-50 font-bold' : 'text-gray-700' }}">
                 <i data-lucide="users" class="w-4 h-4 text-red-600"></i> Profil Guru
               </a>
             </div>
@@ -83,9 +84,9 @@
 
         <!-- Dropdown: Informasi (Termasuk Berita, Alumni, K3, dan Trial Class) -->
         <div class="relative group py-2">
-          <button class="flex items-center gap-1.5 hover:text-red-700 py-1 transition font-medium text-gray-700 {{ request()->routeIs('berita.*') || request()->routeIs('alumni.*') || request()->routeIs('penerapan-k3.*') || request()->routeIs('trial-class.*') ? 'text-red-700 font-bold' : '' }}">
+          <button class="flex items-center gap-1.5 py-1 transition {{ request()->routeIs('berita.*') || request()->routeIs('alumni.*') || request()->routeIs('penerapan-k3.*') || request()->routeIs('trial-class.*') ? 'text-red-700 font-bold' : 'hover:text-red-700 font-medium text-gray-700' }}">
             <span>Informasi</span>
-            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-500 group-hover:rotate-180 group-hover:text-red-700 transition"></i>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 group-hover:rotate-180 group-hover:text-red-700 transition {{ request()->routeIs('berita.*') || request()->routeIs('alumni.*') || request()->routeIs('penerapan-k3.*') || request()->routeIs('trial-class.*') ? 'text-red-700' : 'text-gray-500' }}"></i>
           </button>
           <div class="absolute top-full left-0 pt-2 hidden group-hover:block z-50">
             <div class="w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2">
@@ -163,7 +164,7 @@
             <li><a href="{{ route('profile-sekolah.index') }}" class="hover:text-red-700 transition">Profil Sekolah</a></li>
             <li><a href="{{ url('/#jurusan') }}" class="hover:text-red-700 transition">Profil Jurusan</a></li>
             <li><a href="{{ url('/jurufind') }}" class="hover:text-red-700 transition">Tes Minat Bakat</a></li>
-            <li><a href="/ppdb" class="hover:text-red-700 transition font-bold">PPDB</a></li>
+            <li><a href="{{ url('/ppdb') }}" class="hover:text-red-700 transition font-bold">PPDB</a></li>
           </ul>
         </div>
 
@@ -194,5 +195,15 @@
     if (window.lucide) { lucide.createIcons(); }
 </script>
 @stack('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+            duration: 800,  // Kecepatan animasi (milidetik)
+            once: true,     // Animasi hanya berjalan sekali saat di-scroll
+            offset: 100,    // Jaraktrigger animasi sebelum elemen terlihat
+        });
+    });
+</script>
 </body>
 </html>

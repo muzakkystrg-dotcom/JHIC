@@ -19,7 +19,7 @@ class BeritaController extends Controller
             'Alumni'
         ];
 
-        // Data Berita Dummy (Total 10 berita untuk slider/carousel)
+        // Menggunakan gambar juara.png dari folder images/berita/
         $beritas = [];
         for ($i = 1; $i <= 10; $i++) {
             $beritas[] = [
@@ -27,7 +27,7 @@ class BeritaController extends Controller
                 'title' => 'Lomba Matematika SMP/MTs Terbesar Se-Sidoarjo Sukses Digelar di SKOMDA',
                 'category' => 'Kegiatan Sekolah',
                 'published_at' => '2025-11-27T19:24:35',
-                'thumbnail' => asset('images/berita/banner-berita.png')
+                'thumbnail' => asset('images/berita/juara.png')
             ];
         }
 
