@@ -80,7 +80,7 @@
                                 </h3>
                             </div>
                             <div class="pt-4 border-t border-gray-50 flex justify-end">
-                                <a href="#" class="btn-pill-small">
+                                <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold text-red-700 hover:text-red-800 border border-red-200 rounded-full px-4 py-2 hover:bg-red-50 transition cursor-pointer">
                                     Selengkapnya 
                                     <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                                 </a>
@@ -97,14 +97,14 @@
 
         <!-- Carousel Navigation (Panah & Dots) -->
         <div class="flex items-center justify-center gap-6 mt-8" data-aos="fade-up" data-aos-delay="400">
-            <button id="prevNews" class="btn-carousel-global">
+            <button id="prevNews" aria-label="Previous" class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
                 <i data-lucide="chevron-left" class="w-5 h-5"></i>
             </button>
             
             <!-- Tempat Dots Otomatis -->
             <div id="newsDots" class="flex flex-wrap items-center justify-center gap-2 max-w-lg"></div>
             
-            <button id="nextNews" class="btn-carousel-global">
+            <button id="nextNews" aria-label="Next" class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
                 <i data-lucide="chevron-right" class="w-5 h-5"></i>
             </button>
         </div>

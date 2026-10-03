@@ -261,6 +261,11 @@
    HALAMAN HASIL
    ========================================================== */
 
+/* Wrapper halaman hasil */
+.jf-resultpage {
+  position: relative;
+}
+
 /* Hero merah */
 .jf-hero {
   background: #BC0C11;
@@ -287,12 +292,12 @@
   position: relative;
   z-index: 1;
   max-width: 1180px;
-  margin: -2.5rem auto 0;
+  margin: 0 auto;
   padding: 0 3.5rem;
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 3rem;
-  align-items: center;
+  align-items: start;
 }
 .jf-scorecard__panel {
   position: relative;
@@ -410,14 +415,14 @@
   color: #fff;
   margin: 0;
 }
-.jf-cmp__item--secondary .jf-cmp__name { color: var(--jf-muted); }
+.jf-cmp__item--secondary .jf-cmp__name { color: #4b5563; }
 .jf-cmp__desc {
   position: relative;
   font-size: 0.78rem;
   margin: 0.2rem 0 0;
   color: rgba(255, 255, 255, 0.9);
 }
-.jf-cmp__item--secondary .jf-cmp__desc { color: var(--jf-muted); }
+.jf-cmp__item--secondary .jf-cmp__desc { color: #4b5563; }
 
 /* Detail jurusan */
 .jf-detail {
@@ -457,6 +462,9 @@
   margin: 0 0 1.5rem;
 }
 .jf-detail__title em { font-style: normal; color: var(--jf-red); }
+/* Tanpa foto (belum tersedia): detail jadi satu kolom agar tetap rapi */
+.jf-detail--no-media { grid-template-columns: 1fr; gap: 0; }
+.jf-detail--no-media .jf-detail__body { max-width: 760px; }
 .jf-detail__desc { font-size: 1rem; line-height: 1.7; margin: 0 0 1.75rem; color: #29323a; }
 .jf-detail__fit { font-weight: 700; text-decoration: underline; text-decoration-color: var(--jf-red); text-underline-offset: 4px; margin: 0 0 1.25rem; font-size: 0.95rem; }
 

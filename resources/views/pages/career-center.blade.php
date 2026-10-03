@@ -133,22 +133,5 @@
             </div>
         </div>
     </section>
-
-    <!-- 5. TESTIMONIAL ALUMNI -->
-    <section class="py-14 sm:py-20 max-w-7xl mx-auto px-4" data-aos="fade-up">
-        <div class="text-center mb-10 sm:mb-12">
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Cerita Alumni <span style="color: #C8102E;">Berkarir</span></h2>
-        </div>
-        <div class="border-2 border-dashed border-gray-300 rounded-3xl p-6 sm:p-10 max-w-4xl mx-auto bg-white flex flex-col md:flex-row items-center gap-6 sm:gap-8 shadow-sm">
-            <div class="relative w-28 h-28 sm:w-32 sm:h-32 shrink-0 flex items-center justify-center">
-                <div class="absolute inset-0 rounded-2xl transform rotate-45 shadow-md" style="background-color: #C8102E !important;"></div>
-                <img src="{{ asset('images/career/career1.png') }}" class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-xl" onerror="this.src='{{ asset('images/alumni/alumni.png') }}';">
-            </div>
-            <div class="flex-1 text-center md:text-left space-y-2 sm:space-y-3">
-                <p class="text-slate-800 font-medium text-sm sm:text-lg italic leading-relaxed">"Sekolah disini asyik banget, gabakal nyesel buat para orang tua!"</p>
-                <p class="text-xs sm:text-sm font-bold text-slate-900">— Aisyah SIJA • Institut Teknologi Bandung</p>
-            </div>
-        </div>
-    </section>
 </div>
 @endsection

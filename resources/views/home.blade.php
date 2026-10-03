@@ -249,69 +249,6 @@
     </div>
   </section>
 
-  <!-- ==================== 6. APA KATA ALUMNI? ==================== -->
-  <section id="alumni" class="py-24 bg-white" data-aos="fade-up">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <div class="mb-10">
-        <div class="w-10 h-10 rounded-full bg-red-100 text-red-700 flex items-center justify-center mb-3">
-          <i data-lucide="graduation-cap" class="w-5 h-5"></i>
-        </div>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-          Apa Kata <span class="text-red-700">Alumni?</span>
-        </h2>
-        <p class="text-sm text-gray-500 mt-2 font-medium">Lihat Perjalanan Para Alumni Berprestasi Setelah Lulus</p>
-      </div>
-
-      <div class="bg-white rounded-3xl border-2 border-dashed border-gray-300 p-8 sm:p-12 shadow-sm relative">
-        <button onclick="prevAlumni()" aria-label="Previous"
-          class="absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-gray-400 hover:text-red-700 transition z-20 cursor-pointer">
-          <i data-lucide="chevron-left" class="w-4 h-4"></i>
-        </button>
-        <button onclick="nextAlumni()" aria-label="Next"
-          class="absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center text-gray-400 hover:text-red-700 transition z-20 cursor-pointer">
-          <i data-lucide="chevron-right" class="w-4 h-4"></i>
-        </button>
-
-        <div class="flex flex-col md:flex-row items-center gap-10">
-          <div class="relative shrink-0">
-            <div class="w-36 h-36 rotate-45 rounded-2xl bg-red-700 scale-90 shadow-md"></div>
-            <div class="absolute inset-0 rotate-45 rounded-2xl overflow-hidden border-2 border-white shadow-md">
-              <img id="alumni-img" src="{{ asset('images/home/alumni.png') }}" alt="Alumni"
-                class="w-full h-full object-cover -rotate-45 scale-[1.6]" />
-            </div>
-            <div id="alumni-badge" class="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20 bg-slate-900 text-white font-extrabold text-[10px] px-3 py-0.5 rounded-full">SIJA</div>
-          </div>
-
-          <div class="space-y-4 flex-1 text-center md:text-left">
-            <div class="flex justify-center md:justify-start">
-              <i data-lucide="quote" class="w-6 h-6 text-red-300"></i>
-            </div>
-            <p id="alumni-quote" class="text-lg text-gray-800 italic leading-relaxed">
-              "Sekolah disini asyik banget, gabakal nyesel buat para orang tua yang nyari calon sekolah buat anaknya sih! Fasilitas lengkap dan gurunya suportif banget."
-            </p>
-            <div class="pt-3 border-t border-gray-100">
-              <p class="text-base font-extrabold text-gray-900">
-                <span id="alumni-name">— Aisyah Putri Ramadhani</span>
-                <span class="text-red-700 font-bold"> • <span id="alumni-jurusan">SIJA</span></span>
-              </p>
-              <p id="alumni-role" class="text-sm text-gray-600 font-medium mt-1">Mahasiswi Teknik Informatika • Institut Teknologi Bandung (Lulus 2024)</p>
-              <a id="alumni-linkedin" href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 mt-3 text-gray-700 hover:text-red-700 transition">
-                <i data-lucide="linkedin" class="w-4 h-4 text-slate-800"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex items-center justify-center gap-2 mt-8">
-        <button onclick="setAlumniSlide(0)" id="dot-0" class="transition-all duration-300 rounded-full h-2 w-7 bg-red-700 cursor-pointer"></button>
-        <button onclick="setAlumniSlide(1)" id="dot-1" class="transition-all duration-300 rounded-full h-2 w-2 bg-gray-300 hover:bg-gray-400 cursor-pointer"></button>
-        <button onclick="setAlumniSlide(2)" id="dot-2" class="transition-all duration-300 rounded-full h-2 w-2 bg-gray-300 hover:bg-gray-400 cursor-pointer"></button>
-      </div>
-    </div>
-  </section>
-
   <!-- ==================== 7. 10 PARTNER INDUSTRI ==================== -->
   <section id="partner" class="py-16 bg-[#F4F5F7] overflow-hidden" data-aos="fade-in">
     <div class="max-w-7xl mx-auto px-4 mb-10 text-center">
@@ -369,16 +306,7 @@
         <button onclick="filterNews('Artikel Edukasi', this)" class="news-tab px-4 py-1.5 rounded-full text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Artikel Edukasi</button>
       </div>
 
-      <div class="relative px-6">
-        <button onclick="moveNewsSlide(-1)" aria-label="Previous News"
-          class="absolute -left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-red-700 hover:bg-red-800 text-white shadow-lg flex items-center justify-center transition z-20 cursor-pointer">
-          <i data-lucide="chevron-left" class="w-5 h-5"></i>
-        </button>
-        <button onclick="moveNewsSlide(1)" aria-label="Next News"
-          class="absolute -right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-red-700 hover:bg-red-800 text-white shadow-lg flex items-center justify-center transition z-20 cursor-pointer">
-          <i data-lucide="chevron-right" class="w-5 h-5"></i>
-        </button>
-
+      <div>
         <div class="overflow-hidden py-4">
           <div id="homeNewsTrack" class="flex transition-transform duration-500 ease-out gap-8">
             <div class="w-full md:w-[calc(33.333%-1.33rem)] shrink-0 news-slide-card" data-cat="Kegiatan Sekolah">
@@ -470,9 +398,22 @@
         </div>
       </div>
 
-      <div id="homeNewsDots" class="flex items-center justify-center gap-2 mt-8">
-        <span class="h-2 w-6 rounded-full bg-red-700 transition-all cursor-pointer" onclick="setNewsSlide(0)"></span>
-        <span class="h-2 w-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all cursor-pointer" onclick="setNewsSlide(1)"></span>
+      <!-- Carousel Navigation (Panah & Dots) -->
+      <div class="flex items-center justify-center gap-6 mt-12">
+        <button onclick="moveNewsSlide(-1)" aria-label="Previous News"
+          class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
+          <i data-lucide="chevron-left" class="w-5 h-5"></i>
+        </button>
+
+        <div id="homeNewsDots" class="flex items-center justify-center gap-2">
+          <span class="h-2 w-6 rounded-full bg-red-700 transition-all cursor-pointer" onclick="setNewsSlide(0)"></span>
+          <span class="h-2 w-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all cursor-pointer" onclick="setNewsSlide(1)"></span>
+        </div>
+
+        <button onclick="moveNewsSlide(1)" aria-label="Next News"
+          class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
+          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </button>
       </div>
     </div>
   </section>

@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let verifiedSsoValue = '';
     let isProfileSelected = false;
 
-    // 1. Submit Form Check SSO
+    // 1. Submit Form Check SSO (fail-closed: error TIDAK pernah dianggap terverifikasi)
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         const ssoVal = ssoInput.value.trim();
@@ -120,37 +120,32 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json',
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
             body: JSON.stringify({ sso: ssoVal })
         })
-        .then(response => response.json())
-        .then(data => {
-            checkBtn.textContent = 'Check SSO';
-            checkBtn.disabled = false;
+        .then(response => response.json().then(data => ({ ok: response.ok, data: data })))
+        .then(result => {
+            const data = result.data || null;
 
-            if (data.status === 'success') {
+            if (result.ok && data && data.status === 'success') {
+                checkBtn.textContent = 'Check SSO';
+                checkBtn.disabled = false;
+
                 verifiedSsoValue = data.data.sso;
                 cardName.textContent = data.data.name;
                 cardMajor.textContent = data.data.major;
                 cardDtp.textContent = 'Dtp: ' + data.data.dtp;
                 resultContainer.classList.remove('hidden');
             } else {
-                errorMsg.textContent = 'SSO tidak valid atau tidak ditemukan.';
-                errorMsg.classList.remove('hidden');
-                resultContainer.classList.add('hidden');
+                failVerification((data && data.message) || 'SSO tidak valid atau tidak ditemukan.');
             }
         })
-        .catch(error => {
-            checkBtn.textContent = 'Check SSO';
-            checkBtn.disabled = false;
-            
-            // Fallback mock
-            verifiedSsoValue = ssoVal;
-            cardName.textContent = 'Ahmad Dwi Santoso';
-            cardMajor.textContent = 'Sistem Informasi Jaringan & Aplikasi (SIJA)';
-            cardDtp.textContent = 'Dtp: 2023/2024';
-            resultContainer.classList.remove('hidden');
+        .catch(() => {
+            // Fail-closed: error jaringan/parse TIDAK dianggap terverifikasi.
+            // (Fallback mock lama dihapus — jangan tandai sukses saat gagal.)
+            failVerification('Gagal memverifikasi SSO. Periksa koneksi lalu coba lagi.');
         });
     });
 
@@ -182,6 +177,17 @@ document.addEventListener('DOMContentLoaded', function() {
         nextBtn.disabled = true;
         nextBtn.classList.add('bg-gray-400/50', 'text-white/60', 'cursor-not-allowed');
         nextBtn.classList.remove('bg-white', 'text-[#C8102E]', 'hover:bg-gray-100', 'cursor-pointer', 'shadow-md');
+    }
+
+    // Fail-closed: bersihkan status verifikasi & jangan izinkan lanjut saat gagal.
+    function failVerification(message) {
+        checkBtn.textContent = 'Check SSO';
+        checkBtn.disabled = false;
+        verifiedSsoValue = '';
+        resetSelection();
+        resultContainer.classList.add('hidden');
+        errorMsg.textContent = message;
+        errorMsg.classList.remove('hidden');
     }
 
     // 3. Klik Tombol Lanjut -> Buka Halaman Registration Form

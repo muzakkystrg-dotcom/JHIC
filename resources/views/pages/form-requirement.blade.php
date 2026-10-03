@@ -54,6 +54,17 @@
                 @csrf
                 <input type="hidden" name="sso" value="{{ $sso ?? '' }}">
 
+                @if ($errors->any())
+                    <div class="bg-white border-l-4 border-red-600 rounded-2xl p-6 shadow-lg">
+                        <p class="font-bold text-red-600 mb-2">Periksa kembali data berikut:</p>
+                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <!-- CARD 2: PERSONAL INFORMATION -->
                 <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-white/20">
                     <h3 class="text-xl sm:text-2xl font-bold text-red-600 mb-1">Personal Information</h3>

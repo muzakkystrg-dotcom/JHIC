@@ -165,39 +165,6 @@
             </a>
         </div>
 
-        <!-- ==================== 4. SECTION KARYA SISWA/I DI SIJA ==================== -->
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">
-                Karya siswa/i di <span style="color: #C8102E !important;">SIJA</span>
-            </h2>
-            <p class="text-xs sm:text-sm text-gray-500 mt-1">Beberapa Hasil karya siswa/i di kelas SIJA</p>
-        </div>
-
-        <!-- Grid 3 Card Karya Siswa -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            @foreach($works as $work)
-                <div class="bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
-                    <div class="relative aspect-[4/3] w-full overflow-hidden bg-gray-100 flex items-center justify-center">
-                        <img src="{{ $work['image'] }}" 
-                             alt="{{ $work['title'] }}" 
-                             class="w-full h-full object-cover">
-                        <!-- Watermark Overlay SIJA TJAT Sesuai Figma -->
-                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center gap-3">
-                            <span class="text-2xl font-black text-white tracking-widest drop-shadow-md">SIJA</span>
-                            <span class="text-2xl font-black text-white/70 tracking-widest drop-shadow-md">TJAT</span>
-                        </div>
-                    </div>
-                    <!-- Badge Tombol Merah Bawah -->
-                    <div class="p-3 text-center">
-                        <span style="background-color: #C8102E !important; color: #ffffff !important;"
-                              class="inline-block w-full py-2.5 px-4 rounded-xl text-xs font-bold tracking-wide shadow-sm">
-                            {{ $work['title'] }}
-                        </span>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
     </section>
 
 </div>

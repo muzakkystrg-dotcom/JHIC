@@ -307,6 +307,12 @@ document.addEventListener('DOMContentLoaded', function () {
       img.className = 'jf-detail__img';
       img.src = JURUFIND_SISWA_IMG;
       img.alt = 'Ilustrasi siswa ' + majorShort(primary);
+      // Belum ada foto final: kalau gambar gagal dimuat, sembunyikan kolom media
+      // agar layout tidak kolaps jadi blob kosong.
+      img.addEventListener('error', function () {
+        media.hidden = true;
+        section.classList.add('jf-detail--no-media');
+      });
       media.appendChild(img);
       section.appendChild(media);
 

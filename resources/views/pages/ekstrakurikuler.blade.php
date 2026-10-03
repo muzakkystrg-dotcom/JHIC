@@ -179,53 +179,33 @@
         </div>
 
         <div class="relative px-2 sm:px-6">
-            
-            <!-- Tombol Panah Kiri Slider -->
-            <button onclick="prevEkstraSlide()" 
-                    aria-label="Previous Slide"
-                    style="background-color: #C8102E !important; color: #ffffff !important;"
-                    class="absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-red-800 transition active:scale-95 z-20 cursor-pointer">
-                <i data-lucide="chevron-left" class="w-5 h-5"></i>
-            </button>
-
-            <!-- Tombol Panah Kanan Slider -->
-            <button onclick="nextEkstraSlide()" 
-                    aria-label="Next Slide"
-                    style="background-color: #C8102E !important; color: #ffffff !important;"
-                    class="absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-red-800 transition active:scale-95 z-20 cursor-pointer">
-                <i data-lucide="chevron-right" class="w-5 h-5"></i>
-            </button>
 
             <!-- Track Carousel -->
             <div class="overflow-hidden py-4">
                 <div id="ekstraCarouselTrack" class="flex transition-transform duration-500 ease-out gap-6">
                     @foreach($ekstras as $item)
                         <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0">
-                            <!-- KARTU EKSTRAKURIKULER (CORNER DASHED BRACKETS) -->
-                            <div class="relative p-5 bg-white transition-all duration-300 hover:-translate-y-1 select-none shadow-sm">
-                                <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-dashed border-gray-400 pointer-events-none"></div>
-                                <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-dashed border-gray-400 pointer-events-none"></div>
-                                <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-dashed border-gray-400 pointer-events-none"></div>
-                                <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-dashed border-gray-400 pointer-events-none"></div>
-
-                                <div class="space-y-4">
-                                    <div class="w-full aspect-[2/1] overflow-hidden rounded-md bg-gray-100 flex items-center justify-center">
-                                        <img src="{{ $item['image'] }}" 
-                                             alt="{{ $item['name'] }}" 
-                                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                            <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
+                                <div>
+                                    <div class="h-48 bg-gray-100 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
+                                        <img src="{{ $item['image'] }}"
+                                             alt="{{ $item['name'] }}"
+                                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                              onerror="this.onerror=null; this.src='https://placehold.co/400x200?text=Ekstrakurikuler';">
                                     </div>
-
-                                    <!-- Tombol Lihat ➔ Mengarah ke Halaman Detail & Galeri -->
-                                    <div class="flex items-center justify-between pt-1">
-                                        <h4 class="text-sm font-bold text-gray-900 tracking-tight">{{ $item['name'] }}</h4>
-                                        <a href="{{ route('ekstrakurikuler.show', ['slug' => $item['slug']]) }}" 
-                                           style="background-color: #C8102E !important; color: #ffffff !important;" 
-                                           class="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold rounded hover:bg-red-800 transition active:scale-95 shadow-sm">
-                                            <span>Lihat</span>
-                                            <span class="text-xs leading-none">➔</span>
-                                        </a>
+                                    <div class="flex items-center justify-between text-xs font-semibold text-gray-400 mb-2">
+                                        <span class="text-red-700">Ekstrakurikuler</span>
                                     </div>
+                                    <h3 class="font-bold text-base text-gray-900 mb-3 line-clamp-2 group-hover:text-red-700 transition-colors">
+                                        {{ $item['name'] }}
+                                    </h3>
+                                </div>
+                                <div class="pt-4 border-t border-gray-50 flex justify-end">
+                                    <a href="{{ route('ekstrakurikuler.show', ['slug' => $item['slug']]) }}"
+                                       class="inline-flex items-center gap-1.5 text-xs font-bold text-red-700 hover:text-red-800 border border-red-200 rounded-full px-4 py-2 hover:bg-red-50 transition cursor-pointer">
+                                        Lihat
+                                        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -233,8 +213,23 @@
                 </div>
             </div>
 
-            <!-- Dots Pagination Indikator -->
-            <div id="ekstraDotsContainer" class="flex items-center justify-center gap-2 mt-8"></div>
+            <!-- Carousel Navigation (Panah & Dots) -->
+            <div class="flex items-center justify-center gap-6 mt-8">
+                <button onclick="prevEkstraSlide()"
+                        aria-label="Previous"
+                        class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+
+                <!-- Tempat Dots Otomatis -->
+                <div id="ekstraDotsContainer" class="flex flex-wrap items-center justify-center gap-2 max-w-lg"></div>
+
+                <button onclick="nextEkstraSlide()"
+                        aria-label="Next"
+                        class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
+            </div>
 
         </div>
 
@@ -251,17 +246,15 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
             @foreach($clubs as $club)
-                <div class="relative p-5 bg-white transition-all duration-300 hover:-translate-y-1 select-none shadow-sm">
-                    <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-dashed border-gray-400 pointer-events-none"></div>
-                    <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-dashed border-gray-400 pointer-events-none"></div>
-                    <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-dashed border-gray-400 pointer-events-none"></div>
-                    <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-dashed border-gray-400 pointer-events-none"></div>
-
-                    <div class="space-y-4">
-                        <div class="w-full aspect-[2/1] bg-gray-300 rounded-md flex items-center justify-center"></div>
-                        <div class="pt-1">
-                            <h4 class="text-sm font-bold text-gray-900 tracking-tight">{{ $club['name'] }}</h4>
+                <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
+                    <div>
+                        <div class="h-48 bg-gray-100 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100"></div>
+                        <div class="flex items-center justify-between text-xs font-semibold text-gray-400 mb-2">
+                            <span class="text-red-700">Club</span>
                         </div>
+                        <h3 class="font-bold text-base text-gray-900 mb-3 line-clamp-2 group-hover:text-red-700 transition-colors">
+                            {{ $club['name'] }}
+                        </h3>
                     </div>
                 </div>
             @endforeach
@@ -325,9 +318,9 @@
             for (let i = 0; i < totalDots; i++) {
                 const dot = document.createElement('button');
                 dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-                dot.className = `transition-all duration-300 rounded-full h-2.5 cursor-pointer ${
-                    i === currentIndex ? 'w-2.5 bg-[#C8102E]' : 'w-2.5 bg-gray-300 hover:bg-gray-400'
-                }`;
+                dot.className = 'rounded-full transition-all cursor-pointer h-2.5 ' + (
+                    i === currentIndex ? 'bg-red-700 w-6' : 'bg-gray-300 w-2.5 hover:bg-gray-400'
+                );
                 dot.addEventListener('click', () => {
                     currentIndex = i;
                     updateSlider();
@@ -344,9 +337,9 @@
 
             Array.from(dotsContainer.children).forEach((dot, idx) => {
                 if (idx === currentIndex) {
-                    dot.className = 'transition-all duration-300 rounded-full h-2.5 cursor-pointer w-2.5 bg-[#C8102E]';
+                    dot.className = 'rounded-full transition-all cursor-pointer h-2.5 bg-red-700 w-6';
                 } else {
-                    dot.className = 'transition-all duration-300 rounded-full h-2.5 cursor-pointer w-2.5 bg-gray-300 hover:bg-gray-400';
+                    dot.className = 'rounded-full transition-all cursor-pointer h-2.5 bg-gray-300 w-2.5 hover:bg-gray-400';
                 }
             });
         }

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'SMK Telkom Sidoarjo')</title>
     <link rel="icon" href="{{ asset('images/home/favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +67,7 @@
 
         <!-- Dropdown: Program -->
         <div class="relative group py-2">
-          <button class="flex items-center gap-1.5 py-1 transition font-medium {{ request()->routeIs('jurusan.*') || request()->routeIs('ekstrakurikuler.*') ? 'text-red-700 font-bold' : 'hover:text-red-700 text-gray-700' }}">
+          <button class="flex items-center gap-1.5 py-1 transition {{ request()->routeIs('jurusan.*') || request()->routeIs('ekstrakurikuler.*') || request()->routeIs('digital-talent.*') || request()->routeIs('program-ccp.*') || request()->routeIs('program-ts21.*') ? 'text-red-700 font-bold' : 'hover:text-red-700 font-medium text-gray-700' }}">
             <span>Program</span>
             <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-500 group-hover:rotate-180 group-hover:text-red-700 transition"></i>
           </button>
