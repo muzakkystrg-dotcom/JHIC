@@ -4,6 +4,7 @@
 .env.example
 .env.backup
 .env.production
+.env.bak.*
 .phpactor.json
 .phpunit.result.cache
 /.codex
@@ -16,6 +17,8 @@
 /auth.json
 /node_modules
 /public/build
+# Backup PNG asli (hasil optimasi WebP) - disimpan lokal, tidak di repo (15 MB)
+/public/images/_originals
 /public/fonts-manifest.dev.json
 /public/hot
 /public/storage
