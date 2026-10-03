@@ -15,10 +15,10 @@
                 <!-- Sisi Kiri: 3D Karakter / Bintang Jurusan di atas Podium -->
                 <div class="lg:col-span-5 flex justify-center items-center" data-aos="zoom-in">
                     <div class="relative w-full max-w-[340px] sm:max-w-[380px]">
-                        <img src="{{ asset('images/jurusan/jurusan.png') }}" 
+                        <img src="{{ asset('images/jurusan/jurusan.webp') }}" 
                              alt="3D Karakter Jurusan SMK Telkom Sidoarjo" 
                              class="w-full h-auto object-contain select-none drop-shadow-xl"
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=3D+Jurusan';">
+                             onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="eager" decoding="async" fetchpriority="high" width="404" height="244">
                     </div>
                 </div>
 
@@ -108,13 +108,13 @@
                     </p>
                 </div>
 
-                <!-- Kanan: Foto Siswa TJAT Pegang Megaphone (images/jurusan/tjat.png) -->
+                <!-- Kanan: Foto Siswa TJAT Pegang Megaphone (images/jurusan/tjat.webp) -->
                 <div class="lg:col-span-4 flex justify-center items-center">
                     <div class="relative w-full max-w-[240px] sm:max-w-[270px]">
-                        <img src="{{ asset('images/jurusan/tjat.png') }}" 
+                        <img src="{{ asset('images/jurusan/tjat.webp') }}" 
                              alt="Siswa TJAT" 
                              class="w-full h-auto object-contain select-none drop-shadow-md"
-                             onerror="this.onerror=null; this.src='https://placehold.co/260x360?text=Foto+Siswa+TJAT';">
+                             onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="eager" decoding="async" fetchpriority="high" width="233" height="331">
                     </div>
                 </div>
             </div>
@@ -126,10 +126,10 @@
                 <div class="lg:col-span-4 flex flex-col items-center">
                     <div class="w-full max-w-[230px] rounded-3xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50 flex flex-col items-center">
                         <div class="w-full h-64 overflow-hidden flex items-center justify-center bg-gray-100">
-                            <img src="{{ asset('images/profileguru/adi.png') }}" 
+                            <img src="{{ asset('images/profileguru/adi.webp') }}" 
                                  alt="Muhammad Adi Riswanto - Guru Produktif TJAT" 
                                  class="w-full h-full object-cover object-top"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/240x280?text=Foto+Pak+Adi';">
+                                 onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="lazy" decoding="async" width="244" height="306">
                         </div>
                         <!-- Badge Merah Solid -->
                         <div class="w-full py-2.5 px-3 text-center text-white" style="background-color: #8B0000 !important;">

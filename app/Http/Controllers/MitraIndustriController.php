@@ -21,14 +21,14 @@ class MitraIndustriController extends Controller
                 'website_label' => 'axelbit.com',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/axelbit.png'),
+                'logo' => asset('images/mitra/axelbit.webp'),
                 'jobs' => [
                     [
                         'title' => 'Network Technician',
                         'company' => 'Axelbit Solutions',
                         'location' => 'Surabaya, Indonesia',
                         'posted' => '2 Hari Yang Lalu',
-                        'logo' => asset('images/mitra/axelbit.png'),
+                        'logo' => asset('images/mitra/axelbit.webp'),
                     ]
                 ]
             ],
@@ -41,14 +41,14 @@ class MitraIndustriController extends Controller
                 'website_label' => 'digiprener.id',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/digi.png'),
+                'logo' => asset('images/mitra/digi.webp'),
                 'jobs' => [
                     [
                         'title' => 'Junior Web Developer',
                         'company' => 'DigiPrener Tech',
                         'location' => 'Surabaya, Indonesia',
                         'posted' => '1 Hari Yang Lalu',
-                        'logo' => asset('images/mitra/digi.png'),
+                        'logo' => asset('images/mitra/digi.webp'),
                     ]
                 ]
             ],
@@ -61,14 +61,14 @@ class MitraIndustriController extends Controller
                 'website_label' => 'jagoanhosting.com',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/jagoanhosting.png'),
+                'logo' => asset('images/mitra/jagoanhosting.webp'),
                 'jobs' => [
                     [
                         'title' => 'Cloud System Support',
                         'company' => 'Jagoan Hosting Indonesia',
                         'location' => 'Malang, Indonesia',
                         'posted' => '3 Hari Yang Lalu',
-                        'logo' => asset('images/mitra/jagoanhosting.png'),
+                        'logo' => asset('images/mitra/jagoanhosting.webp'),
                     ]
                 ]
             ],
@@ -81,14 +81,14 @@ class MitraIndustriController extends Controller
                 'website_label' => 'markazdesign.id',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/markaz.png'),
+                'logo' => asset('images/mitra/markaz.webp'),
                 'jobs' => [
                     [
                         'title' => 'Creative Graphic Designer',
                         'company' => 'Markaz Design Studio',
                         'location' => 'Sidoarjo, Indonesia',
                         'posted' => '1 Hari Yang Lalu',
-                        'logo' => asset('images/mitra/markaz.png'),
+                        'logo' => asset('images/mitra/markaz.webp'),
                     ]
                 ]
             ],
@@ -101,14 +101,14 @@ class MitraIndustriController extends Controller
                 'website_label' => 'ptgaruda-telkomind.com',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/gt.png'),
+                'logo' => asset('images/mitra/gt.webp'),
                 'jobs' => [
                     [
                         'title' => 'Junior DevOps',
                         'company' => 'Pt. Garuda Telekomunikasi Ind...',
                         'location' => 'Surabaya, Indonesia',
                         'posted' => '1 Hari Yang Lalu',
-                        'logo' => asset('images/mitra/gt.png'),
+                        'logo' => asset('images/mitra/gt.webp'),
                     ]
                 ]
             ],
@@ -121,7 +121,7 @@ class MitraIndustriController extends Controller
                 'website_label' => 'globalinfratek.co.id',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/gi.png'),
+                'logo' => asset('images/mitra/gi.webp'),
                 'jobs' => []
             ],
             'pt-javacreatiox-network-intermedia' => [
@@ -133,14 +133,14 @@ class MitraIndustriController extends Controller
                 'website_label' => 'javacreatiox.com',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/javacreat.png'),
+                'logo' => asset('images/mitra/javacreat.webp'),
                 'jobs' => [
                     [
                         'title' => 'Fullstack Developer Trainee',
                         'company' => 'PT Javacreatiox Network',
                         'location' => 'Surabaya, Indonesia',
                         'posted' => '2 Hari Yang Lalu',
-                        'logo' => asset('images/mitra/javacreat.png'),
+                        'logo' => asset('images/mitra/javacreat.webp'),
                     ]
                 ]
             ],
@@ -153,14 +153,14 @@ class MitraIndustriController extends Controller
                 'website_label' => 'radnet.id',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/radnext.png'),
+                'logo' => asset('images/mitra/radnext.webp'),
                 'jobs' => [
                     [
                         'title' => 'Technical Support NOC',
                         'company' => 'PT Radnet Digital Indonesia',
                         'location' => 'Surabaya, Indonesia',
                         'posted' => '1 Hari Yang Lalu',
-                        'logo' => asset('images/mitra/radnext.png'),
+                        'logo' => asset('images/mitra/radnext.webp'),
                     ]
                 ]
             ],
@@ -173,14 +173,14 @@ class MitraIndustriController extends Controller
                 'website_label' => 'wowrack.co.id',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/wowrack.png'),
+                'logo' => asset('images/mitra/wowrack.webp'),
                 'jobs' => [
                     [
                         'title' => 'Data Center Technician',
                         'company' => 'Wowrack Indonesia',
                         'location' => 'Surabaya, Indonesia',
                         'posted' => '4 Hari Yang Lalu',
-                        'logo' => asset('images/mitra/wowrack.png'),
+                        'logo' => asset('images/mitra/wowrack.webp'),
                     ]
                 ]
             ],
@@ -193,7 +193,7 @@ class MitraIndustriController extends Controller
                 'website_label' => 'ptgaruda-telkomind.com',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/gt.png'),
+                'logo' => asset('images/mitra/gt.webp'),
                 'jobs' => []
             ],
             'pt-global-infra-teknologi-pabean' => [
@@ -205,7 +205,7 @@ class MitraIndustriController extends Controller
                 'website_label' => 'globalinfratek.co.id',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/gi.png'),
+                'logo' => asset('images/mitra/gi.webp'),
                 'jobs' => []
             ],
             'pt-radnet-digital-indonesia-kemenkomdigi' => [
@@ -217,7 +217,7 @@ class MitraIndustriController extends Controller
                 'website_label' => 'radnet.id',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/radnext.png'),
+                'logo' => asset('images/mitra/radnext.webp'),
                 'jobs' => []
             ],
             'weza-group-pt-weza-punya-cerita' => [
@@ -229,14 +229,14 @@ class MitraIndustriController extends Controller
                 'website_label' => 'wezagroup.com',
                 'instagram' => 'https://instagram.com',
                 'linkedin' => 'https://linkedin.com',
-                'logo' => asset('images/mitra/weza.png'),
+                'logo' => asset('images/mitra/weza.webp'),
                 'jobs' => [
                     [
                         'title' => 'B2B Solution Associate',
                         'company' => 'Weza Group',
                         'location' => 'Sidoarjo, Indonesia',
                         'posted' => '2 Hari Yang Lalu',
-                        'logo' => asset('images/mitra/weza.png'),
+                        'logo' => asset('images/mitra/weza.webp'),
                     ]
                 ]
             ],

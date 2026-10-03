@@ -4,18 +4,13 @@
 
 @section('content')
 
-<!-- CDN Chart.js untuk Grafik Statistik -->
-@push('styles')
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-@endpush
-
 <!-- Hero Section (Dengan animasi Fade-In) -->
 <section class="relative bg-hero-pattern w-full min-h-[500px] flex items-center overflow-hidden pt-28 pb-16" data-aos="fade-in" data-aos-duration="1000">
     <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
         <!-- Frame Kiri: 3D Icon Trophy (Animasi Zoom-In) -->
         <div class="relative w-full h-[350px] md:h-[400px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
-            <img src="{{ asset('images/prestasi/piala.png') }}" alt="Piala Prestasi" class="relative z-10 w-[200px] md:w-[240px] h-auto object-contain drop-shadow-2xl">
+            <img src="{{ asset('images/prestasi/piala.webp') }}" alt="Piala Prestasi" class="relative z-10 w-[200px] md:w-[240px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="206" height="273">
         </div>
 
         <!-- Teks Kanan (Animasi Fade-Right) -->
@@ -102,7 +97,7 @@
                         <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
                             <div>
                                 <div class="h-56 bg-gray-100 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
-                                    <img src="{{ $ach['image'] }}" alt="{{ $ach['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <img src="{{ $ach['image'] }}" alt="{{ $ach['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="eager" decoding="async" fetchpriority="high">
                                 </div>
                                 <span class="inline-block bg-red-50 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
                                     {{ $ach['category'] }}
@@ -148,8 +143,9 @@
 
 @push('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // 1. Inisialisasi Chart.js Bar Chart
+    document.addEventListener('DOMContentLoaded', async function() {
+        // 1. Inisialisasi Chart.js Bar Chart (Chart.js diunduh on-demand via Vite)
+        const Chart = await window.jhicLoadChart();
         const ctx = document.getElementById('achievementChart').getContext('2d');
         const chartData = @json($chartData);
 

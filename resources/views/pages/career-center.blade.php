@@ -42,9 +42,9 @@
                 <!-- Foto Siswi Hero (career.png) -->
                 <div class="lg:col-span-5 flex justify-center items-center" data-aos="zoom-in">
                     <div class="relative w-full max-w-[320px] sm:max-w-[420px]">
-                        <img src="{{ asset('images/career/career.png') }}" 
+                        <img src="{{ asset('images/career/career.webp') }}" 
                              alt="Siswi SMK Telkom Sidoarjo" 
-                             class="w-full h-auto object-contain max-h-[380px] sm:max-h-[460px] drop-shadow-2xl select-none">
+                             class="w-full h-auto object-contain max-h-[380px] sm:max-h-[460px] drop-shadow-2xl select-none" loading="eager" decoding="async" fetchpriority="high" width="433" height="433">
                     </div>
                 </div>
 
@@ -63,11 +63,11 @@
 
         @php
             $lowongans = [
-                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.png'), 'category' => 'Full Time'],
-                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.png'), 'category' => 'Full Time'],
-                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.png'), 'category' => 'Full Time'],
-                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.png'), 'category' => 'Full Time'],
-                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.png'), 'category' => 'Full Time'],
+                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.webp'), 'category' => 'Full Time'],
+                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.webp'), 'category' => 'Full Time'],
+                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.webp'), 'category' => 'Full Time'],
+                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.webp'), 'category' => 'Full Time'],
+                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.webp'), 'category' => 'Full Time'],
             ];
         @endphp
 
@@ -77,7 +77,7 @@
                 <div class="bg-white rounded-3xl p-5 sm:p-6 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
                     <div>
                         <div class="mb-4">
-                            <img src="{{ $job['logo'] }}" alt="Logo Mitra" class="h-9 sm:h-10 w-auto object-contain mb-3" onerror="this.src='{{ asset('images/footer/4. Garuda Spark Full Color 1.png') }}';">
+                            <img src="{{ $job['logo'] }}" alt="Logo Mitra" class="h-9 sm:h-10 w-auto object-contain mb-3" onerror="this.src='{{ asset('images/footer/4. Garuda Spark Full Color 1.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
                             <h3 class="text-base font-bold text-slate-900 leading-snug">{{ $job['title'] }}</h3>
                             <p class="text-xs text-gray-500 font-medium mt-1">{{ $job['company'] }}</p>
                         </div>
@@ -119,10 +119,10 @@
     <!-- 4. BANNER HIRELINK MERAH (LEGA DI HP, SISWA TIDAK TERPOTONG) -->
     <section class="relative py-20 sm:py-28 lg:py-36 px-4 sm:px-6 lg:px-8 text-white overflow-hidden flex items-center justify-center min-h-[420px] sm:min-h-[500px]" style="background-color: #C8102E !important;">
         <div class="absolute left-0 bottom-0 hidden lg:flex items-end h-[90%] pointer-events-none z-10">
-            <img src="{{ asset('images/career/career.png') }}" alt="Siswi" class="h-full w-auto max-h-[420px] object-contain object-bottom opacity-95">
+            <img src="{{ asset('images/career/career.webp') }}" alt="Siswi" class="h-full w-auto max-h-[420px] object-contain object-bottom opacity-95" loading="lazy" decoding="async" width="433" height="433">
         </div>
         <div class="absolute right-0 bottom-0 hidden lg:flex items-end h-[90%] pointer-events-none z-10">
-            <img src="{{ asset('images/career/career1.png') }}" alt="Siswa" class="h-full w-auto max-h-[420px] object-contain object-bottom opacity-95" onerror="this.src='{{ asset('images/home/program.png') }}';">
+            <img src="{{ asset('images/career/career1.webp') }}" alt="Siswa" class="h-full w-auto max-h-[420px] object-contain object-bottom opacity-95" onerror="this.src='{{ asset('images/home/program.webp') }}';" loading="lazy" decoding="async" width="204" height="206">
         </div>
         <div class="max-w-2xl mx-auto text-center relative z-20 space-y-4 sm:space-y-6">
             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">Hirelink!</h2>

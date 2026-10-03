@@ -8,9 +8,9 @@
 <section class="relative bg-hero-pattern w-full min-h-[500px] flex items-center overflow-hidden pt-28 pb-16" data-aos="fade-in" data-aos-duration="1000">
     <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
-        <!-- Frame Kiri: Foto Siswa Murni (Mengambil dari folder images/berita/berita.png) -->
+        <!-- Frame Kiri: Foto Siswa Murni (Mengambil dari folder images/berita/berita.webp) -->
         <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
-            <img src="{{ asset('images/berita/berita.png') }}" alt="Siswa SMK Telkom" class="relative z-10 w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl">
+            <img src="{{ asset('images/berita/berita.webp') }}" alt="Siswa SMK Telkom" class="relative z-10 w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="261" height="285">
         </div>
 
         <!-- Teks Kanan -->
@@ -68,8 +68,8 @@
                         <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
                             <div>
                                 <div class="h-48 bg-gray-100 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
-                                    <!-- Menampilkan thumbnail dari variabel array $news['thumbnail'] (asset('images/berita/juara.png')) -->
-                                    <img src="{{ $news['thumbnail'] }}" alt="Thumbnail Berita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <!-- Menampilkan thumbnail dari variabel array $news['thumbnail'] (asset('images/berita/juara.webp')) -->
+                                    <img src="{{ $news['thumbnail'] }}" alt="Thumbnail Berita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="eager" decoding="async" fetchpriority="high">
                                 </div>
                                 <div class="flex items-center justify-between text-xs font-semibold text-gray-400 mb-2">
                                     <span class="text-red-700">{{ $news['category'] }}</span>

@@ -10,8 +10,8 @@
         
         <!-- Frame Kiri: Foto Siswi Murni (Tanpa Background Merah & Tanpa Dashed Line) -->
         <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
-            <!-- Foto Siswi (Mengambil dari folder images/home/tifany.png) -->
-            <img src="{{ asset('images/home/tifany.png') }}" alt="Siswi K3 SMK Telkom" class="relative z-10 w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl">
+            <!-- Foto Siswi (Mengambil dari folder images/home/tifany.webp) -->
+            <img src="{{ asset('images/home/tifany.webp') }}" alt="Siswi K3 SMK Telkom" class="relative z-10 w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="392" height="425">
         </div>
 
         <!-- Teks Kanan -->

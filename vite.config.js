@@ -10,4 +10,22 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    build: {
+        // Pisahkan pustaka pihak ketiga dari kode aplikasi agar:
+        //  - browser bisa meng-cache vendor secara terpisah (jarang berubah)
+        //  - Chart.js (~200 KB) hanya diunduh di halaman yang memakainya
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (id.includes('node_modules')) {
+                        if (id.includes('chart.js')) return 'chart';
+                        if (id.includes('lucide')) return 'lucide';
+                        if (id.includes('aos')) return 'aos';
+                    }
+                },
+            },
+        },
+        // Naikkan sedikit batas agar tidak berisik; aset kita memang kecil.
+        chunkSizeWarningLimit: 900,
+    },
 });

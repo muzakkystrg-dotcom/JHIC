@@ -16,7 +16,7 @@ class GuruController extends Controller
         $kepalaSekolah = [
             'nama' => 'Abror S.Hum M.Pd',
             'slug' => 'abror-s-hum-m-pd',
-            'foto' => asset('images/profileguru/pabror.png'),
+            'foto' => asset('images/profileguru/pabror.webp'),
             'pendidikan' => 'S2 Manajemen Pendidikan',
             'keahlian' => 'Leadership & Digital Pedagogy',
             'jabatan' => 'Kepala Sekolah',
@@ -30,7 +30,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Rachel Apriliani, S.Psi',
                 'slug' => 'rachel-apriliani',
-                'foto' => asset('images/profileguru/rachel.png'),
+                'foto' => asset('images/profileguru/rachel.webp'),
                 'jabatan' => 'Wakil Kepala Bidang Kesiswaan',
                 'pendidikan' => 'S1 Psikologi Pendidikan',
                 'keahlian' => 'Bimbingan Konseling',
@@ -40,7 +40,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Bambang Sudarsono, S.Pd',
                 'slug' => 'bambang-sudarsono',
-                'foto' => asset('images/profileguru/rachel.png'),
+                'foto' => asset('images/profileguru/rachel.webp'),
                 'jabatan' => 'Wakil Kepala Bidang Kurikulum',
                 'pendidikan' => 'S1 Pendidikan Teknologi Informasi',
                 'keahlian' => 'Kurikulum Vokasi Digital',
@@ -50,7 +50,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Hendra Setiawan, S.T',
                 'slug' => 'hendra-setiawan',
-                'foto' => asset('images/profileguru/adi.png'),
+                'foto' => asset('images/profileguru/adi.webp'),
                 'jabatan' => 'Wakil Kepala Bidang Hubungan Industri',
                 'pendidikan' => 'S1 Teknik Telekomunikasi',
                 'keahlian' => 'Hubungan Industri & Magang',
@@ -60,7 +60,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Agus Wahyudi, S.T',
                 'slug' => 'agus-wahyudi',
-                'foto' => asset('images/profileguru/pabror.png'),
+                'foto' => asset('images/profileguru/pabror.webp'),
                 'jabatan' => 'Wakil Kepala Bidang Sarana & Prasarana',
                 'pendidikan' => 'S1 Teknik Komputer',
                 'keahlian' => 'Manajemen Fasilitas & Lab',
@@ -70,7 +70,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Dewi Sartika, M.Pd',
                 'slug' => 'dewi-sartika',
-                'foto' => asset('images/profileguru/ike.png'),
+                'foto' => asset('images/profileguru/ike.webp'),
                 'jabatan' => 'Wakil Kepala Bidang Penjaminan Mutu',
                 'pendidikan' => 'S2 Administrasi Pendidikan',
                 'keahlian' => 'Sistem Manajemen Mutu ISO 21001',
@@ -80,7 +80,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Ferry Anugerah, S.Kom',
                 'slug' => 'ferry-anugerah',
-                'foto' => asset('images/profileguru/adi.png'),
+                'foto' => asset('images/profileguru/adi.webp'),
                 'jabatan' => 'Wakil Kepala Bidang Digitalisasi Sekolah',
                 'pendidikan' => 'S1 Sistem Informasi',
                 'keahlian' => 'Smart School Platform',
@@ -90,7 +90,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Maya Anggraini, S.Pd',
                 'slug' => 'maya-anggraini',
-                'foto' => asset('images/profileguru/rachel.png'),
+                'foto' => asset('images/profileguru/rachel.webp'),
                 'jabatan' => 'Wakil Kepala Bidang Keasramaan & Karakter',
                 'pendidikan' => 'S1 Bimbingan Konseling',
                 'keahlian' => 'Pendidikan Karakter & Kedisiplinan',
@@ -100,7 +100,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Rizky Pratama, S.ST',
                 'slug' => 'rizky-pratama',
-                'foto' => asset('images/profileguru/adi.png'),
+                'foto' => asset('images/profileguru/adi.webp'),
                 'jabatan' => 'Wakil Kepala Bidang Kewirausahaan & UPJ',
                 'pendidikan' => 'D4 Manajemen Informatika',
                 'keahlian' => 'Business Incubator & Startup',
@@ -146,7 +146,7 @@ class GuruController extends Controller
         $i = 1;
         foreach ($namaGuruData as $nama => $mapel) {
             // Rotasi foto agar dinamis
-            $foto = ($i % 3 == 0) ? asset('images/profileguru/ike.png') : (($i % 2 == 0) ? asset('images/profileguru/adi.png') : asset('images/profileguru/pabror.png'));
+            $foto = ($i % 3 == 0) ? asset('images/profileguru/ike.webp') : (($i % 2 == 0) ? asset('images/profileguru/adi.webp') : asset('images/profileguru/pabror.webp'));
             
             $guruMapel[] = [
                 'nama' => $nama,
@@ -167,7 +167,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Nurul Hidayati, S.E',
                 'slug' => 'nurul-hidayati',
-                'foto' => asset('images/profileguru/rachel.png'),
+                'foto' => asset('images/profileguru/rachel.webp'),
                 'jabatan' => 'Kepala Urusan Keuangan',
                 'pendidikan' => 'S1 Akuntansi Keuangan',
                 'keahlian' => 'Administrasi & Billing',
@@ -177,7 +177,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Budi Prasetyo, A.Md',
                 'slug' => 'budi-prasetyo',
-                'foto' => asset('images/profileguru/adi.png'),
+                'foto' => asset('images/profileguru/adi.webp'),
                 'jabatan' => 'Kepala Tata Usaha',
                 'pendidikan' => 'D3 Manajemen Informatika',
                 'keahlian' => 'Administrasi & Kearsipan',
@@ -187,7 +187,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Rian Hidayat, S.Kom',
                 'slug' => 'rian-hidayat',
-                'foto' => asset('images/profileguru/pabror.png'),
+                'foto' => asset('images/profileguru/pabror.webp'),
                 'jabatan' => 'Laboran & IT Support',
                 'pendidikan' => 'S1 Teknik Informatika',
                 'keahlian' => 'Hardware & Server Maintenance',
@@ -197,7 +197,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Dewi Anggraini, S.Hum',
                 'slug' => 'dewi-anggraini',
-                'foto' => asset('images/profileguru/ike.png'),
+                'foto' => asset('images/profileguru/ike.webp'),
                 'jabatan' => 'Pustakawan Digital',
                 'pendidikan' => 'S1 Ilmu Perpustakaan',
                 'keahlian' => 'Literasi Digital & E-Library',
@@ -207,7 +207,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Slamet Riyadi, S.AP',
                 'slug' => 'slamet-riyadi',
-                'foto' => asset('images/profileguru/adi.png'),
+                'foto' => asset('images/profileguru/adi.webp'),
                 'jabatan' => 'Staf Administrasi Kepegawaian',
                 'pendidikan' => 'S1 Administrasi Publik',
                 'keahlian' => 'Kepegawaian & SDM Sekolah',
@@ -217,7 +217,7 @@ class GuruController extends Controller
             [
                 'nama' => 'Citra Maharani, S.I.Kom',
                 'slug' => 'citra-maharani',
-                'foto' => asset('images/profileguru/rachel.png'),
+                'foto' => asset('images/profileguru/rachel.webp'),
                 'jabatan' => 'Staf Hubungan Masyarakat (Humas)',
                 'pendidikan' => 'S1 Ilmu Komunikasi',
                 'keahlian' => 'Public Relations & Branding',

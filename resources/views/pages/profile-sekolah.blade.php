@@ -10,7 +10,7 @@
         
         <!-- Frame Kiri: Siswi Berjilbab (Animasi Zoom-In) -->
         <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
-            <img src="{{ asset('images/profile/siswi.png') }}" alt="Siswi SMK Telkom" class="relative z-10 w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl">
+            <img src="{{ asset('images/profile/siswi.webp') }}" alt="Siswi SMK Telkom" class="relative z-10 w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="351" height="357">
         </div>
 
         <!-- Teks Kanan (Animasi Fade-Right) -->
@@ -93,7 +93,7 @@
 
                 <!-- Sisi Kanan: Ilustrasi 3D Buku Dokumen Merah (Animasi Zoom-In) -->
                 <div class="lg:col-span-5 flex justify-center items-center" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="{{ asset('images/profile/buku.png') }}" alt="Ilustrasi Buku Dokumen" class="w-64 md:w-80 h-auto object-contain drop-shadow-xl hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('images/profile/buku.webp') }}" alt="Ilustrasi Buku Dokumen" class="w-64 md:w-80 h-auto object-contain drop-shadow-xl hover:scale-105 transition-transform duration-300" loading="eager" decoding="async" fetchpriority="high" width="253" height="296">
                 </div>
 
             </div>
@@ -114,7 +114,7 @@
                 
                 <!-- Sisi Kiri: Badge Medali Akreditasi A (Animasi Zoom-In) -->
                 <div class="lg:col-span-5 flex justify-center" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="{{ asset('images/profile/akreditasi.png') }}" alt="Terakreditasi A" class="w-56 md:w-64 h-auto object-contain drop-shadow-lg hover:rotate-3 transition-transform duration-300">
+                    <img src="{{ asset('images/profile/akreditasi.webp') }}" alt="Terakreditasi A" class="w-56 md:w-64 h-auto object-contain drop-shadow-lg hover:rotate-3 transition-transform duration-300" loading="lazy" decoding="async" width="360" height="360">
                 </div>
 
                 <!-- Sisi Kanan: Teks Akreditasi & Tombol Lihat (Animasi Fade-Left) -->
@@ -161,7 +161,7 @@
 
             <!-- Sisi Kanan: Bagan / Diagram Struktur Organisasi (Animasi Zoom-In) -->
             <div class="lg:col-span-7 flex justify-center bg-white p-6 rounded-3xl border border-gray-100 shadow-sm" data-aos="zoom-in" data-aos-delay="200">
-                <img src="{{ asset('images/profile/struktur.png') }}" alt="Bagan Struktur Organisasi" class="w-full h-auto object-contain cursor-pointer hover:opacity-95 transition-opacity">
+                <img src="{{ asset('images/profile/struktur.webp') }}" alt="Bagan Struktur Organisasi" class="w-full h-auto object-contain cursor-pointer hover:opacity-95 transition-opacity" loading="lazy" decoding="async" width="469" height="466">
             </div>
 
         </div>

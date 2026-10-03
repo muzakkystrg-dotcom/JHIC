@@ -76,7 +76,7 @@
                         <img src="{{ $mitraDetail['logo'] }}" 
                              alt="{{ $mitraDetail['nama'] }}" 
                              class="max-h-72 w-auto object-contain drop-shadow-xl select-none"
-                             onerror="this.onerror=null; this.src='https://placehold.co/300x300?text={{ urlencode($mitraDetail['nama']) }}';">
+                             onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}'nama']) }}';" loading="eager" decoding="async" fetchpriority="high">
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@
                                 <div class="bg-white rounded-3xl p-5 border border-gray-200 shadow-sm hover:shadow-lg transition duration-200 flex flex-col justify-between max-w-sm">
                                     <div>
                                         <div class="mb-3">
-                                            <img src="{{ $job['logo'] }}" alt="Logo" class="h-9 w-auto object-contain" onerror="this.src='{{ $mitraDetail['logo'] }}';">
+                                            <img src="{{ $job['logo'] }}" alt="Logo" class="h-9 w-auto object-contain" onerror="this.src='{{ $mitraDetail['logo'] }}';" loading="eager" decoding="async" fetchpriority="high">
                                         </div>
                                         <h4 class="text-sm font-bold text-slate-900 leading-snug">{{ $job['title'] }}</h4>
                                         <p class="text-[11px] text-gray-500 font-medium mt-0.5">{{ $job['company'] }}</p>
@@ -146,7 +146,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-center">
                     <div class="rounded-3xl overflow-hidden shadow-md border border-gray-200 relative aspect-[4/3] bg-gray-100 group">
-                        <img src="{{ asset('images/home/berita.png') }}" alt="Dokumentasi PKL 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="{{ asset('images/home/berita.webp') }}" alt="Dokumentasi PKL 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" width="307" height="138">
                         <div class="absolute inset-0 bg-black/30 flex items-center justify-center gap-4">
                             <span class="text-3xl font-black text-white tracking-widest drop-shadow-lg">SIJA</span>
                             <span class="text-3xl font-black text-white/80 tracking-widest drop-shadow-lg">TJAT</span>
@@ -154,7 +154,7 @@
                     </div>
 
                     <div class="rounded-3xl overflow-hidden shadow-xl border-2 border-white relative aspect-[4/3] bg-gray-100 md:scale-105 z-10 group">
-                        <img src="{{ asset('images/home/berita.png') }}" alt="Dokumentasi PKL 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="{{ asset('images/home/berita.webp') }}" alt="Dokumentasi PKL 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" width="307" height="138">
                         <div class="absolute inset-0 bg-black/35 flex items-center justify-center gap-4">
                             <span class="text-4xl font-black text-white tracking-widest drop-shadow-xl">SIJA</span>
                             <span class="text-4xl font-black text-white/80 tracking-widest drop-shadow-xl">TJAT</span>
@@ -162,7 +162,7 @@
                     </div>
 
                     <div class="rounded-3xl overflow-hidden shadow-md border border-gray-200 relative aspect-[4/3] bg-gray-100 group">
-                        <img src="{{ asset('images/home/berita.png') }}" alt="Dokumentasi PKL 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="{{ asset('images/home/berita.webp') }}" alt="Dokumentasi PKL 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" width="307" height="138">
                         <div class="absolute inset-0 bg-black/30 flex items-center justify-center gap-4">
                             <span class="text-3xl font-black text-white tracking-widest drop-shadow-lg">SIJA</span>
                             <span class="text-3xl font-black text-white/80 tracking-widest drop-shadow-lg">TJAT</span>
@@ -187,10 +187,10 @@
                 
                 <div class="lg:col-span-5 flex justify-center items-center" data-aos="zoom-in">
                     <div class="relative w-full max-w-[340px] sm:max-w-[400px]">
-                        <img src="{{ asset('images/career/career1.png') }}" 
+                        <img src="{{ asset('images/career/career1.webp') }}" 
                              alt="Siswa SMK Telkom Sidoarjo" 
                              class="w-full h-auto object-contain select-none drop-shadow-2xl"
-                             onerror="this.onerror=null; this.src='{{ asset('images/home/program.png') }}';">
+                             onerror="this.onerror=null; this.src='{{ asset('images/home/program.webp') }}';" loading="lazy" decoding="async" width="204" height="206">
                     </div>
                 </div>
 
@@ -255,7 +255,7 @@
                         <div class="h-16 w-full flex items-center justify-start mb-4">
                             <img src="{{ $m['logo'] }}" alt="{{ $m['nama'] }}" 
                                  class="max-h-12 max-w-[150px] object-contain group-hover:scale-105 transition-transform duration-300"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/150x50?text={{ urlencode($m['nama']) }}';">
+                                 onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}'nama']) }}';" loading="lazy" decoding="async">
                         </div>
 
                         <h3 class="text-base font-bold text-slate-900 mb-2 group-hover:text-[#C8102E] transition-colors">

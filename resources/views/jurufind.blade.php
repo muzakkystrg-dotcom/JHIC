@@ -5,8 +5,7 @@
 @section('content')
   <!-- ==================== 1. HERO ==================== -->
   <section class="relative bg-white overflow-hidden">
-    <img src={{ asset('images/blob.png') }} alt=""
-      class="absolute -left-24 top-8 w-[520px] max-w-none opacity-60 pointer-events-none hidden md:block" />
+    <img src={{ asset('images/blob.webp') }} alt="" class="absolute -left-24 top-8 w-[520px] max-w-none opacity-60 pointer-events-none hidden md:block" loading="eager" decoding="async" fetchpriority="high">
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 lg:pt-36 pb-16 lg:pb-24">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -31,8 +30,7 @@
         <!-- Kanan: maskot dalam heksagon dashed -->
         <div class="relative hidden md:flex justify-center items-center h-[420px]">
           <div class="jf-hex"></div>
-          <img src={{ asset('images/mascot.png') }} alt="Maskot JURUFIND"
-            class="jf-mascot relative z-10 w-[340px] drop-shadow-2xl" />
+          <img src={{ asset('images/mascot.webp') }} alt="Maskot JURUFIND" class="jf-mascot relative z-10 w-[340px] drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high">
         </div>
       </div>
     </div>
@@ -145,8 +143,7 @@
 
   <!-- ==================== 5. CTA MERAH ==================== -->
   <section class="relative overflow-hidden bg-gradient-to-b from-telkom-700 to-telkom-800 py-20 text-center">
-    <img src={{ asset('images/ppdb-dash.png') }} alt=""
-      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[38%] w-[620px] max-w-none opacity-30 pointer-events-none" />
+    <img src={{ asset('images/ppdb-dash.webp') }} alt="" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[38%] w-[620px] max-w-none opacity-30 pointer-events-none" loading="lazy" decoding="async">
 
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
       <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Siap Menemukan Jalan mu?</h2>
@@ -162,8 +159,7 @@
           Panduan</button>
       </div>
 
-      <img src={{ asset('images/ppdb-students.png') }} alt="Siswa SMK Telkom Sidoarjo"
-        class="mx-auto mt-12 w-[320px] md:w-[400px] max-w-[85%] pointer-events-none select-none" />
+      <img src={{ asset('images/ppdb-students.webp') }} alt="Siswa SMK Telkom Sidoarjo" class="mx-auto mt-12 w-[320px] md:w-[400px] max-w-[85%] pointer-events-none select-none" loading="lazy" decoding="async">
     </div>
   </section>
 

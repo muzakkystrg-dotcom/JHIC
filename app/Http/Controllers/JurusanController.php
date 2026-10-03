@@ -28,15 +28,15 @@ class JurusanController extends Controller
         $works = [
             [
                 'title' => 'Website Berbasis AI',
-                'image' => asset('images/home/berita.png')
+                'image' => asset('images/home/berita.webp')
             ],
             [
                 'title' => 'Website Berbasis AI',
-                'image' => asset('images/home/berita.png')
+                'image' => asset('images/home/berita.webp')
             ],
             [
                 'title' => 'Website Berbasis AI',
-                'image' => asset('images/home/berita.png')
+                'image' => asset('images/home/berita.webp')
             ],
         ];
 
@@ -65,15 +65,15 @@ class JurusanController extends Controller
         $works = [
             [
                 'title' => 'Palang Pintu Otomatis',
-                'image' => asset('images/home/berita.png')
+                'image' => asset('images/home/berita.webp')
             ],
             [
                 'title' => 'Teknologi Smarthome',
-                'image' => asset('images/home/berita.png')
+                'image' => asset('images/home/berita.webp')
             ],
             [
                 'title' => 'Jemuran Otomatis',
-                'image' => asset('images/home/berita.png')
+                'image' => asset('images/home/berita.webp')
             ],
         ];
 

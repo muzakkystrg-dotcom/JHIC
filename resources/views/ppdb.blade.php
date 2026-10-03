@@ -8,16 +8,16 @@
     <div class="ppdb-hero-bg"></div>
 
     <!-- Dekorasi dashed lingkaran di belakang judul -->
-    <img src={{ asset('images/ppdb-dash.png') }} alt="" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[65%] w-[560px] max-w-none opacity-50 pointer-events-none hidden md:block" />
+    <img src={{ asset('images/ppdb-dash.webp') }} alt="" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[65%] w-[560px] max-w-none opacity-50 pointer-events-none hidden md:block" loading="eager" decoding="async" fetchpriority="high">
 
     <!-- Poster pojok kiri atas -->
-    <img src={{ asset('images/poster-77.png') }} alt="Poster Skomda" class="absolute left-8 top-28 w-36 md:w-44 rotate-[-6deg] shadow-xl rounded-lg hidden md:block pointer-events-none" />
+    <img src={{ asset('images/poster-77.webp') }} alt="Poster Skomda" class="absolute left-8 top-28 w-36 md:w-44 rotate-[-6deg] shadow-xl rounded-lg hidden md:block pointer-events-none" loading="eager" decoding="async" fetchpriority="high">
     <!-- Poster pojok kanan atas -->
-    <img src={{ asset('images/poster-74.png') }} alt="Poster Skomda" class="absolute right-8 top-28 w-36 md:w-44 rotate-[6deg] shadow-xl rounded-lg hidden md:block pointer-events-none" />
+    <img src={{ asset('images/poster-74.webp') }} alt="Poster Skomda" class="absolute right-8 top-28 w-36 md:w-44 rotate-[6deg] shadow-xl rounded-lg hidden md:block pointer-events-none" loading="lazy" decoding="async">
     <!-- Poster kiri tengah -->
-    <img src={{ asset('images/poster-81.png') }} alt="Poster Skomda" class="absolute left-24 bottom-24 w-36 md:w-44 rotate-[4deg] shadow-xl rounded-lg hidden lg:block pointer-events-none z-10" />
+    <img src={{ asset('images/poster-81.webp') }} alt="Poster Skomda" class="absolute left-24 bottom-24 w-36 md:w-44 rotate-[4deg] shadow-xl rounded-lg hidden lg:block pointer-events-none z-10" loading="lazy" decoding="async">
     <!-- Poster kanan tengah -->
-    <img src={{ asset('images/poster-80.png') }} alt="Poster Skomda" class="absolute right-24 bottom-24 w-36 md:w-44 rotate-[-4deg] shadow-xl rounded-lg hidden lg:block pointer-events-none z-10" />
+    <img src={{ asset('images/poster-80.webp') }} alt="Poster Skomda" class="absolute right-24 bottom-24 w-36 md:w-44 rotate-[-4deg] shadow-xl rounded-lg hidden lg:block pointer-events-none z-10" loading="lazy" decoding="async">
 
     <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 pt-44 pb-56 flex flex-col items-center text-center">
       <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-sm">
@@ -36,7 +36,7 @@
     </div>
 
     <!-- Foto siswa (cutout) di bagian bawah tengah -->
-    <img src={{ asset('images/ppdb-students.png') }} alt="Siswa SMK Telkom Sidoarjo" class="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 w-[480px] md:w-[560px] max-w-[85%] pointer-events-none select-none" />
+    <img src={{ asset('images/ppdb-students.webp') }} alt="Siswa SMK Telkom Sidoarjo" class="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 w-[480px] md:w-[560px] max-w-[85%] pointer-events-none select-none" loading="lazy" decoding="async">
   </section>
 
   <!-- ==================== INFORMASI SISWA BARU ==================== -->

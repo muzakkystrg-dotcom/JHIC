@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'SMK Telkom Sidoarjo')</title>
-    <link rel="icon" href="{{ asset('images/home/favicon.png') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ asset('images/home/favicon.webp') }}">
+    {{-- Font self-hosted: preload agar teks tidak menunggu (no Google Fonts / gstatic) --}}
+    <link rel="preload" href="{{ asset('fonts/plus-jakarta-sans-latin.woff2') }}" as="font" type="font/woff2" crossorigin>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://cdn.jsdelivr.net/npm/lucide@0.546.0/dist/umd/lucide.min.js"></script>
     @stack('styles')
 </head>
 <body class="bg-[#FBFBFB] text-slate-800 font-sans antialiased selection:bg-red-700 selection:text-white flex flex-col min-h-screen">
@@ -22,7 +19,7 @@
       
       <!-- Brand Logo -->
       <a href="{{ url('/#beranda') }}" class="flex items-center gap-2 sm:gap-3 group shrink-0">
-        <img src="{{ asset('images/home/favicon.png') }}" alt="Logo SMK Telkom Sidoarjo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+        <img src="{{ asset('images/home/favicon.webp') }}" alt="Logo SMK Telkom Sidoarjo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain" loading="eager" decoding="async" fetchpriority="high" width="423" height="415">
         <div class="flex flex-col leading-tight">
           <span class="text-xs sm:text-sm font-extrabold text-gray-900 tracking-tight">SMK Telkom</span>
           <span class="text-[10px] sm:text-xs text-gray-500 font-semibold tracking-wide">Sidoarjo</span>
@@ -223,7 +220,7 @@
         <!-- Identitas Sekolah (Sangat mudah dihubungi ortu dari HP) -->
         <div class="lg:col-span-4 space-y-4">
           <div class="flex items-center gap-3">
-            <img src="{{ asset('images/home/favicon.png') }}" alt="Logo" class="w-10 h-10 object-contain shrink-0" />
+            <img src="{{ asset('images/home/favicon.webp') }}" alt="Logo" class="w-10 h-10 object-contain shrink-0" loading="eager" decoding="async" fetchpriority="high" width="423" height="415">
             <div class="flex flex-col leading-tight">
               <span class="text-base font-extrabold text-gray-900 tracking-tight">SMK Telkom</span>
               <span class="text-xs text-gray-500 font-semibold tracking-wide">Sidoarjo</span>
@@ -245,11 +242,11 @@
           </div>
           <!-- Logo Partner Footer -->
           <div class="grid grid-cols-5 gap-2 pt-2 items-center max-w-xs">
-            <img src="{{ asset('images/footer/1. LOGO JHIC 2.0 1.png') }}" alt="JHIC" class="h-6 w-auto object-contain">
-            <img src="{{ asset('images/footer/2. Logo Jagoan Hosting 1.png') }}" alt="Jagoan" class="h-6 w-auto object-contain">
-            <img src="{{ asset('images/footer/3. KOMDIGI 1.png') }}" alt="Komdigi" class="h-6 w-auto object-contain">
-            <img src="{{ asset('images/footer/4. Garuda Spark Full Color 1.png') }}" alt="Garuda" class="h-6 w-auto object-contain">
-            <img src="{{ asset('images/footer/5. LOGO NGALUP 1.png') }}" alt="Ngalup" class="h-6 w-auto object-contain">
+            <img src="{{ asset('images/footer/1. LOGO JHIC 2.0 1.webp') }}" alt="JHIC" class="h-6 w-auto object-contain" loading="lazy" decoding="async" width="57" height="27">
+            <img src="{{ asset('images/footer/2. Logo Jagoan Hosting 1.webp') }}" alt="Jagoan" class="h-6 w-auto object-contain" loading="lazy" decoding="async" width="57" height="18">
+            <img src="{{ asset('images/footer/3. KOMDIGI 1.webp') }}" alt="Komdigi" class="h-6 w-auto object-contain" loading="lazy" decoding="async" width="47" height="34">
+            <img src="{{ asset('images/footer/4. Garuda Spark Full Color 1.webp') }}" alt="Garuda" class="h-6 w-auto object-contain" loading="lazy" decoding="async" width="57" height="31">
+            <img src="{{ asset('images/footer/5. LOGO NGALUP 1.webp') }}" alt="Ngalup" class="h-6 w-auto object-contain" loading="lazy" decoding="async" width="57" height="9">
           </div>
           <p class="text-[11px] text-gray-400 pt-2">Copyright &copy; {{ date('Y') }} All right reserved | SKOMDA</p>
         </div>
@@ -290,7 +287,7 @@
 </footer>
 
 <script>
-    if (window.lucide) { lucide.createIcons(); }
+    // Ikon Lucide & AOS diinisialisasi dari resources/js/app.js (bundle Vite)
 
     // Toggle Mobile Drawer
     document.addEventListener('DOMContentLoaded', function() {
@@ -314,16 +311,5 @@
 </script>
 
 @stack('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        AOS.init({
-            duration: 750,
-            once: true,
-            offset: 30,
-            disable: 'mobile' // Menghindari glitch scroll lambat di HP jadul
-        });
-    });
-</script>
 </body>
 </html>

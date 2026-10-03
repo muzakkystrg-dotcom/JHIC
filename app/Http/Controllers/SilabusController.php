@@ -17,7 +17,7 @@ class SilabusController extends Controller
                 'title' => 'SIJA — Sistem Informasi Jaringan & Aplikasi',
                 'duration' => 'Program Keahlian 4 Tahun | Siap Skala Industri',
                 'hero_desc' => 'Dalam program 4 tahun ini, kamu tidak hanya dilatih membangun infrastruktur jaringan, tetapi juga mendalami integrasi cloud computing, pemrograman, hingga penerapan Internet of Things (IoT) dan sistem keamanan jaringan untuk menghasilkan solusi digital yang aman, elastis, serta siap pakai di skala industri.',
-                'hero_image' => asset('images/career/career.png'),
+                'hero_image' => asset('images/career/career.webp'),
                 'spec_career' => 'Cloud Engineer, Fullstack, Cyber Security, UI Designer',
                 'spec_competency' => 'Pemrograman, Pembuatan Aplikasi, Keamanan Jaringan',
                 'spec_path' => 'Linier ke jurusan Teknik Informatika, Sistem Informasi',
@@ -29,7 +29,7 @@ class SilabusController extends Controller
                 ],
                 'alumni_name' => 'Aisyah SIJA • Institut Teknologi Bandung',
                 'alumni_jurusan' => 'SIJA',
-                'alumni_photo' => asset('images/career/career1.png'),
+                'alumni_photo' => asset('images/career/career1.webp'),
                 'alumni_quote' => 'Sekolah disini asyik banget, gabakal nyesel buat para orang tuah yang nyari calon sekolah buat anaknya sih!'
             ],
             'tjat' => [
@@ -48,7 +48,7 @@ class SilabusController extends Controller
                 ],
                 'alumni_name' => 'Aisyah SIJA • Institut Teknologi Bandung',
                 'alumni_jurusan' => 'TJAT',
-                'alumni_photo' => asset('images/career/career1.png'),
+                'alumni_photo' => asset('images/career/career1.webp'),
                 'alumni_quote' => 'Sekolah disini asyik banget, gabakal nyesel buat para orang tuah yang nyari calon sekolah buat anaknya sih!'
             ],
         ];

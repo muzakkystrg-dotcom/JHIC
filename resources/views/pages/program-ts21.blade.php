@@ -24,7 +24,7 @@
                             <img src="{{ $ts21Data['hero']['image'] }}" 
                                  alt="Siswi Program TS21 SMK Telkom Sidoarjo" 
                                  class="w-full h-auto object-contain select-none drop-shadow-2xl"
-                                 onerror="this.onerror=null; this.src='{{ asset('images/career/career.png') }}';">
+                                 onerror="this.onerror=null; this.src='{{ asset('images/career/career.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
                         </div>
                     </div>
                 </div>

@@ -18,10 +18,10 @@
                 <!-- Foto Portrait Guru -->
                 <div class="lg:col-span-5 flex justify-center items-center" data-aos="zoom-in">
                     <div class="w-full max-w-[360px] sm:max-w-[400px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white aspect-[3/4]">
-                        <img src="{{ $guruDetail['foto'] ?? asset('images/profileguru/rachel.png') }}" 
+                        <img src="{{ $guruDetail['foto'] ?? asset('images/profileguru/rachel.webp') }}" 
                              alt="{{ $guruDetail['nama'] }}" 
                              class="w-full h-full object-cover object-top select-none transition-transform duration-500 hover:scale-105"
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x520?text={{ urlencode($guruDetail['nama']) }}';">
+                             onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}'nama']) }}';" loading="eager" decoding="async" fetchpriority="high" width="232" height="289">
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@
             
             <!-- Frame Kiri: Ilustrasi Karakter Tim Pengajar -->
             <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
-                <img src="{{ asset('images/guru/hero-teachers.png') }}" alt="Ilustrasi Tim Pengajar" class="relative z-10 w-[340px] md:w-[420px] h-auto object-contain drop-shadow-2xl" onerror="this.onerror=null; this.src='{{ asset('images/home/program.png') }}';">
+                <img src="{{ asset('images/home/program.webp') }}" alt="Ilustrasi Tim Pengajar" class="relative z-10 w-[340px] md:w-[420px] h-auto object-contain drop-shadow-2xl" onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
             </div>
 
             <!-- Teks Kanan -->
@@ -146,7 +146,7 @@
                     <div class="md:col-span-5 flex justify-center" data-aos="zoom-in" data-aos-delay="100">
                         <a href="{{ route('profil-guru.show', ['slug' => $kepalaSekolah['slug']]) }}" class="block group">
                             <div class="w-64 h-72 rounded-3xl overflow-hidden shadow-lg border-2 border-white bg-white">
-                                <img src="{{ $kepalaSekolah['foto'] }}" alt="{{ $kepalaSekolah['nama'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                                <img src="{{ $kepalaSekolah['foto'] }}" alt="{{ $kepalaSekolah['nama'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                             </div>
                         </a>
                     </div>
@@ -207,7 +207,7 @@
                             <a href="{{ route('profil-guru.show', ['slug' => $waka['slug']]) }}" class="block h-full group">
                                 <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
                                     <div class="h-72 bg-gray-100 overflow-hidden">
-                                        <img src="{{ $waka['foto'] }}" alt="{{ $waka['nama'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/300x400?text=Waka';">
+                                        <img src="{{ $waka['foto'] }}" alt="{{ $waka['nama'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="lazy" decoding="async">
                                     </div>
                                     <div class="p-4 text-center bg-white group-hover:bg-red-50/50 transition">
                                         <h4 class="font-bold text-gray-900 text-sm group-hover:text-red-700 transition">{{ $waka['jabatan'] }}</h4>
@@ -247,7 +247,7 @@
                             <a href="{{ route('profil-guru.show', ['slug' => $guru['slug']]) }}" class="block h-full group">
                                 <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
                                     <div class="h-72 bg-gray-100 overflow-hidden">
-                                        <img src="{{ $guru['foto'] }}" alt="{{ $guru['nama'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/300x400?text=Guru';">
+                                        <img src="{{ $guru['foto'] }}" alt="{{ $guru['nama'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="lazy" decoding="async">
                                     </div>
                                     <div class="p-4 text-center bg-white group-hover:bg-red-50/50 transition">
                                         <h4 class="font-bold text-gray-900 text-sm group-hover:text-red-700 transition">{{ $guru['mapel'] }}</h4>
@@ -287,7 +287,7 @@
                             <a href="{{ route('profil-guru.show', ['slug' => $staff['slug']]) }}" class="block h-full group">
                                 <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
                                     <div class="h-72 bg-gray-100 overflow-hidden">
-                                        <img src="{{ $staff['foto'] }}" alt="{{ $staff['nama'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/300x400?text=Staff';">
+                                        <img src="{{ $staff['foto'] }}" alt="{{ $staff['nama'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="lazy" decoding="async">
                                     </div>
                                     <div class="p-4 text-center bg-white group-hover:bg-red-50/50 transition">
                                         <h4 class="font-bold text-gray-900 text-sm group-hover:text-red-700 transition">{{ $staff['jabatan'] }}</h4>

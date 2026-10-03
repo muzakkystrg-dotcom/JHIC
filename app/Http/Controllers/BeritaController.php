@@ -27,7 +27,7 @@ class BeritaController extends Controller
                 'title' => 'Lomba Matematika SMP/MTs Terbesar Se-Sidoarjo Sukses Digelar di SKOMDA',
                 'category' => 'Kegiatan Sekolah',
                 'published_at' => '2025-11-27T19:24:35',
-                'thumbnail' => asset('images/berita/juara.png')
+                'thumbnail' => asset('images/berita/juara.webp')
             ];
         }
 

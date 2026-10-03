@@ -21,7 +21,7 @@
                         <img src="{{ $ekstraDetail['hero_image'] }}" 
                              alt="{{ $ekstraDetail['nama'] }}" 
                              class="w-full h-full object-cover select-none transition-transform duration-500 hover:scale-105"
-                             onerror="this.onerror=null; this.src='{{ asset('images/ekstra/paskib.png') }}';">
+                             onerror="this.onerror=null; this.src='{{ asset('images/ekstra/paskib.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
                     </div>
                 </div>
 
@@ -87,7 +87,7 @@
                             <img src="{{ $item['image'] }}" 
                                  alt="{{ $item['caption'] }}" 
                                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                 onerror="this.onerror=null; this.src='/images/ekstra/paskib/paskib1.png';">
+                                 onerror="this.onerror=null; this.src='/images/ekstra/paskib/paskib1.webp';" loading="eager" decoding="async" fetchpriority="high">
                         </div>
                     </div>
                 @empty
@@ -107,7 +107,7 @@
             <button onclick="closeLightbox()" aria-label="Tutup Preview" class="absolute -top-12 right-0 text-white hover:text-red-400 text-3xl font-bold transition focus:outline-none">
                 &times;
             </button>
-            <img id="lightboxImg" src="" alt="Preview Foto" class="max-h-[80vh] w-auto rounded-2xl shadow-2xl object-contain border-2 border-white/20">
+            <img id="lightboxImg" src="" alt="Preview Foto" class="max-h-[80vh] w-auto rounded-2xl shadow-2xl object-contain border-2 border-white/20" loading="lazy" decoding="async">
             <p id="lightboxCaption" class="text-white text-xs sm:text-sm font-medium mt-4 text-center bg-black/50 px-4 py-2 rounded-full"></p>
         </div>
     </div>
@@ -126,10 +126,10 @@
                 <!-- Sisi Kiri: 3D Emblem Perisai Bintang -->
                 <div class="lg:col-span-5 flex justify-center items-center" data-aos="zoom-in">
                     <div class="relative w-full max-w-[320px] sm:max-w-[360px]">
-                        <img src="{{ asset('images/ekstra/logo-ekstra.png') }}" 
+                        <img src="{{ asset('images/ekstra/ekstra.webp') }}" 
                              alt="Emblem Ekstrakurikuler SMK Telkom Sidoarjo" 
                              class="w-full h-auto object-contain select-none drop-shadow-2xl"
-                             onerror="this.onerror=null; this.src='{{ asset('images/ekstra/ekstra.png') }}';">
+                             onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="lazy" decoding="async">
                     </div>
                 </div>
 
@@ -191,7 +191,7 @@
                                         <img src="{{ $item['image'] }}"
                                              alt="{{ $item['name'] }}"
                                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                             onerror="this.onerror=null; this.src='https://placehold.co/400x200?text=Ekstrakurikuler';">
+                                             onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="lazy" decoding="async">
                                     </div>
                                     <div class="flex items-center justify-between text-xs font-semibold text-gray-400 mb-2">
                                         <span class="text-red-700">Ekstrakurikuler</span>

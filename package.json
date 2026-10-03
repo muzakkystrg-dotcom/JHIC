@@ -15,5 +15,10 @@
     },
     "optionalDependencies": {
         "@laravel/multiplex": "^0.4.1"
+    },
+    "dependencies": {
+        "aos": "^2.3.4",
+        "chart.js": "^4.5.1",
+        "lucide": "^0.546.0"
     }
 }

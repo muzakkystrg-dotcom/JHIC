@@ -16,7 +16,7 @@ class ProgramTS21Controller extends Controller
                 'breadcrumb' => 'Program > Program TS21',
                 'title' => 'Program TS21',
                 'description' => 'Program TS.21 adalah kurikulum unggulan yang fokus pada Kompetensi Abad 21. Kami menerapkan Blended Learning, Project-Based, dan Studio Classroom untuk mencetak lulusan yang tangguh dan siap kerja.',
-                'image' => asset('images/ts21/hero-ts21.png')
+                'image' => asset('images/home/program.webp')
             ],
             'content' => [
                 'heading' => 'TS.21 SMK Telkom Sidoarjo: Langkah Menuju Sekolah 4.0',

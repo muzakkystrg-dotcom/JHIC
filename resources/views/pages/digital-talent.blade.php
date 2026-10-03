@@ -47,10 +47,10 @@
 
                         <!-- 3D Laptop Mockup -->
                         <div class="relative z-10 w-full p-4 flex items-center justify-center">
-                            <img src="{{ asset('images/dtp/laptop-mockup.png') }}" 
+                            <img src="{{ asset('images/home/program.webp') }}" 
                                  alt="DTP Laptop Mockup" 
                                  class="w-full h-auto object-contain select-none drop-shadow-2xl"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/450x380?text=3D+Laptop+Mockup';">
+                                 onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
                         </div>
                     </div>
                 </div>
@@ -121,10 +121,10 @@
                 <!-- Sisi Kiri: Foto Siswi Berhijab Tablet iPad di Bingkai Belah Ketupat Merah -->
                 <div class="lg:col-span-5 flex justify-center items-center" data-aos="zoom-in">
                     <div class="relative w-full max-w-[340px] sm:max-w-[400px]">
-                        <img src="{{ asset('images/career/career.png') }}" 
+                        <img src="{{ asset('images/career/career.webp') }}" 
                              alt="Siswi Digital Talent Program" 
                              class="w-full h-auto object-contain select-none drop-shadow-2xl"
-                             onerror="this.onerror=null; this.src='{{ asset('images/dtp/hero-dtp.png') }}';">
+                             onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="eager" decoding="async" fetchpriority="high" width="433" height="433">
                     </div>
                 </div>
 
@@ -216,10 +216,10 @@
                 <div class="lg:col-span-5 flex justify-center items-center">
                     <div class="relative w-full max-w-[280px] sm:max-w-[320px] aspect-square flex items-center justify-center">
                         <div class="absolute w-52 h-52 sm:w-60 sm:h-60 rounded-3xl transform rotate-45 shadow-lg pointer-events-none" style="background-color: #C8102E !important;"></div>
-                        <img src="{{ asset('images/dtp/laptop-mockup.png') }}" 
+                        <img src="{{ asset('images/home/program.webp') }}" 
                              alt="Laptop Preview" 
                              class="relative z-10 w-full h-auto object-contain select-none drop-shadow-xl"
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x320?text=3D+Laptop';">
+                             onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="lazy" decoding="async">
                     </div>
                 </div>
 

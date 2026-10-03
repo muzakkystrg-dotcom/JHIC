@@ -16,7 +16,7 @@ class ProgramCCPController extends Controller
                 'breadcrumb' => 'Program > Program CCP',
                 'title' => 'Program CCP',
                 'description' => 'Program Pendidikan CCP SMK Telkom Sidoarjo membekali siswa dengan skill tambahan dan kreativitas yang relevan dengan industri. Program ini memastikan lulusan siap kerja dan berdaya saing global. Jelajahi detail Program CCP kami.',
-                'image' => asset('images/ccp/hero-ccp.png')
+                'image' => asset('images/home/program.webp')
             ],
             'pillars' => [
                 'character' => [

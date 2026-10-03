@@ -14,7 +14,7 @@
             <div class="absolute w-[290px] h-[290px] md:w-[350px] md:h-[350px] border-2 border-dashed border-gray-400 transform rotate-45 rounded-[3rem] pointer-events-none"></div>
             
             <!-- Foto Alumni -->
-            <img src="{{ asset('images/alumni/alumni.png') }}" alt="Siswi Alumni SMK Telkom" class="relative z-10 w-[240px] md:w-[290px] h-auto object-contain drop-shadow-2xl">
+            <img src="{{ asset('images/alumni/alumni.webp') }}" alt="Siswi Alumni SMK Telkom" class="relative z-10 w-[240px] md:w-[290px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="269" height="279">
         </div>
 
         <!-- Teks Kanan -->

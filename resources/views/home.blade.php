@@ -32,8 +32,7 @@
 
         <!-- Kanan: Grid 2x2 foto -->
         <div class="lg:col-span-7 relative flex justify-center items-center py-8" data-aos="zoom-in" data-aos-delay="400">
-          <img src="{{ asset('images/home/hero-grid.png') }}" alt="Kolase SMK Telkom Sidoarjo"
-            class="w-full max-w-[600px] h-auto select-none" />
+          <img src="{{ asset('images/home/hero-grid.webp') }}" alt="Kolase SMK Telkom Sidoarjo" class="w-full max-w-[600px] h-auto select-none" loading="eager" decoding="async" fetchpriority="high" width="733" height="711">
         </div>
       </div>
     </div>
@@ -57,8 +56,7 @@
         <div class="lg:col-span-5 flex justify-center" data-aos="fade-right">
           <div class="relative w-72 h-96">
             <div class="absolute -left-6 right-[-30%] bottom-6 h-56 bg-red-700 rounded-full"></div>
-            <img src="{{ asset('images/profileguru/pabror.png') }}" alt="Kepala Sekolah - Abror S.Hum M.Pd"
-              class="relative z-10 w-full h-full object-cover rounded-t-full rounded-b-3xl shadow-xl" />
+            <img src="{{ asset('images/profileguru/pabror.webp') }}" alt="Kepala Sekolah - Abror S.Hum M.Pd" class="relative z-10 w-full h-full object-cover rounded-t-full rounded-b-3xl shadow-xl" loading="eager" decoding="async" fetchpriority="high" width="301" height="380">
           </div>
         </div>
 
@@ -162,8 +160,7 @@
             
             <div class="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto lg:mx-0 flex items-center justify-center -translate-y-2 -translate-x-4">
               <div class="absolute -inset-4 rounded-full border-2 border-dashed border-gray-300 pointer-events-none"></div>
-              <img src="{{ asset('images/home/tifany.png') }}" alt="Tifany Skomda"
-                class="relative z-10 w-full h-full object-cover rounded-full border-4 border-white shadow-2xl" />
+              <img src="{{ asset('images/home/tifany.webp') }}" alt="Tifany Skomda" class="relative z-10 w-full h-full object-cover rounded-full border-4 border-white shadow-2xl" loading="lazy" decoding="async" width="392" height="425">
             </div>
           </div>
         </div>
@@ -210,8 +207,7 @@
         <!-- Tengah: Foto arch -->
         <div class="lg:col-span-4 flex flex-col items-center" data-aos="zoom-in">
           <div class="relative w-full max-w-[280px] aspect-[3/4]">
-            <img src="{{ asset('images/home/program.png') }}" alt="Siswa Skomda"
-              class="relative z-10 w-full h-full object-cover rounded-t-[130px] rounded-b-[48px] shadow-xl border-4 border-white" />
+            <img src="{{ asset('images/home/program.webp') }}" alt="Siswa Skomda" class="relative z-10 w-full h-full object-cover rounded-t-[130px] rounded-b-[48px] shadow-xl border-4 border-white" loading="lazy" decoding="async" width="359" height="498">
           </div>
           <button onclick="openProgramDetail('SIJA')"
             class="mt-8 px-8 py-3 bg-red-700 text-white rounded-full text-sm font-bold shadow-md hover:bg-red-800 transition flex items-center gap-2 cursor-pointer">
@@ -259,28 +255,28 @@
       <div class="animate-marquee flex items-center gap-6 shrink-0">
         @php
           $partners = [
-            ['name' => 'Axelbit', 'file' => 'axelbit.png'],
-            ['name' => 'DigiPrener', 'file' => 'digi.png'],
-            ['name' => 'Global Infra', 'file' => 'gi.png'],
-            ['name' => 'Garuda Telkom', 'file' => 'gt.png'],
-            ['name' => 'Jagoan Hosting', 'file' => 'jagoanhosting.png'],
-            ['name' => 'Javacreatiox', 'file' => 'javacreat.png'],
-            ['name' => 'Markaz Design', 'file' => 'markaz.png'],
-            ['name' => 'Radnet', 'file' => 'radnext.png'],
-            ['name' => 'Weza Group', 'file' => 'weza.png'],
-            ['name' => 'Wowrack', 'file' => 'wowrack.png'],
+            ['name' => 'Axelbit', 'file' => 'axelbit.webp'],
+            ['name' => 'DigiPrener', 'file' => 'digi.webp'],
+            ['name' => 'Global Infra', 'file' => 'gi.webp'],
+            ['name' => 'Garuda Telkom', 'file' => 'gt.webp'],
+            ['name' => 'Jagoan Hosting', 'file' => 'jagoanhosting.webp'],
+            ['name' => 'Javacreatiox', 'file' => 'javacreat.webp'],
+            ['name' => 'Markaz Design', 'file' => 'markaz.webp'],
+            ['name' => 'Radnet', 'file' => 'radnext.webp'],
+            ['name' => 'Weza Group', 'file' => 'weza.webp'],
+            ['name' => 'Wowrack', 'file' => 'wowrack.webp'],
           ];
         @endphp
 
         @foreach($partners as $p)
           <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border-2 border-dashed border-gray-300 bg-white w-[200px] h-[100px] shrink-0 shadow-sm hover:border-red-700 transition-colors">
-            <img src="{{ asset('images/mitra/' . $p['file']) }}" alt="{{ $p['name'] }}" class="max-h-12 max-w-[140px] object-contain">
+            <img src="{{ asset('images/mitra/' . $p['file']) }}" alt="{{ $p['name'] }}" class="max-h-12 max-w-[140px] object-contain" loading="lazy" decoding="async">
           </div>
         @endforeach
 
         @foreach($partners as $p)
           <div class="flex flex-col items-center justify-center px-6 py-4 rounded-2xl border-2 border-dashed border-gray-300 bg-white w-[200px] h-[100px] shrink-0 shadow-sm hover:border-red-700 transition-all">
-            <img src="{{ asset('images/mitra/' . $p['file']) }}" alt="{{ $p['name'] }}" class="max-h-12 max-w-[140px] object-contain">
+            <img src="{{ asset('images/mitra/' . $p['file']) }}" alt="{{ $p['name'] }}" class="max-h-12 max-w-[140px] object-contain" loading="lazy" decoding="async">
           </div>
         @endforeach
       </div>
@@ -312,7 +308,7 @@
             <div class="w-full md:w-[calc(33.333%-1.33rem)] shrink-0 news-slide-card" data-cat="Kegiatan Sekolah">
               <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full group border border-gray-100">
                 <div class="relative aspect-video overflow-hidden bg-gray-100">
-                  <img src="{{ asset('images/home/berita.png') }}" alt="Berita 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                  <img src="{{ asset('images/home/berita.webp') }}" alt="Berita 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async" width="307" height="138">
                   <div class="absolute top-3 left-3 flex gap-1.5">
                     <span class="px-2.5 py-1 bg-red-700 text-white font-black text-[10px] rounded-md">SIJA</span>
                     <span class="px-2.5 py-1 bg-red-700 text-white font-black text-[10px] rounded-md">TJAT</span>
@@ -334,7 +330,7 @@
             <div class="w-full md:w-[calc(33.333%-1.33rem)] shrink-0 news-slide-card" data-cat="Prestasi">
               <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full group border border-gray-100">
                 <div class="relative aspect-video overflow-hidden bg-gray-100">
-                  <img src="{{ asset('images/home/berita.png') }}" alt="Berita 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                  <img src="{{ asset('images/home/berita.webp') }}" alt="Berita 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async" width="307" height="138">
                   <div class="absolute top-3 left-3 flex gap-1.5">
                     <span class="px-2.5 py-1 bg-red-700 text-white font-black text-[10px] rounded-md">SIJA</span>
                   </div>
@@ -355,7 +351,7 @@
             <div class="w-full md:w-[calc(33.333%-1.33rem)] shrink-0 news-slide-card" data-cat="Kemitraan & Kerjasama">
               <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full group border border-gray-100">
                 <div class="relative aspect-video overflow-hidden bg-gray-100">
-                  <img src="{{ asset('images/home/berita.png') }}" alt="Berita 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                  <img src="{{ asset('images/home/berita.webp') }}" alt="Berita 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async" width="307" height="138">
                   <div class="absolute top-3 left-3 flex gap-1.5">
                     <span class="px-2.5 py-1 bg-red-700 text-white font-black text-[10px] rounded-md">TJAT</span>
                   </div>
@@ -376,7 +372,7 @@
             <div class="w-full md:w-[calc(33.333%-1.33rem)] shrink-0 news-slide-card" data-cat="Karya & Inovasi">
               <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full group border border-gray-100">
                 <div class="relative aspect-video overflow-hidden bg-gray-100">
-                  <img src="{{ asset('images/home/berita.png') }}" alt="Berita 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                  <img src="{{ asset('images/home/berita.webp') }}" alt="Berita 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" decoding="async" width="307" height="138">
                   <div class="absolute top-3 left-3 flex gap-1.5">
                     <span class="px-2.5 py-1 bg-red-700 text-white font-black text-[10px] rounded-md">SIJA</span>
                   </div>

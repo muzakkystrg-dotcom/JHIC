@@ -13,8 +13,8 @@
             <!-- Frame Kiri: Model 3D Isometrik Gedung Kampus (Animasi Zoom-In) -->
             <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2"
                 data-aos="zoom-in" data-aos-delay="200">
-                <img src="{{ asset('images/fasilitas/sekolah3d.png') }}" alt="Model Isometrik Kampus"
-                    class="relative z-10 w-[380px] md:w-[480px] h-auto object-contain drop-shadow-2xl">
+                <img src="{{ asset('images/fasilitas/sekolah3d.webp') }}" alt="Model Isometrik Kampus"
+                    class="relative z-10 w-[380px] md:w-[480px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="430" height="307">
             </div>
 
             <!-- Teks Kanan (Animasi Fade-Right) -->
@@ -61,42 +61,42 @@
                     [
                         'title' => 'Gedung',
                         'desc' => 'Gedung utama sekolah dengan rancangan arsitektur modern berstandar industri digital, dilengkapi sistem pencahayaan dan sirkulasi udara optimal.',
-                        'img' => 'images/fasilitas/gedung.png'
+                        'img' => 'images/fasilitas/gedung.webp'
                     ],
                     [
                         'title' => 'Kantin',
                         'desc' => 'Area kantin bersih dan higienis yang menyediakan beragam kuliner bergizi seimbang dengan dukungan transaksi digital cashless.',
-                        'img' => 'images/fasilitas/kantin.png'
+                        'img' => 'images/fasilitas/kantin.webp'
                     ],
                     [
                         'title' => 'Lab AI',
                         'desc' => 'Laboratorium mutakhir komputasi tinggi untuk eksplorasi kecerdasan buatan, machine learning, computer vision, dan deep learning.',
-                        'img' => 'images/fasilitas/labai.png'
+                        'img' => 'images/fasilitas/labai.webp'
                     ],
                     [
                         'title' => 'Lab IoT',
                         'desc' => 'Pusat riset dan perakitan perangkat Internet of Things yang dilengkapi sensor modern, mikrokontroler, dan simulator otomatisasi.',
-                        'img' => 'images/fasilitas/labiot.png'
+                        'img' => 'images/fasilitas/labiot.webp'
                     ],
                     [
                         'title' => 'Lab Komputer',
                         'desc' => 'Laboratorium komputer berperforma tinggi untuk praktik rekayasa perangkat lunak, pemrograman web, UI/UX, dan administrasi jaringan.',
-                        'img' => 'images/fasilitas/labkom.png'
+                        'img' => 'images/fasilitas/labkom.webp'
                     ],
                     [
                         'title' => 'Lapangan Basket',
                         'desc' => 'Lapangan olahraga outdoor multifungsi berstandar turnamen untuk kegiatan olahraga bola basket, futsal, dan aktivitas fisik siswa.',
-                        'img' => 'images/fasilitas/lapbasket.png'
+                        'img' => 'images/fasilitas/lapbasket.webp'
                     ],
                     [
                         'title' => 'OC Besar',
                         'desc' => 'Outdoor Class berkapasitas besar untuk presentasi proyek industri, diskusi kolaboratif antarjurusan, dan workshop.',
-                        'img' => 'images/fasilitas/ocbsr.png'
+                        'img' => 'images/fasilitas/ocbsr.webp'
                     ],
                     [
                         'title' => 'OC Kecil',
                         'desc' => 'Outdoor Class privat dan nyaman untuk koordinasi tim kecil, bimbingan proyek portofolio, serta mentoring industri.',
-                        'img' => 'images/fasilitas/ockecil.png'
+                        'img' => 'images/fasilitas/ockecil.webp'
                     ],
                 ];
             @endphp
@@ -113,7 +113,7 @@
                                         class="h-48 bg-gray-50 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
                                         <img src="{{ asset($fac['img']) }}" alt="{{ $fac['title'] }}"
                                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                            onerror="this.onerror=null; this.src='{{ asset('images/fasilitas/gedung-utama.png') }}';">
+                                            onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
                                     </div>
                                     <h3 class="font-bold text-xl text-gray-900 mb-3">{{ $fac['title'] }}</h3>
                                     <p class="text-gray-600 text-sm leading-relaxed">
@@ -174,8 +174,8 @@
                     </div>
                     <div class="lg:col-span-7" data-aos="zoom-in" data-aos-delay="200">
                         <div class="rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-white">
-                            <img src="{{ asset('images/fasilitas/rps.png') }}" alt="Gedung RPS Hall"
-                                class="w-full aspect-[4/3] object-cover hover:scale-105 transition-transform duration-500">
+                            <img src="{{ asset('images/fasilitas/rps.webp') }}" alt="Gedung RPS Hall"
+                                class="w-full aspect-[4/3] object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" width="478" height="300">
                         </div>
                     </div>
                 </div>
@@ -184,8 +184,8 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" data-aos="fade-left">
                     <div class="lg:col-span-7 order-2 lg:order-1" data-aos="zoom-in" data-aos-delay="200">
                         <div class="rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-white">
-                            <img src="{{ asset('images/fasilitas/labiot.png') }}" alt="Laboratorium IoT"
-                                class="w-full aspect-[4/3] object-cover hover:scale-105 transition-transform duration-500">
+                            <img src="{{ asset('images/fasilitas/labiot.webp') }}" alt="Laboratorium IoT"
+                                class="w-full aspect-[4/3] object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" width="1125" height="1500">
                         </div>
                     </div>
                     <div class="lg:col-span-5 space-y-4 order-1 lg:order-2">

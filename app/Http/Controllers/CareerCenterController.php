@@ -22,7 +22,7 @@ class CareerCenterController extends Controller
                 'category' => 'Full Time',
                 'location' => 'Surabaya, Indonesia',
                 'posted_at' => '1 Hari Yang Lalu',
-                'logo' => asset('images/mitra/gt.png'),
+                'logo' => asset('images/mitra/gt.webp'),
             ],
             [
                 'id' => 2,
@@ -31,7 +31,7 @@ class CareerCenterController extends Controller
                 'category' => 'Full Time',
                 'location' => 'Surabaya, Indonesia',
                 'posted_at' => '1 Hari Yang Lalu',
-                'logo' => asset('images/mitra/gt.png'),
+                'logo' => asset('images/mitra/gt.webp'),
             ],
             [
                 'id' => 3,
@@ -40,7 +40,7 @@ class CareerCenterController extends Controller
                 'category' => 'Full Time',
                 'location' => 'Surabaya, Indonesia',
                 'posted_at' => '1 Hari Yang Lalu',
-                'logo' => asset('images/mitra/gt.png'),
+                'logo' => asset('images/mitra/gt.webp'),
             ],
             [
                 'id' => 4,
@@ -49,7 +49,7 @@ class CareerCenterController extends Controller
                 'category' => 'Full Time',
                 'location' => 'Surabaya, Indonesia',
                 'posted_at' => '1 Hari Yang Lalu',
-                'logo' => asset('images/mitra/gt.png'),
+                'logo' => asset('images/mitra/gt.webp'),
             ],
             [
                 'id' => 5,
@@ -58,7 +58,7 @@ class CareerCenterController extends Controller
                 'category' => 'Full Time',
                 'location' => 'Surabaya, Indonesia',
                 'posted_at' => '1 Hari Yang Lalu',
-                'logo' => asset('images/mitra/gt.png'),
+                'logo' => asset('images/mitra/gt.webp'),
             ],
         ];
 

@@ -47,7 +47,7 @@
                         <div class="w-full max-w-[220px] sm:max-w-[260px] aspect-square rounded-2xl overflow-hidden flex items-center justify-center">
                             <img src="{{ $silabus['hero_image'] }}" 
                                  alt="{{ $silabus['code'] }}" 
-                                 class="w-full h-full object-contain select-none drop-shadow-md">
+                                 class="w-full h-full object-contain select-none drop-shadow-md" loading="eager" decoding="async" fetchpriority="high">
                         </div>
                     </div>
                 @endif
@@ -181,7 +181,7 @@
                 <img src="{{ $silabus['alumni_photo'] }}" 
                      alt="Alumni" 
                      class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-xl"
-                     onerror="this.onerror=null; this.src='{{ asset('images/career/career1.png') }}';">
+                     onerror="this.onerror=null; this.src='{{ asset('images/career/career1.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
             </div>
 
             <!-- Teks Kutipan & Author -->
