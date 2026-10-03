@@ -75,10 +75,17 @@
         </section>
     </main>
 
+    {{-- Satukan data window di dalam 1 tag script sebelum @endsection --}}
     <script>
         window.JURUFIND_QUESTIONS = @json($questions);
         window.JURUFIND_MAJORS = @json($majors);
         window.JURUFIND_DIMENSION_LABELS = @json($dimensionLabels);
+        
+        // URL SILABUS UNTUK DIBACA OLEH jurufind.js
+        window.JURUFIND_SILABUS_URLS = {
+            'SIJA': "{{ route('silabus.sija') }}",
+            'TJAT': "{{ route('silabus.tjat') }}"
+        };
     </script>
 @endsection
 

@@ -38,7 +38,7 @@
     </div>
 </section>
 
-<!-- Section Fasilitas Penunjang (Dengan animasi Fade-Up) -->
+<!-- Section Fasilitas Penunjang (Disesuaikan dengan 8 Fasilitas Baru) -->
 <section id="katalog-fasilitas" class="py-20 bg-white" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
@@ -48,36 +48,63 @@
             </h2>
         </div>
 
+        @php
+            $allFacilities = [
+                [
+                    'title' => 'Gedung', 
+                    'desc' => 'Gedung utama sekolah dengan rancangan arsitektur modern berstandar industri digital, dilengkapi sistem pencahayaan dan sirkulasi udara optimal.', 
+                    'img' => 'images/fasilitas/gedung.png'
+                ],
+                [
+                    'title' => 'Kantin', 
+                    'desc' => 'Area kantin bersih dan higienis yang menyediakan beragam kuliner bergizi seimbang dengan dukungan transaksi digital cashless.', 
+                    'img' => 'images/fasilitas/kantin.png'
+                ],
+                [
+                    'title' => 'Lab AI', 
+                    'desc' => 'Laboratorium mutakhir komputasi tinggi untuk eksplorasi kecerdasan buatan, machine learning, computer vision, dan deep learning.', 
+                    'img' => 'images/fasilitas/labai.png'
+                ],
+                [
+                    'title' => 'Lab IoT', 
+                    'desc' => 'Pusat riset dan perakitan perangkat Internet of Things yang dilengkapi sensor modern, mikrokontroler, dan simulator otomatisasi.', 
+                    'img' => 'images/fasilitas/labiot.png'
+                ],
+                [
+                    'title' => 'Lab Kom', 
+                    'desc' => 'Laboratorium komputer berperforma tinggi untuk praktik rekayasa perangkat lunak, pemrograman web, UI/UX, dan administrasi jaringan.', 
+                    'img' => 'images/fasilitas/labkom.png'
+                ],
+                [
+                    'title' => 'Lap Basket', 
+                    'desc' => 'Lapangan olahraga outdoor multifungsi berstandar turnamen untuk kegiatan olahraga bola basket, futsal, dan aktivitas fisik siswa.', 
+                    'img' => 'images/fasilitas/lapbasket.png'
+                ],
+                [
+                    'title' => 'OC Besar', 
+                    'desc' => 'Ruang Open Collaboration berkapasitas besar untuk presentasi proyek industri, diskusi kolaboratif antarjurusan, dan workshop.', 
+                    'img' => 'images/fasilitas/ocbsr.png'
+                ],
+                [
+                    'title' => 'OC Kecil', 
+                    'desc' => 'Ruang kolaborasi privat dan nyaman untuk koordinasi tim kecil, bimbingan proyek portofolio, serta mentoring industri.', 
+                    'img' => 'images/fasilitas/ockecil.png'
+                ],
+            ];
+        @endphp
+
         <!-- Carousel Container -->
         <div class="relative overflow-hidden px-4 py-6" data-aos="fade-up" data-aos-delay="200">
             <div id="facilityCarousel" class="flex transition-transform duration-500 ease-out gap-6">
-                
-                @php
-                    $allFacilities = [
-                        ['title' => 'Aula', 'desc' => 'Aula multifungsi yang digunakan untuk kegiatan sekolah seperti seminar, workshop, pertemuan wali murid, hingga acara internal dan eksternal sekolah.', 'img' => 'images/fasilitas/aula.png'],
-                        ['title' => 'Gedung SMK Telkom Sidoarjo', 'desc' => 'Gedung utama SMK Telkom Sidoarjo yang representatif dengan desain modern serta fasilitas lengkap untuk menunjang kegiatan akademik.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                        ['title' => 'Kantin', 'desc' => 'Kantin merupakan fasilitas sekolah untuk tempat makan dan ruang bersosialisasi yang bersih dan nyaman dilengkapi sistem transaksi cashless.', 'img' => 'images/fasilitas/kantin.png'],
-                        ['title' => 'Laboratorium Komputer 1', 'desc' => 'Lab komputer dengan spesifikasi tinggi untuk mendukung praktik pemrograman, desain grafis, dan pengembangan perangkat lunak.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                        ['title' => 'Laboratorium Jaringan', 'desc' => 'Laboratorium khusus perutean, switching, dan konfigurasi perangkat jaringan komputer standar industri.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                        ['title' => 'Perpustakaan Digital', 'desc' => 'Pusat literasi dengan koleksi buku fisik dan e-book lengkap serta ruang baca ber-AC yang nyaman.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                        ['title' => 'Lapangan Olahraga', 'desc' => 'Area outdoor yang luas untuk kegiatan olahraga basket, futsal, upacara bendera, dan kegiatan ekstrakurikuler.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                        ['title' => 'Masjid Sekolah', 'desc' => 'Sarana ibadah yang luas, bersih, dan representatif untuk kegiatan keagamaan dan pembentukan karakter siswa.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                        ['title' => 'Ruang UKS', 'desc' => 'Unit Kesehatan Sekolah yang siaga memberikan pertolongan pertama dan pemeriksaan kesehatan rutin.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                        ['title' => 'Studio Multimedia', 'desc' => 'Studio kreatif untuk produksi konten video, podcast, fotografi, dan penyiaran digital berbasis modern.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                        ['title' => 'Ruang Bimbingan Konseling', 'desc' => 'Ruang konsultasi privat yang nyaman bagi siswa untuk pengembangan diri dan perencanaan karier.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                        ['title' => 'Area Parkir Luas', 'desc' => 'Fasilitas parkir kendaraan bermotor yang aman, tertib, dan terpantau sistem keamanan CCTV 24 jam.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                        ['title' => 'Inkubator Bisnis / UPJ', 'desc' => 'Wadah pelatihan kewirausahaan dan proyek riil bagi siswa untuk mengasah kemampuan enterpreneurship.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                        ['title' => 'Ruang OSIS & Ekstrakurikuler', 'desc' => 'Pusat koordinasi organisasi siswa dan kegiatan pengembangan bakat minat siswa.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                        ['title' => 'Klinik Jaringan & Perangkat', 'desc' => 'Pusat servis mandiri tempat siswa mempraktikkan troubleshooting hardware dan perbaikan jaringan.', 'img' => 'images/fasilitas/gedung-utama.png'],
-                    ];
-                @endphp
-
-                @foreach($allFacilities as $index => $fac)
-                    <div class="w-full md:w-[calc(33.333%-1rem)] shrink-0">
+                @foreach($allFacilities as $fac)
+                    <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0">
                         <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
                             <div>
                                 <div class="h-48 bg-gray-50 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
-                                    <img src="{{ asset($fac['img']) }}" alt="{{ $fac['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <img src="{{ asset($fac['img']) }}" 
+                                         alt="{{ $fac['title'] }}" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                         onerror="this.onerror=null; this.src='{{ asset('images/fasilitas/gedung-utama.png') }}';">
                                 </div>
                                 <h3 class="font-bold text-xl text-gray-900 mb-3">{{ $fac['title'] }}</h3>
                                 <p class="text-gray-600 text-sm leading-relaxed">
@@ -87,23 +114,20 @@
                         </div>
                     </div>
                 @endforeach
-
             </div>
         </div>
 
-        <!-- Carousel Navigation (Panah & Dots) -->
+        <!-- Carousel Navigation (Panah & Dots Dinamis) -->
         <div class="flex items-center justify-center gap-6 mt-12" data-aos="fade-up">
-            <button id="prevSlide" class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
+            <button id="prevSlide" aria-label="Previous Slide" class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
                 <i data-lucide="chevron-left" class="w-5 h-5"></i>
             </button>
             
             <div id="carouselDots" class="flex items-center gap-1.5 flex-wrap max-w-md justify-center">
-                @for($i = 0; $i < 13; $i++)
-                    <span class="w-2.5 h-2.5 rounded-full {{ $i === 0 ? 'bg-red-700 w-5' : 'bg-gray-300' }} transition-all cursor-pointer" data-slide="{{ $i }}"></span>
-                @endfor
+                <!-- Di-render dinamis oleh JavaScript -->
             </div>
 
-            <button id="nextSlide" class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
+            <button id="nextSlide" aria-label="Next Slide" class="w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer">
                 <i data-lucide="chevron-right" class="w-5 h-5"></i>
             </button>
         </div>
@@ -111,7 +135,7 @@
     </div>
 </section>
 
-<!-- Section Lab Tour (Dengan animasi Fade-Up) -->
+<!-- Section Lab Tour (Sesuai Preferensi Anda) -->
 <section class="py-20 bg-gray-50" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
@@ -152,7 +176,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" data-aos="fade-left">
                 <div class="lg:col-span-7 order-2 lg:order-1" data-aos="zoom-in" data-aos-delay="200">
                     <div class="rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-white">
-                        <img src="{{ asset('images/fasilitas/lab.png') }}" alt="Laboratorium IoT" class="w-full h-[320px] object-cover hover:scale-105 transition-transform duration-500">
+                        <img src="{{ asset('images/fasilitas/labiot.png') }}" alt="Laboratorium IoT" class="w-full h-[320px] object-cover hover:scale-105 transition-transform duration-500">
                     </div>
                 </div>
                 <div class="lg:col-span-5 space-y-4 order-1 lg:order-2">
@@ -184,60 +208,81 @@
         const carousel = document.getElementById('facilityCarousel');
         const prevBtn = document.getElementById('prevSlide');
         const nextBtn = document.getElementById('nextSlide');
-        const dots = document.querySelectorAll('#carouselDots span');
+        const dotsContainer = document.getElementById('carouselDots');
         
-        if (!carousel) return;
+        if (!carousel || !dotsContainer) return;
 
+        const totalCards = {{ count($allFacilities) }};
         let currentIndex = 0;
-        const totalCards = 15;
-        const visibleCards = 3;
-        const maxIndex = totalCards - visibleCards;
+
+        function getVisibleCards() {
+            if (window.innerWidth >= 1024) return 3;
+            if (window.innerWidth >= 640) return 2;
+            return 1;
+        }
+
+        function getMaxIndex() {
+            return Math.max(0, totalCards - getVisibleCards());
+        }
+
+        function renderDots() {
+            dotsContainer.innerHTML = '';
+            const maxIndex = getMaxIndex();
+            const totalDots = maxIndex + 1;
+
+            for (let i = 0; i < totalDots; i++) {
+                const dot = document.createElement('span');
+                dot.className = `transition-all cursor-pointer h-2.5 rounded-full ${
+                    i === currentIndex ? 'bg-red-700 w-5' : 'bg-gray-300 w-2.5'
+                }`;
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateCarousel();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
 
         function updateCarousel() {
-            const movePercentage = (currentIndex * (100 / visibleCards));
+            const visibleCards = getVisibleCards();
+            const movePercentage = currentIndex * (100 / visibleCards);
             carousel.style.transform = `translateX(-${movePercentage}%)`;
 
-            dots.forEach((dot, index) => {
+            Array.from(dotsContainer.children).forEach((dot, index) => {
                 if (index === currentIndex) {
-                    dot.classList.remove('bg-gray-300', 'w-2.5');
-                    dot.classList.add('bg-red-700', 'w-5');
+                    dot.className = 'transition-all cursor-pointer h-2.5 rounded-full bg-red-700 w-5';
                 } else {
-                    dot.classList.remove('bg-red-700', 'w-5');
-                    dot.classList.add('bg-gray-300', 'w-2.5');
+                    dot.className = 'transition-all cursor-pointer h-2.5 rounded-full bg-gray-300 w-2.5';
                 }
             });
         }
 
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
-                if (currentIndex < maxIndex) {
-                    currentIndex++;
-                    updateCarousel();
-                } else {
-                    currentIndex = 0;
-                    updateCarousel();
-                }
+                const maxIndex = getMaxIndex();
+                currentIndex = (currentIndex < maxIndex) ? currentIndex + 1 : 0;
+                updateCarousel();
             });
         }
 
         if (prevBtn) {
             prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                } else {
-                    currentIndex = maxIndex;
-                    updateCarousel();
-                }
+                const maxIndex = getMaxIndex();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : maxIndex;
+                updateCarousel();
             });
         }
 
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentIndex = index;
-                updateCarousel();
-            });
+        window.addEventListener('resize', () => {
+            if (currentIndex > getMaxIndex()) {
+                currentIndex = getMaxIndex();
+            }
+            renderDots();
+            updateCarousel();
         });
+
+        renderDots();
+        updateCarousel();
     });
 </script>
 @endpush

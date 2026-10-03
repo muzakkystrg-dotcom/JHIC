@@ -1,35 +1,99 @@
 @import "tailwindcss";
 
+/* ========================================================
+   1. DEFINISI TEMA WARNA CUSTOM (TAILWIND CSS V4)
+   ======================================================== */
 @theme {
-    --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    --color-telkom-50: #fef2f2;
+    --color-telkom-100: #ffe1e1;
+    --color-telkom-200: #ffc8c8;
+    --color-telkom-300: #ffa2a2;
+    --color-telkom-400: #f86d6d;
+    --color-telkom-500: #ee3c3c;
+    --color-telkom-600: #db2222;
+    --color-telkom-700: #C8102E; /* Merah Telkom Utama */
+    --color-telkom-800: #990000;
+    --color-telkom-900: #7f1212;
+    --color-telkom-950: #460505;
 
-    --color-telkom-50: #fff1f2;
-    --color-telkom-100: #fee2e2;
-    --color-telkom-200: #fecaca;
-    --color-telkom-600: #dc2626;
-    --color-telkom-700: #C8102E;
-    --color-telkom-800: #991b1b;
-    --color-telkom-900: #7f1d1d;
-
-    --shadow-glow-red: 0 10px 25px -3px rgba(200, 16, 46, 0.45);
-    --shadow-float: 0 20px 35px -10px rgba(0, 0, 0, 0.12);
+    --color-red-700: #C8102E;
+    --color-red-800: #990000;
+    --color-hirelink: #2563EB;
 }
 
-/* Kustom Utilitas & Animasi */
+/* ========================================================
+   2. PENGATURAN SKALA: 110% DI DESKTOP, LEGA DI MOBILE
+   ======================================================== */
 html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    /* Layar HP / Smartphone (320px - 767px): Standar 100% agar lega */
+    font-size: 100%;
+    overflow-x: hidden;
 }
 
-.clip-rhombus {
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+/* Layar Tablet (768px - 1023px) */
+@media (min-width: 768px) {
+    html {
+        font-size: 104%;
+    }
 }
 
-.bg-hero-pattern {
-    background: linear-gradient(110deg, #E5E7EB 0%, #E5E7EB 35%, transparent 35.1%, transparent 100%);
+/* Layar Laptop & Desktop (1024px ke atas):
+   DIKUNCI PERSIS KE 110% (17.6px) SESUAI ZOOM YANG ANDA SUKAI */
+@media (min-width: 1024px) {
+    html {
+        font-size: 110% !important; /* Setara 17.6px base rem scaling */
+    }
 }
 
-/* Animasi Infinite Marquee untuk Partner Industri (Smooth & Tanpa Patah-patah) */
-@keyframes marquee {
+/* Layar Monitor Besar / TV (1536px+) */
+@media (min-width: 1536px) {
+    html {
+        font-size: 112% !important;
+    }
+}
+
+body {
+    background-color: #F8F9FA;
+    color: #1f2937;
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    line-height: 1.6;
+}
+
+::selection {
+    background-color: #C8102E;
+    color: #ffffff;
+}
+
+/* ========================================================
+   3. CONTAINER AGAR LEBAR KONTEN MENYESUAIKAN SKALA 110%
+   ======================================================== */
+@media (min-width: 1280px) {
+    .max-w-7xl {
+        max-width: 84rem !important;
+    }
+    .max-w-6xl {
+        max-width: 76rem !important;
+    }
+    .max-w-5xl {
+        max-width: 68rem !important;
+    }
+}
+
+/* Mencegah gambar & video tumpah keluar layar HP */
+img, svg, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ========================================================
+   4. ANIMASI MARQUEE INFINITE (PARTNER INDUSTRI BERGERAK)
+   ======================================================== */
+@keyframes scrollMarquee {
     0% {
         transform: translateX(0%);
     }
@@ -38,29 +102,52 @@ html {
     }
 }
 
-.animate-marquee {
-    display: flex;
-    width: max-content;
-    animation: marquee 35s linear infinite;
+.animate-marquee,
+.marquee-track {
+    display: flex !important;
+    width: max-content !important;
+    animation: scrollMarquee 24s linear infinite !important;
+    will-change: transform;
 }
 
-.animate-marquee:hover {
-    animation-play-state: paused;
+.animate-marquee:hover,
+.marquee-track:hover {
+    animation-play-state: paused !important;
 }
 
-@layer components {
-    /* 1. Standar Tombol Carousel (Bulat Panah) di SEMUA Halaman */
-    .btn-carousel-global {
-        @apply w-10 h-10 rounded-full bg-red-700 text-white flex items-center justify-center hover:bg-red-800 transition shadow-md active:scale-95 cursor-pointer shrink-0;
-    }
+/* ========================================================
+   5. HOVER & MICRO-INTERACTIONS
+   ======================================================== */
+.card-hover-effect {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.25s ease;
+}
 
-    /* 2. Standar Tombol Aksi Utama (CTA / Cari / Daftar) di SEMUA Halaman */
-    .btn-primary-global {
-        @apply px-6 py-3 bg-red-700 text-white rounded-xl font-bold text-sm hover:bg-red-800 transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer inline-flex items-center justify-center gap-2;
+@media (hover: hover) {
+    .card-hover-effect:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 24px -6px rgba(0, 0, 0, 0.07);
     }
+}
 
-    /* 3. Standar Tombol Pill Kecil (Selengkapnya / Detail) di SEMUA Halaman */
-    .btn-pill-small {
-        @apply px-4 py-1.5 bg-red-700 text-white text-xs rounded-full hover:bg-red-800 transition-colors shadow-sm font-medium inline-flex items-center gap-1;
-    }
+button:active, 
+a[class*="btn"]:active {
+    transform: scale(0.97);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
 }

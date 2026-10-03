@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ==========================================================
        HALAMAN HASIL
-       ========================================================== */
+       ========================================================= */
     function el(tag, className, text) {
       const node = document.createElement(tag);
       if (className) node.className = className;
@@ -295,12 +295,12 @@ document.addEventListener('DOMContentLoaded', function () {
       return wrap;
     }
 
-    /* ---- Seksi detail jurusan ---- */
+    /* ---- Seksi detail jurusan (DIPERBARUI: MENGARAH KE SILABUS JURUSAN) ---- */
     function buildDetail(scoring, explanation) {
       const primary = scoring.primaryMajor;
       const section = el('section', 'jf-detail');
 
-      // Media: PLACEHOLDER foto siswa, ganti via JURUFIND_SISWA_IMG
+      // Media: Foto siswa
       const media = el('div', 'jf-detail__media');
       media.appendChild(el('div', 'jf-detail__blob'));
       const img = document.createElement('img');
@@ -335,8 +335,19 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       body.appendChild(list);
 
-      const link = el('a', 'jf-btn jf-btn--solid', 'Lihat Lengkapnya →');
-      link.href = '/#jurusan';
+      // =========================================================================
+      // DISINI DIRECT ROUTE DILAKUKAN KE SILABUS SIJA / TJAT
+      // =========================================================================
+      const link = el('a', 'jf-btn jf-btn--solid', 'Selengkapnya →');
+      
+      // Deteksi URL Silabus berdasarkan rekomendasi AI
+      if (window.JURUFIND_SILABUS_URLS && window.JURUFIND_SILABUS_URLS[primary]) {
+        link.href = window.JURUFIND_SILABUS_URLS[primary];
+      } else {
+        // Fallback route dinamis
+        link.href = '/jurusan/' + String(primary).toLowerCase() + '/silabus';
+      }
+
       body.appendChild(link);
 
       section.appendChild(body);
@@ -365,7 +376,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const emailBtn = el('button', 'jf-btn jf-btn--pill', '✉  Kirim Ke Email');
       emailBtn.type = 'button';
       emailBtn.addEventListener('click', function () {
-        // TODO: sambungkan ke endpoint backend untuk kirim email
         alert('Fitur kirim email segera hadir.');
       });
       actions.appendChild(emailBtn);
@@ -373,7 +383,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const dlBtn = el('button', 'jf-btn jf-btn--pill', '⬇  Download di Lokal');
       dlBtn.type = 'button';
       dlBtn.addEventListener('click', function () {
-        // Sementara: pakai print-to-PDF bawaan browser
         window.print();
       });
       actions.appendChild(dlBtn);
@@ -403,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
       scorecard.appendChild(buildComparison(scoring));
       resultRoot.appendChild(scorecard);
 
-      // Detail jurusan
+      // Detail jurusan (dengan tombol direct ke silabus)
       resultRoot.appendChild(buildDetail(scoring, explanation));
 
       if (explanation.fallback === true) {

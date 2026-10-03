@@ -8,12 +8,12 @@
 <section class="relative bg-hero-pattern w-full min-h-[500px] flex items-center overflow-hidden pt-28 pb-16" data-aos="fade-in" data-aos-duration="1000">
     <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
-        <!-- Frame Kiri: Foto Siswi Alumni (Tanpa background merah) -->
+        <!-- Frame Kiri: Foto Siswi Alumni -->
         <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
-            <!-- Garis Putus-putus Melengkung (Dashed Outline Tetap Ada Sebagai Pemanis) -->
+            <!-- Garis Putus-putus Melengkung Geometris -->
             <div class="absolute w-[290px] h-[290px] md:w-[350px] md:h-[350px] border-2 border-dashed border-gray-400 transform rotate-45 rounded-[3rem] pointer-events-none"></div>
             
-            <!-- Foto Alumni Murni (Dari folder images/alumni/alumni.png) -->
+            <!-- Foto Alumni -->
             <img src="{{ asset('images/alumni/alumni.png') }}" alt="Siswi Alumni SMK Telkom" class="relative z-10 w-[240px] md:w-[290px] h-auto object-contain drop-shadow-2xl">
         </div>
 
@@ -33,9 +33,12 @@
                 Informasi resmi Alumni siswa SMK Telkom Sidoarjo. Halaman ini menyajikan data kelulusan secara transparan dan dapat diakses oleh seluruh siswa dan orang tua/wali.
             </p>
             
-            <a href="#database-alumni" class="btn-primary-global mt-4">
-                Jelajahi 
-                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <!-- Tombol Jelajahi (Dipaksa Merah Solid Konsisten) -->
+            <a href="#database-alumni" 
+               style="background-color: #C8102E !important; color: #ffffff !important;" 
+               class="inline-flex items-center gap-2 px-6 py-2.5 hover:opacity-90 font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 mt-4">
+                <span>Jelajahi</span>
+                <span class="text-base leading-none">→</span>
             </a>
         </div>
 
@@ -44,7 +47,7 @@
 
 <!-- Garis Pemisah Aksen Merah Horizontal -->
 <div class="w-full flex justify-center py-6 bg-white" data-aos="fade-up">
-    <div class="w-72 h-1.5 bg-red-700 rounded-full"></div>
+    <div class="w-72 h-1.5 rounded-full" style="background-color: #C8102E !important;"></div>
 </div>
 
 <!-- Section Database Alumni & Search Bar -->
@@ -60,10 +63,13 @@
         <!-- Form Pencarian SSO -->
         <form action="{{ route('alumni.index') }}" method="GET" class="flex flex-col sm:flex-row items-center gap-4 mb-16" data-aos="fade-up" data-aos-delay="100">
             <div class="relative w-full">
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Masukan SSO mu Disini" class="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-dashed border-gray-400 bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-red-700 text-sm font-medium text-gray-700 shadow-inner">
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="Masukan SSO mu Disini" class="w-full pl-12 pr-4 py-4 rounded-2xl border-2 border-dashed border-gray-400 bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-[#C8102E] text-sm font-medium text-gray-700 shadow-inner">
                 <i data-lucide="search" class="w-5 h-5 text-gray-400 absolute left-4 top-4.5"></i>
             </div>
-            <button type="submit" class="w-full sm:w-auto px-10 py-4 bg-red-700 text-white font-bold rounded-xl hover:bg-red-800 transition shadow-md active:scale-95 shrink-0">
+            <!-- Tombol Cari (Dipaksa Merah Solid) -->
+            <button type="submit" 
+                    style="background-color: #C8102E !important; color: #ffffff !important;" 
+                    class="w-full sm:w-auto px-10 py-4 hover:opacity-90 font-bold rounded-xl transition shadow-md active:scale-95 shrink-0 cursor-pointer">
                 Cari
             </button>
         </form>
@@ -73,7 +79,7 @@
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse min-w-[600px]">
                     <thead>
-                        <tr class="bg-[#8B0000] text-white rounded-t-xl overflow-hidden">
+                        <tr class="text-white rounded-t-xl overflow-hidden" style="background-color: #8B0000 !important;">
                             <th class="py-4 px-6 font-bold text-sm rounded-tl-2xl">No.</th>
                             <th class="py-4 px-6 font-bold text-sm">Nama Siswa</th>
                             <th class="py-4 px-6 font-bold text-sm">Jurusan</th>
@@ -86,7 +92,11 @@
                             <tr class="hover:bg-gray-50 transition">
                                 <td class="py-4 px-6">{{ $index + 1 }}</td>
                                 <td class="py-4 px-6 font-bold text-gray-900">{{ $alumni['nama_siswa'] }}</td>
-                                <td class="py-4 px-6"><span class="bg-red-50 text-red-700 px-2.5 py-1 rounded-lg text-xs font-bold">{{ $alumni['jurusan'] }}</span></td>
+                                <td class="py-4 px-6">
+                                    <span class="bg-red-50 text-red-700 px-2.5 py-1 rounded-lg text-xs font-bold">
+                                        {{ $alumni['jurusan'] }}
+                                    </span>
+                                </td>
                                 <td class="py-4 px-6">{{ $alumni['dtp'] }}</td>
                                 <td class="py-4 px-6 font-mono text-gray-600">{{ $alumni['sso'] }}</td>
                             </tr>

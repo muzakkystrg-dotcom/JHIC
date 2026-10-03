@@ -6,26 +6,62 @@ use Illuminate\Http\Request;
 
 class FasilitasController extends Controller
 {
+    /**
+     * Menampilkan Halaman Fasilitas SMK Telkom Sidoarjo
+     */
     public function index()
     {
-        $facilities = [
+        $fasilitas = [
             [
-                'title' => 'Aula',
-                'description' => 'Aula multifungsi yang digunakan untuk kegiatan sekolah seperti seminar, workshop, pertemuan wali murid, hingga acara internal dan eksternal sekolah.',
-                'image' => asset('images/profile/gedung-utama.png') // atau placeholder jika belum ada
+                'id' => 1,
+                'name' => 'Gedung Sekolah',
+                'category' => 'Infrastruktur',
+                'image' => asset('images/fasilitas/gedung.png'),
             ],
             [
-                'title' => 'Gedung Smk Telkom Sidoarjo',
-                'description' => 'Gedung utama SMK Telkom Sidoarjo yang representatif dengan desain modern serta fasilitas lengkap untuk menunjang kegiatan akademik maupun non-akademik siswa.',
-                'image' => asset('images/facility/gedung-utama.png')
+                'id' => 2,
+                'name' => 'Kantin Sehat',
+                'category' => 'Fasilitas Umum',
+                'image' => asset('images/fasilitas/kantin.png'),
             ],
             [
-                'title' => 'Kantin',
-                'description' => 'Kantin merupakan fasilitas sekolah untuk tempat makan dan ruang bersosialisasi yang bersih dan nyaman. Kantin sekolah menjual berbagai macam pilihan makanan berat maupun makanan ringan dilengkapi dengan sistem transaksi cashless.',
-                'image' => asset('images/facility/kantin.png')
-            ]
+                'id' => 3,
+                'name' => 'Lab Artificial Intelligence',
+                'category' => 'Laboratorium',
+                'image' => asset('images/fasilitas/lab-ai.png'),
+            ],
+            [
+                'id' => 4,
+                'name' => 'Lab Internet of Things (IoT)',
+                'category' => 'Laboratorium',
+                'image' => asset('images/fasilitas/lab-iot.png'),
+            ],
+            [
+                'id' => 5,
+                'name' => 'Lab Komputer & Jaringan',
+                'category' => 'Laboratorium',
+                'image' => asset('images/fasilitas/lab-kom.png'),
+            ],
+            [
+                'id' => 6,
+                'name' => 'Lapangan Basket',
+                'category' => 'Sarana Olahraga',
+                'image' => asset('images/fasilitas/lap-basket.png'),
+            ],
+            [
+                'id' => 7,
+                'name' => 'OC Besar',
+                'category' => 'Ruang Kolaborasi',
+                'image' => asset('images/fasilitas/oc-besar.png'),
+            ],
+            [
+                'id' => 8,
+                'name' => 'OC Kecil',
+                'category' => 'Ruang Kolaborasi',
+                'image' => asset('images/fasilitas/oc-kecil.png'),
+            ],
         ];
 
-        return view('pages.fasilitas', compact('facilities'));
+        return view('pages.fasilitas', compact('fasilitas'));
     }
 }
