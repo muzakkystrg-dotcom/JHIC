@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160" role="img" aria-label="Fiber Optic">
-  <rect width="240" height="160" rx="18" fill="#f6f7f4"/>
-  <path d="M60 128c0-46 30-56 60-56s60-10 60-56" fill="none" stroke="#0f8a5f" stroke-width="6" stroke-linecap="round"/>
-  <circle cx="60" cy="128" r="12" fill="#dff3e9" stroke="#0f8a5f" stroke-width="3"/>
-  <circle cx="180" cy="60" r="12" fill="#dff3e9" stroke="#0f8a5f" stroke-width="3"/>
-  <text x="120" y="150" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" fill="#12181b">Fiber Optic</text>
-</svg>

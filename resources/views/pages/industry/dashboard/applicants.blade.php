@@ -87,5 +87,12 @@
         @endforelse
     </div>
 
+    <!-- Navigasi Halaman (pagination server-side) -->
+    @if($applicants->hasPages())
+        <div class="pt-2">
+            {{ $applicants->links() }}
+        </div>
+    @endif
+
 </div>
 @endsection

@@ -8,7 +8,7 @@
     <link rel="icon" href="{{ asset('images/home/favicon.webp') }}">
     {{-- Font self-hosted: preload agar teks tidak menunggu (no Google Fonts / gstatic) --}}
     <link rel="preload" href="{{ asset('fonts/plus-jakarta-sans-latin.woff2') }}" as="font" type="font/woff2" crossorigin>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/chatbot.js'])
     @stack('styles')
 </head>
 <body class="bg-[#FBFBFB] text-slate-800 font-sans antialiased selection:bg-red-700 selection:text-white flex flex-col min-h-screen">
@@ -340,10 +340,8 @@
     });
 </script>
 
-{{-- Widget chatbot global: muncul di semua halaman --}}
+{{-- Widget chatbot global: markup + JS/CSS dibundel Vite (resources/js/chatbot.js meng-import chatbot.css) --}}
     <x-chatbot-widget />
-    <link rel="stylesheet" href="{{ asset('assets/css/chatbot.css') }}">
-    <script src="{{ asset('assets/js/chatbot.js') }}" defer></script>
 
 @stack('scripts')
 </body>

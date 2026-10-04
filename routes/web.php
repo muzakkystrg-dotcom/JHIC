@@ -76,20 +76,21 @@ Route::get('/career-center/apply-success', [CareerCenterController::class, 'appl
 // --- PROGRAM JURUSAN, DTP, CCP & EKSTRAKURIKULER ---
 Route::get('/jurusan/sija', [JurusanController::class, 'sija'])->name('jurusan.sija');
 Route::get('/jurusan/tjat', [JurusanController::class, 'tjat'])->name('jurusan.tjat');
-Route::get('/program/jurusan', fn () => redirect()->route('jurusan.sija'))->name('jurusan.index');
+// Redirect alias memakai Route::redirect() (bukan closure) agar `php artisan route:cache` bisa jalan.
+Route::redirect('/program/jurusan', '/jurusan/sija')->name('jurusan.index');
 Route::get('/program/ekstrakurikuler', [EkstrakurikulerController::class, 'index'])->name('ekstrakurikuler.index');
 Route::get('/program/ekstrakurikuler/{slug}', [EkstrakurikulerController::class, 'show'])->name('ekstrakurikuler.show');
 Route::get('/program/digital-talent-program', [DigitalTalentController::class, 'index'])->name('digital-talent.index');
 Route::get('/program/digital-talent-program/{slug}', [DigitalTalentController::class, 'show'])->name('digital-talent.show');
-Route::get('/program/dtp', fn () => redirect()->route('digital-talent.index'));
+Route::redirect('/program/dtp', '/program/digital-talent-program');
 Route::get('/program/program-ccp', [ProgramCCPController::class, 'index'])->name('program-ccp.index');
-Route::get('/program/ccp', fn () => redirect()->route('program-ccp.index'));
+Route::redirect('/program/ccp', '/program/program-ccp');
 
 // ==========================================
 // RUTE PROGRAM: PROGRAM TS21
 // ==========================================
 Route::get('/program/program-ts21', [ProgramTS21Controller::class, 'index'])->name('program-ts21.index');
-Route::get('/program/ts21', fn () => redirect()->route('program-ts21.index'));
+Route::redirect('/program/ts21', '/program/program-ts21');
 
 // --- SILABUS PEMBELAJARAN ---
 Route::get('/jurusan/sija/silabus', [SilabusController::class, 'sija'])->name('silabus.sija');

@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160" role="img" aria-label="Perangkat">
-  <rect width="240" height="160" rx="18" fill="#f6f7f4"/>
-  <path d="M84 74l14 14" stroke="#0f8a5f" stroke-width="6" stroke-linecap="round"/>
-  <circle cx="78" cy="68" r="14" fill="#dff3e9" stroke="#0f8a5f" stroke-width="3"/>
-  <path d="M98 88l46 46" stroke="#0f8a5f" stroke-width="10" stroke-linecap="round"/>
-  <path d="M150 122l20 20" stroke="#0f8a5f" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
-  <text x="120" y="150" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" fill="#12181b">Perangkat</text>
-</svg>

@@ -1,3 +1,5 @@
+import '../css/jurufind.css';
+
 /* ==========================================================
    JURUFIND - Tes Minat Bakat
    Kuis: render pertanyaan pill + radio, POST /jurufind/analyze
