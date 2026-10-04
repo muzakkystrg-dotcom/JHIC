@@ -7,14 +7,16 @@
 @endpush
 
 @section('content')
-    <main id="jurufind-app" class="jurufind-app" data-analyze-url="{{ route('jurufind.analyze') }}">
+    <main id="jurufind-app" class="jurufind-app"
+        data-analyze-url="{{ route('jurufind.analyze') }}"
+        data-result-url="{{ route('jurufind.result') }}">
 
         {{-- Dekorasi zigzag merah pojok bawah --}}
         <div class="jf-deco jf-deco--left" aria-hidden="true"></div>
         <div class="jf-deco jf-deco--right" aria-hidden="true"></div>
 
         {{-- STATE 1: Kuis --}}
-        <section id="jurufind-quiz-stage" class="jf-stage">
+        <section id="jurufind-quiz-stage" class="jf-stage" @if($isResultPage) hidden @endif>
             <div class="jf-container">
 
                 {{-- Header progress --}}
@@ -66,7 +68,7 @@
         </section>
 
         {{-- STATE 2: Hasil (diisi penuh oleh JS) --}}
-        <section id="jurufind-result-stage" class="jf-stage" hidden>
+        <section id="jurufind-result-stage" class="jf-stage" @if(!$isResultPage) hidden @endif>
             <div id="jf-result-root"></div>
         </section>
     </main>
@@ -75,7 +77,15 @@
     <script>
         window.JURUFIND_QUESTIONS = @json($questions);
         window.JURUFIND_MAJORS = @json($majors);
-        
+
+        // Hasil tes tersimpan (dari session). Null kalau user belum menyelesaikan tes.
+        window.JURUFIND_SAVED_RESULT = @json($savedResult);
+        window.JURUFIND_IS_RESULT_PAGE = @json($isResultPage);
+
+        // URL halaman hasil: dipakai untuk update address bar + tombol kembali.
+        window.JURUFIND_RESULT_URL = "{{ route('jurufind.result') }}";
+        window.JURUFIND_TEST_URL = "{{ route('jurufind.test') }}";
+
         // URL SILABUS UNTUK DIBACA OLEH jurufind.js
         window.JURUFIND_SILABUS_URLS = {
             'SIJA': "{{ route('silabus.sija') }}",

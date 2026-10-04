@@ -54,7 +54,7 @@
 
     --color-red-700: #C8102E;
     --color-red-800: #990000;
-    --color-hirelink: #2563EB;
+    --color-hirelink: #C8102E;
 }
 
 /* ========================================================
@@ -124,6 +124,27 @@ body {
 img, svg, video, iframe {
     max-width: 100%;
     height: auto;
+}
+
+/* --------------------------------------------------------
+   Logo mitra di card lowongan (Career Center).
+   PENTING: utility Tailwind `h-9`/`h-10` TIDAK berlaku pada <img> di sini,
+   karena rule `img { height:auto }` di atas ditulis di luar layer sehingga
+   menang atas utility Tailwind (yang hidup di @layer utilities). Akibatnya
+   logo berasio besar (mis. 1600x754) tampil raksasa dan card jadi tidak rata.
+   Karena itu tinggi logo dikunci lewat class khusus ini.
+   -------------------------------------------------------- */
+.mitra-logo {
+    height: 2.75rem;      /* 44px @100% */
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+@media (min-width: 640px) {
+    .mitra-logo {
+        height: 3rem;     /* 48px @100% */
+    }
 }
 
 /* ========================================================

@@ -294,7 +294,7 @@
             <p class="text-base text-gray-600 leading-relaxed mt-3 flex-1">
               Need quick answers? Our AI assistant can help you with registration details, requirements, and major info 24/7.
             </p>
-            <button onclick="alert('Fitur Skomda AI segera hadir! Untuk sementara, silakan hubungi panitia PPDB melalui WhatsApp 0811-3021-919.')" class="mt-8 w-full bg-[#2D2D2D] hover:bg-black text-white rounded-xl py-4 text-sm font-bold flex items-center justify-between px-5 transition active:scale-95">
+            <button onclick="window.openSkomdaChat && window.openSkomdaChat()" class="mt-8 w-full bg-[#2D2D2D] hover:bg-black text-white rounded-xl py-4 text-sm font-bold flex items-center justify-between px-5 transition active:scale-95">
               <span>Mulai Bincang Dengan AI!</span>
               <i data-lucide="chevron-down" class="w-4 h-4"></i>
             </button>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Industry;
 use App\Models\User;
 
 return [
@@ -42,6 +43,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        /*
+        | Portal Mitra Industri (Industry Dashboard) memakai guard & provider
+        | terpisah agar tidak mengganggu autentikasi admin/web yang sudah ada.
+        */
+        'industry' => [
+            'driver' => 'session',
+            'provider' => 'industries',
+        ],
     ],
 
     /*
@@ -65,6 +75,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', User::class),
+        ],
+
+        'industries' => [
+            'driver' => 'eloquent',
+            'model' => Industry::class,
         ],
 
         // 'users' => [

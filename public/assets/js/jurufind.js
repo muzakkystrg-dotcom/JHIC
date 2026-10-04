@@ -177,6 +177,14 @@ document.addEventListener('DOMContentLoaded', function () {
           renderResult(result.data.scoring, result.data.explanation);
           quizStage.hidden = true;
           resultStage.hidden = false;
+
+          // Ganti URL ke halaman hasil (tanpa reload) supaya tombol "back"
+          // dari halaman detail jurusan/silabus kembali ke hasil ini,
+          // bukan mengulang tes dari awal.
+          if (window.JURUFIND_RESULT_URL && window.history && window.history.replaceState) {
+            window.history.replaceState({ jurufind: 'result' }, '', window.JURUFIND_RESULT_URL);
+          }
+
           window.scrollTo({ top: 0, behavior: 'smooth' });
         })
         .catch(function (error) {
@@ -206,7 +214,15 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    renderQuestion();
+    // Kalau ada hasil tersimpan di session (mis. user kembali dari halaman detail
+    // jurusan / silabus), langsung tampilkan halaman hasil tanpa mengulang tes.
+    if (window.JURUFIND_SAVED_RESULT && window.JURUFIND_SAVED_RESULT.scoring && window.JURUFIND_SAVED_RESULT.explanation) {
+      renderResult(window.JURUFIND_SAVED_RESULT.scoring, window.JURUFIND_SAVED_RESULT.explanation);
+      quizStage.hidden = true;
+      resultStage.hidden = false;
+    } else {
+      renderQuestion();
+    }
 
     /* ==========================================================
        HALAMAN HASIL

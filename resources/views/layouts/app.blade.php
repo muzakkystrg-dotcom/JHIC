@@ -310,6 +310,11 @@
     });
 </script>
 
+{{-- Widget chatbot global: muncul di semua halaman --}}
+    <x-chatbot-widget />
+    <link rel="stylesheet" href="{{ asset('assets/css/chatbot.css') }}">
+    <script src="{{ asset('assets/js/chatbot.js') }}" defer></script>
+
 @stack('scripts')
 </body>
 </html>

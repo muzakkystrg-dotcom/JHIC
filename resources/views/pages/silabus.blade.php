@@ -7,13 +7,23 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- ==================== 1. HEADER NAVIGASI BALIK (BACK PILL BUTTON) ==================== -->
+        @php($hasJurufindResult = is_array(session('jurufind.result')))
         <div class="mb-6" data-aos="fade-right">
-            <a href="{{ route('career-center.index') }}" 
-               style="background-color: #B91C1C !important; color: #ffffff !important;"
-               class="px-5 py-2 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center gap-2 hover:opacity-90 transition shadow-sm active:scale-95">
-                <span class="text-sm font-bold">&larr;</span>
-                <span>Program &gt; Career Center</span>
-            </a>
+            @if($hasJurufindResult)
+                <a href="{{ route('jurufind.result') }}"
+                   style="background-color: #B91C1C !important; color: #ffffff !important;"
+                   class="px-5 py-2 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center gap-2 hover:opacity-90 transition shadow-sm active:scale-95">
+                    <span class="text-sm font-bold">&larr;</span>
+                    <span>Kembali ke Hasil Tes</span>
+                </a>
+            @else
+                <a href="{{ route('career-center.index') }}"
+                   style="background-color: #B91C1C !important; color: #ffffff !important;"
+                   class="px-5 py-2 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center gap-2 hover:opacity-90 transition shadow-sm active:scale-95">
+                    <span class="text-sm font-bold">&larr;</span>
+                    <span>Program &gt; Career Center</span>
+                </a>
+            @endif
         </div>
 
         <!-- ==================== 2. KARTU IDENTITAS PROGRAM JURUSAN ==================== -->

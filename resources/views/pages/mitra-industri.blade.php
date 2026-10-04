@@ -118,8 +118,8 @@
                                     <div class="pt-2">
                                         <!-- Tombol HireLink! Terkoneksi ke Alur SSO Form -->
                                         <a href="{{ route('career-center.sso') }}" 
-                                           style="background-color: #2563EB !important; color: #ffffff !important;"
-                                           class="w-full block text-center py-2.5 px-4 hover:bg-blue-700 active:scale-98 font-bold text-xs rounded-xl transition duration-200 shadow-sm">
+                                           style="background-color: #C8102E !important; color: #ffffff !important;"
+                                           class="w-full block text-center py-2.5 px-4 hover:bg-[#8B0000] active:scale-98 font-bold text-xs rounded-xl transition duration-200 shadow-sm">
                                             HireLink!
                                         </a>
                                     </div>

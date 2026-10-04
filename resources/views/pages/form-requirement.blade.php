@@ -49,6 +49,34 @@
                 </p>
             </div>
 
+            <!-- KARTU INFO: TARGET MITRA INDUSTRI -->
+            <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-white/20">
+                <h3 class="text-xl sm:text-2xl font-bold text-red-600 mb-1">Dikirim ke Mitra Industri</h3>
+                <p class="text-gray-600 text-xs sm:text-sm mb-6 font-normal">
+                    Lamaranmu akan langsung terlihat oleh
+                    <span class="font-bold text-gray-800">{{ $industries->count() }} mitra industri</span>
+                    rekanan SMK Telkom Sidoarjo. Siapkan yang terbaik &mdash; mereka bisa bersaing merekrutmu!
+                </p>
+
+                @if($student)
+                    <div class="mb-6 p-4 rounded-2xl bg-gray-50 border border-gray-200 text-xs text-gray-700 leading-relaxed">
+                        <span class="font-bold">Data terverifikasi SSO:</span>
+                        {{ $student['name'] }} &bull; {{ $student['major'] }} &bull; DTP {{ $student['dtp'] }}
+                    </div>
+                @endif
+
+                <div class="flex flex-wrap gap-3">
+                    @foreach($industries as $mitra)
+                        <span class="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 bg-white text-xs font-semibold text-gray-700">
+                            @if($mitra->logo)
+                                <img src="{{ asset($mitra->logo) }}" alt="" class="h-5 w-auto object-contain" loading="lazy" decoding="async">
+                            @endif
+                            {{ $mitra->company_name }}
+                        </span>
+                    @endforeach
+                </div>
+            </div>
+
             <!-- FORM UTAMA -->
             <form action="{{ route('career-center.register.submit') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
                 @csrf
@@ -73,19 +101,19 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-xs font-semibold text-gray-800 mb-2">Full Name</label>
-                            <input type="text" name="full_name" value="Ahmad Dwi Santoso" required
+                            <input type="text" name="full_name" value="{{ old('full_name', $student['name'] ?? '') }}" required
                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 bg-gray-100 text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-red-600">
                         </div>
 
                         <div>
                             <label class="block text-xs font-semibold text-gray-800 mb-2">Email Address</label>
-                            <input type="email" name="email" value="ahmaddwi@student.telkomsda.sch.id" required
+                            <input type="email" name="email" value="{{ old('email') }}" placeholder="nama@student.telkomsda.sch.id" required
                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 bg-gray-100 text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-red-600">
                         </div>
 
                         <div>
                             <label class="block text-xs font-semibold text-gray-800 mb-2">Phone Number</label>
-                            <input type="text" name="phone" placeholder="081234567890" value="081234567890" required
+                            <input type="text" name="phone" placeholder="081234567890" value="{{ old('phone') }}" required
                                 class="w-full px-4 py-3 rounded-xl border border-gray-300 bg-gray-100 text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-red-600">
                         </div>
 

@@ -13,8 +13,8 @@ import {
     CheckSquare, ChevronDown, ChevronLeft, ChevronRight, Clock, Code2, Compass,
     Cpu, Download, Eye, FileText, FolderGit2, FolderOpen, GraduationCap, Image,
     Info, Instagram, Laptop, Layers, Link, Linkedin, ListChecks, Mail, MapPin,
-    Menu, Monitor, Network, Newspaper, Phone, Plus, School, Search, SearchX,
-    ShieldCheck, Sparkles, ThumbsUp, Trophy, User, UserCheck, Users, UserX, Wallet,
+    Menu, Monitor, Network, Newspaper, Phone, Plus, School, Search, SearchX, Send,
+    ShieldCheck, Sparkles, ThumbsUp, Trophy, User, UserCheck, Users, UserX, Wallet, X,
 } from 'lucide';
 
 // Lucide mencari ikon berdasarkan PascalCase dari data-lucide,
@@ -24,8 +24,8 @@ const ICONS = {
     CheckSquare, ChevronDown, ChevronLeft, ChevronRight, Clock, Code2, Compass,
     Cpu, Download, Eye, FileText, FolderGit2, FolderOpen, GraduationCap, Image,
     Info, Instagram, Laptop, Layers, Link, Linkedin, ListChecks, Mail, MapPin,
-    Menu, Monitor, Network, Newspaper, Phone, Plus, School, Search, SearchX,
-    ShieldCheck, Sparkles, ThumbsUp, Trophy, User, UserCheck, Users, UserX, Wallet,
+    Menu, Monitor, Network, Newspaper, Phone, Plus, School, Search, SearchX, Send,
+    ShieldCheck, Sparkles, ThumbsUp, Trophy, User, UserCheck, Users, UserX, Wallet, X,
 };
 
 // Kompatibilitas: skrip lama (public/assets/js/ppdb.js, jurufind.js)

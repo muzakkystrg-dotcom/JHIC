@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Applicant;
+use App\Models\Industry;
 use App\Models\JobApplication;
+use App\Models\JobPosting;
 use App\Models\JobVacancy;
 use App\Models\Student;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 
 class CareerCenterController extends Controller
 {
@@ -17,10 +21,18 @@ class CareerCenterController extends Controller
     public function index()
     {
         // Lowongan diambil dari tabel `job_vacancies` (hanya yang aktif).
-        $lowongans = JobVacancy::query()
-            ->where('is_active', true)
-            ->orderByDesc('posted_at')
-            ->get();
+        // Defensif: kalau tabel belum ada (migrasi belum dijalankan di server),
+        // halaman tetap tampil dengan daftar kosong alih-alih error 500.
+        $lowongans = collect();
+
+        if (Schema::hasTable('job_vacancies')) {
+            $lowongans = JobVacancy::query()
+                ->where('is_active', true)
+                ->orderByDesc('posted_at')
+                ->get();
+        } else {
+            Log::warning('[CareerCenter] Tabel `job_vacancies` tidak ditemukan. Jalankan `php artisan migrate` di server.');
+        }
 
         return view('pages.career-center', compact('lowongans'));
     }
@@ -107,7 +119,29 @@ class CareerCenterController extends Controller
         $sso = $request->query('sso');
         $isSuccess = false;
 
-        return view('pages.form-requirement', compact('sso', 'isSuccess'));
+        // Isi otomatis dari data siswa yang sudah diverifikasi lewat SSO,
+        // supaya form tidak lagi memakai contoh hardcode.
+        $student = null;
+
+        if ($sso) {
+            $model = Student::query()->where('sso', trim((string) $sso))->first();
+
+            if ($model) {
+                $student = [
+                    'sso' => $model->sso,
+                    'name' => $model->name,
+                    'major' => $model->major,
+                    'dtp' => $model->dtp,
+                ];
+            }
+        }
+
+        return view('pages.form-requirement', [
+            'sso' => $sso,
+            'student' => $student,
+            'isSuccess' => $isSuccess,
+            'industries' => Industry::query()->orderBy('company_name')->get(['id', 'company_name', 'logo']),
+        ]);
     }
 
     /**
@@ -140,7 +174,7 @@ class CareerCenterController extends Controller
             ? $request->file('portfolio')->store('portfolio', 'local')
             : null;
 
-        JobApplication::create([
+        $application = JobApplication::create([
             'sso' => $validated['sso'] ?? null,
             'full_name' => $validated['full_name'],
             'email' => $validated['email'],
@@ -154,6 +188,10 @@ class CareerCenterController extends Controller
             'start_date' => $validated['start_date'] ?? null,
         ]);
 
+        // Fan-out ke SELURUH mitra industri: satu submit alumni langsung terlihat
+        // di dashboard setiap mitra (mereka bersaing merekrut kandidat yang sama).
+        $this->pushToIndustryDashboard($application);
+
         // Redirect langsung ke route sukses
         return redirect()->route('career-center.success');
     }
@@ -164,8 +202,97 @@ class CareerCenterController extends Controller
     public function applySuccess()
     {
         $sso = null;
+        $student = null;
         $isSuccess = true; // Mengaktifkan mode sukses pada view
 
-        return view('pages.form-requirement', compact('sso', 'isSuccess'));
+        return view('pages.form-requirement', compact('sso', 'student', 'isSuccess'));
+    }
+
+    /**
+     * Sebar lamaran alumni ke dashboard SELURUH mitra industri.
+     *
+     * Satu submit alumni menghasilkan beberapa baris `applicants` (satu per mitra),
+     * sehingga setiap mitra melihat kandidat yang sama dan bersaing merekrutnya.
+     * Dipakai `updateOrCreate` agar submit ulang (mis. double click) tidak menggandakan.
+     */
+    private function pushToIndustryDashboard(JobApplication $application): void
+    {
+        $industries = Industry::query()->get();
+
+        if ($industries->isEmpty()) {
+            return;
+        }
+
+        $skills = is_array($application->skills) ? $application->skills : [];
+
+        foreach ($industries as $industry) {
+            // Setiap mitra punya lowongan (talent pool) sendiri; pakai yang aktif lebih dulu.
+            $jobPosting = JobPosting::query()
+                ->where('industry_id', $industry->id)
+                ->orderByDesc('is_active')
+                ->first();
+
+            Applicant::updateOrCreate(
+                [
+                    'industry_id' => $industry->id,
+                    'job_application_id' => $application->id,
+                ],
+                [
+                    'job_posting_id' => $jobPosting?->id,
+                    'source' => 'hirelink',
+                    'sso_number' => $application->sso ?? '',
+                    'full_name' => $application->full_name,
+                    'major' => $this->resolveMajor($application->sso),
+                    'dtp' => $this->resolveDtp($application->sso),
+                    'email' => $application->email,
+                    'phone' => $application->phone,
+                    'linkedin_url' => $application->linkedin,
+                    'skills' => $skills,
+                    'ai_match_score' => $this->estimateMatchScore($skills),
+                    'work_preference' => $application->work_preference ?: 'On-Site',
+                    'status' => 'pending',
+                ],
+            );
+        }
+    }
+
+    /**
+     * Ambil jurusan dari data siswa (bila SSO dikenal).
+     */
+    private function resolveMajor(?string $sso): string
+    {
+        if ($sso) {
+            $student = Student::query()->where('sso', trim($sso))->first();
+
+            if ($student) {
+                return $student->major;
+            }
+        }
+
+        return 'Siswa SMK Telkom Sidoarjo';
+    }
+
+    /**
+     * Ambil DTP (angkatan) dari data siswa (bila SSO dikenal).
+     */
+    private function resolveDtp(?string $sso): string
+    {
+        if ($sso) {
+            $student = Student::query()->where('sso', trim($sso))->first();
+
+            if ($student) {
+                return $student->dtp;
+            }
+        }
+
+        return '2023/2024';
+    }
+
+    /**
+     * Skor kecocokan awal dari jumlah hard skill yang dipilih (50-95).
+     */
+    private function estimateMatchScore(array $skills): int
+    {
+        return min(50 + (count(array_filter($skills)) * 8), 95);
     }
 }

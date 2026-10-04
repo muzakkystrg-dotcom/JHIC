@@ -12,7 +12,14 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        /*
+        | Portal Mitra Industri memakai guard `industry` (prefix /industry).
+        | Tanpa redirect khusus ini, middleware `auth` akan menendang tamu ke
+        | route bernama `login` yang tidak ada di JHIC -> RouteNotFoundException (500).
+        */
+        $middleware->redirectGuestsTo(fn (Request $request) => $request->is('industry', 'industry/*')
+            ? route('industry.login')
+            : route('home'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

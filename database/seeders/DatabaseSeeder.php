@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             PrestasiSeeder::class,
             PenerapanK3Seeder::class,
             TrialClassSeeder::class,
+            IndustrySeeder::class,
         ]);
     }
 }
