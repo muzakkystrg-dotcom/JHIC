@@ -10,10 +10,10 @@
     <!-- Dekorasi dashed lingkaran di belakang judul -->
     <img src="{{ asset('images/ppdb-dash.webp') }}" alt="" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[65%] w-[560px] max-w-none opacity-50 pointer-events-none hidden md:block" loading="eager" decoding="async" fetchpriority="high">
 
-    <!-- Poster pojok kiri atas -->
-    <img src="{{ asset('images/poster-77.webp') }}" alt="Poster Skomda" class="absolute left-8 top-28 w-36 md:w-44 rotate-[-6deg] shadow-xl rounded-lg hidden md:block pointer-events-none" loading="eager" decoding="async" fetchpriority="high">
+    <!-- Poster pojok kiri atas (hanya >=1280px: di bawah itu poster bertabrakan dengan judul) -->
+    <img src="{{ asset('images/poster-77.webp') }}" alt="Poster Skomda" class="absolute left-8 top-28 w-36 xl:w-44 rotate-[-6deg] shadow-xl rounded-lg hidden xl:block pointer-events-none" loading="lazy" decoding="async">
     <!-- Poster pojok kanan atas -->
-    <img src="{{ asset('images/poster-74.webp') }}" alt="Poster Skomda" class="absolute right-8 top-28 w-36 md:w-44 rotate-[6deg] shadow-xl rounded-lg hidden md:block pointer-events-none" loading="lazy" decoding="async">
+    <img src="{{ asset('images/poster-74.webp') }}" alt="Poster Skomda" class="absolute right-8 top-28 w-36 xl:w-44 rotate-[6deg] shadow-xl rounded-lg hidden xl:block pointer-events-none" loading="lazy" decoding="async">
     <!-- Poster kiri tengah -->
     <img src="{{ asset('images/poster-81.webp') }}" alt="Poster Skomda" class="absolute left-24 bottom-24 w-36 md:w-44 rotate-[4deg] shadow-xl rounded-lg hidden lg:block pointer-events-none z-10" loading="lazy" decoding="async">
     <!-- Poster kanan tengah -->
@@ -36,7 +36,7 @@
     </div>
 
     <!-- Foto siswa (cutout) di bagian bawah tengah -->
-    <img src="{{ asset('images/ppdb-students.webp') }}" alt="Siswa SMK Telkom Sidoarjo" class="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 w-[380px] sm:w-[480px] md:w-[560px] max-w-[85%] pointer-events-none select-none" loading="lazy" decoding="async">
+    <img src="{{ asset('images/ppdb-students.webp') }}" alt="Siswa SMK Telkom Sidoarjo" class="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 w-[300px] sm:w-[420px] md:w-[520px] lg:w-[560px] max-w-none pointer-events-none select-none" loading="lazy" decoding="async">
   </section>
 
   <!-- ==================== INFORMASI SISWA BARU ==================== -->
