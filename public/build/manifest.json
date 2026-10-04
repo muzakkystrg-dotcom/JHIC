@@ -1,0 +1,54 @@
+{
+  "_aos-PTugdkvS.css": {
+    "file": "assets/aos-PTugdkvS.css",
+    "src": "_aos-PTugdkvS.css"
+  },
+  "_aos-y9NVAERG.js": {
+    "file": "assets/aos-y9NVAERG.js",
+    "name": "aos",
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js"
+    ],
+    "css": [
+      "assets/aos-PTugdkvS.css"
+    ]
+  },
+  "_chart-DtU8b1ZO.js": {
+    "file": "assets/chart-DtU8b1ZO.js",
+    "name": "chart",
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js"
+    ]
+  },
+  "_lucide-fauRVgNr.js": {
+    "file": "assets/lucide-fauRVgNr.js",
+    "name": "lucide"
+  },
+  "_rolldown-runtime-hePW80VL.js": {
+    "file": "assets/rolldown-runtime-hePW80VL.js",
+    "name": "rolldown-runtime"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-CFARFScf.css",
+    "name": "app",
+    "names": [
+      "app.css"
+    ],
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-DXni5cxw.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_lucide-fauRVgNr.js",
+      "_aos-y9NVAERG.js"
+    ],
+    "dynamicImports": [
+      "_chart-DtU8b1ZO.js"
+    ]
+  }
+}
