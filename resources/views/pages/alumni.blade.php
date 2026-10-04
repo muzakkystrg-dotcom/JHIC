@@ -88,7 +88,7 @@
                     <tbody class="divide-y divide-gray-200 text-sm text-gray-700 font-medium bg-white">
                         @forelse($alumnis as $index => $alumni)
                             <tr class="hover:bg-gray-50 transition">
-                                <td class="py-4 px-4 sm:px-6">{{ ($alumnis->firstItem() ?? 0) + $index }}</td>
+                                <td class="py-4 px-4 sm:px-6">{{ $index + 1 }}</td>
                                 <td class="py-4 px-4 sm:px-6 font-bold text-gray-900">{{ $alumni->nama_siswa }}</td>
                                 <td class="py-4 px-4 sm:px-6">
                                     <span class="bg-red-50 text-red-700 px-2.5 py-1 rounded-lg text-xs font-bold">
@@ -112,13 +112,6 @@
                 </table>
             </div>
         </div>
-
-        <!-- Navigasi Halaman (pagination server-side) -->
-        @if($alumnis->hasPages())
-            <div class="mt-10" data-aos="fade-up">
-                {{ $alumnis->links() }}
-            </div>
-        @endif
 
     </div>
 </section>

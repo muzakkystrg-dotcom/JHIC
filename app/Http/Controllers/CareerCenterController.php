@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ProcessApplicantFanOut;
+use App\Models\Applicant;
 use App\Models\Industry;
 use App\Models\JobApplication;
+use App\Models\JobPosting;
 use App\Models\JobVacancy;
 use App\Models\Student;
 use Illuminate\Http\JsonResponse;
@@ -187,11 +188,9 @@ class CareerCenterController extends Controller
             'start_date' => $validated['start_date'] ?? null,
         ]);
 
-        // Fan-out ke SELURUH mitra industri dijalankan di BACKGROUND QUEUE.
-        // Satu submit alumni tetap langsung terlihat di dashboard tiap mitra,
-        // tapi user tidak lagi menunggu ~N query tulis selesai: request ini
-        // hanya membuat baris lamaran lalu redirect (O(1)).
-        ProcessApplicantFanOut::dispatch($application->id);
+        // Fan-out ke SELURUH mitra industri: satu submit alumni langsung terlihat
+        // di dashboard setiap mitra (mereka bersaing merekrut kandidat yang sama).
+        $this->pushToIndustryDashboard($application);
 
         // Redirect langsung ke route sukses
         return redirect()->route('career-center.success');
@@ -207,5 +206,93 @@ class CareerCenterController extends Controller
         $isSuccess = true; // Mengaktifkan mode sukses pada view
 
         return view('pages.form-requirement', compact('sso', 'student', 'isSuccess'));
+    }
+
+    /**
+     * Sebar lamaran alumni ke dashboard SELURUH mitra industri.
+     *
+     * Satu submit alumni menghasilkan beberapa baris `applicants` (satu per mitra),
+     * sehingga setiap mitra melihat kandidat yang sama dan bersaing merekrutnya.
+     * Dipakai `updateOrCreate` agar submit ulang (mis. double click) tidak menggandakan.
+     */
+    private function pushToIndustryDashboard(JobApplication $application): void
+    {
+        $industries = Industry::query()->get();
+
+        if ($industries->isEmpty()) {
+            return;
+        }
+
+        $skills = is_array($application->skills) ? $application->skills : [];
+
+        foreach ($industries as $industry) {
+            // Setiap mitra punya lowongan (talent pool) sendiri; pakai yang aktif lebih dulu.
+            $jobPosting = JobPosting::query()
+                ->where('industry_id', $industry->id)
+                ->orderByDesc('is_active')
+                ->first();
+
+            Applicant::updateOrCreate(
+                [
+                    'industry_id' => $industry->id,
+                    'job_application_id' => $application->id,
+                ],
+                [
+                    'job_posting_id' => $jobPosting?->id,
+                    'source' => 'hirelink',
+                    'sso_number' => $application->sso ?? '',
+                    'full_name' => $application->full_name,
+                    'major' => $this->resolveMajor($application->sso),
+                    'dtp' => $this->resolveDtp($application->sso),
+                    'email' => $application->email,
+                    'phone' => $application->phone,
+                    'linkedin_url' => $application->linkedin,
+                    'skills' => $skills,
+                    'ai_match_score' => $this->estimateMatchScore($skills),
+                    'work_preference' => $application->work_preference ?: 'On-Site',
+                    'status' => 'pending',
+                ],
+            );
+        }
+    }
+
+    /**
+     * Ambil jurusan dari data siswa (bila SSO dikenal).
+     */
+    private function resolveMajor(?string $sso): string
+    {
+        if ($sso) {
+            $student = Student::query()->where('sso', trim($sso))->first();
+
+            if ($student) {
+                return $student->major;
+            }
+        }
+
+        return 'Siswa SMK Telkom Sidoarjo';
+    }
+
+    /**
+     * Ambil DTP (angkatan) dari data siswa (bila SSO dikenal).
+     */
+    private function resolveDtp(?string $sso): string
+    {
+        if ($sso) {
+            $student = Student::query()->where('sso', trim($sso))->first();
+
+            if ($student) {
+                return $student->dtp;
+            }
+        }
+
+        return '2023/2024';
+    }
+
+    /**
+     * Skor kecocokan awal dari jumlah hard skill yang dipilih (50-95).
+     */
+    private function estimateMatchScore(array $skills): int
+    {
+        return min(50 + (count(array_filter($skills)) * 8), 95);
     }
 }

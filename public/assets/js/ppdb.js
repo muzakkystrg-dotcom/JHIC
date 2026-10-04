@@ -1,5 +1,3 @@
-import '../css/ppdb.css';
-
 /* ==========================================================
    PPDB 2026/2027 - SMK Telkom Sidoarjo
    Script khusus halaman PPDB (dipisah dari ppdb.html)
@@ -11,9 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Buka / tutup jawaban FAQ
-// Dijalankan sebagai ES module (di-bundle Vite), jadi fungsi ini TIDAK lagi
-// otomatis global seperti versi <script> lama. Markup tombol FAQ memanggil
-// `onclick="toggleFaq(this)"`, sehingga harus diekspos manual ke window.
 function toggleFaq(button) {
   var answer = button.nextElementSibling;              // div.faq-answer
   var icon = button.querySelector('svg');              // ikon chevron hasil render lucide
@@ -22,5 +17,3 @@ function toggleFaq(button) {
   var isOpen = !answer.classList.contains('hidden');
   if (icon) icon.style.transform = isOpen ? 'rotate(90deg)' : '';
 }
-
-window.toggleFaq = toggleFaq;

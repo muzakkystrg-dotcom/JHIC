@@ -20,8 +20,7 @@ class AlumniController extends Controller
                 });
             })
             ->orderBy('nama_siswa')
-            ->paginate(15)
-            ->withQueryString();
+            ->get();
 
         return view('pages.alumni', compact('alumnis', 'search'));
     }

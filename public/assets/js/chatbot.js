@@ -1,5 +1,3 @@
-import '../css/chatbot.css';
-
 /* ==========================================================
    SKOMDA AI — widget chatbot global
    Riwayat percakapan cuma di memory (hilang kalau refresh).

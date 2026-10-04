@@ -19,34 +19,33 @@ class IndustryDashboardController extends Controller
     {
         $industry = Auth::guard('industry')->user();
 
-        // PADAT: satu query agregat menggantikan 3x count() terpisah.
-        // SUM(CASE WHEN ...) dihitung oleh DB dalam satu kali jalan.
-        $row = Applicant::query()
-            ->where('industry_id', $industry->id)
-            ->selectRaw('COUNT(*) as total_kandidat')
-            ->selectRaw('SUM(CASE WHEN status = ? THEN 1 ELSE 0 END) as kandidat_baru', ['pending'])
-            ->selectRaw(
-                'SUM(CASE WHEN status = ? AND updated_at >= ? THEN 1 ELSE 0 END) as diterima_minggu_ini',
-                ['accepted', now()->startOfWeek()],
-            )
-            ->first();
+        $baseApplicants = Applicant::query()->where('industry_id', $industry->id);
 
         $metrics = [
-            'kandidat_baru' => (int) ($row->kandidat_baru ?? 0),
-            'diterima_minggu_ini' => (int) ($row->diterima_minggu_ini ?? 0),
-            'total_kandidat' => (int) ($row->total_kandidat ?? 0),
+            // Kandidat baru yang belum ditindak (status: pending).
+            'kandidat_baru' => (clone $baseApplicants)->where('status', 'pending')->count(),
+            // Kandidat yang diterima pada minggu berjalan.
+            'diterima_minggu_ini' => (clone $baseApplicants)
+                ->where('status', 'accepted')
+                ->where('updated_at', '>=', now()->startOfWeek())
+                ->count(),
+            // Total kandidat yang masuk ke perusahaan ini.
+            'total_kandidat' => (clone $baseApplicants)->count(),
         ];
 
-        // Satu query untuk semua lowongan mitra; dipisah di memori supaya
-        // tidak perlu 2x query (aktif / ditutup).
-        $jobs = JobPosting::query()
+        $activeJobs = JobPosting::query()
             ->where('industry_id', $industry->id)
+            ->where('is_active', true)
             ->withCount('applicants')
             ->latest()
             ->get();
 
-        $activeJobs = $jobs->filter(fn ($job) => (bool) $job->is_active)->values();
-        $inactiveJobs = $jobs->reject(fn ($job) => (bool) $job->is_active)->values();
+        $inactiveJobs = JobPosting::query()
+            ->where('industry_id', $industry->id)
+            ->where('is_active', false)
+            ->withCount('applicants')
+            ->latest()
+            ->get();
 
         return view('pages.industry.dashboard.index', compact('industry', 'metrics', 'activeJobs', 'inactiveJobs'));
     }

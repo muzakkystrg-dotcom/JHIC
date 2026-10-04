@@ -309,5 +309,9 @@
 @endsection
 
 @push('styles')
-    @vite('resources/js/ppdb.js')
+    <link rel="stylesheet" href="{{ asset('assets/css/ppdb.css') }}">
+@endpush
+
+@push('scripts')
+    <script src="{{ asset('assets/js/ppdb.js') }}"></script>
 @endpush

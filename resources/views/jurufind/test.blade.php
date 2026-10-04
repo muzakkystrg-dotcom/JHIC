@@ -3,7 +3,7 @@
 @section('title', 'Tes Minat Bakat (JURUFIND) - SMK Telkom Sidoarjo')
 
 @push('styles')
-    @vite('resources/js/jurufind.js')
+    <link rel="stylesheet" href="{{ asset('assets/css/jurufind.css') }}">
     {{-- Patch responsif khusus halaman kuis (scoped ke #jurufind-app, tidak
          mengubah jurufind.css yang dipakai bersama halaman lain). --}}
     <style>
@@ -118,3 +118,7 @@
         };
     </script>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('assets/js/jurufind.js') }}" defer></script>
+@endpush

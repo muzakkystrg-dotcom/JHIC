@@ -21,8 +21,7 @@ class BeritaController extends Controller
         $beritas = Berita::query()
             ->where('is_published', true)
             ->orderByDesc('published_at')
-            ->paginate(9)
-            ->withQueryString();
+            ->get();
 
         return view('pages.berita', compact('categories', 'beritas'));
     }

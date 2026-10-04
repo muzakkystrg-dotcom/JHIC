@@ -22,8 +22,7 @@ class IndustryApplicantController extends Controller
             ->where('industry_id', $industry->id)
             ->with('jobPosting')
             ->orderByDesc('ai_match_score')
-            ->paginate(20)
-            ->withQueryString();
+            ->get();
 
         return view('pages.industry.dashboard.applicants', compact('industry', 'applicants'));
     }

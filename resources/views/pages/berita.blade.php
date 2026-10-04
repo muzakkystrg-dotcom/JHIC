@@ -69,7 +69,7 @@
                             <div>
                                 <div class="h-48 bg-gray-100 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
                                     <!-- Thumbnail berita dari kolom `thumbnail` di tabel beritas -->
-                                    <img src="{{ $news->thumbnail ? asset($news->thumbnail) : asset('images/berita/juara.webp') }}" alt="Thumbnail Berita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                                    <img src="{{ $news->thumbnail ? asset($news->thumbnail) : asset('images/berita/juara.webp') }}" alt="Thumbnail Berita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="eager" decoding="async" fetchpriority="high">
                                 </div>
                                 <div class="flex items-center justify-between text-xs font-semibold text-gray-400 mb-2">
                                     <span class="text-red-700">{{ $news->category }}</span>
@@ -108,13 +108,6 @@
                 <i data-lucide="chevron-right" class="w-5 h-5"></i>
             </button>
         </div>
-
-        <!-- Navigasi Halaman (pagination server-side) -->
-        @if($beritas->hasPages())
-            <div class="mt-12" data-aos="fade-up">
-                {{ $beritas->links() }}
-            </div>
-        @endif
 
     </div>
 </section>
