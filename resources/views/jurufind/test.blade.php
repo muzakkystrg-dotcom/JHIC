@@ -75,7 +75,6 @@
     <script>
         window.JURUFIND_QUESTIONS = @json($questions);
         window.JURUFIND_MAJORS = @json($majors);
-        window.JURUFIND_DIMENSION_LABELS = @json($dimensionLabels);
         
         // URL SILABUS UNTUK DIBACA OLEH jurufind.js
         window.JURUFIND_SILABUS_URLS = {

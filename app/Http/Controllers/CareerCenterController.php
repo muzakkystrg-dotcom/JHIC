@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobApplication;
+use App\Models\JobVacancy;
+use App\Models\Student;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -14,80 +16,13 @@ class CareerCenterController extends Controller
      */
     public function index()
     {
-        $lowongans = [
-            [
-                'id' => 1,
-                'title' => 'Junior DevOps',
-                'company' => 'Pt. Garuda Telekomunikasi Ind...',
-                'category' => 'Full Time',
-                'location' => 'Surabaya, Indonesia',
-                'posted_at' => '1 Hari Yang Lalu',
-                'logo' => asset('images/mitra/gt.webp'),
-            ],
-            [
-                'id' => 2,
-                'title' => 'Junior DevOps',
-                'company' => 'Pt. Garuda Telekomunikasi Ind...',
-                'category' => 'Full Time',
-                'location' => 'Surabaya, Indonesia',
-                'posted_at' => '1 Hari Yang Lalu',
-                'logo' => asset('images/mitra/gt.webp'),
-            ],
-            [
-                'id' => 3,
-                'title' => 'Junior DevOps',
-                'company' => 'Pt. Garuda Telekomunikasi Ind...',
-                'category' => 'Full Time',
-                'location' => 'Surabaya, Indonesia',
-                'posted_at' => '1 Hari Yang Lalu',
-                'logo' => asset('images/mitra/gt.webp'),
-            ],
-            [
-                'id' => 4,
-                'title' => 'Junior DevOps',
-                'company' => 'Pt. Garuda Telekomunikasi Ind...',
-                'category' => 'Full Time',
-                'location' => 'Surabaya, Indonesia',
-                'posted_at' => '1 Hari Yang Lalu',
-                'logo' => asset('images/mitra/gt.webp'),
-            ],
-            [
-                'id' => 5,
-                'title' => 'Junior DevOps',
-                'company' => 'Pt. Garuda Telekomunikasi Ind...',
-                'category' => 'Full Time',
-                'location' => 'Surabaya, Indonesia',
-                'posted_at' => '1 Hari Yang Lalu',
-                'logo' => asset('images/mitra/gt.webp'),
-            ],
-        ];
+        // Lowongan diambil dari tabel `job_vacancies` (hanya yang aktif).
+        $lowongans = JobVacancy::query()
+            ->where('is_active', true)
+            ->orderByDesc('posted_at')
+            ->get();
 
-        $events = [
-            [
-                'day' => '8',
-                'month' => 'September',
-                'title' => 'Sidoarjo School & Job Fair 2026',
-                'location' => 'Lippo Mall Sidoarjo',
-                'is_ended' => false,
-            ],
-            [
-                'day' => '9',
-                'month' => 'Juli',
-                'title' => 'Workshop: AI dan Bisnis',
-                'location' => 'Aula SMK TELKOM SIDOARJO',
-                'is_ended' => true,
-            ],
-        ];
-
-        $testimonials = [
-            [
-                'quote' => 'Sekolah disini asyik banget, gabakal nyesel buat para orang tuah yang nyari calon sekolah buat anaknya sih!',
-                'author' => 'Aisyah SIJA • Institut Teknologi Bandung',
-                'role' => 'Alumni SMK Telkom Sidoarjo',
-            ]
-        ];
-
-        return view('pages.career-center', compact('lowongans', 'events', 'testimonials'));
+        return view('pages.career-center', compact('lowongans'));
     }
 
     /**
@@ -99,46 +34,11 @@ class CareerCenterController extends Controller
     }
 
     /**
-     * Direktori siswa sementara untuk verifikasi SSO.
+     * Verifikasi SSO siswa.
      *
-     * TODO: ganti dengan sumber data resmi sekolah (database/API SSO).
-     * Sebelum sumber resmi tersedia, HANYA nomor SSO di bawah ini yang lolos,
-     * sehingga verifikasi tetap gagal-tertutup (fail-closed) untuk input lain.
-     */
-    private const STUDENT_DIRECTORY = [
-        '541211001' => [
-            'sso' => '541211001',
-            'name' => 'Ahmad Fauzi',
-            'major' => 'Sistem Informasi Jaringan & Aplikasi (SIJA)',
-            'dtp' => '2023/2024',
-        ],
-        '541211002' => [
-            'sso' => '541211002',
-            'name' => 'Siti Aminah',
-            'major' => 'Teknik Jaringan Akses Telekomunikasi (TJAT)',
-            'dtp' => '2023/2024',
-        ],
-        '541211003' => [
-            'sso' => '541211003',
-            'name' => 'Budi Santoso',
-            'major' => 'Sistem Informasi Jaringan & Aplikasi (SIJA)',
-            'dtp' => '2022/2023',
-        ],
-        '541211004' => [
-            'sso' => '541211004',
-            'name' => 'Dewi Lestari',
-            'major' => 'Teknik Jaringan Akses Telekomunikasi (TJAT)',
-            'dtp' => '2022/2023',
-        ],
-        '541211005' => [
-            'sso' => '541211005',
-            'name' => 'Reza Pratama',
-            'major' => 'Sistem Informasi Jaringan & Aplikasi (SIJA)',
-            'dtp' => '2024/2025',
-        ],
-    ];
-
-    /**
+     * Sumber data: tabel `students` (diisi via StudentSeeder / data resmi sekolah).
+     * Ganti/populate tabel tersebut dengan data SSO resmi saat tersedia.
+     *
      * AJAX Check SSO Siswa (fail-closed).
      *
      * Sukses HANYA diberikan saat SSO ditemukan di sumber data.
@@ -177,13 +77,26 @@ class CareerCenterController extends Controller
     }
 
     /**
-     * Cari siswa berdasarkan nomor SSO.
+     * Cari siswa berdasarkan nomor SSO di tabel `students`.
      *
      * @return array{sso:string,name:string,major:string,dtp:string}|null
      */
     private function findStudentBySso(string $sso): ?array
     {
-        return self::STUDENT_DIRECTORY[trim($sso)] ?? null;
+        $student = Student::query()
+            ->where('sso', trim($sso))
+            ->first();
+
+        if ($student === null) {
+            return null;
+        }
+
+        return [
+            'sso' => $student->sso,
+            'name' => $student->name,
+            'major' => $student->major,
+            'dtp' => $student->dtp,
+        ];
     }
 
     /**

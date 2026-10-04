@@ -30,8 +30,8 @@
                 Ikuti Trial Class kami untuk merasakan langsung suasana, metode pengajaran, dan fasilitas unggulan SMK Telkom Sidoarjo. Dapatkan gambaran jelas tentang jurusan dan lingkungan belajar kami sebelum Anda memutuskan. Jelajahi jadwal dan daftar Trial Class sekarang!
             </p>
             
-            <a href="#ikuti-trial" class="btn-primary-global mt-4">
-                Jelajahi 
+            <a href="#ikuti-trial" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-800 transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer mt-4">
+                Jelajahi
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
         </div>
@@ -72,34 +72,36 @@
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <span class="bg-red-50 text-red-700 text-xs font-bold px-3 py-1 rounded-full">
-                                Jurusan {{ $item['jurusan'] }}
+                                Jurusan {{ $item->jurusan }}
                             </span>
                             <span class="text-xs text-gray-400 font-semibold flex items-center gap-1">
-                                <i data-lucide="users" class="w-3.5 h-3.5"></i> {{ $item['kuota'] }}
+                                <i data-lucide="users" class="w-3.5 h-3.5"></i> {{ $item->kuota }} Siswa
                             </span>
                         </div>
                         <h3 class="font-bold text-lg text-gray-900 mb-2 group-hover:text-red-700 transition-colors">
-                            {{ $item['judul'] }}
+                            {{ $item->judul }}
                         </h3>
                         <div class="space-y-2 text-xs text-gray-500 mt-4">
                             <div class="flex items-center gap-2">
                                 <i data-lucide="calendar" class="w-4 h-4 text-red-600 shrink-0"></i>
-                                <span>{{ $item['tanggal'] }}</span>
+                                <span>{{ $item->tanggal_formatted }}</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i data-lucide="clock" class="w-4 h-4 text-red-600 shrink-0"></i>
-                                <span>{{ $item['jam'] }}</span>
+                                <span>{{ $item->jam }}</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i data-lucide="user" class="w-4 h-4 text-red-600 shrink-0"></i>
-                                <span>Instruktur: {{ $item['instruktur'] }}</span>
+                                <span>Instruktur: {{ $item->instruktur }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="mt-6 pt-4 border-t border-gray-50 flex justify-end">
-                        <a href="#" class="btn-pill-small">
-                            Daftar Sesi <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                        </a>
+                        <button type="button" disabled
+                            class="inline-flex items-center gap-2 bg-gray-200 text-gray-400 px-6 py-3 rounded-xl font-bold cursor-not-allowed shadow-sm select-none"
+                            title="Belum ada jadwal aktif">
+                            Daftar Sesi <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
                     </div>
                 </div>
             @empty

@@ -27,21 +27,6 @@ class ResponseValidator
             }
         }
 
-        if (! is_array($data['topInterests'] ?? null)) {
-            return false;
-        }
-        foreach ($data['topInterests'] as $item) {
-            if (! is_array($item)) {
-                return false;
-            }
-            if (! is_string($item['name'] ?? null)) {
-                return false;
-            }
-            if (! is_numeric($item['score'] ?? null)) {
-                return false;
-            }
-        }
-
         if (! is_string($data['comparison'] ?? null)) {
             return false;
         }

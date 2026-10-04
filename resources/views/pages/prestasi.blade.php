@@ -97,13 +97,13 @@
                         <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
                             <div>
                                 <div class="h-56 bg-gray-100 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
-                                    <img src="{{ $ach['image'] }}" alt="{{ $ach['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="eager" decoding="async" fetchpriority="high">
+                                    <img src="{{ $ach->image ? asset($ach->image) : asset('images/prestasi/juara.webp') }}" alt="{{ $ach->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="eager" decoding="async" fetchpriority="high">
                                 </div>
                                 <span class="inline-block bg-red-50 text-red-700 text-xs font-bold px-3 py-1 rounded-full mb-3">
-                                    {{ $ach['category'] }}
+                                    {{ $ach->category }}
                                 </span>
                                 <p class="text-gray-700 text-sm leading-relaxed mb-6 font-medium">
-                                    "{{ $ach['description'] }}"
+                                    "{{ $ach->description }}"
                                 </p>
                             </div>
                             <div class="pt-4 border-t border-gray-50 flex justify-end">
@@ -148,6 +148,8 @@
         const Chart = await window.jhicLoadChart();
         const ctx = document.getElementById('achievementChart').getContext('2d');
         const chartData = @json($chartData);
+        const chartMax = Math.max(...chartData.data, 1);
+        const axisMax = Math.ceil(chartMax * 1.1) || 1;
 
         new Chart(ctx, {
             type: 'bar',
@@ -176,9 +178,9 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 170,
+                        max: axisMax,
                         ticks: {
-                            stepSize: 42.5,
+                            stepSize: Math.max(1, Math.ceil(axisMax / 4)),
                             font: { family: 'Plus Jakarta Sans', size: 12 }
                         },
                         grid: {

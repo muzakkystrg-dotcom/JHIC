@@ -61,36 +61,30 @@
             </p>
         </div>
 
-        @php
-            $lowongans = [
-                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.webp'), 'category' => 'Full Time'],
-                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.webp'), 'category' => 'Full Time'],
-                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.webp'), 'category' => 'Full Time'],
-                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.webp'), 'category' => 'Full Time'],
-                ['title' => 'Junior DevOps', 'company' => 'Pt. Garuda Telekomunikasi Ind...', 'location' => 'Surabaya, Indonesia', 'posted' => '1 Hari Yang Lalu', 'logo' => asset('images/mitra/gt.webp'), 'category' => 'Full Time'],
-            ];
-        @endphp
-
         <!-- Grid Otomatis 1 Kolom di HP, 2 di Tablet, 3 di Desktop -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            @foreach($lowongans as $job)
+            @forelse($lowongans as $job)
                 <div class="bg-white rounded-3xl p-5 sm:p-6 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between">
                     <div>
                         <div class="mb-4">
-                            <img src="{{ $job['logo'] }}" alt="Logo Mitra" class="h-9 sm:h-10 w-auto object-contain mb-3" onerror="this.src='{{ asset('images/footer/4. Garuda Spark Full Color 1.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
-                            <h3 class="text-base font-bold text-slate-900 leading-snug">{{ $job['title'] }}</h3>
-                            <p class="text-xs text-gray-500 font-medium mt-1">{{ $job['company'] }}</p>
+                            <img src="{{ $job->logo ? asset($job->logo) : asset('images/footer/4. Garuda Spark Full Color 1.webp') }}" alt="Logo Mitra" class="h-9 sm:h-10 w-auto object-contain mb-3" onerror="this.src='{{ asset('images/footer/4. Garuda Spark Full Color 1.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
+                            <h3 class="text-base font-bold text-slate-900 leading-snug">{{ $job->title }}</h3>
+                            <p class="text-xs text-gray-500 font-medium mt-1">{{ $job->company }}</p>
                         </div>
                         <div class="flex items-center gap-4 text-xs text-gray-500 my-4">
-                            <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-gray-400"></i> {{ $job['location'] }}</span>
-                            <span class="flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5 text-gray-400"></i> {{ $job['posted'] }}</span>
+                            <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-gray-400"></i> {{ $job->location }}</span>
+                            <span class="flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5 text-gray-400"></i> {{ optional($job->posted_at)->diffForHumans() }}</span>
                         </div>
                     </div>
                     <div class="pt-2">
                         <a href="{{ route('career-center.sso') }}" style="background-color: #2563EB !important; color: #ffffff !important;" class="w-full block text-center py-2.5 px-4 hover:bg-blue-700 active:scale-98 font-bold text-xs sm:text-sm rounded-xl transition duration-200 shadow-md">HireLink!</a>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-span-full text-center py-10 text-gray-500 italic">
+                    Belum ada lowongan tersedia saat ini.
+                </div>
+            @endforelse
         </div>
     </section>
 
@@ -128,8 +122,7 @@
             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">Hirelink!</h2>
             <p class="text-xs sm:text-sm text-white/95 leading-relaxed max-w-xl mx-auto">Fitur untuk para alumni Skomda mencari kesempatan bekerja dengan mitra sekolah kami.</p>
             <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2">
-                <a href="{{ route('career-center.sso') }}" class="px-7 sm:px-8 py-3 bg-white text-slate-900 font-bold text-xs sm:text-sm rounded-full shadow-lg hover:bg-gray-100 transition">Mulai Tes</a>
-                <a href="#" class="px-7 sm:px-8 py-3 border border-white bg-red-900/40 text-white font-bold text-xs sm:text-sm rounded-full hover:bg-red-900 transition">Baca Panduan</a>
+                <a href="{{ route('career-center.sso') }}" class="px-7 sm:px-8 py-3 bg-white text-slate-900 font-bold text-xs sm:text-sm rounded-full shadow-lg hover:bg-gray-100 transition">Lamar Sekarang</a>
             </div>
         </div>
     </section>

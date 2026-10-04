@@ -5,37 +5,39 @@ namespace App\Services\Jurufind;
 class ScoringService
 {
     /**
+     * Tally langsung S (SIJA) vs T (TJAT), tanpa bobot dimensi apapun.
+     *
      * @param  array<string,string>  $answers  [question_id => option_id]
      * @return array{
      *   majorPercentages: array{SIJA:int,TJAT:int},
      *   primaryMajor: string,
      *   difference: int,
      *   tier: string,
-     *   dimensionScores: array<string,int>,
-     *   topDimensions: array<int, array{dimension:string, score:int}>
+     *   rawPoints: array{SIJA:int,TJAT:int}
      * }
      */
     public function score(array $answers): array
     {
-        $dimensionScores = $this->calculateDimensionScores($answers);
+        $points = ['SIJA' => 0, 'TJAT' => 0];
 
-        $weights = QuizData::majorDimensionWeights();
-        $rawScores = ['SIJA' => 0.0, 'TJAT' => 0.0];
-
-        foreach (['SIJA', 'TJAT'] as $major) {
-            $sum = 0.0;
-            foreach ($dimensionScores as $dimension => $score) {
-                $weight = $weights[$major][$dimension] ?? 0;
-                $sum += $score * $weight;
+        foreach (QuizData::questions() as $question) {
+            $selectedId = $answers[$question['id']] ?? null;
+            if (! $selectedId) {
+                continue;
             }
-            $rawScores[$major] = $sum;
+
+            $option = collect($question['options'])->firstWhere('id', $selectedId);
+            if (! $option) {
+                continue;
+            }
+
+            $major = $option['major'] === 'S' ? 'SIJA' : 'TJAT';
+            $points[$major] += $option['weight'];
         }
 
-        $totalRaw = $rawScores['SIJA'] + $rawScores['TJAT'];
+        $total = $points['SIJA'] + $points['TJAT'];
 
-        $sijaExact = $totalRaw > 0 ? ($rawScores['SIJA'] / $totalRaw) * 100 : 50;
-
-        $sijaPct = (int) round($sijaExact);
+        $sijaPct = $total > 0 ? (int) round(($points['SIJA'] / $total) * 100) : 50;
         $tjatPct = 100 - $sijaPct;
         if ($tjatPct < 0) {
             $tjatPct = 0;
@@ -46,56 +48,22 @@ class ScoringService
         $difference = abs($sijaPct - $tjatPct);
         $tier = $this->classifyTier($difference);
 
-        arsort($dimensionScores);
-        $topDimensions = [];
-        $i = 0;
-        foreach ($dimensionScores as $dimension => $score) {
-            if ($i >= QuizData::TOP_DIMENSIONS_COUNT) {
-                break;
-            }
-            $topDimensions[] = ['dimension' => $dimension, 'score' => $score];
-            $i++;
-        }
-
         return [
             'majorPercentages' => ['SIJA' => $sijaPct, 'TJAT' => $tjatPct],
             'primaryMajor' => $primaryMajor,
             'difference' => $difference,
             'tier' => $tier,
-            'dimensionScores' => $dimensionScores,
-            'topDimensions' => $topDimensions,
+            'rawPoints' => $points, // opsional, berguna buat debugging
         ];
-    }
-
-    private function calculateDimensionScores(array $answers): array
-    {
-        $totals = [];
-        foreach (QuizData::questions() as $question) {
-            $selectedOptionId = $answers[$question['id']] ?? null;
-            if (! $selectedOptionId) {
-                continue;
-            }
-
-            $option = collect($question['options'])->firstWhere('id', $selectedOptionId);
-            if (! $option) {
-                continue;
-            }
-
-            foreach ($option['scores'] as $dimension => $value) {
-                $totals[$dimension] = ($totals[$dimension] ?? 0) + $value;
-            }
-        }
-
-        return $totals;
     }
 
     private function classifyTier(int $difference): string
     {
-        $thresholds = QuizData::nearTieThresholds();
-        if ($difference <= $thresholds['close']) {
+        $t = QuizData::nearTieThresholds();
+        if ($difference <= $t['close']) {
             return 'close';
         }
-        if ($difference <= $thresholds['leaning']) {
+        if ($difference <= $t['leaning']) {
             return 'leaning';
         }
 

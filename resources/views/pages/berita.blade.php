@@ -64,19 +64,19 @@
         <div class="relative overflow-hidden px-2 py-4 mb-10" data-aos="fade-up" data-aos-delay="300">
             <div id="newsCarousel" class="flex transition-transform duration-500 ease-out gap-6">
                 @foreach($beritas as $news)
-                    <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0 news-item" data-category="{{ $news['category'] }}">
+                    <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0 news-item" data-category="{{ $news->category }}">
                         <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
                             <div>
                                 <div class="h-48 bg-gray-100 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
-                                    <!-- Menampilkan thumbnail dari variabel array $news['thumbnail'] (asset('images/berita/juara.webp')) -->
-                                    <img src="{{ $news['thumbnail'] }}" alt="Thumbnail Berita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="eager" decoding="async" fetchpriority="high">
+                                    <!-- Thumbnail berita dari kolom `thumbnail` di tabel beritas -->
+                                    <img src="{{ $news->thumbnail ? asset($news->thumbnail) : asset('images/berita/juara.webp') }}" alt="Thumbnail Berita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="eager" decoding="async" fetchpriority="high">
                                 </div>
                                 <div class="flex items-center justify-between text-xs font-semibold text-gray-400 mb-2">
-                                    <span class="text-red-700">{{ $news['category'] }}</span>
-                                    <span>{{ \Carbon\Carbon::parse($news['published_at'])->format('Y-m-d') }}</span>
+                                    <span class="text-red-700">{{ $news->category }}</span>
+                                    <span>{{ optional($news->published_at)->format('Y-m-d') }}</span>
                                 </div>
                                 <h3 class="font-bold text-base text-gray-900 mb-3 line-clamp-2 group-hover:text-red-700 transition-colors">
-                                    {{ $news['title'] }}
+                                    {{ $news->title }}
                                 </h3>
                             </div>
                             <div class="pt-4 border-t border-gray-50 flex justify-end">

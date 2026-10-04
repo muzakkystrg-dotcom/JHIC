@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class JurusanController extends Controller
 {
     /**
@@ -11,34 +9,9 @@ class JurusanController extends Controller
      */
     public function sija()
     {
-        $subjects = [
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-        ];
-
-        $works = [
-            [
-                'title' => 'Website Berbasis AI',
-                'image' => asset('images/home/berita.webp')
-            ],
-            [
-                'title' => 'Website Berbasis AI',
-                'image' => asset('images/home/berita.webp')
-            ],
-            [
-                'title' => 'Website Berbasis AI',
-                'image' => asset('images/home/berita.webp')
-            ],
-        ];
+        $data = config('jurusan.sija');
+        $subjects = $data['subjects'];
+        $works = $this->withAsset($data['works']);
 
         return view('pages.sija', compact('subjects', 'works'));
     }
@@ -48,35 +21,22 @@ class JurusanController extends Controller
      */
     public function tjat()
     {
-        $subjects = [
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-            'Kelompok Mata Pelajaran Nasional',
-        ];
-
-        $works = [
-            [
-                'title' => 'Palang Pintu Otomatis',
-                'image' => asset('images/home/berita.webp')
-            ],
-            [
-                'title' => 'Teknologi Smarthome',
-                'image' => asset('images/home/berita.webp')
-            ],
-            [
-                'title' => 'Jemuran Otomatis',
-                'image' => asset('images/home/berita.webp')
-            ],
-        ];
+        $data = config('jurusan.tjat');
+        $subjects = $data['subjects'];
+        $works = $this->withAsset($data['works']);
 
         return view('pages.tjat', compact('subjects', 'works'));
+    }
+
+    /**
+     * Terapkan asset() pada path gambar daftar karya.
+     */
+    private function withAsset(array $works): array
+    {
+        return array_map(function (array $work) {
+            $work['image'] = asset($work['image']);
+
+            return $work;
+        }, $works);
     }
 }

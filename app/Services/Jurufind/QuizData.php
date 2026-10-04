@@ -5,212 +5,135 @@ namespace App\Services\Jurufind;
 class QuizData
 {
     /**
-     * 20 pertanyaan, mixed text / image / situational.
-     * Setiap option punya 'scores' = kontribusi ke satu atau lebih dimensi minat.
+     * 20 pertanyaan model tally langsung: setiap option berkontribusi ke satu jurusan
+     * ('major' => 'S'|'T') dengan bobot 'weight' => 1|2.
+     *
+     * Simetris by design: tiap soal punya persis 2 opsi S dan 2 opsi T, dan total
+     * poin maksimum kedua jurusan sama persis. Tidak ada perkalian bobot dimensi.
      */
     public static function questions(): array
     {
         return [
-            [
-                'id' => 'q01', 'type' => 'text',
-                'question' => 'Kalau jaringan internet di sebuah tempat bermasalah, apa yang paling ingin kamu lakukan?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Mencari penyebab masalah jaringannya', 'image' => null, 'scores' => ['networking' => 3, 'problem_solving' => 2]],
-                    ['id' => 'b', 'label' => 'Membuat program untuk membantu menemukan masalah', 'image' => null, 'scores' => ['programming' => 3, 'system_development' => 2]],
-                    ['id' => 'c', 'label' => 'Mengecek perangkat dan kabel satu per satu', 'image' => null, 'scores' => ['hands_on' => 3, 'fiber_optic' => 1]],
-                    ['id' => 'd', 'label' => 'Mencari cara lain supaya perangkat tetap terhubung', 'image' => null, 'scores' => ['wireless' => 2, 'problem_solving' => 2]],
-                ],
-            ],
-            [
-                'id' => 'q02', 'type' => 'image',
-                'question' => 'Aktivitas mana yang paling menarik buat kamu coba?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Ngoding', 'image' => '/assets/images/jurufind/coding.svg', 'scores' => ['programming' => 3, 'system_development' => 2]],
-                    ['id' => 'b', 'label' => 'Bikin alat pintar sederhana', 'image' => '/assets/images/jurufind/iot.svg', 'scores' => ['iot' => 3, 'hands_on' => 1]],
-                    ['id' => 'c', 'label' => 'Mengatur server dan cloud', 'image' => '/assets/images/jurufind/network.svg', 'scores' => ['cloud' => 3, 'networking' => 1]],
-                    ['id' => 'd', 'label' => 'Masang kabel fiber optic', 'image' => '/assets/images/jurufind/fiber.svg', 'scores' => ['fiber_optic' => 3, 'hands_on' => 2]],
-                ],
-            ],
-            [
-                'id' => 'q03', 'type' => 'situational',
-                'question' => 'Kamu diberi waktu satu hari untuk mencoba sebuah proyek. Mana yang paling menarik?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Membuat aplikasi sederhana', 'image' => null, 'scores' => ['programming' => 3, 'system_development' => 1]],
-                    ['id' => 'b', 'label' => 'Membuat jaringan antar beberapa perangkat', 'image' => null, 'scores' => ['networking' => 3]],
-                    ['id' => 'c', 'label' => 'Menyambungkan perangkat menggunakan fiber optic', 'image' => null, 'scores' => ['fiber_optic' => 3, 'hands_on' => 2]],
-                    ['id' => 'd', 'label' => 'Membuat perangkat IoT sederhana', 'image' => null, 'scores' => ['iot' => 3, 'programming' => 1]],
-                ],
-            ],
-            [
-                'id' => 'q04', 'type' => 'text',
-                'question' => 'Kalau kamu diberi kesempatan mencoba salah satu hal ini, mana yang paling menarik?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Menyusun aplikasi atau website sederhana', 'image' => null, 'scores' => ['programming' => 3, 'creativity' => 1]],
-                    ['id' => 'b', 'label' => 'Menata sistem cloud biar aplikasi bisa jalan online', 'image' => null, 'scores' => ['cloud' => 3, 'system_development' => 1]],
-                    ['id' => 'c', 'label' => 'Memasang dan mengatur jaringan wireless di sebuah gedung', 'image' => null, 'scores' => ['wireless' => 3, 'hands_on' => 1]],
-                    ['id' => 'd', 'label' => 'Menjaga supaya jaringan aman dari serangan', 'image' => null, 'scores' => ['cybersecurity' => 3, 'problem_solving' => 1]],
-                ],
-            ],
-            [
-                'id' => 'q05', 'type' => 'text',
-                'question' => 'Mana yang paling kebayang seru buat kamu kerjakan?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Membuat aplikasi yang bisa dipakai banyak orang', 'image' => null, 'scores' => ['programming' => 3, 'creativity' => 1]],
-                    ['id' => 'b', 'label' => 'Memasang jaringan komunikasi biar orang-orang bisa saling terhubung', 'image' => null, 'scores' => ['telecommunications' => 3, 'hands_on' => 1]],
-                    ['id' => 'c', 'label' => 'Menjaga supaya sistem selalu berjalan dan aman', 'image' => null, 'scores' => ['cybersecurity' => 2, 'system_development' => 2]],
-                    ['id' => 'd', 'label' => 'Bereksperimen dengan alat-alat pintar (IoT)', 'image' => null, 'scores' => ['iot' => 3]],
-                ],
-            ],
-            [
-                'id' => 'q06', 'type' => 'situational',
-                'question' => 'Kamu jadi ketua panitia acara sekolah. Bagian mana yang paling pengen kamu pegang?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Bikin website pendaftaran acara', 'image' => null, 'scores' => ['programming' => 3]],
-                    ['id' => 'b', 'label' => 'Pasang wifi buat semua peserta', 'image' => null, 'scores' => ['wireless' => 3, 'hands_on' => 1]],
-                    ['id' => 'c', 'label' => 'Atur supaya data peserta tersimpan aman di cloud', 'image' => null, 'scores' => ['cloud' => 2, 'cybersecurity' => 2]],
-                    ['id' => 'd', 'label' => 'Pastikan semua kabel dan perangkat di lokasi acara nyambung dengan baik', 'image' => null, 'scores' => ['hands_on' => 3, 'fiber_optic' => 1]],
-                ],
-            ],
-            [
-                'id' => 'q07', 'type' => 'text',
-                'question' => 'Waktu belajar hal baru soal teknologi, kamu lebih suka...',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Coba-coba ngoding sampai programnya jalan', 'image' => null, 'scores' => ['programming' => 3, 'problem_solving' => 1]],
-                    ['id' => 'b', 'label' => 'Bongkar pasang perangkat keras buat lihat cara kerjanya', 'image' => null, 'scores' => ['hands_on' => 3]],
-                    ['id' => 'c', 'label' => 'Cari tahu cara kerja sinyal wifi atau radio', 'image' => null, 'scores' => ['wireless' => 3]],
-                    ['id' => 'd', 'label' => 'Eksperimen bikin alat yang bisa nyambung ke internet', 'image' => null, 'scores' => ['iot' => 3]],
-                ],
-            ],
-            [
-                'id' => 'q08', 'type' => 'image',
-                'question' => 'Ruangan mana yang paling menarik buat kamu kerja di dalamnya?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Ruang server penuh layar dan baris kode', 'image' => '/assets/images/jurufind/network.svg', 'scores' => ['cloud' => 2, 'programming' => 2]],
-                    ['id' => 'b', 'label' => 'Ruang teknisi dengan alat sambung kabel fiber', 'image' => '/assets/images/jurufind/fiber.svg', 'scores' => ['fiber_optic' => 3, 'hands_on' => 2]],
-                    ['id' => 'c', 'label' => 'Rooftop dengan antena dan perangkat wireless', 'image' => '/assets/images/jurufind/wireless.svg', 'scores' => ['wireless' => 3]],
-                    ['id' => 'd', 'label' => 'Lab elektronik dengan berbagai sensor IoT', 'image' => '/assets/images/jurufind/iot.svg', 'scores' => ['iot' => 3]],
-                ],
-            ],
-            [
-                'id' => 'q09', 'type' => 'situational',
-                'question' => 'Internet di rumah tiba-tiba mati total. Langkah pertama kamu?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Cek pengaturan software di router', 'image' => null, 'scores' => ['networking' => 2, 'problem_solving' => 2]],
-                    ['id' => 'b', 'label' => 'Cek kabel fisik dan modemnya', 'image' => null, 'scores' => ['hands_on' => 3, 'fiber_optic' => 1]],
-                    ['id' => 'c', 'label' => 'Coba pindah dulu ke jaringan seluler', 'image' => null, 'scores' => ['wireless' => 2]],
-                    ['id' => 'd', 'label' => 'Cari tahu penyebabnya secara runtut sebelum bertindak', 'image' => null, 'scores' => ['problem_solving' => 3, 'system_development' => 1]],
-                ],
-            ],
-            [
-                'id' => 'q10', 'type' => 'text',
-                'question' => 'Kalau harus pilih proyek buat lomba sekolah, kamu pilih...',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Bikin aplikasi mobile keren', 'image' => null, 'scores' => ['programming' => 3, 'creativity' => 1]],
-                    ['id' => 'b', 'label' => 'Bikin sistem smart home sederhana', 'image' => null, 'scores' => ['iot' => 3, 'hands_on' => 1]],
-                    ['id' => 'c', 'label' => 'Bikin jaringan komputer buat lab sekolah', 'image' => null, 'scores' => ['networking' => 3]],
-                    ['id' => 'd', 'label' => 'Pasang jaringan internet pakai fiber optic buat sekolah', 'image' => null, 'scores' => ['fiber_optic' => 3, 'telecommunications' => 1]],
-                ],
-            ],
-            [
-                'id' => 'q11', 'type' => 'image',
-                'question' => 'Mana yang menurutmu paling seru buat dipelajari?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Bahasa pemrograman baru', 'image' => '/assets/images/jurufind/coding.svg', 'scores' => ['programming' => 3]],
-                    ['id' => 'b', 'label' => 'Cara kerja jaringan telekomunikasi', 'image' => '/assets/images/jurufind/fiber.svg', 'scores' => ['telecommunications' => 3]],
-                    ['id' => 'c', 'label' => 'Cara kerja komputasi awan', 'image' => '/assets/images/jurufind/network.svg', 'scores' => ['cloud' => 3]],
-                    ['id' => 'd', 'label' => 'Cara kerja perangkat IoT', 'image' => '/assets/images/jurufind/iot.svg', 'scores' => ['iot' => 3]],
-                ],
-            ],
-            [
-                'id' => 'q12', 'type' => 'situational',
-                'question' => 'Kamu magang seminggu di sebuah perusahaan teknologi. Divisi mana yang kamu pilih?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Divisi developer aplikasi', 'image' => null, 'scores' => ['programming' => 3, 'system_development' => 2]],
-                    ['id' => 'b', 'label' => 'Divisi jaringan dan infrastruktur kantor', 'image' => null, 'scores' => ['networking' => 3, 'hands_on' => 1]],
-                    ['id' => 'c', 'label' => 'Divisi keamanan sistem', 'image' => null, 'scores' => ['cybersecurity' => 3]],
-                    ['id' => 'd', 'label' => 'Divisi instalasi dan perawatan jaringan telekomunikasi pelanggan', 'image' => null, 'scores' => ['telecommunications' => 3, 'hands_on' => 2]],
-                ],
-            ],
-            [
-                'id' => 'q13', 'type' => 'text',
-                'question' => 'Kalau ditanya cita-cita di bidang teknologi, kamu paling kebayang jadi...',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Software developer', 'image' => null, 'scores' => ['programming' => 3, 'system_development' => 1]],
-                    ['id' => 'b', 'label' => 'Cloud engineer', 'image' => null, 'scores' => ['cloud' => 3]],
-                    ['id' => 'c', 'label' => 'Teknisi jaringan lapangan', 'image' => null, 'scores' => ['hands_on' => 3, 'telecommunications' => 1]],
-                    ['id' => 'd', 'label' => 'Spesialis keamanan jaringan', 'image' => null, 'scores' => ['cybersecurity' => 3]],
-                ],
-            ],
-            [
-                'id' => 'q14', 'type' => 'situational',
-                'question' => 'Tetangga minta bantuan karena internetnya lambat. Apa yang kamu lakukan?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Cek dan atur ulang pengaturan router', 'image' => null, 'scores' => ['networking' => 2, 'problem_solving' => 1]],
-                    ['id' => 'b', 'label' => 'Cek kualitas kabel dan koneksi fisiknya', 'image' => null, 'scores' => ['hands_on' => 2, 'fiber_optic' => 1]],
-                    ['id' => 'c', 'label' => 'Sarankan pindah ke provider dengan jaringan fiber optic', 'image' => null, 'scores' => ['fiber_optic' => 2, 'telecommunications' => 1]],
-                    ['id' => 'd', 'label' => 'Analisis penyebabnya secara sistematis dulu', 'image' => null, 'scores' => ['problem_solving' => 3]],
-                ],
-            ],
-            [
-                'id' => 'q15', 'type' => 'text',
-                'question' => 'Kegiatan ekstrakurikuler teknologi mana yang bikin kamu penasaran?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Klub coding atau robotika software', 'image' => null, 'scores' => ['programming' => 2, 'system_development' => 1]],
-                    ['id' => 'b', 'label' => 'Klub jaringan komputer', 'image' => null, 'scores' => ['networking' => 3]],
-                    ['id' => 'c', 'label' => 'Klub elektronika dan IoT', 'image' => null, 'scores' => ['iot' => 3]],
-                    ['id' => 'd', 'label' => 'Klub radio atau komunikasi', 'image' => null, 'scores' => ['wireless' => 2, 'telecommunications' => 2]],
-                ],
-            ],
-            [
-                'id' => 'q16', 'type' => 'image',
-                'question' => 'Kalau harus pegang salah satu alat ini, kamu pilih yang mana?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Laptop buat ngoding', 'image' => '/assets/images/jurufind/coding.svg', 'scores' => ['programming' => 3]],
-                    ['id' => 'b', 'label' => 'Tang crimping dan kabel jaringan', 'image' => '/assets/images/jurufind/hardware.svg', 'scores' => ['hands_on' => 3, 'networking' => 1]],
-                    ['id' => 'c', 'label' => 'Alat splicing fiber optic', 'image' => '/assets/images/jurufind/fiber.svg', 'scores' => ['fiber_optic' => 3]],
-                    ['id' => 'd', 'label' => 'Modul sensor IoT', 'image' => '/assets/images/jurufind/iot.svg', 'scores' => ['iot' => 3]],
-                ],
-            ],
-            [
-                'id' => 'q17', 'type' => 'situational',
-                'question' => 'Ada tugas kelompok bikin proyek teknologi buat pameran sekolah. Bagian mana yang paling pengen kamu ambil?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Menulis kode program aplikasinya', 'image' => null, 'scores' => ['programming' => 3]],
-                    ['id' => 'b', 'label' => 'Menyiapkan server/cloud biar aplikasi bisa jalan', 'image' => null, 'scores' => ['cloud' => 3, 'system_development' => 1]],
-                    ['id' => 'c', 'label' => 'Memasang jaringan dan perangkat di lokasi pameran', 'image' => null, 'scores' => ['hands_on' => 3, 'networking' => 1]],
-                    ['id' => 'd', 'label' => 'Memikirkan desain tampilan biar menarik', 'image' => null, 'scores' => ['creativity' => 3]],
-                ],
-            ],
-            [
-                'id' => 'q18', 'type' => 'text',
-                'question' => 'Menurutmu, hal paling penting saat internet dipakai banyak orang sekaligus adalah...',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Aplikasinya harus jalan lancar tanpa error', 'image' => null, 'scores' => ['system_development' => 2, 'programming' => 1]],
-                    ['id' => 'b', 'label' => 'Jaringannya harus stabil dan cepat', 'image' => null, 'scores' => ['networking' => 3]],
-                    ['id' => 'c', 'label' => 'Datanya harus aman dari peretas', 'image' => null, 'scores' => ['cybersecurity' => 3]],
-                    ['id' => 'd', 'label' => 'Sinyalnya harus kuat sampai ke pelosok', 'image' => null, 'scores' => ['telecommunications' => 2, 'wireless' => 2]],
-                ],
-            ],
-            [
-                'id' => 'q19', 'type' => 'situational',
-                'question' => 'Weekend santai, kamu lebih milih ngapain?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Belajar bahasa pemrograman baru lewat tutorial', 'image' => null, 'scores' => ['programming' => 3]],
-                    ['id' => 'b', 'label' => 'Otak-atik router atau access point di rumah', 'image' => null, 'scores' => ['networking' => 2, 'hands_on' => 1]],
-                    ['id' => 'c', 'label' => 'Baca-baca soal teknologi wireless atau 5G', 'image' => null, 'scores' => ['wireless' => 3]],
-                    ['id' => 'd', 'label' => 'Coba rakit alat elektronik sederhana', 'image' => null, 'scores' => ['iot' => 2, 'hands_on' => 2]],
-                ],
-            ],
-            [
-                'id' => 'q20', 'type' => 'text',
-                'question' => 'Kalau kamu jadi bagian tim yang membangun jaringan internet ke desa terpencil, bagian mana yang paling pengen kamu kerjakan?',
-                'options' => [
-                    ['id' => 'a', 'label' => 'Merancang sistem/aplikasi buat monitoring jaringan', 'image' => null, 'scores' => ['system_development' => 3, 'programming' => 1]],
-                    ['id' => 'b', 'label' => 'Menarik kabel fiber optic ke lokasi', 'image' => null, 'scores' => ['fiber_optic' => 3, 'hands_on' => 2]],
-                    ['id' => 'c', 'label' => 'Memasang menara dan perangkat wireless', 'image' => null, 'scores' => ['wireless' => 3, 'hands_on' => 1]],
-                    ['id' => 'd', 'label' => 'Memastikan semuanya aman dari gangguan', 'image' => null, 'scores' => ['cybersecurity' => 2, 'problem_solving' => 1]],
-                ],
-            ],
+            ['id' => 'q01', 'question' => 'Saat menghadapi masalah rumit, kamu lebih suka...', 'options' => [
+                ['id' => 'a', 'label' => 'Coba-coba langsung dan lihat hasilnya secara fisik', 'major' => 'T', 'weight' => 2],
+                ['id' => 'b', 'label' => 'Memecahnya jadi langkah logis di kepala dulu', 'major' => 'S', 'weight' => 2],
+                ['id' => 'c', 'label' => 'Utak-atik alat sampai ketemu solusinya', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Bikin daftar langkah penyelesaian dulu sebelum mulai', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q02', 'question' => 'Kegiatan yang bikin kamu betah berjam-jam...', 'options' => [
+                ['id' => 'a', 'label' => 'Merakit atau memperbaiki barang dengan tangan', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Ngoprek pengaturan/sistem di HP atau laptop', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Menyusun sesuatu yang rapi & terstruktur di layar', 'major' => 'S', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Bongkar pasang perangkat elektronik', 'major' => 'T', 'weight' => 1],
+            ]],
+            ['id' => 'q03', 'question' => 'Ketika WiFi rumah mati, reaksi pertamamu...', 'options' => [
+                ['id' => 'a', 'label' => 'Cek kabel/perangkat fisiknya langsung', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Restart router dan cek pengaturan jaringan', 'major' => 'T', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Cek pengaturan/software di HP dulu', 'major' => 'S', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Cari tau lewat forum/tutorial online kenapa bisa putus', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q04', 'question' => 'Kamu lebih menikmati game yang...', 'options' => [
+                ['id' => 'a', 'label' => 'Melibatkan simulasi mekanik/fisik', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Mengharuskan strategi & logika rumit', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Membangun sesuatu dari komponen-komponen', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Menyusun sistem/alur yang kompleks', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q05', 'question' => 'Saat presentasi project sekolah, kamu lebih pede...', 'options' => [
+                ['id' => 'a', 'label' => 'Menunjukkan cara kerja alat secara langsung', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Menjelaskan alur/logika di baliknya', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Mendemonstrasikan perangkat yang berfungsi nyata', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Menjelaskan proses berpikir di balik solusinya', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q06', 'question' => 'Kalau punya 1 jam luang dan cuma boleh pegang 1 alat, kamu pilih...', 'options' => [
+                ['id' => 'a', 'label' => 'Toolkit kecil (obeng, kabel, dll)', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Notebook untuk menulis rencana/skema', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Perangkat jaringan buat dioprek', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Laptop untuk coding/desain', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q07', 'question' => 'Saat belajar hal baru, kamu lebih cepat paham lewat...', 'options' => [
+                ['id' => 'a', 'label' => 'Langsung praktik & coba sendiri', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Membaca konsep & logikanya dulu', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Mempraktikkan langsung di alat nyata', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Memahami teori di baliknya dulu', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q08', 'question' => 'Ada 2 tugas: bikin alur program sederhana vs pasang alat elektronik sederhana. Kamu kerjakan duluan...', 'options' => [
+                ['id' => 'a', 'label' => 'Pasang alat', 'major' => 'T', 'weight' => 2],
+                ['id' => 'b', 'label' => 'Alur program', 'major' => 'S', 'weight' => 2],
+                ['id' => 'c', 'label' => 'Tugas yang melibatkan perangkat fisik', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Tugas yang melibatkan logika pemrograman', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q09', 'question' => 'Saat komputer tiba-tiba lag/error, kamu penasaran...', 'options' => [
+                ['id' => 'a', 'label' => 'Ingin cek fisik komponennya', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Apa yang salah di sistemnya', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Kenapa hardware-nya bisa bermasalah', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Kenapa software-nya bisa error', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q10', 'question' => 'Kamu lebih suka cerita/film dengan tema...', 'options' => [
+                ['id' => 'a', 'label' => 'Petualangan, membangun sesuatu dari nol', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Dunia digital, teknologi masa depan', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Eksplorasi dan penemuan fisik', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Kecerdasan buatan dan dunia maya', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q11', 'question' => 'Dalam kerja kelompok, peran paling nyaman buatmu...', 'options' => [
+                ['id' => 'a', 'label' => 'Mengerjakan bagian teknis/pemasangan langsung', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Merancang alur/rencana kerja tim', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Turun langsung ke eksekusi teknis', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Menyusun konsep/strategi tim', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q12', 'question' => 'Barang yang paling menarik perhatianmu di toko elektronik...', 'options' => [
+                ['id' => 'a', 'label' => 'Perangkat jaringan (router, kabel, modem)', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Laptop/gadget spesifikasi tinggi', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Alat instalasi/perkabelan', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Software atau aplikasi baru', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q13', 'question' => 'Kamu lebih suka tantangan yang hasilnya...', 'options' => [
+                ['id' => 'a', 'label' => 'Terlihat lewat koneksi/sistem yang menyala & jalan', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Terlihat lewat aplikasi/tampilan yang berfungsi', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Terlihat lewat perangkat yang berhasil terpasang', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Terlihat lewat program yang berhasil dijalankan', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q14', 'question' => 'Saat ditanya cita-cita, kamu paling sering kebayang...', 'options' => [
+                ['id' => 'a', 'label' => 'Kerja lapangan pasang & benerin jaringan/alat', 'major' => 'T', 'weight' => 2],
+                ['id' => 'b', 'label' => 'Bikin aplikasi/produk digital sendiri', 'major' => 'S', 'weight' => 2],
+                ['id' => 'c', 'label' => 'Jadi teknisi yang turun langsung ke lokasi', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Jadi developer yang kerja di balik layar', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q15', 'question' => 'Kalau harus pilih ekstrakurikuler, kamu tertarik ke...', 'options' => [
+                ['id' => 'a', 'label' => 'Klub elektro/otomotif', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Klub robotika/coding', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Klub yang banyak praktik alat', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Klub yang banyak logika & pemrograman', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q16', 'question' => 'Kamu lebih nyaman kerja di lingkungan yang...', 'options' => [
+                ['id' => 'a', 'label' => 'Aktif berpindah tempat/lapangan', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Tenang, duduk lama di depan layar', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Banyak aktivitas fisik & teknis', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Fokus dan minim gangguan untuk mikir', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q17', 'question' => 'Saat lihat sesuatu canggih (misal drone/robot), kamu paling penasaran...', 'options' => [
+                ['id' => 'a', 'label' => 'Bagaimana rangkaian/hardware-nya dibuat', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Bagaimana program/otaknya bekerja', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Cara kerja komponen fisiknya', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Cara kerja algoritma di dalamnya', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q18', 'question' => 'Pelajaran sekolah yang paling gampang buatmu...', 'options' => [
+                ['id' => 'a', 'label' => 'Fisika/kelistrikan/praktik bengkel', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Matematika logika/pemrograman dasar', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Praktik kerja teknis di lab', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Logika & algoritma dasar', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q19', 'question' => 'Kalau masalah teknis butuh waktu lama selesai, kamu...', 'options' => [
+                ['id' => 'a', 'label' => 'Tetap coba-coba manual sampai berhasil', 'major' => 'T', 'weight' => 1],
+                ['id' => 'b', 'label' => 'Tetap sabar riset sampai ketemu solusi logisnya', 'major' => 'S', 'weight' => 1],
+                ['id' => 'c', 'label' => 'Terus eksperimen dengan alat sampai berhasil', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Terus cari pola/logika sampai ketemu jawabannya', 'major' => 'S', 'weight' => 1],
+            ]],
+            ['id' => 'q20', 'question' => 'Bayangkan 10 tahun lagi, kamu ingin dikenal sebagai orang yang...', 'options' => [
+                ['id' => 'a', 'label' => 'Jago membangun infrastruktur teknologi', 'major' => 'T', 'weight' => 2],
+                ['id' => 'b', 'label' => 'Jago bikin sistem/aplikasi', 'major' => 'S', 'weight' => 2],
+                ['id' => 'c', 'label' => 'Ahli di lapangan teknis', 'major' => 'T', 'weight' => 1],
+                ['id' => 'd', 'label' => 'Ahli merancang solusi digital', 'major' => 'S', 'weight' => 1],
+            ]],
         ];
     }
 
@@ -222,7 +145,7 @@ class QuizData
                 'fullName' => 'Sistem Informasi Jaringan dan Aplikasi',
                 'shortName' => 'SIJA',
                 'duration' => '4 tahun',
-                'intro' => 'SIJA cocok buat kamu yang tertarik dengan dunia komputer secara luas: mulai dari bikin aplikasi, mengelola jaringan, sampai bermain dengan cloud dan IoT. Jurusan ini memadukan pemrograman, infrastruktur, dan keamanan sistem dalam satu program 4 tahun.',
+                'intro' => 'Kamu memiliki ketertarikan yang kuat dalam memecahkan masalah kompleks lewat logika dan baris kode. Dengan potensi ini, jurusan SIJA adalah pilihan yang sangat cocok untuk mengembangkan bakat digitalmu ke tingkat berikutnya.',
                 'learningAreas' => [
                     'Komputer dan Jaringan Dasar', 'Platform Komputasi Awan', 'Sistem Internet of Things (SIoT)',
                     'Sistem Komputer', 'Pemrograman Dasar', 'Dasar Desain Grafis', 'Infrastruktur Komputasi Awan',
@@ -234,7 +157,7 @@ class QuizData
                 'fullName' => 'Teknik Jaringan Akses Telekomunikasi',
                 'shortName' => 'TJAT',
                 'duration' => '3 tahun',
-                'intro' => 'TJAT cocok buat kamu yang suka kerja teknis dan langsung berhubungan dengan infrastruktur jaringan telekomunikasi: kabel tembaga, fiber optic, sampai jaringan nirkabel/wireless. Jurusan 3 tahun ini fokus pada bagaimana jaringan akses telekomunikasi dibangun, dioperasikan, dan dirawat.',
+                'intro' => 'Kamu memiliki ketertarikan yang kuat pada kerja teknis langsung dan infrastruktur fisik — dari kabel, perangkat jaringan, sampai instalasi lapangan. Dengan potensi ini, jurusan TJAT adalah pilihan yang sangat cocok untuk mengasah keahlian teknismu.',
                 'learningAreas' => [
                     'Jaringan Fiber Optic', 'Jaringan Komputer', 'Jaringan Nirkabel / Wireless', 'Pemrograman Web',
                     'Desain Grafis', 'Internet of Things (IoT)', 'Sistem Keamanan Jaringan', 'Produk Kreatif dan Kewirausahaan',
@@ -243,37 +166,8 @@ class QuizData
         ];
     }
 
-    public static function dimensionLabels(): array
-    {
-        return [
-            'programming' => 'Programming', 'networking' => 'Networking', 'cloud' => 'Cloud', 'iot' => 'IoT',
-            'cybersecurity' => 'Keamanan Siber', 'telecommunications' => 'Telekomunikasi', 'fiber_optic' => 'Fiber Optic',
-            'wireless' => 'Wireless', 'hands_on' => 'Kerja Teknis Langsung', 'problem_solving' => 'Problem Solving',
-            'system_development' => 'Pengembangan Sistem', 'creativity' => 'Kreativitas',
-        ];
-    }
-
-    /** Bobot dimensi per jurusan. Prototype, bukan alat ukur bakat tervalidasi. */
-    public static function majorDimensionWeights(): array
-    {
-        return [
-            'SIJA' => [
-                'programming' => 1.0, 'networking' => 0.8, 'cloud' => 1.0, 'iot' => 0.75, 'cybersecurity' => 0.75,
-                'system_development' => 1.0, 'problem_solving' => 0.75, 'telecommunications' => 0.35, 'wireless' => 0.35,
-                'fiber_optic' => 0.2, 'hands_on' => 0.5, 'creativity' => 0.4,
-            ],
-            'TJAT' => [
-                'programming' => 0.35, 'networking' => 0.9, 'cloud' => 0.25, 'iot' => 0.6, 'cybersecurity' => 0.5,
-                'system_development' => 0.3, 'problem_solving' => 0.8, 'telecommunications' => 1.0, 'wireless' => 0.9,
-                'fiber_optic' => 1.0, 'hands_on' => 0.95, 'creativity' => 0.3,
-            ],
-        ];
-    }
-
     public static function nearTieThresholds(): array
     {
         return ['close' => 10, 'leaning' => 20]; // >20 = 'clear'
     }
-
-    public const TOP_DIMENSIONS_COUNT = 3;
 }

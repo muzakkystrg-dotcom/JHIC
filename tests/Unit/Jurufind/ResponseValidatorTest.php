@@ -13,10 +13,6 @@ class ResponseValidatorTest extends TestCase
             'primaryMajor' => 'SIJA',
             'summary' => 'Hasilmu lebih condong ke SIJA.',
             'reasons' => ['Kamu suka ngoding.', 'Kamu nyaman mengatur server.'],
-            'topInterests' => [
-                ['name' => 'Programming', 'score' => 9],
-                ['name' => 'Cloud', 'score' => 6],
-            ],
             'comparison' => 'SIJA lebih kuat di sisi aplikasi, TJAT di sisi jaringan akses.',
         ];
     }
@@ -30,14 +26,6 @@ class ResponseValidatorTest extends TestCase
     {
         $payload = $this->validPayload();
         $payload['primaryMajor'] = 'TJAT';
-
-        $this->assertTrue(ResponseValidator::isValid($payload));
-    }
-
-    public function test_numeric_string_score_is_accepted(): void
-    {
-        $payload = $this->validPayload();
-        $payload['topInterests'] = [['name' => 'Fiber Optic', 'score' => '7']];
 
         $this->assertTrue(ResponseValidator::isValid($payload));
     }
@@ -84,30 +72,6 @@ class ResponseValidatorTest extends TestCase
     {
         $payload = $this->validPayload();
         $payload['reasons'] = ['alasan valid', 42];
-
-        $this->assertFalse(ResponseValidator::isValid($payload));
-    }
-
-    public function test_missing_top_interests_is_rejected(): void
-    {
-        $payload = $this->validPayload();
-        unset($payload['topInterests']);
-
-        $this->assertFalse(ResponseValidator::isValid($payload));
-    }
-
-    public function test_top_interest_without_name_is_rejected(): void
-    {
-        $payload = $this->validPayload();
-        $payload['topInterests'] = [['score' => 5]];
-
-        $this->assertFalse(ResponseValidator::isValid($payload));
-    }
-
-    public function test_top_interest_with_non_numeric_score_is_rejected(): void
-    {
-        $payload = $this->validPayload();
-        $payload['topInterests'] = [['name' => 'IoT', 'score' => 'tinggi']];
 
         $this->assertFalse(ResponseValidator::isValid($payload));
     }

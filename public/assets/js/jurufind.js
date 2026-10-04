@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const questions = Array.isArray(window.JURUFIND_QUESTIONS) ? window.JURUFIND_QUESTIONS : [];
     if (!questions.length) return;
 
-    const dimensionLabels = window.JURUFIND_DIMENSION_LABELS || {};
     const majors = window.JURUFIND_MAJORS || {};
 
     const quizStage = document.getElementById('jurufind-quiz-stage');

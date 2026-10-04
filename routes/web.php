@@ -47,18 +47,18 @@ Route::get('/informasi/trial-class', [TrialClassController::class, 'index'])->na
 // --- JURUFIND AI ---
 Route::get('/jurufind/test', [JurufindController::class, 'test'])->name('jurufind.test');
 Route::post('/jurufind/analyze', [JurufindController::class, 'analyze'])
-    ->middleware('throttle:20,1')
+    ->middleware('throttle:60,1')
     ->name('jurufind.analyze');
 
 // --- FITUR CAREER CENTER, SSO FORM & REGISTRATION FORM ---
 Route::get('/career-center', [CareerCenterController::class, 'index'])->name('career-center.index');
 Route::get('/career-center/sso-verification', [CareerCenterController::class, 'ssoForm'])->name('career-center.sso');
 Route::post('/career-center/sso-check', [CareerCenterController::class, 'checkSso'])
-    ->middleware('throttle:10,1')
+    ->middleware('throttle:60,1')
     ->name('career-center.sso.check');
 Route::get('/career-center/register', [CareerCenterController::class, 'registerForm'])->name('career-center.register');
 Route::post('/career-center/register', [CareerCenterController::class, 'submitRegistration'])
-    ->middleware('throttle:5,10')
+    ->middleware('throttle:60,1')
     ->name('career-center.register.submit');
 Route::get('/career-center/apply-success', [CareerCenterController::class, 'applySuccess'])->name('career-center.success');
 

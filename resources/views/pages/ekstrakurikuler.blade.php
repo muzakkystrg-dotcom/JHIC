@@ -21,7 +21,7 @@
                         <img src="{{ $ekstraDetail['hero_image'] }}" 
                              alt="{{ $ekstraDetail['nama'] }}" 
                              class="w-full h-full object-cover select-none transition-transform duration-500 hover:scale-105"
-                             onerror="this.onerror=null; this.src='{{ asset('images/ekstra/paskib.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
+                             onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
                     </div>
                 </div>
 
@@ -87,7 +87,7 @@
                             <img src="{{ $item['image'] }}" 
                                  alt="{{ $item['caption'] }}" 
                                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                 onerror="this.onerror=null; this.src='/images/ekstra/paskib/paskib1.webp';" loading="eager" decoding="async" fetchpriority="high">
+                                 onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
                         </div>
                     </div>
                 @empty
@@ -150,11 +150,9 @@
                     </p>
 
                     <div class="pt-2 flex justify-center lg:justify-start">
-                        <a href="#kegiatan-ekstra" 
-                           style="background-color: #C8102E !important; color: #ffffff !important;"
-                           class="inline-flex items-center gap-2.5 px-8 py-3 hover:opacity-90 font-bold text-xs sm:text-sm rounded-full shadow-md transition-all duration-200 active:scale-95 cursor-pointer">
-                            <span>Jelajahi</span>
-                            <span class="text-base leading-none">➔</span>
+                        <a href="#kegiatan-ekstra" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-800 transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer">
+                            Jelajahi
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
                     </div>
                 </div>
@@ -231,33 +229,6 @@
                 </button>
             </div>
 
-        </div>
-
-    </section>
-
-    <!-- 3. Section Kegiatan Club -->
-    <section class="py-14 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-        
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">
-                Kegiatan <span style="color: #C8102E !important;">Club</span>
-            </h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
-            @foreach($clubs as $club)
-                <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
-                    <div>
-                        <div class="h-48 bg-gray-100 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100"></div>
-                        <div class="flex items-center justify-between text-xs font-semibold text-gray-400 mb-2">
-                            <span class="text-red-700">Club</span>
-                        </div>
-                        <h3 class="font-bold text-base text-gray-900 mb-3 line-clamp-2 group-hover:text-red-700 transition-colors">
-                            {{ $club['name'] }}
-                        </h3>
-                    </div>
-                </div>
-            @endforeach
         </div>
 
     </section>

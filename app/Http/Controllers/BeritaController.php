@@ -2,34 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use Illuminate\Http\Request;
 
 class BeritaController extends Controller
 {
     public function index(Request $request)
     {
-        $categories = [
-            'Semua', 
-            'Prestasi', 
-            'Kegiatan Sekolah', 
-            'Pengumuman', 
-            'Kemitraan & Kerja Sama', 
-            'Karya & Inovasi Siswa', 
-            'Artikel & edukasi', 
-            'Alumni'
-        ];
+        // Kategori diambil dinamis dari data berita yang sudah terbit.
+        $categories = Berita::query()
+            ->where('is_published', true)
+            ->distinct()
+            ->orderBy('category')
+            ->pluck('category')
+            ->prepend('Semua')
+            ->values();
 
-        // Menggunakan gambar juara.png dari folder images/berita/
-        $beritas = [];
-        for ($i = 1; $i <= 10; $i++) {
-            $beritas[] = [
-                'id' => $i,
-                'title' => 'Lomba Matematika SMP/MTs Terbesar Se-Sidoarjo Sukses Digelar di SKOMDA',
-                'category' => 'Kegiatan Sekolah',
-                'published_at' => '2025-11-27T19:24:35',
-                'thumbnail' => asset('images/berita/juara.webp')
-            ];
-        }
+        $beritas = Berita::query()
+            ->where('is_published', true)
+            ->orderByDesc('published_at')
+            ->get();
 
         return view('pages.berita', compact('categories', 'beritas'));
     }

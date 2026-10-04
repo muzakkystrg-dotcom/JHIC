@@ -126,13 +126,6 @@
                     <p class="text-gray-600 text-sm md:text-base leading-relaxed">
                         Berdasarkan Keputusan Badan Akreditasi Nasional Sekolah/Madrasah Nomor: 1336/BAN-SM/SK/2021, menyatakan bahwa SMK Telkom Sidoarjo "Terakreditasi A (UNGGUL)." Dengan Nilai 93, Akreditasi SMK Telkom Sidoarjo berlaku sampai dengan 31 Desember 2026.
                     </p>
-
-                    <div class="pt-2">
-                        <a href="#" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-red-800 transition-all shadow-sm hover:shadow-md active:scale-95 cursor-pointer">
-                            Lihat 
-                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
                 </div>
 
             </div>

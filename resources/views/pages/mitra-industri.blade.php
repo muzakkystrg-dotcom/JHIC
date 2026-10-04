@@ -211,11 +211,9 @@
                     </p>
 
                     <div class="pt-2 flex justify-center lg:justify-start">
-                        <a href="#katalog-mitra" 
-                           style="background-color: #C8102E !important; color: #ffffff !important;"
-                           class="inline-flex items-center gap-2.5 px-8 py-3 hover:opacity-90 font-bold text-xs sm:text-sm rounded-full shadow-md transition-all duration-200 active:scale-95 cursor-pointer">
-                            <span>Jelajahi</span>
-                            <span class="text-base leading-none">➔</span>
+                        <a href="#katalog-mitra" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-800 transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer">
+                            Jelajahi
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
                     </div>
                 </div>

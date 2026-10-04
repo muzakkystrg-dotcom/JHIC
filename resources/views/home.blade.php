@@ -24,9 +24,9 @@
           </h1>
           <div class="pt-4 flex items-center gap-4">
             <span class="text-base font-semibold text-gray-800">Udah siap Bergabung?</span>
-            <button onclick="openPpdbModal()" class="px-8 py-3.5 text-base font-bold text-white bg-red-700 hover:bg-red-800 rounded-full shadow-md hover:shadow-lg transition cursor-pointer">
+            <a href="{{ route('ppdb') }}" class="px-8 py-3.5 text-base font-bold text-white bg-red-700 hover:bg-red-800 rounded-full shadow-md hover:shadow-lg transition cursor-pointer">
               Daftar ke skomda!
-            </button>
+            </a>
           </div>
         </div>
 
@@ -209,11 +209,11 @@
           <div class="relative w-full max-w-[280px] aspect-[3/4]">
             <img src="{{ asset('images/home/program.webp') }}" alt="Siswa Skomda" class="relative z-10 w-full h-full object-cover rounded-t-[130px] rounded-b-[48px] shadow-xl border-4 border-white" loading="lazy" decoding="async" width="359" height="498">
           </div>
-          <button onclick="openProgramDetail('SIJA')"
+          <a href="{{ route('jurusan.sija') }}"
             class="mt-8 px-8 py-3 bg-red-700 text-white rounded-full text-sm font-bold shadow-md hover:bg-red-800 transition flex items-center gap-2 cursor-pointer">
             <span>Lihat Lengkapnya</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </button>
+          </a>
         </div>
 
         <!-- Kanan: TJAT -->

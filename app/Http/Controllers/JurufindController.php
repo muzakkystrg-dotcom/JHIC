@@ -22,7 +22,6 @@ class JurufindController extends Controller
         return view('jurufind.test', [
             'questions' => QuizData::questions(),
             'majors' => QuizData::majors(),
-            'dimensionLabels' => QuizData::dimensionLabels(),
         ]);
     }
 

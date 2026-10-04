@@ -17,44 +17,105 @@ class ScoringServiceTest extends TestCase
     }
 
     /**
-     * Pilih, untuk setiap pertanyaan, opsi yang paling banyak menyumbang dimensi
-     * yang diinginkan — dipakai supaya test tidak perlu hardcode 20 jawaban.
+     * Bangun jawaban: untuk tiap pertanyaan pilih opsi dengan major tertentu.
+     * Kalau $weight diberikan, utamakan opsi dengan bobot itu (fallback ke bobot apapun).
      */
-    private function dominantAnswers(array $preferredDimensions): array
+    private function answersForMajor(string $major, ?int $weight = null): array
     {
         $answers = [];
 
         foreach (QuizData::questions() as $question) {
-            $bestOptionId = null;
-            $bestScore = -1;
+            $candidates = array_values(array_filter(
+                $question['options'],
+                fn (array $option) => $option['major'] === $major
+            ));
 
-            foreach ($question['options'] as $option) {
-                $score = 0;
-                foreach ($option['scores'] as $dimension => $value) {
-                    if (in_array($dimension, $preferredDimensions, true)) {
-                        $score += $value;
-                    }
-                }
-
-                if ($score > $bestScore) {
-                    $bestScore = $score;
-                    $bestOptionId = $option['id'];
+            if ($weight !== null) {
+                $preferred = array_values(array_filter(
+                    $candidates,
+                    fn (array $option) => $option['weight'] === $weight
+                ));
+                if ($preferred) {
+                    $candidates = $preferred;
                 }
             }
 
-            $answers[$question['id']] = $bestOptionId;
+            // Ambil opsi dengan bobot tertinggi di antara kandidat.
+            usort($candidates, fn (array $a, array $b) => $b['weight'] <=> $a['weight']);
+            $answers[$question['id']] = $candidates[0]['id'];
         }
 
         return $answers;
+    }
+
+    /** Campuran bobot setara: separo pertanyaan jalur S, separo jalur T, bobot sama. */
+    private function balancedAnswers(): array
+    {
+        $answers = [];
+        $half = (int) (count(QuizData::questions()) / 2);
+
+        foreach (QuizData::questions() as $index => $question) {
+            $major = $index < $half ? 'S' : 'T';
+            $picked = null;
+
+            foreach ($question['options'] as $option) {
+                if ($option['major'] === $major && $option['weight'] === 1) {
+                    $picked = $option['id'];
+                    break;
+                }
+            }
+            if ($picked === null) {
+                foreach ($question['options'] as $option) {
+                    if ($option['major'] === $major) {
+                        $picked = $option['id'];
+                        break;
+                    }
+                }
+            }
+
+            $answers[$question['id']] = $picked;
+        }
+
+        return $answers;
+    }
+
+    public function test_all_highest_weight_sija_answers_give_sija_100(): void
+    {
+        $result = $this->service->score($this->answersForMajor('S'));
+
+        $this->assertSame('SIJA', $result['primaryMajor']);
+        $this->assertSame(100, $result['majorPercentages']['SIJA']);
+        $this->assertSame(0, $result['majorPercentages']['TJAT']);
+        $this->assertSame(24, $result['rawPoints']['SIJA']);
+    }
+
+    public function test_all_highest_weight_tjat_answers_give_tjat_100(): void
+    {
+        $result = $this->service->score($this->answersForMajor('T'));
+
+        $this->assertSame('TJAT', $result['primaryMajor']);
+        $this->assertSame(100, $result['majorPercentages']['TJAT']);
+        $this->assertSame(0, $result['majorPercentages']['SIJA']);
+        $this->assertSame(24, $result['rawPoints']['TJAT']);
+    }
+
+    public function test_balanced_answers_produce_close_tier(): void
+    {
+        $result = $this->service->score($this->balancedAnswers());
+
+        $this->assertSame(0, $result['difference']);
+        $this->assertSame('close', $result['tier']);
+        $this->assertSame(50, $result['majorPercentages']['SIJA']);
+        $this->assertSame(50, $result['majorPercentages']['TJAT']);
     }
 
     public function test_total_percentage_of_both_majors_is_always_100(): void
     {
         $answerSets = [
             [],
-            $this->dominantAnswers(['programming', 'cloud', 'system_development']),
-            $this->dominantAnswers(['fiber_optic', 'telecommunications', 'wireless']),
-            $this->dominantAnswers(['iot', 'hands_on', 'cybersecurity']),
+            $this->answersForMajor('S'),
+            $this->answersForMajor('T'),
+            $this->balancedAnswers(),
             ['q01' => 'a'],
         ];
 
@@ -70,30 +131,9 @@ class ScoringServiceTest extends TestCase
         }
     }
 
-    public function test_answers_dominated_by_sija_dimensions_recommend_sija(): void
-    {
-        $answers = $this->dominantAnswers(['programming', 'cloud', 'system_development']);
-
-        $result = $this->service->score($answers);
-
-        $this->assertSame('SIJA', $result['primaryMajor']);
-        $this->assertGreaterThan($result['majorPercentages']['TJAT'], $result['majorPercentages']['SIJA']);
-        $this->assertContains($result['tier'], ['close', 'leaning', 'clear']);
-    }
-
-    public function test_answers_dominated_by_tjat_dimensions_recommend_tjat(): void
-    {
-        $answers = $this->dominantAnswers(['fiber_optic', 'telecommunications', 'wireless']);
-
-        $result = $this->service->score($answers);
-
-        $this->assertSame('TJAT', $result['primaryMajor']);
-        $this->assertGreaterThan($result['majorPercentages']['SIJA'], $result['majorPercentages']['TJAT']);
-    }
-
     public function test_difference_matches_the_gap_between_percentages(): void
     {
-        $result = $this->service->score($this->dominantAnswers(['fiber_optic', 'telecommunications']));
+        $result = $this->service->score($this->answersForMajor('T'));
 
         $this->assertSame(
             abs($result['majorPercentages']['SIJA'] - $result['majorPercentages']['TJAT']),
@@ -101,26 +141,9 @@ class ScoringServiceTest extends TestCase
         );
     }
 
-    public function test_top_dimensions_are_limited_and_sorted_descending(): void
-    {
-        $result = $this->service->score($this->dominantAnswers(['programming', 'cloud', 'networking']));
-
-        $this->assertCount(QuizData::TOP_DIMENSIONS_COUNT, $result['topDimensions']);
-
-        $scores = array_column($result['topDimensions'], 'score');
-        $sorted = $scores;
-        rsort($sorted);
-        $this->assertSame($sorted, $scores);
-
-        foreach ($result['topDimensions'] as $top) {
-            $this->assertArrayHasKey('dimension', $top);
-            $this->assertArrayHasKey('score', $top);
-        }
-    }
-
     public function test_is_complete_is_false_when_one_question_is_unanswered(): void
     {
-        $answers = $this->dominantAnswers(['programming']);
+        $answers = $this->answersForMajor('S');
         unset($answers['q13']);
 
         $this->assertFalse($this->service->isComplete($answers));
@@ -129,7 +152,7 @@ class ScoringServiceTest extends TestCase
 
     public function test_is_complete_is_false_when_an_option_id_is_invalid(): void
     {
-        $answers = $this->dominantAnswers(['programming']);
+        $answers = $this->answersForMajor('S');
         $answers['q13'] = 'z';
 
         $this->assertFalse($this->service->isComplete($answers));
@@ -137,6 +160,6 @@ class ScoringServiceTest extends TestCase
 
     public function test_is_complete_is_true_for_a_full_valid_answer_set(): void
     {
-        $this->assertTrue($this->service->isComplete($this->dominantAnswers(['programming'])));
+        $this->assertTrue($this->service->isComplete($this->answersForMajor('S')));
     }
 }

@@ -82,7 +82,6 @@ class ExplanationService
             'majorScores' => $scoring['majorPercentages'],
             'difference' => $scoring['difference'],
             'primaryMajor' => $scoring['primaryMajor'],
-            'dimensions' => $scoring['dimensionScores'],
         ];
 
         $shape = <<<'SHAPE'
@@ -90,7 +89,6 @@ class ExplanationService
           "primaryMajor": "SIJA" | "TJAT",
           "summary": string,
           "reasons": string[],
-          "topInterests": [{ "name": string, "score": number }],
           "comparison": string
         }
         SHAPE;

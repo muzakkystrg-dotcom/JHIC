@@ -30,8 +30,8 @@
                 SMK Telkom Sidoarjo memprioritaskan Penerapan K3 (Keselamatan dan Kesehatan Kerja) di semua kegiatan praktik dan laboratorium. Kami memastikan siswa menguasai standar K3 industri untuk siap kerja.
             </p>
             
-            <a href="#dokumen-k3" class="btn-primary-global mt-4">
-                Jelajahi 
+            <a href="#dokumen-k3" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-800 transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer mt-4">
+                Jelajahi
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
         </div>
@@ -72,9 +72,9 @@
                                 <td class="py-4 px-6 text-center">{{ $index + 1 }}</td>
                                 <td class="py-4 px-6 font-bold text-gray-900 flex items-center gap-3">
                                     <i data-lucide="file-text" class="w-5 h-5 text-red-600 shrink-0"></i>
-                                    <span class="line-clamp-2 hover:text-red-700 transition cursor-pointer">{{ $doc['nama_file'] }}</span>
+                                    <span class="line-clamp-2 hover:text-red-700 transition cursor-pointer">{{ $doc->nama_file }}</span>
                                 </td>
-                                <td class="py-4 px-6 text-gray-500">{{ $doc['diunggah'] }}</td>
+                                <td class="py-4 px-6 text-gray-500">{{ $doc->uploaded_at_formatted }}</td>
                                 <td class="py-4 px-6 text-center">
                                     <a href="#" class="inline-flex items-center justify-center gap-1.5 bg-red-700 text-white text-xs px-4 py-2 rounded-lg hover:bg-red-800 transition shadow-sm font-bold active:scale-95">
                                         <i data-lucide="download" class="w-3.5 h-3.5"></i> Unduh

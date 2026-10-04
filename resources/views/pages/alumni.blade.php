@@ -34,11 +34,9 @@
             </p>
             
             <!-- Tombol Jelajahi (Dipaksa Merah Solid Konsisten) -->
-            <a href="#database-alumni" 
-               style="background-color: #C8102E !important; color: #ffffff !important;" 
-               class="inline-flex items-center gap-2 px-6 py-2.5 hover:opacity-90 font-bold text-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 mt-4">
-                <span>Jelajahi</span>
-                <span class="text-base leading-none">→</span>
+            <a href="#database-alumni" class="inline-flex items-center gap-2 bg-red-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-800 transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer mt-4">
+                Jelajahi
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
         </div>
 
@@ -91,14 +89,14 @@
                         @forelse($alumnis as $index => $alumni)
                             <tr class="hover:bg-gray-50 transition">
                                 <td class="py-4 px-6">{{ $index + 1 }}</td>
-                                <td class="py-4 px-6 font-bold text-gray-900">{{ $alumni['nama_siswa'] }}</td>
+                                <td class="py-4 px-6 font-bold text-gray-900">{{ $alumni->nama_siswa }}</td>
                                 <td class="py-4 px-6">
                                     <span class="bg-red-50 text-red-700 px-2.5 py-1 rounded-lg text-xs font-bold">
-                                        {{ $alumni['jurusan'] }}
+                                        {{ $alumni->jurusan }}
                                     </span>
                                 </td>
-                                <td class="py-4 px-6">{{ $alumni['dtp'] }}</td>
-                                <td class="py-4 px-6 font-mono text-gray-600">{{ $alumni['sso'] }}</td>
+                                <td class="py-4 px-6">{{ $alumni->dtp }}</td>
+                                <td class="py-4 px-6 font-mono text-gray-600">{{ $alumni->sso }}</td>
                             </tr>
                         @empty
                             <tr>

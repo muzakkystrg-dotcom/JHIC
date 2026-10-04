@@ -164,53 +164,6 @@
 
         </div>
 
-        <!-- ==================== 6. SECTION CERITA ALUMNI DI SIJA / TJAT ==================== -->
-        <div class="text-center mb-8" data-aos="fade-up">
-            <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
-                Cerita Alumni <span class="text-black font-extrabold">di</span> 
-                <span style="color: #C8102E !important;">{{ $silabus['code'] }}</span>
-            </h3>
-        </div>
-
-        <!-- Testimonial Box Berbingkai Dashed -->
-        <div class="border border-dashed border-gray-400 rounded-3xl p-6 sm:p-8 max-w-3xl mx-auto bg-white flex flex-col sm:flex-row items-center gap-6 sm:gap-8 shadow-sm mb-6" data-aos="zoom-in">
-            
-            <!-- Foto Alumni dalam Frame Belah Ketupat Merah Miring Sesuai Figma -->
-            <div class="relative w-28 h-28 sm:w-32 sm:h-32 shrink-0 flex items-center justify-center">
-                <div class="absolute inset-0 rounded-2xl transform rotate-45 shadow-md" style="background-color: #C8102E !important;"></div>
-                <img src="{{ $silabus['alumni_photo'] }}" 
-                     alt="Alumni" 
-                     class="relative z-10 w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-xl"
-                     onerror="this.onerror=null; this.src='{{ asset('images/career/career1.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
-            </div>
-
-            <!-- Teks Kutipan & Author -->
-            <div class="flex-1 text-center sm:text-left space-y-3">
-                <p class="text-gray-800 font-medium text-sm sm:text-base italic leading-relaxed">
-                    "{{ $silabus['alumni_quote'] }}"
-                </p>
-                <div>
-                    <span class="text-xs font-bold text-gray-900 block">
-                        &mdash; {{ $silabus['alumni_name'] }}
-                    </span>
-                </div>
-                <!-- Ikon LinkedIn Hitam Persegi -->
-                <div class="pt-1 flex justify-center sm:justify-start">
-                    <span class="w-6 h-6 rounded bg-black text-white flex items-center justify-center text-xs font-bold shadow-sm">
-                        in
-                    </span>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Pagination Dots Sesuai Figma -->
-        <div class="flex justify-center items-center gap-2 mb-10">
-            <span class="w-2.5 h-2.5 rounded-full" style="background-color: #C8102E !important;"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-gray-300"></span>
-        </div>
-
     </div>
 </div>
 @endsection
