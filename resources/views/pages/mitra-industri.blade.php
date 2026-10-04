@@ -9,7 +9,7 @@
     {{-- =========================================================================
          TAMPILAN DETAIL MITRA INDUSTRI (DESAIN MASTER FIGMA: Desktop - 15.png)
          ========================================================================= --}}
-    <div class="pt-36 pb-24">
+    <div class="pt-32 sm:pt-36 pb-16 sm:pb-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- 1. Tombol Kembali di Pojok Kiri Atas -->
@@ -75,7 +75,7 @@
                     <div class="w-full max-w-[320px] aspect-square flex items-center justify-center">
                         <img src="{{ $mitraDetail['logo'] }}" 
                              alt="{{ $mitraDetail['nama'] }}" 
-                             class="max-h-72 w-auto object-contain drop-shadow-xl select-none"
+                             class="max-h-48 sm:max-h-72 w-auto object-contain drop-shadow-xl select-none"
                              onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}'nama']) }}';" loading="eager" decoding="async" fetchpriority="high">
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                                         <h4 class="text-sm font-bold text-slate-900 leading-snug">{{ $job['title'] }}</h4>
                                         <p class="text-[11px] text-gray-500 font-medium mt-0.5">{{ $job['company'] }}</p>
 
-                                        <div class="flex items-center gap-3 text-[11px] text-gray-400 my-4">
+                                        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-gray-400 my-4">
                                             <span class="flex items-center gap-1">
                                                 <i data-lucide="map-pin" class="w-3 h-3 text-gray-400"></i>
                                                 {{ $job['location'] }}
@@ -179,7 +179,7 @@
          TAMPILAN KATALOG 13 MITRA INDUSTRI UTAMA
          ========================================================================= --}}
     <!-- 1. Hero Section Mitra Industri -->
-    <section class="relative pt-40 pb-16 overflow-hidden bg-gradient-to-br from-[#EAEAEA] via-[#F4F4F4] to-white">
+    <section class="relative pt-32 sm:pt-40 pb-16 overflow-hidden bg-gradient-to-br from-[#EAEAEA] via-[#F4F4F4] to-white">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-200/40 to-transparent pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -231,7 +231,7 @@
     <section id="katalog-mitra" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24" data-aos="fade-up">
         
         <div class="text-center mb-10">
-            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                 Temukan <span style="color: #C8102E !important;">13+ Mitra Industri</span> kami Disini
             </h2>
         </div>
@@ -248,7 +248,7 @@
         <!-- Grid 13 Kartu Mitra -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="mitraGridContainer">
             @foreach($mitras as $m)
-                <div class="mitra-card bg-white rounded-3xl p-6 border-2 border-dashed border-gray-300 hover:border-[#C8102E] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                <div class="mitra-card bg-white rounded-3xl p-5 sm:p-6 border-2 border-dashed border-gray-300 hover:border-[#C8102E] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
                     <div>
                         <div class="h-16 w-full flex items-center justify-start mb-4">
                             <img src="{{ $m['logo'] }}" alt="{{ $m['nama'] }}" 

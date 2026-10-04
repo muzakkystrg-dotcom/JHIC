@@ -9,7 +9,7 @@
     {{-- =========================================================================
          BAGIAN 1: DETAIL PEMINATAN DTP (DESAIN MASTER FIGMA: Desktop - 41.png)
          ========================================================================= --}}
-    <div class="pt-36 sm:pt-40 pb-24">
+    <div class="pt-32 sm:pt-40 pb-16 sm:pb-24">
         
         <!-- ==================== HERO SECTION DETAIL DTP ==================== -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
@@ -110,7 +110,7 @@
          ========================================================================= --}}
 
     <!-- ==================== 1. HERO SECTION KATALOG DTP ==================== -->
-    <section class="relative pt-40 pb-16 overflow-hidden bg-gradient-to-br from-[#EAEAEA] via-[#F4F4F4] to-white">
+    <section class="relative pt-32 sm:pt-40 pb-16 overflow-hidden bg-gradient-to-br from-[#EAEAEA] via-[#F4F4F4] to-white">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-200/40 to-transparent pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -6,7 +6,7 @@
 <div class="bg-[#F8F9FA] min-h-screen text-slate-800 font-sans">
 
     <!-- ==================== 1. HERO SECTION PROGRAM CCP ==================== -->
-    <section class="relative pt-40 pb-16 overflow-hidden bg-gradient-to-br from-[#EAEAEA] via-[#F4F4F4] to-white">
+    <section class="relative pt-32 sm:pt-40 pb-16 overflow-hidden bg-gradient-to-br from-[#EAEAEA] via-[#F4F4F4] to-white">
         <!-- Aksen Geometris Diagonal Latar Belakang Khas SKOMDA -->
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-200/40 to-transparent pointer-events-none"></div>
 

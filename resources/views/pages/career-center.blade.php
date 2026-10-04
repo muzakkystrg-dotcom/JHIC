@@ -75,7 +75,7 @@
                             <h3 class="text-base font-bold text-slate-900 leading-snug min-h-[2.75rem] line-clamp-2">{{ $job->title }}</h3>
                             <p class="text-xs text-gray-500 font-medium mt-1 line-clamp-1">{{ $job->company }}</p>
                         </div>
-                        <div class="flex items-center gap-4 text-xs text-gray-500 my-4">
+                        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500 my-4">
                             <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-gray-400"></i> {{ $job->location }}</span>
                             <span class="flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5 text-gray-400"></i> {{ optional($job->posted_at)->diffForHumans() }}</span>
                         </div>

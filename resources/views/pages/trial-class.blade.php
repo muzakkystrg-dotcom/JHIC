@@ -9,9 +9,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
         <!-- Frame Kiri: Murni Foto Siswi (Tanpa Background Merah & Dashed Outline) -->
-        <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
+        <div class="relative w-full h-[320px] sm:h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
             <!-- Foto Siswi (Mengambil dari folder images/trial/trial.webp) -->
-            <img src="{{ asset('images/trial/trial.webp') }}" alt="Siswi Trial Class" class="relative z-10 w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="266" height="290">
+            <img src="{{ asset('images/trial/trial.webp') }}" alt="Siswi Trial Class" class="relative z-10 w-[200px] sm:w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="266" height="290">
         </div>
 
         <!-- Teks Kanan -->
@@ -22,7 +22,7 @@
                 <span class="text-gray-900 font-semibold">Trial Class</span>
             </div>
             
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
                 Trial Class
             </h1>
             
@@ -68,7 +68,7 @@
         <!-- Grid Kartu Sesi Trial Class -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="200">
             @forelse($classes as $item)
-                <div class="border-2 border-dashed border-gray-300 rounded-3xl p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
+                <div class="border-2 border-dashed border-gray-300 rounded-3xl p-5 sm:p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <span class="bg-red-50 text-red-700 text-xs font-bold px-3 py-1 rounded-full">
@@ -105,7 +105,7 @@
                     </div>
                 </div>
             @empty
-                <div class="col-span-3 py-12 text-center text-gray-500 italic bg-gray-50 rounded-2xl border border-gray-200">
+                <div class="col-span-full py-12 text-center text-gray-500 italic bg-gray-50 rounded-2xl border border-gray-200">
                     <div class="flex flex-col items-center justify-center gap-2">
                         <i data-lucide="search-x" class="w-8 h-8 text-gray-300"></i>
                         <span>Jadwal atau topik Trial Class yang Anda cari tidak ditemukan.</span>

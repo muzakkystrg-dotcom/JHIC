@@ -9,8 +9,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
         <!-- Frame Kiri: 3D Icon Trophy (Animasi Zoom-In) -->
-        <div class="relative w-full h-[350px] md:h-[400px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
-            <img src="{{ asset('images/prestasi/piala.webp') }}" alt="Piala Prestasi" class="relative z-10 w-[200px] md:w-[240px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="206" height="273">
+        <div class="relative w-full h-[300px] sm:h-[350px] md:h-[400px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
+            <img src="{{ asset('images/prestasi/piala.webp') }}" alt="Piala Prestasi" class="relative z-10 w-[160px] sm:w-[200px] md:w-[240px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="206" height="273">
         </div>
 
         <!-- Teks Kanan (Animasi Fade-Right) -->
@@ -21,7 +21,7 @@
                 <span class="text-gray-900 font-semibold">Prestasi</span>
             </div>
             
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
                 Prestasi
             </h1>
             
@@ -39,23 +39,23 @@
 </section>
 
 <!-- Section Grafik Prestasi Siswa (Dengan animasi Fade-Up) -->
-<section id="grafik-prestasi" class="py-20 bg-white" data-aos="fade-up">
+<section id="grafik-prestasi" class="py-14 sm:py-20 bg-white" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
         <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900">
                 Grafik Prestasi Siswa <span class="text-red-700">Smk Telkom Sidoarjo</span>
             </h2>
         </div>
 
         <!-- Card Container Grafik -->
-        <div class="bg-white rounded-[2.5rem] p-6 md:p-10 shadow-xl border border-gray-100 max-w-5xl mx-auto" data-aos="zoom-in" data-aos-delay="200">
-            <div class="relative h-[350px] w-full">
+        <div class="bg-white rounded-[2.5rem] p-5 sm:p-6 md:p-10 shadow-xl border border-gray-100 max-w-5xl mx-auto" data-aos="zoom-in" data-aos-delay="200">
+            <div class="relative h-[280px] sm:h-[350px] w-full">
                 <canvas id="achievementChart"></canvas>
             </div>
 
             <!-- Custom Legend -->
-            <div class="flex flex-wrap items-center justify-center gap-8 mt-8 pt-6 border-t border-gray-100 text-sm font-medium text-gray-700">
+            <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mt-8 pt-6 border-t border-gray-100 text-sm font-medium text-gray-700">
                 <div class="flex items-center gap-2">
                     <span class="w-3.5 h-3.5 rounded-full bg-red-600"></span>
                     <span>Kabupaten</span>
@@ -79,11 +79,11 @@
 </section>
 
 <!-- Section Prestasi Siswa (Carousel / Slider Card dengan animasi Fade-Up) -->
-<section class="py-20 bg-gray-50" data-aos="fade-up">
+<section class="py-14 sm:py-20 bg-gray-50" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
         <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900">
                 Prestasi Siswa <span class="text-red-700">Smk Telkom Sidoarjo</span>
             </h2>
         </div>
@@ -94,7 +94,7 @@
                 
                 @foreach($achievements as $ach)
                     <div class="w-full md:w-[calc(33.333%-1.33rem)] shrink-0">
-                        <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
+                        <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-5 sm:p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
                             <div>
                                 <div class="h-56 bg-gray-100 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
                                     <img src="{{ $ach->image ? asset($ach->image) : asset('images/prestasi/juara.webp') }}" alt="{{ $ach->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="eager" decoding="async" fetchpriority="high">

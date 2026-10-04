@@ -9,7 +9,7 @@
     {{-- =========================================================================
          TAMPILAN SUKSES SUBMIT (DESAIN MASTER FIGMA: Form Requirement(3).png)
          ========================================================================= --}}
-    <section class="w-full min-h-[75vh] lg:min-h-[80vh] flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 pt-36 pb-24" data-aos="zoom-in">
+    <section class="w-full min-h-[75vh] lg:min-h-[80vh] flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 pb-16 sm:pb-24" data-aos="zoom-in">
         <div class="max-w-3xl mx-auto space-y-4">
             
             <!-- Headline Utama Sukses -->
@@ -37,7 +37,7 @@
         <div class="max-w-4xl mx-auto space-y-8">
             
             <!-- Header Judul -->
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-white text-center tracking-tight mb-8">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white text-center tracking-tight mb-8">
                 Registration Form
             </h1>
 

@@ -11,10 +11,10 @@
             class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
 
             <!-- Frame Kiri: Model 3D Isometrik Gedung Kampus (Animasi Zoom-In) -->
-            <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2"
+            <div class="relative w-full h-[320px] sm:h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2"
                 data-aos="zoom-in" data-aos-delay="200">
                 <img src="{{ asset('images/fasilitas/sekolah3d.webp') }}" alt="Model Isometrik Kampus"
-                    class="relative z-10 w-[380px] md:w-[480px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="430" height="307">
+                    class="relative z-10 w-[260px] sm:w-[380px] md:w-[480px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="430" height="307">
             </div>
 
             <!-- Teks Kanan (Animasi Fade-Right) -->
@@ -25,7 +25,7 @@
                     <span class="text-gray-900 font-semibold">Fasilitas</span>
                 </div>
 
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
                     Fasilitas
                 </h1>
 
@@ -47,11 +47,11 @@
     </section>
 
     <!-- Section Fasilitas Penunjang (Disesuaikan dengan 8 Fasilitas Baru) -->
-    <section id="katalog-fasilitas" class="py-20 bg-white" data-aos="fade-up">
+    <section id="katalog-fasilitas" class="py-14 sm:py-20 bg-white" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-8">
 
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900">
                     Fasilitas Penunjang <span class="text-red-700">Belajar dan Berkarya Smk Telkom Sidoarjo</span>
                 </h2>
             </div>
@@ -64,7 +64,7 @@
                     @foreach($allFacilities as $fac)
                         <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0">
                             <div
-                                class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
+                                class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-5 sm:p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
                                 <div>
                                     <div
                                         class="h-48 bg-gray-50 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
@@ -104,19 +104,19 @@
     </section>
 
     <!-- Section Lab Tour (Sesuai Preferensi Anda) -->
-    <section class="py-20 bg-gray-50" data-aos="fade-up">
+    <section class="py-14 sm:py-20 bg-gray-50" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-8">
 
             <!-- Header Lab Tour -->
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="text-red-700 font-bold uppercase tracking-widest text-sm block mb-2">Lab Tour</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900">
                     Masuki Dunia <span class="text-red-700">Laboratorium</span> yang Siap Mengasah <span
                         class="text-red-700">Skill</span> dan <span class="text-red-700">Inovasi Siswa</span>
                 </h2>
             </div>
 
-            <div class="space-y-16">
+            <div class="space-y-12 sm:space-y-16">
 
                 <!-- Baris 1: Gedung RPS Hall -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" data-aos="fade-right">

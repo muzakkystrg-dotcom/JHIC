@@ -9,8 +9,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
         <!-- Frame Kiri: Siswi Berjilbab (Animasi Zoom-In) -->
-        <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
-            <img src="{{ asset('images/profile/siswi.webp') }}" alt="Siswi SMK Telkom" class="relative z-10 w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="351" height="357">
+        <div class="relative w-full h-[320px] sm:h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
+            <img src="{{ asset('images/profile/siswi.webp') }}" alt="Siswi SMK Telkom" class="relative z-10 w-[200px] sm:w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="351" height="357">
         </div>
 
         <!-- Teks Kanan (Animasi Fade-Right) -->
@@ -21,7 +21,7 @@
                 <span class="text-gray-900 font-semibold">Profile Sekolah</span>
             </div>
             
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
                 Profile <span class="text-red-700">Sekolah</span>
             </h1>
             
@@ -39,11 +39,11 @@
 </section>
 
 <!-- Section Visi & Misi Sekolah (Animasi Fade-Up) -->
-<section id="visi-misi" class="py-20 bg-white" data-aos="fade-up">
+<section id="visi-misi" class="py-14 sm:py-20 bg-white" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
         <!-- Outer Container dengan Dashed Corner Frame -->
-        <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-8 md:p-12 relative bg-white shadow-sm hover:border-red-700 transition-colors duration-300">
+        <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 sm:p-8 md:p-12 relative bg-white shadow-sm hover:border-red-700 transition-colors duration-300">
             
             <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-10">
                 Visi & Misi Sekolah
@@ -93,7 +93,7 @@
 
                 <!-- Sisi Kanan: Ilustrasi 3D Buku Dokumen Merah (Animasi Zoom-In) -->
                 <div class="lg:col-span-5 flex justify-center items-center" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="{{ asset('images/profile/buku.webp') }}" alt="Ilustrasi Buku Dokumen" class="w-64 md:w-80 h-auto object-contain drop-shadow-xl hover:scale-105 transition-transform duration-300" loading="eager" decoding="async" fetchpriority="high" width="253" height="296">
+                    <img src="{{ asset('images/profile/buku.webp') }}" alt="Ilustrasi Buku Dokumen" class="w-48 sm:w-64 md:w-80 h-auto object-contain drop-shadow-xl hover:scale-105 transition-transform duration-300" loading="eager" decoding="async" fetchpriority="high" width="253" height="296">
                 </div>
 
             </div>
@@ -108,7 +108,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
         <!-- Outer Container dengan Dashed Corner Frame -->
-        <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-8 md:p-12 relative bg-white shadow-sm hover:border-red-700 transition-colors duration-300">
+        <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 sm:p-8 md:p-12 relative bg-white shadow-sm hover:border-red-700 transition-colors duration-300">
             
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
@@ -136,7 +136,7 @@
 </section>
 
 <!-- Section Struktur Organisasi (Animasi Fade-Up) -->
-<section class="py-20 bg-gray-50" data-aos="fade-up">
+<section class="py-14 sm:py-20 bg-gray-50" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

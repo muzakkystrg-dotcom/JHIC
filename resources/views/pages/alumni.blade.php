@@ -9,12 +9,12 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
         <!-- Frame Kiri: Foto Siswi Alumni -->
-        <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
+        <div class="relative w-full h-[320px] sm:h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
             <!-- Garis Putus-putus Melengkung Geometris -->
-            <div class="absolute w-[290px] h-[290px] md:w-[350px] md:h-[350px] border-2 border-dashed border-gray-400 transform rotate-45 rounded-[3rem] pointer-events-none"></div>
+            <div class="absolute w-[220px] h-[220px] sm:w-[290px] sm:h-[290px] md:w-[350px] md:h-[350px] border-2 border-dashed border-gray-400 transform rotate-45 rounded-[3rem] pointer-events-none"></div>
             
             <!-- Foto Alumni -->
-            <img src="{{ asset('images/alumni/alumni.webp') }}" alt="Siswi Alumni SMK Telkom" class="relative z-10 w-[240px] md:w-[290px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="269" height="279">
+            <img src="{{ asset('images/alumni/alumni.webp') }}" alt="Siswi Alumni SMK Telkom" class="relative z-10 w-[190px] sm:w-[240px] md:w-[290px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="269" height="279">
         </div>
 
         <!-- Teks Kanan -->
@@ -25,7 +25,7 @@
                 <span class="text-gray-900 font-semibold">Informasi Alumni</span>
             </div>
             
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
                 Informasi Alumni
             </h1>
             
@@ -78,25 +78,25 @@
                 <table class="w-full text-left border-collapse min-w-[600px]">
                     <thead>
                         <tr class="text-white rounded-t-xl overflow-hidden" style="background-color: #8B0000 !important;">
-                            <th class="py-4 px-6 font-bold text-sm rounded-tl-2xl">No.</th>
-                            <th class="py-4 px-6 font-bold text-sm">Nama Siswa</th>
-                            <th class="py-4 px-6 font-bold text-sm">Jurusan</th>
-                            <th class="py-4 px-6 font-bold text-sm">DTP</th>
-                            <th class="py-4 px-6 font-bold text-sm rounded-tr-2xl">SSO</th>
+                            <th class="py-4 px-4 sm:px-6 font-bold text-sm rounded-tl-2xl">No.</th>
+                            <th class="py-4 px-4 sm:px-6 font-bold text-sm">Nama Siswa</th>
+                            <th class="py-4 px-4 sm:px-6 font-bold text-sm">Jurusan</th>
+                            <th class="py-4 px-4 sm:px-6 font-bold text-sm">DTP</th>
+                            <th class="py-4 px-4 sm:px-6 font-bold text-sm rounded-tr-2xl">SSO</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 text-sm text-gray-700 font-medium bg-white">
                         @forelse($alumnis as $index => $alumni)
                             <tr class="hover:bg-gray-50 transition">
-                                <td class="py-4 px-6">{{ $index + 1 }}</td>
-                                <td class="py-4 px-6 font-bold text-gray-900">{{ $alumni->nama_siswa }}</td>
-                                <td class="py-4 px-6">
+                                <td class="py-4 px-4 sm:px-6">{{ $index + 1 }}</td>
+                                <td class="py-4 px-4 sm:px-6 font-bold text-gray-900">{{ $alumni->nama_siswa }}</td>
+                                <td class="py-4 px-4 sm:px-6">
                                     <span class="bg-red-50 text-red-700 px-2.5 py-1 rounded-lg text-xs font-bold">
                                         {{ $alumni->jurusan }}
                                     </span>
                                 </td>
-                                <td class="py-4 px-6">{{ $alumni->dtp }}</td>
-                                <td class="py-4 px-6 font-mono text-gray-600">{{ $alumni->sso }}</td>
+                                <td class="py-4 px-4 sm:px-6">{{ $alumni->dtp }}</td>
+                                <td class="py-4 px-4 sm:px-6 font-mono text-gray-600">{{ $alumni->sso }}</td>
                             </tr>
                         @empty
                             <tr>

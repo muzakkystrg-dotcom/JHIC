@@ -4,6 +4,31 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/jurufind.css') }}">
+    {{-- Patch responsif khusus halaman kuis (scoped ke #jurufind-app, tidak
+         mengubah jurufind.css yang dipakai bersama halaman lain). --}}
+    <style>
+        /* Layout global memakai header fixed; beri ruang atas yang cukup
+           agar konten kuis tidak tertutup header di semua viewport. */
+        #jurufind-app { padding-top: 5.5rem; }
+        @media (min-width: 640px)  { #jurufind-app { padding-top: 6.5rem; } }
+        @media (min-width: 1024px) { #jurufind-app { padding-top: 7rem; } }
+
+        /* Header progres boleh wrap agar "Pertanyaan x dari n" dan
+           "Progres tercapai n%" tidak berdesakan di layar HP sempit. */
+        #jurufind-app .jf-quiz__top { flex-wrap: wrap; row-gap: 0.35rem; }
+
+        /* Teks panjang (kata tanpa spasi) tidak menembus container di HP. */
+        #jurufind-app .jf-question,
+        #jurufind-app .jf-qsub,
+        #jurufind-app .jf-options,
+        #jurufind-app .jf-option { overflow-wrap: anywhere; }
+
+        /* Di HP, tombol "Undo"/"Selanjutnya" full-width (sudah diatur
+           jurufind.css); pastikan area tombol cukup lega untuk disentuh. */
+        @media (max-width: 768px) {
+            #jurufind-app .jf-quiz__foot { gap: 0.75rem; }
+        }
+    </style>
 @endpush
 
 @section('content')

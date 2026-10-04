@@ -9,7 +9,7 @@
     {{-- =========================================================================
          BAGIAN 1: DETAIL GURU / WAKA / STAF (DESAIN FIGMA: Desktop - 42.png)
          ========================================================================= --}}
-    <section class="relative pt-36 sm:pt-40 pb-24 overflow-hidden bg-gradient-to-br from-[#EAEAEA]/80 via-[#F4F4F4] to-white min-h-[85vh] flex items-center">
+    <section class="relative pt-32 sm:pt-40 pb-16 sm:pb-24 overflow-hidden bg-gradient-to-br from-[#EAEAEA]/80 via-[#F4F4F4] to-white min-h-[85vh] flex items-center">
         <div class="absolute top-0 left-0 w-2/5 h-full bg-gradient-to-r from-gray-200/50 to-transparent pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -107,8 +107,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
             
             <!-- Frame Kiri: Ilustrasi Karakter Tim Pengajar -->
-            <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
-                <img src="{{ asset('images/home/program.webp') }}" alt="Ilustrasi Tim Pengajar" class="relative z-10 w-[340px] md:w-[420px] h-auto object-contain drop-shadow-2xl" onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
+            <div class="relative w-full h-[320px] sm:h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
+                <img src="{{ asset('images/home/program.webp') }}" alt="Ilustrasi Tim Pengajar" class="relative z-10 w-[240px] sm:w-[340px] md:w-[420px] h-auto object-contain drop-shadow-2xl" onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="eager" decoding="async" fetchpriority="high">
             </div>
 
             <!-- Teks Kanan -->
@@ -119,7 +119,7 @@
                     <span class="text-gray-900 font-semibold">Profil Guru</span>
                 </div>
                 
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
                     Profil Guru
                 </h1>
                 
@@ -137,9 +137,9 @@
     </section>
 
     <!-- Section Profil Kepala Sekolah -->
-    <section id="kepala-sekolah" class="py-20 bg-white" data-aos="fade-up">
+    <section id="kepala-sekolah" class="py-14 sm:py-20 bg-white" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-8">
-            <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-8 md:p-12 relative bg-gray-50/50 shadow-sm max-w-5xl mx-auto hover:border-red-700 transition-colors duration-300">
+            <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 sm:p-8 md:p-12 relative bg-gray-50/50 shadow-sm max-w-5xl mx-auto hover:border-red-700 transition-colors duration-300">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
                     
                     <!-- Foto Kepala Sekolah (Clickable) -->
@@ -193,10 +193,10 @@
     </section>
 
     <!-- Section Wakil Kepala Bidang (8 Card) -->
-    <section class="py-20 bg-white" data-aos="fade-up">
+    <section class="py-14 sm:py-20 bg-white" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-1">Wakil Kepala bidang</h2>
+            <div class="text-center mb-10 sm:mb-16" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-1">Wakil Kepala bidang</h2>
                 <span class="text-red-700 font-bold uppercase tracking-widest text-sm">Smk Telkom Sidoarjo</span>
             </div>
 
@@ -206,7 +206,7 @@
                         <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] shrink-0">
                             <a href="{{ route('profil-guru.show', ['slug' => $waka['slug']]) }}" class="block h-full group">
                                 <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
-                                    <div class="h-72 bg-gray-100 overflow-hidden">
+                                    <div class="h-64 sm:h-72 bg-gray-100 overflow-hidden">
                                         <img src="{{ $waka['foto'] }}" alt="{{ $waka['nama'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="lazy" decoding="async">
                                     </div>
                                     <div class="p-4 text-center bg-white group-hover:bg-red-50/50 transition">
@@ -233,10 +233,10 @@
     </section>
 
     <!-- Section Guru Produktif dan Non Produktif (29 Card) -->
-    <section class="py-20 bg-gray-50" data-aos="fade-up">
+    <section class="py-14 sm:py-20 bg-gray-50" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-1">Guru Produktif dan Non Produktif</h2>
+            <div class="text-center mb-10 sm:mb-16" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-1">Guru Produktif dan Non Produktif</h2>
                 <span class="text-red-700 font-bold uppercase tracking-widest text-sm">Smk Telkom Sidoarjo</span>
             </div>
 
@@ -246,7 +246,7 @@
                         <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] shrink-0">
                             <a href="{{ route('profil-guru.show', ['slug' => $guru['slug']]) }}" class="block h-full group">
                                 <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
-                                    <div class="h-72 bg-gray-100 overflow-hidden">
+                                    <div class="h-64 sm:h-72 bg-gray-100 overflow-hidden">
                                         <img src="{{ $guru['foto'] }}" alt="{{ $guru['nama'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="lazy" decoding="async">
                                     </div>
                                     <div class="p-4 text-center bg-white group-hover:bg-red-50/50 transition">
@@ -273,10 +273,10 @@
     </section>
 
     <!-- Section Staff & Karyawan (6 Card) -->
-    <section class="py-20 bg-white" data-aos="fade-up">
+    <section class="py-14 sm:py-20 bg-white" data-aos="fade-up">
         <div class="max-w-7xl mx-auto px-4 sm:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-1">Staff &amp; Karyawan</h2>
+            <div class="text-center mb-10 sm:mb-16" data-aos="fade-up">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-1">Staff &amp; Karyawan</h2>
                 <span class="text-red-700 font-bold uppercase tracking-widest text-sm">Smk Telkom Sidoarjo</span>
             </div>
 
@@ -286,7 +286,7 @@
                         <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] shrink-0">
                             <a href="{{ route('profil-guru.show', ['slug' => $staff['slug']]) }}" class="block h-full group">
                                 <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
-                                    <div class="h-72 bg-gray-100 overflow-hidden">
+                                    <div class="h-64 sm:h-72 bg-gray-100 overflow-hidden">
                                         <img src="{{ $staff['foto'] }}" alt="{{ $staff['nama'] }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='{{ asset('images/placeholder.webp') }}';" loading="lazy" decoding="async">
                                     </div>
                                     <div class="p-4 text-center bg-white group-hover:bg-red-50/50 transition">

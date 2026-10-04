@@ -3,7 +3,7 @@
 @section('title', 'Silabus Pembelajaran ' . $silabus['code'] . ' - SMK Telkom Sidoarjo')
 
 @section('content')
-<div class="bg-[#F8F9FA] min-h-screen text-slate-800 font-sans pt-32 sm:pt-36 pb-24 overflow-x-hidden">
+<div class="bg-[#F8F9FA] min-h-screen text-slate-800 font-sans pt-32 sm:pt-36 pb-16 sm:pb-24 overflow-x-hidden">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- ==================== 1. HEADER NAVIGASI BALIK (BACK PILL BUTTON) ==================== -->

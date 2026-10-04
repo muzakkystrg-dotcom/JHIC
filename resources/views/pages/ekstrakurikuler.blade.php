@@ -9,7 +9,7 @@
     {{-- =========================================================================
          BAGIAN 1: DETAIL EKSTRAKURIKULER & GALERI (DESAIN FIGMA: Desktop - 40.png)
          ========================================================================= --}}
-    <div class="pt-36 sm:pt-40 pb-24">
+    <div class="pt-32 sm:pt-40 pb-16 sm:pb-24">
         
         <!-- ==================== HERO SECTION DETAIL EKSTRAKURIKULER ==================== -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -117,7 +117,7 @@
          BAGIAN 2: KATALOG EKSTRAKURIKULER (DESAIN FIGMA: Desktop - 27.png)
          ========================================================================= --}}
     <!-- 1. Hero Section Ekstrakurikuler -->
-    <section class="relative pt-40 pb-16 overflow-hidden bg-gradient-to-br from-[#EAEAEA] via-[#F4F4F4] to-white">
+    <section class="relative pt-32 sm:pt-40 pb-16 overflow-hidden bg-gradient-to-br from-[#EAEAEA] via-[#F4F4F4] to-white">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-200/40 to-transparent pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -170,7 +170,7 @@
     <section id="kegiatan-ekstra" class="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24" data-aos="fade-up">
         
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                 Kegiatan <span style="color: #C8102E !important;">Ekstrakurikuler</span>
             </h2>
             <p class="text-base font-bold text-slate-900 mt-1">Smk Telkom Sidoarjo</p>
@@ -183,7 +183,7 @@
                 <div id="ekstraCarouselTrack" class="flex transition-transform duration-500 ease-out gap-6">
                     @foreach($ekstras as $item)
                         <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0">
-                            <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
+                            <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-5 sm:p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
                                 <div>
                                     <div class="h-48 bg-gray-100 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
                                         <img src="{{ $item['image'] }}"

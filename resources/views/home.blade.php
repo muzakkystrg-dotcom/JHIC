@@ -5,7 +5,7 @@
 @section('content')
 
   <!-- ==================== 2. HERO SECTION (Fade In) ==================== -->
-  <section id="beranda" class="pt-32 pb-24 bg-[#F0F0F0] relative overflow-hidden" data-aos="fade-in" data-aos-duration="1000">
+  <section id="beranda" class="pt-28 sm:pt-32 pb-16 sm:pb-24 bg-[#F0F0F0] relative overflow-hidden" data-aos="fade-in" data-aos-duration="1000">
     <div class="absolute -left-10 top-16 w-[400px] h-[400px] bg-[#C9C9C9] opacity-80 pointer-events-none"></div>
     <div class="absolute left-[12%] top-48 w-[400px] h-[400px] bg-[#A3A3A3] opacity-80 rotate-12 pointer-events-none"></div>
     <div class="absolute left-[3%] -bottom-12 w-[420px] h-[420px] bg-[#E4E4E4] pointer-events-none"></div>
@@ -17,14 +17,14 @@
           <p class="text-base font-bold text-gray-600">
             Selamat datang, di <span class="text-red-700 font-extrabold">SMK TELKOM SIDOARJO!</span>
           </p>
-          <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight">
             Sekolah Tangguh, <br />
             Berakhlak, <br />
             <span class="text-red-700">&amp; Berwawasan Digital</span>
           </h1>
-          <div class="pt-4 flex items-center gap-4">
+          <div class="pt-4 flex flex-wrap items-center gap-3 sm:gap-4">
             <span class="text-base font-semibold text-gray-800">Udah siap Bergabung?</span>
-            <a href="{{ route('ppdb') }}" class="px-8 py-3.5 text-base font-bold text-white bg-red-700 hover:bg-red-800 rounded-full shadow-md hover:shadow-lg transition cursor-pointer">
+            <a href="{{ route('ppdb') }}" class="px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base font-bold text-white bg-red-700 hover:bg-red-800 rounded-full shadow-md hover:shadow-lg transition cursor-pointer">
               Daftar ke skomda!
             </a>
           </div>
@@ -39,7 +39,7 @@
   </section>
 
   <!-- ==================== 3. SAMBUTAN KEPALA SEKOLAH ==================== -->
-  <section id="sambutan" class="py-24 bg-white relative overflow-hidden">
+  <section id="sambutan" class="py-16 sm:py-24 bg-white relative overflow-hidden">
     <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
       <svg class="w-[1700px] h-[760px] -rotate-6 opacity-80" viewBox="0 0 1700 760" fill="none">
         <ellipse cx="500" cy="380" rx="300" ry="250" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="8 8"/>
@@ -54,7 +54,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <!-- Kiri: Foto Kepala Sekolah -->
         <div class="lg:col-span-5 flex justify-center" data-aos="fade-right">
-          <div class="relative w-72 h-96">
+          <div class="relative w-64 h-80 sm:w-72 sm:h-96">
             <div class="absolute -left-6 right-[-30%] bottom-6 h-56 bg-red-700 rounded-full"></div>
             <img src="{{ asset('images/profileguru/pabror.webp') }}" alt="Kepala Sekolah - Abror S.Hum M.Pd" class="relative z-10 w-full h-full object-cover rounded-t-full rounded-b-3xl shadow-xl" loading="eager" decoding="async" fetchpriority="high" width="301" height="380">
           </div>
@@ -79,14 +79,14 @@
   </section>
 
   <!-- ==================== 4. KENAPA HARUS PILIH SKOMDA? ==================== -->
-  <section id="keunggulan" class="py-24 bg-[#F4F5F7]">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+  <section id="keunggulan" class="py-16 sm:py-24 bg-[#F4F5F7]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 xl:gap-28 items-center">
 
         <!-- Kiri: 6 Kartu Dashed (Muncul bertahap dengan stagger delay) -->
-        <div class="lg:col-span-7">
+        <div class="lg:col-span-7 order-2 lg:order-1">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div class="bg-red-700 text-white p-8 rounded-2xl shadow-md relative flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-red-700 text-white p-6 sm:p-8 rounded-2xl shadow-md relative flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
               <div class="flex items-start justify-between">
                 <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-white">
                   <i data-lucide="cpu" class="w-5 h-5"></i>
@@ -99,7 +99,7 @@
               </div>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl border border-dashed border-gray-300 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-dashed border-gray-300 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
               <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center">
                 <i data-lucide="award" class="w-5 h-5"></i>
               </div>
@@ -109,7 +109,7 @@
               </div>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl border border-dashed border-gray-300 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-dashed border-gray-300 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
               <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center">
                 <i data-lucide="network" class="w-5 h-5"></i>
               </div>
@@ -119,7 +119,7 @@
               </div>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl border border-dashed border-gray-300 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="400">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-dashed border-gray-300 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="400">
               <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center">
                 <i data-lucide="monitor" class="w-5 h-5"></i>
               </div>
@@ -129,7 +129,7 @@
               </div>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl border border-dashed border-gray-300 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="500">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-dashed border-gray-300 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="500">
               <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center">
                 <i data-lucide="shield-check" class="w-5 h-5"></i>
               </div>
@@ -139,7 +139,7 @@
               </div>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl border border-dashed border-gray-300 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="600">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-dashed border-gray-300 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="600">
               <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center">
                 <i data-lucide="link" class="w-5 h-5"></i>
               </div>
@@ -152,13 +152,13 @@
         </div>
 
         <!-- Kanan: Judul + Foto Siswi -->
-        <div class="lg:col-span-5 flex flex-col items-center lg:items-start w-full" data-aos="zoom-in" data-aos-delay="300">
+        <div class="lg:col-span-5 order-1 lg:order-2 flex flex-col items-center lg:items-start w-full" data-aos="zoom-in" data-aos-delay="300">
           <div class="w-full max-w-md">
-            <h2 class="text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-10 text-center lg:text-left">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-10 text-center lg:text-left">
               Kenapa harus pilih <br /><span class="text-red-700">Skomda?</span>
             </h2>
             
-            <div class="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto lg:mx-0 flex items-center justify-center -translate-y-2 -translate-x-4">
+            <div class="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto lg:mx-0 flex items-center justify-center -translate-y-2 lg:-translate-x-4">
               <div class="absolute -inset-4 rounded-full border-2 border-dashed border-gray-300 pointer-events-none"></div>
               <img src="{{ asset('images/home/tifany.webp') }}" alt="Tifany Skomda" class="relative z-10 w-full h-full object-cover rounded-full border-4 border-white shadow-2xl" loading="lazy" decoding="async" width="392" height="425">
             </div>
@@ -170,10 +170,10 @@
   </section>
 
   <!-- ==================== 5. PROGRAM KEAHLIAN ==================== -->
-  <section id="jurusan" class="py-24 bg-white" data-aos="fade-up">
+  <section id="jurusan" class="py-16 sm:py-24 bg-white" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-extrabold text-slate-900">Program Keahlian</h2>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Program Keahlian</h2>
         <p class="text-red-700 text-xl font-bold mt-1">di SMK TELKOM SIDOARJO</p>
       </div>
 
@@ -246,9 +246,9 @@
   </section>
 
   <!-- ==================== 7. 10 PARTNER INDUSTRI ==================== -->
-  <section id="partner" class="py-16 bg-[#F4F5F7] overflow-hidden" data-aos="fade-in">
+  <section id="partner" class="py-12 sm:py-16 bg-[#F4F5F7] overflow-hidden" data-aos="fade-in">
     <div class="max-w-7xl mx-auto px-4 mb-10 text-center">
-      <h3 class="text-3xl font-black text-slate-900 tracking-tight">10+ Partner Industri</h3>
+      <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">10+ Partner Industri</h3>
     </div>
 
     <div class="relative w-full overflow-hidden flex items-center py-2 select-none">
@@ -284,22 +284,22 @@
   </section>
 
   <!-- ==================== 8. BERITA & INFORMASI TERKINI ==================== -->
-  <section id="berita" class="py-24 bg-[#F4F5F7]" data-aos="fade-up">
+  <section id="berita" class="py-16 sm:py-24 bg-[#F4F5F7]" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10">
-        <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight">Berita &amp; Informasi Terkini</h2>
-        <h3 class="text-xl font-black text-red-700 tracking-wide mt-1">SMK TELKOM SIDOARJO</h3>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Berita &amp; Informasi Terkini</h2>
+        <h3 class="text-lg sm:text-xl font-black text-red-700 tracking-wide mt-1">SMK TELKOM SIDOARJO</h3>
       </div>
 
       <div class="flex items-center justify-center flex-wrap gap-2 mb-12">
         <span class="text-sm font-bold text-gray-800 mr-2">Kategori Berita:</span>
-        <button onclick="filterNews('Semua', this)" class="news-tab px-4 py-1.5 rounded-full text-sm font-bold bg-red-700 text-white transition cursor-pointer">Semua</button>
-        <button onclick="filterNews('Kegiatan Sekolah', this)" class="news-tab px-4 py-1.5 rounded-full text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Kegiatan Sekolah</button>
-        <button onclick="filterNews('Prestasi', this)" class="news-tab px-4 py-1.5 rounded-full text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Prestasi</button>
-        <button onclick="filterNews('Karya & Inovasi', this)" class="news-tab px-4 py-1.5 rounded-full text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Karya &amp; Inovasi</button>
-        <button onclick="filterNews('Kemitraan & Kerjasama', this)" class="news-tab px-4 py-1.5 rounded-full text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Kemitraan &amp; Kerjasama</button>
-        <button onclick="filterNews('Alumni', this)" class="news-tab px-4 py-1.5 rounded-full text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Alumni</button>
-        <button onclick="filterNews('Artikel Edukasi', this)" class="news-tab px-4 py-1.5 rounded-full text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Artikel Edukasi</button>
+        <button onclick="filterNews('Semua', this)" class="news-tab px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-red-700 text-white transition cursor-pointer">Semua</button>
+        <button onclick="filterNews('Kegiatan Sekolah', this)" class="news-tab px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Kegiatan Sekolah</button>
+        <button onclick="filterNews('Prestasi', this)" class="news-tab px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Prestasi</button>
+        <button onclick="filterNews('Karya & Inovasi', this)" class="news-tab px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Karya &amp; Inovasi</button>
+        <button onclick="filterNews('Kemitraan & Kerjasama', this)" class="news-tab px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Kemitraan &amp; Kerjasama</button>
+        <button onclick="filterNews('Alumni', this)" class="news-tab px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Alumni</button>
+        <button onclick="filterNews('Artikel Edukasi', this)" class="news-tab px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 transition cursor-pointer">Artikel Edukasi</button>
       </div>
 
       <div>

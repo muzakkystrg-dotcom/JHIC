@@ -9,8 +9,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
         <!-- Frame Kiri: Foto Siswa Murni (Mengambil dari folder images/berita/berita.webp) -->
-        <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
-            <img src="{{ asset('images/berita/berita.webp') }}" alt="Siswa SMK Telkom" class="relative z-10 w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="261" height="285">
+        <div class="relative w-full h-[320px] sm:h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
+            <img src="{{ asset('images/berita/berita.webp') }}" alt="Siswa SMK Telkom" class="relative z-10 w-[200px] sm:w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="261" height="285">
         </div>
 
         <!-- Teks Kanan -->
@@ -21,7 +21,7 @@
                 <span class="text-gray-900 font-semibold">Berita</span>
             </div>
             
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
                 Informasi Terkini dan <span class="text-red-700">Berita</span> Menarik SMK Telkom Sidoarjo
             </h1>
             
@@ -54,7 +54,7 @@
         <!-- Category Badges / Filter Tabs -->
         <div class="flex flex-wrap items-center justify-center gap-3 mb-16" data-aos="fade-up" data-aos-delay="200">
             @foreach($categories as $index => $cat)
-                <button class="category-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-sm cursor-pointer {{ $index === 0 ? 'bg-red-700 text-white shadow-md' : 'bg-white text-gray-600 border border-dashed border-gray-300 hover:border-red-700 hover:text-red-700' }}" data-category="{{ $cat }}">
+                <button class="category-btn px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm cursor-pointer {{ $index === 0 ? 'bg-red-700 text-white shadow-md' : 'bg-white text-gray-600 border border-dashed border-gray-300 hover:border-red-700 hover:text-red-700' }}" data-category="{{ $cat }}">
                     {{ $cat }}
                 </button>
             @endforeach
@@ -65,7 +65,7 @@
             <div id="newsCarousel" class="flex transition-transform duration-500 ease-out gap-6">
                 @foreach($beritas as $news)
                     <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0 news-item" data-category="{{ $news->category }}">
-                        <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
+                        <div class="border-2 border-dashed border-gray-300 rounded-[2.5rem] p-5 sm:p-6 bg-white relative hover:shadow-xl hover:border-red-700 transition-all duration-300 flex flex-col justify-between h-full group">
                             <div>
                                 <div class="h-48 bg-gray-100 rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-gray-100">
                                     <!-- Thumbnail berita dari kolom `thumbnail` di tabel beritas -->

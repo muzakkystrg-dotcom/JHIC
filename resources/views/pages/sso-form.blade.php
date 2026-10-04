@@ -3,27 +3,27 @@
 @section('title', 'SSO Form - SMK Telkom Sidoarjo')
 
 @section('content')
-<div class="bg-[#990000] min-h-screen pt-36 pb-20 px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+<div class="bg-[#990000] min-h-screen pt-32 sm:pt-36 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
     <div class="max-w-4xl mx-auto w-full">
         
         <!-- Judul Halaman Utama -->
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white text-center mb-10 tracking-tight">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white text-center mb-8 sm:mb-10 tracking-tight">
             SSO Form
         </h1>
 
         <!-- Kartu Utama "Daftar dengan SSO" -->
-        <div class="max-w-xl mx-auto bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-white/20">
+        <div class="max-w-xl mx-auto bg-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-white/20">
             <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">Daftar dengan SSO</h2>
             <p class="text-gray-400 text-sm mb-6 font-normal">SSO bisa didapatkan dari data siswa</p>
 
             <!-- Form Check SSO -->
-            <form id="ssoFormElement" class="flex items-center gap-3 mb-2">
+            <form id="ssoFormElement" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-2">
                 @csrf
                 <div class="flex-1 relative">
                     <input type="text" id="ssoInput" name="sso" required placeholder="Ketik SSO..." 
                         class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C8102E] focus:border-transparent transition bg-white">
                 </div>
-                <button type="submit" id="checkSsoBtn" class="px-6 py-3 bg-[#8B0000] hover:bg-[#6b0000] active:scale-95 text-white font-semibold text-sm rounded-xl shadow-md transition duration-200 whitespace-nowrap">
+                <button type="submit" id="checkSsoBtn" class="px-6 py-3 bg-[#8B0000] hover:bg-[#6b0000] active:scale-95 text-white font-semibold text-sm rounded-xl shadow-md transition duration-200 whitespace-nowrap w-full sm:w-auto">
                     Check SSO
                 </button>
             </form>
@@ -65,13 +65,13 @@
         </div>
 
         <!-- Tombol Aksi Bawah: Kembali & Lanjut -->
-        <div class="max-w-xl mx-auto flex items-center justify-between mt-8">
-            <a href="{{ route('career-center.index') }}" class="border border-white/80 bg-[#8B0000]/40 hover:bg-white hover:text-[#C8102E] text-white px-6 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 inline-flex items-center gap-2 shadow-sm">
+        <div class="max-w-xl mx-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mt-8">
+            <a href="{{ route('career-center.index') }}" class="border border-white/80 bg-[#8B0000]/40 hover:bg-white hover:text-[#C8102E] text-white px-6 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 inline-flex items-center justify-center gap-2 shadow-sm w-full sm:w-auto">
                 ↰ Kembali
             </a>
 
             <!-- Tombol Lanjut (Aktif otomatis setelah profil siswa diklik) -->
-            <button id="nextBtn" disabled class="bg-gray-400/50 text-white/60 cursor-not-allowed px-8 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 inline-flex items-center gap-2 shadow-sm">
+            <button id="nextBtn" disabled class="bg-gray-400/50 text-white/60 cursor-not-allowed px-8 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 inline-flex items-center justify-center gap-2 shadow-sm w-full sm:w-auto">
                 Lanjut ➔
             </button>
         </div>

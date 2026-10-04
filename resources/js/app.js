@@ -41,8 +41,26 @@ window.AOS = AOS;
 // yang memanggilnya (prestasi) yang mengunduh tambahan ini.
 window.jhicLoadChart = () => import('chart.js/auto').then((m) => m.default);
 
+// ---------------------------------------------------------------------
+// Deteksi preferensi pengguna & viewport (dipakai untuk keputusan responsif)
+// ---------------------------------------------------------------------
+// Pengguna yang mematikan animasi (motion sickness / hemat daya) tidak boleh
+// dipaksa melihat animasi scroll AOS maupun scroll halus.
+const prefersReducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+// Cocokkan breakpoint Tailwind (md = 768px) agar perilaku JS konsisten
+// dengan class responsif di Blade.
+const mobileQuery = window.matchMedia('(max-width: 767px)');
+
 function renderIcons() {
     createIcons({ icons: ICONS });
+}
+
+// Aturan aktif/nonaktif AOS.
+// - Layar HP kecil: dimatikan (performa & tidak mengganggu saat scroll).
+// - Mode reduced-motion: dimatikan total.
+function shouldDisableAos() {
+    return prefersReducedMotionQuery.matches || mobileQuery.matches;
 }
 
 function initAos() {
@@ -50,7 +68,8 @@ function initAos() {
         duration: 750,
         once: true,
         offset: 30,
-        disable: 'mobile',
+        // AOS menerima fungsi; nilai dievaluasi saat init & refresh.
+        disable: shouldDisableAos(),
     });
 }
 
@@ -59,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderIcons();
     window.jhicRenderIcons = renderIcons;
 
-    // 2. Animasi AOS
+    // 2. Animasi AOS (responsif: off di HP & saat reduced-motion)
     initAos();
 
     // 3. Realtime Search / Filter untuk Mitra Industri
@@ -84,7 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Smooth Scroll untuk tombol navigasi internal
+    // 4. Smooth Scroll untuk tombol navigasi internal.
+    //    Offset header fixed ditangani lewat `scroll-padding-top` di app.css,
+    //    jadi scrollIntoView otomatis berhenti di posisi yang benar.
+    //    Saat reduced-motion aktif, lompat langsung tanpa animasi.
     const smoothLinks = document.querySelectorAll('a[href^="#"]');
     for (let link of smoothLinks) {
         link.addEventListener('click', function (e) {
@@ -96,11 +118,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (targetElement) {
                     e.preventDefault();
                     targetElement.scrollIntoView({
-                        behavior: 'smooth',
+                        behavior: prefersReducedMotionQuery.matches ? 'auto' : 'smooth',
                         block: 'start',
                     });
                 }
             }
         });
     }
+
+    // 5. Responsif saat orientasi/ukuran viewport berubah
+    //    (mis. HP di-rotate atau jendela desktop di-resize melewati
+    //    breakpoint 768px). AOS di-refresh agar status disable dihitung ulang.
+    let resizeTimer = null;
+    const handleViewportChange = () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            initAos();
+            AOS.refreshHard();
+        }, 200);
+    };
+
+    window.addEventListener('resize', handleViewportChange);
+    window.addEventListener('orientationchange', handleViewportChange);
 });

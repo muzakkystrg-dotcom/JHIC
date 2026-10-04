@@ -9,9 +9,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
         <!-- Frame Kiri: Foto Siswi Murni (Tanpa Background Merah & Tanpa Dashed Line) -->
-        <div class="relative w-full h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
+        <div class="relative w-full h-[320px] sm:h-[380px] md:h-[450px] flex justify-center items-center md:order-1 order-2" data-aos="zoom-in" data-aos-delay="200">
             <!-- Foto Siswi (Mengambil dari folder images/home/tifany.webp) -->
-            <img src="{{ asset('images/home/tifany.webp') }}" alt="Siswi K3 SMK Telkom" class="relative z-10 w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="392" height="425">
+            <img src="{{ asset('images/home/tifany.webp') }}" alt="Siswi K3 SMK Telkom" class="relative z-10 w-[200px] sm:w-[260px] md:w-[320px] h-auto object-contain drop-shadow-2xl" loading="eager" decoding="async" fetchpriority="high" width="392" height="425">
         </div>
 
         <!-- Teks Kanan -->
@@ -22,7 +22,7 @@
                 <span class="text-gray-900 font-semibold">Penerapan K3</span>
             </div>
             
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
                 Penerapan <span class="text-red-700">K3</span>
             </h1>
             
@@ -60,22 +60,22 @@
                 <table class="w-full text-left border-collapse min-w-[600px]">
                     <thead>
                         <tr class="bg-[#8B0000] text-white rounded-t-xl overflow-hidden">
-                            <th class="py-4 px-6 font-bold text-sm rounded-tl-2xl w-16">No.</th>
-                            <th class="py-4 px-6 font-bold text-sm">Nama File</th>
-                            <th class="py-4 px-6 font-bold text-sm w-48">Diunggah</th>
-                            <th class="py-4 px-6 font-bold text-sm rounded-tr-2xl text-center w-36">Aksi</th>
+                            <th class="py-4 px-4 sm:px-6 font-bold text-sm rounded-tl-2xl w-16">No.</th>
+                            <th class="py-4 px-4 sm:px-6 font-bold text-sm">Nama File</th>
+                            <th class="py-4 px-4 sm:px-6 font-bold text-sm w-48">Diunggah</th>
+                            <th class="py-4 px-4 sm:px-6 font-bold text-sm rounded-tr-2xl text-center w-36">Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 text-sm text-gray-700 font-medium bg-white">
                         @forelse($dokumens as $index => $doc)
                             <tr class="hover:bg-gray-50 transition">
-                                <td class="py-4 px-6 text-center">{{ $index + 1 }}</td>
-                                <td class="py-4 px-6 font-bold text-gray-900 flex items-center gap-3">
+                                <td class="py-4 px-4 sm:px-6 text-center">{{ $index + 1 }}</td>
+                                <td class="py-4 px-4 sm:px-6 font-bold text-gray-900 flex items-center gap-3">
                                     <i data-lucide="file-text" class="w-5 h-5 text-red-600 shrink-0"></i>
                                     <span class="line-clamp-2 hover:text-red-700 transition cursor-pointer">{{ $doc->nama_file }}</span>
                                 </td>
-                                <td class="py-4 px-6 text-gray-500">{{ $doc->uploaded_at_formatted }}</td>
-                                <td class="py-4 px-6 text-center">
+                                <td class="py-4 px-4 sm:px-6 text-gray-500">{{ $doc->uploaded_at_formatted }}</td>
+                                <td class="py-4 px-4 sm:px-6 text-center">
                                     <a href="#" class="inline-flex items-center justify-center gap-1.5 bg-red-700 text-white text-xs px-4 py-2 rounded-lg hover:bg-red-800 transition shadow-sm font-bold active:scale-95">
                                         <i data-lucide="download" class="w-3.5 h-3.5"></i> Unduh
                                     </a>

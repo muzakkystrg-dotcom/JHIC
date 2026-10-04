@@ -6,7 +6,7 @@
 <div class="bg-[#F8F9FA] min-h-screen text-slate-800 font-sans">
 
     <!-- ==================== 1. HERO SECTION JURUSAN ==================== -->
-    <section class="relative pt-40 pb-16 overflow-hidden bg-gradient-to-br from-[#EAEAEA] via-[#F4F4F4] to-white">
+    <section class="relative pt-32 sm:pt-40 pb-16 overflow-hidden bg-gradient-to-br from-[#EAEAEA] via-[#F4F4F4] to-white">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-200/40 to-transparent pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -64,21 +64,21 @@
         </h2>
 
         <!-- Switcher Toggle Group (Panah, SIJA, TJAT, Panah) -->
-        <div class="flex items-center justify-center gap-3 mb-12 select-none">
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12 select-none">
             <a href="{{ route('jurusan.sija') }}" class="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-[#C8102E] hover:border-[#C8102E] transition">
                 <i data-lucide="chevron-left" class="w-5 h-5"></i>
             </a>
 
             <!-- Tombol SIJA (INAKTIF OUTLINE) -->
             <a href="{{ route('jurusan.sija') }}" 
-               class="px-8 py-2.5 rounded-full border border-gray-300 text-gray-700 hover:text-[#C8102E] hover:border-[#C8102E] font-bold text-xs sm:text-sm bg-white transition-all">
+               class="px-6 sm:px-8 py-2.5 rounded-full border border-gray-300 text-gray-700 hover:text-[#C8102E] hover:border-[#C8102E] font-bold text-xs sm:text-sm bg-white transition-all">
                 SIJA
             </a>
 
             <!-- Tombol TJAT (AKTIF MERAH TELKOM) -->
             <a href="{{ route('jurusan.tjat') }}" 
                style="background-color: #C8102E !important; color: #ffffff !important;"
-               class="px-8 py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-md transition-all">
+               class="px-6 sm:px-8 py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-md transition-all">
                 TJAT
             </a>
 
